@@ -1,4 +1,6 @@
 const getKnexConfig = (env) => {
+  console.log('THIS IS THE CONSOLE LOG IN THE KNEX FILE: ', env);
+
   if (env = 'development') {
     return {
       client: 'postgresql',
