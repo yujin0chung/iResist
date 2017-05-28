@@ -1,6 +1,6 @@
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
-let secret = {};
+let secrets = {};
 
 try {
   secrets = require('../../config/configVars');
