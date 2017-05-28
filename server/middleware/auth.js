@@ -1,14 +1,14 @@
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
-let secrets = {};
+var secrets = {};
 
 try {
   secrets = require('../../config/configVars');
 } catch (e) {
 }
 
-const redisUrl = process.env.REDISCLOUD_URL || secrets.redisUrl;
-const redisSecret = process.env.REDIS_SECERT || secrets.redisSecret;
+var redisUrl = process.env.REDISCLOUD_URL || secrets.redisUrl;
+var redisSecret = process.env.REDIS_SECERT || secrets.redisSecret;
 
 const redisClient = require('redis').createClient(redisUrl, {no_ready_check: true});
 
