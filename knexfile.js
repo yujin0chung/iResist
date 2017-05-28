@@ -1,5 +1,5 @@
 const getKnexConfig = (env) => {
-  console.log('THIS IS THE CONSOLE LOG IN THE KNEX FILE: ', env);
+  console.log('THIS IS THE CONSOLE LOG IN THE KNEX FILE: ', env, typeof env);
 
   if (env = 'development') {
     return {
@@ -25,7 +25,19 @@ const getKnexConfig = (env) => {
     };
   } else if (env = 'production') {
     return {
-      test: 'production'
+      client: 'postgresql',
+      connection: process.env.DATABASE_URL,
+      pool: {
+        min: 2,
+        max: 10
+      },
+      migrations: {
+        tableName: 'knex_migrations',
+        directory: 'db/migrations'
+      },
+      seeds: {
+        directory: 'db/seeds'
+      }
     };
   } else if (env = 'test') {
     return {
