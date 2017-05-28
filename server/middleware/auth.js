@@ -15,7 +15,7 @@ module.exports.session = session({
   //   host: 'localhost',
   //   port: 6379
   // }),
-  // secret: 'more laughter, more love, more life',
+  secret: process.env.REDIS_SECRET,
   // resave: false,
   // saveUninitialized: false
 });
