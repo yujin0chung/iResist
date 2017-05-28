@@ -17,13 +17,10 @@ if (process.env.REDISCLOUD_URL) {
 }
 
 if (process.env.REDISCLOUD_URL) {
-  redisSecret = process.env.REDISCLOUD_SECRET;
+  redisSecret = process.env.REDIS_SECRET;
 } else {
   redisSecret = secrets.redisSecret;
 }
-
-console.log('THIS IS THE SESSION URL: ', redisUrl);
-console.log('THIS IS THE SECRET: ', redisSecret);
 
 const redisClient = require('redis').createClient(redisUrl, {no_ready_check: true});
 
