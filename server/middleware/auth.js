@@ -1,6 +1,11 @@
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
-const redisClient = require('redis').createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
+const secrets = require('../../config/configVars');
+
+const redisUrl = process.env.REDISCLOUD_URL || secrets.redisUrl;
+const redisSecret = process.env.REDIS_SECERT || secrets.redisSecret;
+
+const redisClient = require('redis').createClient(redisUrl, {no_ready_check: true});
 
 module.exports.verify = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -15,7 +20,7 @@ module.exports.session = session({
   //   host: 'localhost',
   //   port: 6379
   // }),
-  secret: process.env.REDIS_SECRET,
+  secret: redisSecret,
   // resave: false,
   // saveUninitialized: false
 });
