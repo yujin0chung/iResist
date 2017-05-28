@@ -22,6 +22,9 @@ if (process.env.REDISCLOUD_URL) {
   redisSecret = secrets.redisSecret;
 }
 
+console.log('THIS IS THE SESSION URL: ', redisUrl);
+console.log('THIS IS THE SECRET: ', redisSecret);
+
 const redisClient = require('redis').createClient(redisUrl, {no_ready_check: true});
 
 module.exports.verify = (req, res, next) => {
