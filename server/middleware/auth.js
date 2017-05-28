@@ -1,14 +1,26 @@
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
-var secrets = {};
+let secrets = {};
 
 try {
   secrets = require('../../config/configVars');
 } catch (e) {
 }
 
-var redisUrl = process.env.REDISCLOUD_URL || secrets.redisUrl;
-var redisSecret = process.env.REDIS_SECERT || secrets.redisSecret;
+let redisUrl;
+let redisSecret;
+
+if (process.env.REDISCLOUD_URL) {
+  redisUrl = process.env.REDISCLOUD_URL;
+} else {
+  redisUrl = secrets.redisSecret;
+}
+
+if (process.env.REDISCLOUD_URL) {
+  redisSecret = process.env.REDISCLOUD_SECRET;
+} else {
+  redisSecret = secrets.redisSecret;
+}
 
 const redisClient = require('redis').createClient(redisUrl, {no_ready_check: true});
 
