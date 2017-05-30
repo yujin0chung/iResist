@@ -1,4 +1,4 @@
-# Project Name
+# iResist
 
 The project description
 
