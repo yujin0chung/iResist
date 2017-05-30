@@ -4,10 +4,10 @@ The project description
 
 ## Team
 
-- teamMember
-- teamMember
-- teamMember
-- teamMember
+- Alex Seiden
+- Christopher Russel Ward
+- Tabitha Hsia
+- Yujin Chung
 
 ## Roadmap
 
