@@ -13,7 +13,7 @@ let redisSecret;
 if (process.env.REDISCLOUD_URL) {
   redisUrl = process.env.REDISCLOUD_URL;
 } else {
-  redisUrl = secrets.redisSecret;
+  redisUrl = secrets.redisUrl;
 }
 
 if (process.env.REDISCLOUD_URL) {
