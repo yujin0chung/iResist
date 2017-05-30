@@ -5,7 +5,7 @@ The project description
 ## Team
 
 - Alex Seiden
-- Christopher Russel Ward
+- Christopher Russell Ward
 - Tabitha Hsia
 - Yujin Chung
 
