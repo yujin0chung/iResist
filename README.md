@@ -1,13 +1,13 @@
-# Project Name
+# iResist
 
 The project description
 
 ## Team
 
-- teamMember
-- teamMember
-- teamMember
-- teamMember
+- Alex Seiden
+- Christopher Russell Ward
+- Tabitha Hsia
+- Yujin Chung
 
 ## Roadmap
 

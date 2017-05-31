@@ -1,0 +1,27 @@
+{
+  "name": "iResist",
+  "scripts": {
+  },
+  "env": {
+    "REDIS_SECRET": {
+      "required": true
+    },
+    "REDISCLOUD_URL": {
+      "required": true
+    },
+    "DATABASE_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql",
+    "rediscloud"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
