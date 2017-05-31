@@ -8,7 +8,7 @@ import rootReducer from './reducers/index.js';
 const middleware = [ thunk ];
 
 if (process.env.NODE_ENV !== 'production') {
-  middlware.push(createLogger());
+  middleware.push(createLogger());
 }
 
 //We can define default (initial) state here
