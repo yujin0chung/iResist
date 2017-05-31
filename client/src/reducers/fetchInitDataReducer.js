@@ -1,5 +1,5 @@
 
-export const fetchInitDataReducer = (state=initialState, action) => {
+export const fetchInitDataReducer = (state={}, action) => {
   switch (action.type) {
     case 'FETCH_START': {
       return {
