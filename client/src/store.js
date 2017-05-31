@@ -10,7 +10,7 @@ const middleware = [ thunk ];
 
 if (process.env.NODE_ENV !== 'production') {
   middleware.push(createLogger());
-}
+};
 
 //We can define default (initial) state here
 const defaultState = {
@@ -24,12 +24,14 @@ const store = createStore(
   applyMiddleware(...middleware)
 );
 
+
+
 // Allows for hot-reloading (changes being rendered to screen w/out refreshing page)
 if (module.hot) {
   module.hot.accept('./reducers/', () => {
     const nextRootReducer = require('./reducers/index.js').default;
     store.replaceReducer(nextRootReducer);
   });
-}
+};
 
 export default store;
