@@ -1,8 +1,3 @@
-let initialState = {
-  fetching: true,
-  hasErrored: false,
-  data: []
-};
 
 export const fetchInitDataReducer = (state=initialState, action) => {
   switch (action.type) {
