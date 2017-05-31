@@ -27,5 +27,6 @@ export const fetchInitDataReducer = (state=initialState, action) => {
         data: action.data
       }
     }
+    default: return state;
   }
 };
