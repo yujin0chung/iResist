@@ -8,13 +8,13 @@ import rootReducer from './reducers/index.js';
 const middleware = [ thunk ];
 
 if (process.env.NODE_ENV !== 'production') {
-  middlware.push(createLogger());
+  middleware.push(createLogger());
 }
 
 //We can define default (initial) state here
 const defaultState = {
 
-}
+};
 
 const store = createStore(
   rootReducer,
@@ -24,7 +24,7 @@ const store = createStore(
 );
 
 // Allows for hot-reloading (changes being rendered to screen w/out refreshing page)
-if(module.hot) {
+if (module.hot) {
   module.hot.accept('./reducers/', () => {
     const nextRootReducer = require('./reducers/index.js').default;
     store.replaceReducer(nextRootReducer);
