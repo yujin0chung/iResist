@@ -1,7 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './store.js';
 
-import App from './components/App';
 
 
-ReactDOM.render(<h1>Hello World from React</h1>, document.getElementById('root'));
+render(
+  <Provider store={store} >
+    <h1>Redux set up test</h1>
+  </Provider>, 
+  document.getElementById('root')
+);
+
