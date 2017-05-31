@@ -12,7 +12,7 @@ export const votePin = () => {
   };
 };
 
-export const RemovePin = () => {
+export const removePin = () => {
   return {
     type: 'INSERT TYPE HERE',
     // INSERT OTHER CHANGES HERE
