@@ -2,9 +2,10 @@
   "name": "course.thesis",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack && nodemon server",
+    "start": "nodemon server",
     "test": "NODE_ENV=test grunt test",
-    "build": "webpack --watch"
+    "build": "webpack --watch",
+    "postinstall": "webpack"
   },
   "author": "Hack Reactor",
   "license": "MIT",
