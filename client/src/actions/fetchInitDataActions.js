@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import dummyStore from '../data/store';
 
 export const fetchInitDataStart = () => {
   return {
@@ -29,9 +29,9 @@ export const fetchInitDataSuccess = (data) => {
 export const fetchInitData = (userId) => {
   return dispatch => {
     dispatch(fetchInitDataStart());
-    axios.get('some endpoint')
+    axios.get('/')
       .then(response => {
-        dispatch(fetchInitDataSuccess(response.data));
+        dispatch(fetchInitDataSuccess(dummyStore));
       })
       .catch(error => {
         dispatch(fetchInitDataError(error));

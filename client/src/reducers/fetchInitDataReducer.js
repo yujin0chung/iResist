@@ -1,17 +1,16 @@
-
 export const fetchInitDataReducer = (state={}, action) => {
   switch (action.type) {
     case 'FETCH_START': {
       return {
-        ...state, 
+        ...state,
         fetching: action.fetching
       }
     }
     case 'FETCH_ERROR': {
       return {
-        ...state, 
-        fetching: action.fetching, 
-        hasErrored: action.hasErrored, 
+        ...state,
+        fetching: action.fetching,
+        hasErrored: action.hasErrored,
         error: action.error
       }
     }
