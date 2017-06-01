@@ -29,7 +29,7 @@ export const fetchInitDataSuccess = (data) => {
 export const fetchInitData = (userId) => {
   return dispatch => {
     dispatch(fetchInitDataStart());
-    axios.get('some endpoint') 
+    axios.get('some endpoint')
       .then(response => {
         dispatch(fetchInitDataSuccess(response.data));
       })
@@ -38,4 +38,3 @@ export const fetchInitData = (userId) => {
       });
   };
 };
-
