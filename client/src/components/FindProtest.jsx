@@ -1,7 +1,10 @@
 import React from 'react';
 
-class FindProtest extends React.Component {
-
-}
+const FindProtest = (props) => (
+  <div>
+    {console.log(props)}
+    FIND PROTEST TEST
+  </div>
+);
 
 export default FindProtest;

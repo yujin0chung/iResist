@@ -1,4 +1,7 @@
-module.exports.events = [{
+module.exports = 
+{
+events :
+  {
 	1: {
 		organizers: 
           {  
@@ -41,9 +44,8 @@ module.exports.events = [{
 		feedId: 3,
     status: 'ongoing'
 	}  
-}];
-
-module.exports.user = [{
+  },
+user: {
 	10: {
 		userName: 'blackSpaniel',
 		events_attending: [1, 2],
@@ -79,9 +81,9 @@ module.exports.user = [{
 		events_attending: [2],
         events_organizing: []
 	}
-}];
+  },
 
-module.exports.users = [{
+  users : {
 	10: {
 		userName: 'blackSpaniel', 
 		userCred: 1
@@ -110,9 +112,9 @@ module.exports.users = [{
 		userName: 'sneakyMustache', 
 		userCred: 5
 	}
-}];
+  },
 
-module.exports.maps = [{
+  maps : {
 	1: {
         map_location: 'nyc',
         eventId: 1,
@@ -180,9 +182,9 @@ module.exports.maps = [{
 			}
 		}
 	}
-}];
+  },
 
-module.exports.feed = [{
+  feed : {
 	1: {
 		feed_items: {
 			1: {
@@ -237,7 +239,5 @@ module.exports.feed = [{
 			}
 		}
 	}
-}];
-
-
-
+}
+}
