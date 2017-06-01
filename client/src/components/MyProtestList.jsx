@@ -16,7 +16,7 @@ const MyProtestList = (props) => {
             {...props}
             key={protestId}
             protest={props.fetchInitDataReducer.data.events[protestId]}
-            type='organizer'
+            role='organizing'
           />)
         }
         {
@@ -24,7 +24,7 @@ const MyProtestList = (props) => {
             {...props}
             key={protestId}
             protest={props.fetchInitDataReducer.data.events[protestId]}
-            type='attending'
+            role='attending'
           />)
         }
       </div>
