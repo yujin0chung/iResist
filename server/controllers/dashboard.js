@@ -10,31 +10,36 @@ module.exports.getDashboard = (req, res) => {
       res.send(500, err);
     } else {
       models.Events.findAllAttendees((err, allAttendees) => {
-        
         if (err) {
           res.send(500, err) 
         } else {
           models.Map.allMaps((err, allMaps) => {
-            console.log('????', allMaps)
             if (err) {
               res.send(500, err) 
             } else {
-              models.User.allUsers((err, allUsers) => {
+              models.Feed.allFeeds((err, allFeeds) => {
                 if (err) {
-                  res.send(500, err) 
+                  res.send(500, err);
                 } else {
-                  models.User.user(userId, (err, userData) => {
+                  models.User.allUsers((err, allUsers) => {
                     if (err) {
                       res.send(500, err) 
                     } else {
-                      var response = {
-                        allEvents: allEvents,
-                        allAttendees: allAttendees,
-                        allMaps: allMaps,
-                        allUser: allUsers,
-                        user: userData
-                      }
-                      res.send(200, response);
+                      models.User.user(userId, (err, userData) => {
+                        if (err) {
+                          res.send(500, err) 
+                        } else {
+                          var response = {
+                            allEvents: allEvents,
+                            allAttendees: allAttendees,
+                            allMaps: allMaps,
+                            allFeeds: allFeeds,
+                            allUsers: allUsers,
+                            user: userData
+                          }
+                          res.send(200, format(response));
+                        }
+                      })
                     }
                   })
                 }

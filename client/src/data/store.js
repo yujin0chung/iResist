@@ -54,11 +54,12 @@ module.exports =
       address: '101 huge lane, san francisco CA 99999'
     }
   },
-  user: {
-    userId: 10,
-    userName: 'blackSpaniel',
-    events_attending: [1, 2],
-    events_organizing: [3]
+
+user: {
+	userId: 10,
+	userName: 'blackSpaniel',
+	events_attending: [1, 2],
+	events_organizing: []
   },
 
   users: {
