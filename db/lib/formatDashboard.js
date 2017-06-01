@@ -17,7 +17,6 @@ module.exports = (data) => {
         })
       }
     })
-    
     return organizers
   }
   const countAttendees = (event, data) => {
@@ -27,6 +26,7 @@ module.exports = (data) => {
         count++;
       }
     })
+    
     return count;
   }
   
@@ -47,7 +47,7 @@ module.exports = (data) => {
         feedId = feed.id;
       }
     })
-    return mapId;
+    return feedId;
   }
 
   const userEventsAttending = (user, data) => {
@@ -69,25 +69,29 @@ module.exports = (data) => {
     })
     return organizing;
   }
+
   
-  data.allEvents.forEach(event => {
-    response.events[event.id] = {
-      organizers: findOrganizers(event, data),
-      name: event.name,
-      description: event.description,
-      cause: event.cause,
-      attendee_count: countAttendees(event, data),
-      mapId: findMap(event, data),
-      feedId: findFeed(event, data)
-    };
-    console.log('RESPONSE HERE: ', response)
+  data.allEvents.forEach(event => { 
+    response.events[event.id] = {}
+    response.events[event.id].organizers = findOrganizers(event, data);
+    response.events[event.id].name = event.name;
+    response.events[event.id].description = event.description;
+    response.events[event.id].cause = event.cause;
+    response.events[event.id].attendee_count = countAttendees(event, data);
+    response.events[event.id].mapId = findMap(event, data);
+    response.events[event.id].feedId = findFeed(event, data); 
   })
-  response.user = {
-    userId: data.user[0].id,
-    userName: data.user[0].username,
-    events_attending: userEventsAttending(user, data),
-    events_organizing: userEventsOrganizing(user, data)
-  }
-  console.log('???', response )
+  response.user.userId = data.user[0].id;
+  response.user.userName = data.user[0].username;
+  response.user.events_attending = userEventsAttending(data.user, data);
+  response.user.events_organizing = userEventsOrganizing(data.user, data);
+  
+  data.allUsers.forEach(user => {
+    response.users[user.id] = {};
+    response.users[user.id].userName = user.username;
+    response.users[user.id].userCred = user.credibility;
+  })
+  
+  
   return response;
 }
