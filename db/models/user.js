@@ -1,7 +1,7 @@
 const knex = require('knex')(require('../../knexfile'));
 
-module.exports = (id, cb) => {
-  knex.select().from('users').where('id', id)
+module.exports = (userId, cb) => {
+  knex.select().from('users').where('id', userId)
     .then(data => {
       cb(null, data);
     })
