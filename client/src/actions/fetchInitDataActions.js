@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 export const fetchInitDataStart = () => {
   return {
     type: 'FETCH_START',
@@ -9,7 +10,7 @@ export const fetchInitDataStart = () => {
 
 export const fetchInitDataError = (error) => {
   return {
-    type: 'FETCH_FAIL',
+    type: 'FETCH_ERROR',
     fetching: false,
     hasErrored: true,
     error
@@ -24,6 +25,7 @@ export const fetchInitDataSuccess = (data) => {
   };
 };
 
+
 export const fetchInitData = (userId) => {
   return dispatch => {
     dispatch(fetchInitDataStart());
@@ -36,3 +38,4 @@ export const fetchInitData = (userId) => {
       });
   };
 };
+

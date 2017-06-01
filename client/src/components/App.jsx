@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions/index';
+import FindProtest from './FindProtest.jsx';
 
 class App extends React.Component {
   constructor (props) {
@@ -11,7 +12,12 @@ class App extends React.Component {
   }
 
   render() {
-    return <h1>Hello from the app! {console.log(this.props.voteItem)}</h1>;
+    return (
+      <div>
+        <h1>Hello from the app! {console.log(this.props.voteItem)}</h1>
+        <FindProtest {...this.props} />
+      </div>
+    );
   }
 }
 
@@ -22,6 +28,5 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(actionCreators, dispatch);
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
