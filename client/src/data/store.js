@@ -59,7 +59,7 @@ user: {
 	userId: 10,
 	userName: 'blackSpaniel',
 	events_attending: [1, 2],
-	events_organizing: []
+	events_organizing: [3]
   },
 
   users: {
