@@ -1,7 +1,7 @@
 const knex = require('knex')(require('../../knexfile'));
 
-module.exports = (id, cb) => {
-  knex.select().from('users').where('id', id)
+module.exports = (cb) => {
+  knex.select().from('events')
     .then(data => {
       cb(null, data);
     })

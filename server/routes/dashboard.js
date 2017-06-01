@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const controllers = require('../controllers/dashboard');
+const controllers = require('../controllers').Dashboard;
 
-router.route('/dashboard')
-  .get(controllers.load)
-  ;
-
+router.get('/', controllers.getDashboard);
+  
 module.exports = router;
