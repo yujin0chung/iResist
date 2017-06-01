@@ -1,7 +1,8 @@
-import eventActions from './eventActions';
-import feedActions from './feedActions';
-import mapActions from './mapActions';
-import navActions from './navActions';
+import * as eventActions from './eventActions.js';
+import * as feedActions from './feedActions';
+import * as mapActions from './mapActions';
+import * as navActions from './navActions';
+import * as fetchInitDataActions from './fetchInitDataActions';
 
 // export event actions
 export const createEvent = eventActions.createEvent;
@@ -20,9 +21,15 @@ export const viewFeed = navActions.viewFeed;
 // map actions
 export const dropPin = mapActions.dropPin;
 export const votePin = mapActions.votePin;
-export const removePin = mapActions.RemovePin;
+export const removePin = mapActions.removePin;
 
 // feed actions
-export const postItem = mapActions.postItem;
-export const voteItem = mapActions.voteItem;
-export const deleteItem = mapActions.deleteItem;
+export const postItem = feedActions.postItem;
+export const voteItem = feedActions.voteItem;
+export const deleteItem = feedActions.deleteItem;
+
+// init actions
+// export const fetchInitDataStart = fetchInitDataActions.fetchInitDataStart;
+// export const fetchInitDataError = fetchInitDataActions.fetchInitDataError;
+// export const fetchInitDataSuccess = fetchInitDataActions.fetchInitDataSuccess;
+export const fetchInitData = fetchInitDataActions.fetchInitData;
