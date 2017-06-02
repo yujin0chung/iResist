@@ -18,7 +18,7 @@ class ProtestForm extends React.Component {
       timeEnd: ''
     };
 
-   this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit (e) {
@@ -27,11 +27,8 @@ class ProtestForm extends React.Component {
   }
 
   render() {
-    console.log('PROPS FROM PROTEST FORM:', this.props)
     const { name, address, date, timeStart, timeEnd } = this.state;
     const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length > 0 && timeEnd.length > 0;
-
-
     return (
       <form onSubmit={() => this.handleSubmit()}>
         <label>
@@ -61,7 +58,7 @@ class ProtestForm extends React.Component {
         </label> < br/>
       <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => {this.handleSubmit(e)}}/>
       </form>
-    )
+    );
   }
 }
 
