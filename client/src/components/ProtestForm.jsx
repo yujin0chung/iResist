@@ -42,7 +42,7 @@ class ProtestForm extends React.Component {
       <form onSubmit={() => this.handleSubmit()}>
         <label>
           Protest Name:
-          <input type="text" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value, nameValid: true})} />
+          <input type="text" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value, nameValid: true}, this.validateForm)} />
         </label> < br/>
         <label>
           Description:
@@ -54,11 +54,11 @@ class ProtestForm extends React.Component {
         </label> < br/>
         <label>
           Address:
-          <input type="text" value={this.state.address} onChange={(e) => this.setState({ address: e.target.value, addressValid: true })} />
+          <input type="text" value={this.state.address} onChange={(e) => this.setState({ address: e.target.value, addressValid: true }, this.validateForm)} />
         </label> < br/>
         <label>
           Choose a date:
-          <input type="date" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value, dateValid: true })} />
+          <input type="date" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value, dateValid: true }, this.validateForm)} />
         </label> < br/>
         <label>
           Choose the time range:
