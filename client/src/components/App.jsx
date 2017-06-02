@@ -38,28 +38,20 @@ class App extends React.Component {
       return (<h1>SPIN LOAD SPIN</h1>);
     }
     if (currentView === 'FIND_PROTEST') {
-      return (<FindProtest {...this.props} />;)
+      return (<FindProtest {...this.props} />);
     }
     if (currentView === 'ORGANIZE_PROTEST') {
-      return (<ProtestForm />)
+      return (<ProtestForm createEvent={this.props.postEvent} {...this.props}/>);
     }
-    if (currentView === 'DASHBOARD') {
+    else {
       return (
-      <Dashboard {...this.props} />
-      <Button onClick={() => this.updateView('FIND_PROTEST')}>Find a Protest</Button>
-      <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>Organize a Protest</Button>
-      );
-    }
-
-    
-    return (
-      <div>
-        <Dashboard {...this.props} />
-        <ProtestForm createEvent={this.props.postEvent} {...this.props}/>
-        <Button onClick={() => this.updateView('FIND_PROTEST')}>Find a Protest</Button>
-        <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>Organize a Protest</Button>
-      </div>
+        <div>
+          <Dashboard {...this.props} />
+          <Button onClick={() => this.updateView('FIND_PROTEST')}>Find a Protest</Button>
+          <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>Organize a Protest</Button>
+        </div>
     );
+    }
   }
 }
 

@@ -9,10 +9,7 @@ const Title = styled.div`
   border-bottom: solid lightgrey 0.2px;
   padding: 10px;
 `;
-<<<<<<< HEAD
 
-=======
->>>>>>> Sets up views reducer
 const Name = styled.div`
   padding-top: 15px;
   padding-bottom: 10px;

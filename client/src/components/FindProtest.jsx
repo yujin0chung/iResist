@@ -1,4 +1,4 @@
-/*import React from 'react';
+import React from 'react';
 
 
 class FindProtest extends React.Component {
@@ -21,4 +21,4 @@ class FindProtest extends React.Component {
   }
 }
 
-export default FindProtest;*/
+export default FindProtest;
