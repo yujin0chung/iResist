@@ -41,7 +41,7 @@ class App extends React.Component {
       return (<FindProtest {...this.props} />);
     }
     if (currentView === 'ORGANIZE_PROTEST') {
-      return (<ProtestForm createEvent={this.props.postEvent} {...this.props}/>);
+      return (<ProtestForm createEvent={this.props.postEvent} />);
     }
     else {
       return (

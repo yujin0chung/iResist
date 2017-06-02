@@ -25,11 +25,15 @@ class ProtestForm extends React.Component {
     };
 
    this.handleSubmit = this.handleSubmit.bind(this);
+   this.validateForm = this.validateForm.bind(this);
   }
 
   handleSubmit (e) {
     e.preventDefault();
     this.props.postEvent(this.state);
+  }
+  validateForm() {
+    this.setState({formValid: this.state.nameValid && this.state.addressValid && this.state.dateValid && this.state.timeStartValid && this.state.timeEndValid});
   }
 
   render() {
@@ -59,13 +63,8 @@ class ProtestForm extends React.Component {
         <label>
           Choose the time range:
           <input type="time" value={this.state.timeStart} onChange={(e) => this.setState({ timeStart: e.target.value, timeStartValid: true })} />
-          <input type="time" value={this.state.timeEnd} onChange={(e) => this.setState({ timeEnd: e.target.value, timeEndValid: true })} />
+          <input type="time" value={this.state.timeEnd} onChange={(e) => this.setState({ timeEnd: e.target.value, timeEndValid: true }, this.validateForm)} />
         </label> < br/>
-      {if(nameValid.state === true && addressValid.state === true && dateValid.state === true && timeStartValid.state === true && timeEndValid.state === true) {
-        this.setState({
-          formValid: true
-        })
-      }}
       <input type="submit" value="Submit" disabled={!this.state.formValid} onClick={(e) => {this.handleSubmit(e)}}/>
       </form>
     )
