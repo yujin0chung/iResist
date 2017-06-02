@@ -8,20 +8,20 @@ const Title = styled.div`
   size: 15px;
   border-bottom: solid lightgrey 0.2px;
   padding: 10px;
-`
+`;
 
 const Name = styled.div`
   padding-top: 15px;
   padding-bottom: 10px;
-`
+`;
 const Info = styled.p`
   display: flex;
   flex-direction: column;
-`
+`;
 const Icon = styled.img`
   width: 15px;
   float: right;
-`
+`;
 
 class Protest extends React.Component {
   constructor(props) {
@@ -57,13 +57,13 @@ class Protest extends React.Component {
             <p><b>Description:</b> {this.props.protest.description}</p>
             <p><b>Attendee Count:</b> {this.props.protest.attendee_count}</p>
           </Info>
-          <MapContainer />
+          <MapContainer {...this.props} mapType='dashboardMap' />
         </div>
       );
     } else {
       return (
         <div>
-          <Title onClick={this.handleProtestClick}>{this.props.protest.name}  {leader ? <Icon src="images/leaderIcon.svg" /> : <div></div>  }</Title>
+          <Title onClick={this.handleProtestClick}>{this.props.protest.name}   {leader ? <Icon src="images/leaderIcon.svg" /> : <div></div> }</Title>
         </div>
       );
     }

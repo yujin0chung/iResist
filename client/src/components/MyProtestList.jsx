@@ -16,6 +16,7 @@ const MyProtestList = (props) => {
           protestsOrganizing.map((protestId) => <Protest
             {...props}
             key={protestId}
+            protestId={protestId}
             protest={props.fetchInitDataReducer.data.events[protestId]}
             role='organizing'
           />)
@@ -24,6 +25,7 @@ const MyProtestList = (props) => {
           protestsAttending.map((protestId) => <Protest
             {...props}
             key={protestId}
+            protestId={protestId}
             protest={props.fetchInitDataReducer.data.events[protestId]}
             role='attending'
           />)
