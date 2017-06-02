@@ -21,19 +21,26 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {};
+    this.updateView = this.updateView.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchInitData();
   }
 
+  updateView(view) {
+    this.props.changeView(view);
+  }
+
   render() {
+    
     return (
       <div>
         <Dashboard {...this.props} />
         {/*<FindProtest {...this.props} />*/}
         <ProtestForm createEvent={this.props.postEvent} {...this.props}/>
-        <Button>Find a Protest</Button>
+        <Button onClick={() => this.updateView('FIND_PROTEST')}>Find a Protest</Button>
+        <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>Organize a Protest</Button>
       </div>
     );
   }
