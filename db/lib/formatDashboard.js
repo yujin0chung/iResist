@@ -1,4 +1,5 @@
 module.exports = (data) => {
+  console.log('RAW DATA: ', data)
   const response = {
     events: {},
     user: {},

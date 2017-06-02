@@ -25,19 +25,25 @@ module.exports.getDashboard = (req, res) => {
                     if (err) {
                       res.send(500, err) 
                     } else {
-                      models.User.user(userId, (err, userData) => {
+                      models.Map.allMaps((err, allMaps) => {
                         if (err) {
-                          res.send(500, err) 
+                          res.send(500, err);
                         } else {
-                          var response = {
-                            allEvents: allEvents,
-                            allAttendees: allAttendees,
-                            allMaps: allMaps,
-                            allFeeds: allFeeds,
-                            allUsers: allUsers,
-                            user: userData
-                          }
-                          res.send(200, format(response));
+                          models.User.user(userId, (err, userData) => {
+                            if (err) {
+                              res.send(500, err) 
+                            } else {
+                              var response = {
+                                allEvents: allEvents,
+                                allAttendees: allAttendees,
+                                allMaps: allMaps,
+                                allFeeds: allFeeds,
+                                allUsers: allUsers,
+                                user: userData
+                              }
+                              res.send(200, format(response));
+                            }
+                          })
                         }
                       })
                     }
