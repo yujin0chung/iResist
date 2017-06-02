@@ -17,7 +17,7 @@ module.exports =
       status: 'upcoming',
       eventStart: 1498931057000,
       eventDuration: 3600000,
-      address: '100 huge lane, san francisco CA 99999'
+      address: '944 market street, san francisco CA 99999'
     },
     2: {
       organizers:
@@ -34,7 +34,7 @@ module.exports =
       status: 'upcoming',
       eventStart: 1499449457000,
       eventDuration: 3600000,
-      address: '9 huge lane, san francisco CA 99999'
+      address: '944 market street, san francisco CA 99999'
     },
     3: {
       organizers:
@@ -51,15 +51,15 @@ module.exports =
       status: 'ongoing',
       eventStart: 1499708657000,
       eventDuration: 3600000,
-      address: '101 huge lane, san francisco CA 99999'
+      address: '611 market street, san francisco CA 99999'
     }
   },
 
-user: {
-	userId: 10,
-	userName: 'blackSpaniel',
-	events_attending: [1, 2],
-	events_organizing: [3]
+  user: {
+    userId: 10,
+    userName: 'blackSpaniel',
+    events_attending: [1, 2],
+    events_organizing: [3]
   },
 
   users: {
@@ -95,20 +95,20 @@ user: {
 
   maps: {
     1: {
-      lat: 51.505,
-      long: -0.09,
+      lat: 37.783697,
+      long: -122.408966,
       eventId: 1,
       pins: [1]
     },
     2: {
-      lat: 51.505,
-      long: -0.09,
+      lat: 37.783697,
+      long: -122.408966,
       eventId: 2,
       pins: [2, 3]
     },
     3: {
-      lat: 51.505,
-      long: -0.09,
+      lat: 37.789063,
+      long: -122.401697,
       eventId: 3,
       pins: [4, 5, 6, 7]
     }
