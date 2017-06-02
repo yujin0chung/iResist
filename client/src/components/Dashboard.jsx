@@ -1,5 +1,12 @@
 import React from 'react';
 import MyProtestList from './MyProtestList.jsx';
+import styled from 'styled-components';
+
+const Title = styled.h4`
+  font-weight: normal;
+  padding-bottom: 15px;
+  padding-left: 10px;
+`
 
 class Dashboard extends React.Component {
   constructor (props) {
@@ -15,9 +22,9 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <h2>My ongoing protests</h2>
-          <MyProtestList {...this.props} time='ongoing'/>
-        <h2>My upcoming protests</h2>
+        {/*<ListTitle>My ongoing protests</ListTitle>
+          <MyProtestList {...this.props} time='ongoing'/>*/}
+        <Title>My Protests</Title>
           <MyProtestList {...this.props} time='upcoming'/>
       </div>
     );
