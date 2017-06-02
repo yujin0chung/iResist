@@ -1,5 +1,6 @@
 import React from 'react';
 import dateFormat from 'dateformat';
+import MapContainer from './MapContainer.jsx';
 
 class Protest extends React.Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class Protest extends React.Component {
           <p>Address: {this.props.protest.address}</p>
           <p>Description: {this.props.protest.description}</p>
           <p>Attendee Count: {this.props.protest.attendee_count}</p>
+          <MapContainer />
         </div>
       );
     } else {
