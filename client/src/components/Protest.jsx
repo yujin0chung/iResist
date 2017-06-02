@@ -9,7 +9,10 @@ const Title = styled.div`
   border-bottom: solid lightgrey 0.2px;
   padding: 10px;
 `;
+<<<<<<< HEAD
 
+=======
+>>>>>>> Sets up views reducer
 const Name = styled.div`
   padding-top: 15px;
   padding-bottom: 10px;
@@ -63,7 +66,7 @@ class Protest extends React.Component {
     } else {
       return (
         <div>
-          <Title onClick={this.handleProtestClick}>{this.props.protest.name}   {leader ? <Icon src="images/leaderIcon.svg" /> : <div></div> }</Title>
+          <Title onClick={this.handleProtestClick}>{this.props.protest.name} {leader ? <Icon src="images/leaderIcon.svg" /> : <div></div>}</Title>
         </div>
       );
     }

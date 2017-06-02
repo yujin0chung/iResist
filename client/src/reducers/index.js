@@ -6,6 +6,6 @@ import { views } from './viewsReducer.js';
 const rootReducer = combineReducers({
   fetchInitDataReducer,
   views
-})
+});
 
 export default rootReducer;
