@@ -2,7 +2,7 @@ import React from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import l from 'leaflet';
 
-/*const MapContainer = (props) => {
+const MapContainer = (props) => {
   const position = [51.505, -0.09];
   const map = (
     <Map className='dashboardMap' center={position} zoom={13}>
@@ -18,6 +18,6 @@ import l from 'leaflet';
     </Map>
   );
   return map;
-};*/
+};
 
 export default MapContainer;
