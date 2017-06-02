@@ -10,7 +10,6 @@ class FindProtest extends React.Component {
         upcomingEvents.push(event);
       }
     }
-    console.log('UPCOMINNG EVENTS:', upcomingEvents)
     return (
       <div>
         <h3>Find a Protest</h3>
