@@ -1,6 +1,7 @@
 import React from 'react';
 import Protest from './Protest.jsx';
 
+
 const MyProtestList = (props) => {
   if (props.fetchInitDataReducer.data) {
     let userId = props.fetchInitDataReducer.data.user.userId;

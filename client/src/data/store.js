@@ -42,7 +42,7 @@ module.exports =
         userID: 10,
         userName: 'blackSpaniel'
       },
-      name: 'ban kale',
+      name: 'BAN KALE',
       description: 'kale is a marketing lie and is actually not even that nutritious',
       cause: 'stop bb propagated lies',
       attendee_count: 10000,

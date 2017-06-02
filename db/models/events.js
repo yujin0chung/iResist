@@ -60,3 +60,6 @@ module.exports.findEventData = (eventIds, cb) => {
 module.exports.findAttendees = (eventId, cb) => {
 
 }
+
+
+

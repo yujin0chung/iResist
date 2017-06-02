@@ -2,22 +2,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions/index';
-import FindProtest from './FindProtest.jsx';
+// import FindProtest from './FindProtest.jsx';
 import Dashboard from './Dashboard.jsx';
+import styled from 'styled-components';
+
+const Button = styled.div`
+  color: tomato;
+	font-size: 1em;
+  text-align: center;
+	margin: 1em;
+	padding: 0.25em 1em;
+	border: 2px solid tomato;
+	border-radius: 3px;
+`
 
 class App extends React.Component {
   constructor (props) {
     super(props);
-
     this.state = {};
   }
 
   render() {
     return (
       <div>
-        <h1>Hello from the app! {console.log(this.props.voteItem)}</h1>
         <Dashboard {...this.props} />
-        <FindProtest {...this.props} />
+        {/*<FindProtest {...this.props} />*/}
+        <Button>Find a Protest</Button>
       </div>
     );
   }
