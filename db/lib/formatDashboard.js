@@ -2,6 +2,7 @@ module.exports = (data) => {
   console.log('RAW DATA: ', data)
   const response = {
     events: {},
+    maps: {},
     user: {},
     users: {},
   }
@@ -80,7 +81,12 @@ module.exports = (data) => {
     response.events[event.id].cause = event.cause;
     response.events[event.id].attendee_count = countAttendees(event, data);
     response.events[event.id].mapId = findMap(event, data);
-    response.events[event.id].feedId = findFeed(event, data); 
+    response.events[event.id].feedId = findFeed(event, data);
+    data.allMaps.forEach(map => {
+      if (map.event_id === event.id) {
+        response.maps[map.id] = map;
+      }
+    }) 
   })
   response.user.userId = data.user[0].id;
   response.user.userName = data.user[0].username;
