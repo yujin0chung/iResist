@@ -25,8 +25,8 @@ class Protest extends React.Component {
 
     if (this.state.displayDetails) {
       return (
-        <div onClick={this.handleProtestClick}>
-          <h3>{this.props.protest.name} - {this.props.role}</h3>
+        <div>
+          <h3 onClick={this.handleProtestClick}>{this.props.protest.name} - {this.props.role}</h3>
           <p>Cause: {this.props.protest.cause}</p>
           <p>Start: {dateFormat(startTime, 'mmmm dd, yyyy: hh:mm')}</p>
           <p>End: {dateFormat(endTime, 'mmmm dd, yyyy: hh:mm')}</p>
@@ -38,8 +38,8 @@ class Protest extends React.Component {
       );
     } else {
       return (
-        <div onClick={this.handleProtestClick}>
-          <h3>{this.props.protest.name} - {this.props.role}</h3>
+        <div>
+          <h3 onClick={this.handleProtestClick}>{this.props.protest.name} - {this.props.role}</h3>
         </div>
       );
     }
