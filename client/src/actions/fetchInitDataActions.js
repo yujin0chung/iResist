@@ -26,7 +26,6 @@ export const fetchInitDataSuccess = (data) => {
   };
 };
 
-
 export const fetchInitData = (userId) => {
   return dispatch => {
     dispatch(fetchInitDataStart());
