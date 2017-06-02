@@ -1,7 +1,7 @@
 const knex = require('knex')(require('../../knexfile'));
 
-module.exports.allMaps = (cb) => {
-  knex.select().from('maps')
+module.exports.allFeeds = (cb) => {
+  knex.select().from('feed')
     .then(data => {
       cb(null, data);
     })
@@ -10,8 +10,8 @@ module.exports.allMaps = (cb) => {
     })
 }
 
-module.exports.findMapById = (eventId, cb) => {
-  knex.select().from('maps')
+module.exports.findFeedById = (eventId, cb) => {
+  knex.select().from('feed')
     .where('event_id', eventId)
     .then(data => {
       cb(null, data)
