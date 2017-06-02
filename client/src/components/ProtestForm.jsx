@@ -15,7 +15,13 @@ class ProtestForm extends React.Component {
       address: '',
       date: '',
       timeStart: '',
-      timeEnd: ''
+      timeEnd: '',
+      nameValid: false,
+      addressValid: false,
+      dateValid: false,
+      timeStartValid: false,
+      timeEndValid: false,
+      formValid: false
     };
 
    this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,7 +29,7 @@ class ProtestForm extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault();
-    this.props.createEvent(this.state);
+    this.props.postEvent(this.state);
   }
 
   render() {
@@ -32,7 +38,7 @@ class ProtestForm extends React.Component {
       <form onSubmit={() => this.handleSubmit()}>
         <label>
           Protest Name:
-          <input type="text" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value})} />
+          <input type="text" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value, nameValid: true})} />
         </label> < br/>
         <label>
           Description:
@@ -44,18 +50,18 @@ class ProtestForm extends React.Component {
         </label> < br/>
         <label>
           Address:
-          <input type="text" value={this.state.address} onChange={(e) => this.setState({ address: e.target.value })} />
+          <input type="text" value={this.state.address} onChange={(e) => this.setState({ address: e.target.value, addressValid: true })} />
         </label> < br/>
         <label>
           Choose a date:
-          <input type="date" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value })} />
+          <input type="date" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value, dateValid: true })} />
         </label> < br/>
         <label>
           Choose the time range:
-          <input type="time" value={this.state.timeStart} onChange={(e) => this.setState({ timeStart: e.target.value })} />
-          <input type="time" value={this.state.timeEnd} onChange={(e) => this.setState({ timeEnd: e.target.value })} />
+          <input type="time" value={this.state.timeStart} onChange={(e) => this.setState({ timeStart: e.target.value, timeStartValid: true })} />
+          <input type="time" value={this.state.timeEnd} onChange={(e) => this.setState({ timeEnd: e.target.value, timeEndValid: true })} />
         </label> < br/>
-        <input type="submit" value="Submit" onClick={(e) => {this.handleSubmit(e)}}/>
+      <input type="submit" value="Submit" disabled={!this.state.formValid} onClick={(e) => {this.handleSubmit(e)}}/>
       </form>
     )
   }
