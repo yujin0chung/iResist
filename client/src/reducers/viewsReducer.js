@@ -1,4 +1,4 @@
-export const views = (state, action) => {
+export const views = (state={}, action) => {
   switch (action.type) {
     case 'CHANGE_VIEW': {
       return {
