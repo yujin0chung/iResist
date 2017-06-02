@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createEvent } from '../actions/eventActions';
 import { HomeIcon } from './HomeIcon.jsx';
 
+
 class ProtestForm extends React.Component {
   constructor(props) {
     super(props);
