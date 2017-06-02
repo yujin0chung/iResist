@@ -50,7 +50,7 @@ class App extends React.Component {
           <Button onClick={() => this.updateView('FIND_PROTEST')}>Find a Protest</Button>
           <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>Organize a Protest</Button>
         </div>
-    );
+      );
     }
   }
 }
