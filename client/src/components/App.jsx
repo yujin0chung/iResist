@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions/index';
 // import FindProtest from './FindProtest.jsx';
 import Dashboard from './Dashboard.jsx';
+import ProtestForm from './ProtestForm.jsx';
 import styled from 'styled-components';
 
 const Button = styled.div`
@@ -27,6 +28,7 @@ class App extends React.Component {
       <div>
         <Dashboard {...this.props} />
         {/*<FindProtest {...this.props} />*/}
+        <ProtestForm createEvent={this.props.postEvent} {...this.props}/>
         <Button>Find a Protest</Button>
       </div>
     );
