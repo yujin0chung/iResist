@@ -6,17 +6,13 @@ const Title = styled.h4`
   font-weight: normal;
   padding-bottom: 15px;
   padding-left: 10px;
-`
+`;
 
 class Dashboard extends React.Component {
   constructor (props) {
     super(props);
 
     this.state = {};
-  }
-
-  componentDidMount() {
-    this.props.fetchInitData();
   }
 
   render() {

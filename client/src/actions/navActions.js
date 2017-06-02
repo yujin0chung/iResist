@@ -14,8 +14,8 @@ export const viewCreateEditEvent = () => {
 
 export const viewEventDropDown = () => {
   return {
-    type: 'INSERT TYPE HERE',
-    // INSERT OTHER CHANGES HERE
+    type: 'TOGGLE_EVENT',
+
   };
 };
 
@@ -39,3 +39,11 @@ export const viewFeed = () => {
     // INSERT OTHER CHANGES HERE
   };
 };
+
+export const changeView = (newView) => {
+  return {
+    type: 'CHANGE_VIEW',
+    newView
+  };
+};
+
