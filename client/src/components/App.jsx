@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions/index';
-// import FindProtest from './FindProtest.jsx';
+import FindProtest from './FindProtest.jsx';
 import Dashboard from './Dashboard.jsx';
 import ProtestForm from './ProtestForm.jsx';
 import styled from 'styled-components';
@@ -33,11 +33,28 @@ class App extends React.Component {
   }
 
   render() {
+    const currentView = this.props.views.currentView;
+    if (currentView === 'SPINNER') {
+      return (<h1>SPIN LOAD SPIN</h1>);
+    }
+    if (currentView === 'FIND_PROTEST') {
+      return (<FindProtest {...this.props} />;)
+    }
+    if (currentView === 'ORGANIZE_PROTEST') {
+      return (<ProtestForm />)
+    }
+    if (currentView === 'DASHBOARD') {
+      return (
+      <Dashboard {...this.props} />
+      <Button onClick={() => this.updateView('FIND_PROTEST')}>Find a Protest</Button>
+      <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>Organize a Protest</Button>
+      );
+    }
+
     
     return (
       <div>
         <Dashboard {...this.props} />
-        {/*<FindProtest {...this.props} />*/}
         <ProtestForm createEvent={this.props.postEvent} {...this.props}/>
         <Button onClick={() => this.updateView('FIND_PROTEST')}>Find a Protest</Button>
         <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>Organize a Protest</Button>
