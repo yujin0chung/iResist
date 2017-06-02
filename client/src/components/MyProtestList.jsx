@@ -19,6 +19,7 @@ const MyProtestList = (props) => {
             protestId={protestId}
             protest={props.fetchInitDataReducer.data.events[protestId]}
             role='organizing'
+            onClick={() => props.viewEventDropdown()}
           />)
         }
         {
@@ -28,6 +29,7 @@ const MyProtestList = (props) => {
             protestId={protestId}
             protest={props.fetchInitDataReducer.data.events[protestId]}
             role='attending'
+             onClick={() => props.viewEventDropdown()}
           />)
         }
       </div>

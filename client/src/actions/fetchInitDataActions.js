@@ -1,5 +1,6 @@
 import axios from 'axios';
 import dummyStore from '../data/store';
+import { changeView } from './navActions.js';
 
 export const fetchInitDataStart = () => {
   return {
@@ -20,7 +21,7 @@ export const fetchInitDataError = (error) => {
 export const fetchInitDataSuccess = (data) => {
   return {
     type: 'FETCH_SUCCESS',
-    fetching: true,
+    fetching: false,
     data
   };
 };
@@ -29,12 +30,15 @@ export const fetchInitDataSuccess = (data) => {
 export const fetchInitData = (userId) => {
   return dispatch => {
     dispatch(fetchInitDataStart());
+    dispatch(changeView('SPINNER'));
     axios.get('/')
       .then(response => {
         dispatch(fetchInitDataSuccess(dummyStore));
+        dispatch(changeView('DASHBOARD'));
       })
       .catch(error => {
         dispatch(fetchInitDataError(error));
+        dispatch(changeView('ERROR'));
       });
   };
 };

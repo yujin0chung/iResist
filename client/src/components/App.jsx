@@ -23,6 +23,10 @@ class App extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    this.props.fetchInitData();
+  }
+
   render() {
     return (
       <div>

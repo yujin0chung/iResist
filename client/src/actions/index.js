@@ -17,6 +17,7 @@ export const viewEventDropDown = navActions.viewEventDropDown;
 export const viewEventCard = navActions.viewEventCard;
 export const viewMap = navActions.viewMap;
 export const viewFeed = navActions.viewFeed;
+export const changeView = navActions.changeView;
 
 // map actions
 export const dropPin = mapActions.dropPin;

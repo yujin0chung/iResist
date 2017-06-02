@@ -1,11 +1,12 @@
 export const views = (state, action) => {
   switch (action.type) {
-    case 'TOGGLE_EVENT': 
+    case 'CHANGE_VIEW': {
       return {
         ...state,
-        display: !state.display
+        currentView: action.newView
       }
-    default: 
+    }
+    default:
       return state;
   }
 }
