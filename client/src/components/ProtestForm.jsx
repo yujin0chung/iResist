@@ -99,6 +99,7 @@ class ProtestForm extends React.Component {
               <input type="time" value={this.state.timeEnd} onChange={(e) => this.setState({ timeEnd: e.target.value })} />
             </label> < br/>
           <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => { this.handleSubmit(e); }}/>
+          <input type="button" value="Cancel" onClick={() => this.props.changeView('DASHBOARD')} />
           </form>
       </div>
     );
