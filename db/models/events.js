@@ -1,4 +1,5 @@
 const knex = require('../').knex
+const formatDate = require('../lib/formatDate');
 
 module.exports.findAllEvents = (cb) => {
   knex.select().from('events')
@@ -58,16 +59,20 @@ module.exports.findEventData = (eventIds, cb) => {
 }
 
 module.exports.createEvent = (data, cb) => {
-  console.log('EVENT DATA IN MODEL: ', data.name)
-
+  const startHours = data.timeStart.split(':')[0];
+  const startMinutes = data.timeStart.split(';')[1];
+  const endHours = data.timeEnd.split(':')[0];
+  const endMinutes = data.timeEnd.split(':')[1];
+  const eventStart = formatDate(data.date, startHours, startMinutes);
+  const eventEnd = formatDate(data.date, endHours, endMinutes);
   const values = {
     name: data.name, 
     description: data.description,
     cause: data.cause,
     address: data.address,
     attendee_count: 1,
-    time: 1496426520254,
-    duration: 3600000
+    time: eventStart,
+    duration: eventEnd - eventStart
   }
   knex('events').insert(values)
     .then(data => {
