@@ -5,8 +5,8 @@ import * as actionCreators from '../actions/index';
 import FindProtest from './FindProtest.jsx';
 import Dashboard from './Dashboard.jsx';
 import ProtestForm from './ProtestForm.jsx';
-import { Button } from './StyledComponents.jsx';
-
+import { Header, Button, Fist } from './StyledComponents.jsx';
+import styled from 'styled-components';
 
 
 class App extends React.Component {
@@ -39,6 +39,8 @@ class App extends React.Component {
     else {
       return (
         <div>
+          <Header>iResist</Header>
+          <Fist />
           <Dashboard {...this.props} />
           <Button onClick={() => this.updateView('FIND_PROTEST')}>Find a Protest</Button>
           <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>Organize a Protest</Button>

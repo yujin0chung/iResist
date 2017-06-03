@@ -10,7 +10,6 @@ class ProtestForm extends React.Component {
     super(props);
 
     this.state = {
-      // userId: this.props.fetchInitData, //fetch username
       name: '',
       description: '',
       cause: '',
@@ -31,6 +30,7 @@ class ProtestForm extends React.Component {
   handleSubmit (e) {
     e.preventDefault();
     this.props.postEvent(this.state);
+    this.props.changeView('DASHBOARD');
   }
 
   handleLocSearch () {

@@ -43,7 +43,7 @@ class Protest extends React.Component {
             <p><b>Attendee Count:</b> {this.props.protest.attendee_count}</p>
           </Info>
           <MapContainer {...this.props} mapType='dashboardMap' />
-          <EventButton {...this.props} />
+          <EventButton {...this.props} leader={leader} />
         </div>
       );
     } else {
