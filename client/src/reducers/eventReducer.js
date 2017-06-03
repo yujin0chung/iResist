@@ -1,4 +1,4 @@
-export const eventsReducer = (state = {}, action) => {
+export const events = (state = {}, action) => {
   switch(action.type) {
     case "RECEIVE_EVENT":
       return Object.assign({}, state, {
