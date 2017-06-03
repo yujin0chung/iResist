@@ -21,7 +21,8 @@ class ProtestForm extends React.Component {
       timeEnd: '',
       lat: 0,
       long: 0,
-      protests: []
+      protests: [],
+      zoom: 1
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,7 +44,8 @@ class ProtestForm extends React.Component {
       this.setState({
         lat: response.data[0].latitude,
         long: response.data[0].longitude,
-        protests: [[response.data[0].latitude, response.data[0].longitude]]
+        protests: [[response.data[0].latitude, response.data[0].longitude]],
+        zoom: 14
       });
     })
     .catch(error => {
@@ -79,7 +81,7 @@ class ProtestForm extends React.Component {
               <input type="text" value={this.state.address} onChange={(e) => this.setState({ address: e.target.value })} />
               <input type="button" value="Find location on map" onClick={this.handleLocSearch}/>
             </label> < br/>
-              <Map className="add-protest-map" center={[this.state.lat, this.state.long]} zoom={1}>
+              <Map className="add-protest-map" center={[this.state.lat, this.state.long]} zoom={this.state.zoom}>
                 <TileLayer
                   url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                   attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
