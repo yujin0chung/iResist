@@ -17,6 +17,7 @@ const Button = styled.div`
 	border-radius: 3px;
 `;
 
+
 class App extends React.Component {
   constructor (props) {
     super(props);

@@ -1,5 +1,8 @@
 import React from 'react';
 import Protest from './Protest.jsx';
+import styled from 'styled-components';
+import { HomeIcon } from './HomeIcon.jsx';
+
 
 class FindProtest extends React.Component {
   render() {
@@ -12,6 +15,11 @@ class FindProtest extends React.Component {
     }
     return (
       <div>
+        <HomeIcon 
+          className="fa fa-home"
+          onClick={() => this.props.changeView('DASHBOARD')}
+          >
+        </HomeIcon>
         <h3>Find a Protest</h3>
         {
           upcomingEvents.map(protestId => <Protest
