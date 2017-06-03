@@ -23,16 +23,20 @@ class ProtestForm extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault();
-    this.props.createEvent(this.state);
+    this.props.postEvent(this.state);
   }
 
   render() {
     console.log('PROPS FROM PROTEST FORM:', this.props)
+    const { name, address, date, timeStart, timeEnd } = this.state;
+    const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length > 0 && timeEnd.length > 0;
+
+
     return (
       <form onSubmit={() => this.handleSubmit()}>
         <label>
           Protest Name:
-          <input type="text" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value})} />
+          <input type="text" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
         </label> < br/>
         <label>
           Description:
@@ -55,7 +59,7 @@ class ProtestForm extends React.Component {
           <input type="time" value={this.state.timeStart} onChange={(e) => this.setState({ timeStart: e.target.value })} />
           <input type="time" value={this.state.timeEnd} onChange={(e) => this.setState({ timeEnd: e.target.value })} />
         </label> < br/>
-        <input type="submit" value="Submit" onClick={(e) => {this.handleSubmit(e)}}/>
+      <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => {this.handleSubmit(e)}}/>
       </form>
     )
   }
