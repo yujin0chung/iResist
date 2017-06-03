@@ -18,6 +18,15 @@ export const Button = styled.div`
 	border-radius: 3px;
 `;
 
+export const AttendButton = Button.extend`
+  color: seagreen;
+  border-color: seagreen;
+`;
+
+export const AbandonButton = Button.extend`
+  color: red;
+  border-color: red;
+`;
 export const Status = styled.span`
   size: 10px;
   color: lightgrey;
