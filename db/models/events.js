@@ -41,11 +41,9 @@ module.exports.findEventByIds = (userId, type,  cb) => {
     .where('user_id', userId)
     .andWhere('type', type)
     .then(data => {
-      console.log('data in events ', data)
       cb(null, data);
     })
     .catch(e => {
-      console.log('data in events error ', e)
       cb(e, null);
     })
 }
@@ -78,16 +76,13 @@ module.exports.createEvent = (data, cb) => {
     duration: eventEnd - eventStart
   }
 
-  console.log('VALUES IN MODEL: ', values)
-  console.log('CURRENT UTC: ', Date.now())
-  // knex('events').insert(values)
-  //   .then(data => {
-  //     cb(null, data);
-  //   })
-  //   .catch(e => {
-  //     console.log('??????', e)
-  //     cb(e, null);
-  //   })
+  knex('events').insert(values)
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(e => {
+      cb(e, null);
+    })
 }
 
 module.exports.findAttendees = (eventId, cb) => {

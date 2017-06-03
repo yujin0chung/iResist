@@ -1,5 +1,4 @@
 module.exports = (data) => {
-  console.log('NOW: ', Date.now())
   const response = {
     events: {},
     maps: {},
@@ -74,7 +73,6 @@ module.exports = (data) => {
 
   
   data.allEvents.forEach(event => { 
-    console.log('RAW DATA TIME: ', event.time)
     response.events[event.id] = {}
     response.events[event.id].organizers = findOrganizers(event, data);
     response.events[event.id].name = event.name;
@@ -85,8 +83,7 @@ module.exports = (data) => {
     response.events[event.id].feedId = findFeed(event, data);
     if (event.time > Date.now()) {
       response.events[event.id].status = 'upcoming';
-    }
-    if (event.time + event.duration < Date.now()) {
+    } else if (event.time + event.duration < Date.now()) {
       response.events[event.id].status = 'passed';
     } else {
       response.events[event.id].status = 'ongoing';
