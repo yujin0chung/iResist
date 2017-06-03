@@ -1,14 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createEvent } from '../actions/eventActions';
-import styled from 'styled-components';
-
-const HomeIcon = styled.i`
-  padding-left: 3px;
-  padding-bottom: 10px;
-  color: tomato;
-  aria-hidden: true;
-`;
+import { HomeIcon } from './HomeIcon.jsx';
 
 class ProtestForm extends React.Component {
   constructor(props) {

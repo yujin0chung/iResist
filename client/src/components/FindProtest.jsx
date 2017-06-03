@@ -1,14 +1,8 @@
 import React from 'react';
 import Protest from './Protest.jsx';
 import styled from 'styled-components';
+import { HomeIcon } from './HomeIcon.jsx';
 
-
-const HomeIcon = styled.i`
-  padding-left: 3px;
-  padding-bottom: 10px;
-  color: tomato;
-  aria-hidden: true;
-`
 
 class FindProtest extends React.Component {
   render() {
