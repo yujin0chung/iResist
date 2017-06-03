@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createEvent } from '../actions/eventActions';
 import { HomeIcon } from './HomeIcon.jsx';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import axios from 'axios';

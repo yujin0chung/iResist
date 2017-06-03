@@ -1,7 +1,7 @@
 import React from 'react';
 import Protest from './Protest.jsx';
 import styled from 'styled-components';
-import { HomeIcon } from './HomeIcon.jsx';
+import { HomeIcon } from './StyledComponents.jsx';
 
 
 class FindProtest extends React.Component {
