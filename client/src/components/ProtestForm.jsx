@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { HomeIcon } from './HomeIcon.jsx';
+import { HomeIcon } from './StyledComponents.jsx';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import axios from 'axios';
 
