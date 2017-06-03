@@ -3,7 +3,7 @@ import Protest from './Protest.jsx';
 import styled from 'styled-components';
 
 
-const Home = styled.i`
+const HomeIcon = styled.i`
   padding-left: 3px;
   padding-bottom: 10px;
   color: tomato;
@@ -21,11 +21,11 @@ class FindProtest extends React.Component {
     }
     return (
       <div>
-        <Home 
+        <HomeIcon 
           className="fa fa-home"
           onClick={() => this.props.changeView('DASHBOARD')}
           >
-        </Home>
+        </HomeIcon>
         <h3>Find a Protest</h3>
         {
           upcomingEvents.map(protestId => <Protest

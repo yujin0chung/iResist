@@ -17,6 +17,12 @@ const Button = styled.div`
 	border-radius: 3px;
 `;
 
+const HomeIcon = styled.i`
+  padding-left: 3px;
+  padding-bottom: 10px;
+  color: tomato;
+  aria-hidden: true;
+`;
 
 class App extends React.Component {
   constructor (props) {
@@ -39,7 +45,7 @@ class App extends React.Component {
       return (<h1>SPIN LOAD SPIN</h1>);
     }
     if (currentView === 'FIND_PROTEST') {
-      return (<FindProtest {...this.props} />);
+      return (<FindProtest {...this.props} homeIcon={<HomeIcon/>}/>);
     }
     if (currentView === 'ORGANIZE_PROTEST') {
       return (<ProtestForm {...this.props} />);
