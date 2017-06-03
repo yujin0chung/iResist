@@ -24,7 +24,7 @@ export const postEvent = event => dispatch => {
     });
 };
 
-export const joinEvent = (eventId, userId, joining) => {
+export const joinEvent = (eventId, userId) => {
   return {
     type: 'JOIN_EVENT',
     eventId,
@@ -40,19 +40,44 @@ export const joinEventError = (error) => {
   };
 };
 
-export const addUserToEvent = (eventId, userId, joining) => dispatch => {
-  axios.post('/api/joinEvent', {
-    params: {
-      userId,
-      eventId,
-      joining
-    }
+export const addUserToEvent = (eventId, userId) => dispatch => {
+  axios.post('/api/events/join', {
+    eventId,
+    userId
   })
     .then(response => {
-      dispatch(joinEvent(eventId, userId, joining));
+      dispatch(joinEvent(eventId, userId));
     })
     .catch(error => {
       dispatch(joinEventError(error));
+    });
+};
+
+export const leaveEvent = (eventId, userId) => {
+  return {
+    type: 'LEAVE_EVENT',
+    eventId,
+    userId
+  };
+};
+
+export const leaveEventError = (error) => {
+  return {
+    type: 'LEAVE_ERROR',
+    error
+  };
+} ;
+
+export const removeUserFromEvent = (eventId, userId) => dispatch => {
+  axios.post('/api/events/leave', {
+    eventId,
+    userId
+  })
+    .then(response => {
+      dispatch(leaveEvent(eventId, userId));
+    })
+    .catch(error => {
+      dispatch(leaveEventError(error));
     });
 };
 
