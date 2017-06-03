@@ -17,8 +17,9 @@ module.exports.allUsers = (cb) => {
     })
     .catch(e => {
       cb(e, null);
-    });
-};
+
+    })
+}
 
 module.exports.insertUser = (userName) => {
   knex('users').insert({username: userName, credibility: 0}).then();
