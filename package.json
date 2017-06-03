@@ -36,6 +36,7 @@
     "grunt-eslint": "^19.0.0",
     "grunt-mocha-test": "^0.13.2",
     "grunt-pg": "https://github.com/watsoncj/grunt-pg.git",
+    "json-loader": "^0.5.4",
     "knex": "^0.13.0",
     "leaflet": "^1.0.3",
     "mocha": "^3.2.0",

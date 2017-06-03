@@ -21,6 +21,7 @@ class ProtestForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLocSearch = this.handleLocSearch.bind(this);
   }
 
   handleSubmit (e) {
@@ -58,7 +59,7 @@ class ProtestForm extends React.Component {
             <label>
               Address:
               <input type="text" value={this.state.address} onChange={(e) => this.setState({ address: e.target.value })} />
-              <input type="button" value="Find location on map" />
+              <input type="button" value="Find location on map" onClick={this.handleLocSearch}/>
             </label> < br/>
               <Map className="add-protest-map" center={[0, 0]} zoom={1}>
                 <TileLayer
