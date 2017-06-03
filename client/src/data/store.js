@@ -52,14 +52,83 @@ module.exports =
       eventStart: 1499708657000,
       eventDuration: 3600000,
       address: '611 market street, san francisco CA 99999'
+    },
+      4: {
+      organizers:
+      {
+        userID: 30,
+        userName: 'asian'
+      },
+      name: 'Say No To HighFives',
+      description: 'Highfiving fever has gone too far and must be crushed',
+      cause: 'It is unnatural and unnecessary',
+      attendee_count: 500000,
+      mapId: 4,
+      feedId: 4,
+      status: 'upcoming',
+      eventStart: 1499708657000,
+      eventDuration: 3600000,
+      address: '611 market street, san francisco CA 99999'
+    },
+      5: {
+      organizers:
+      {
+        userID: 60,
+        userName: 'stevenSeagall'
+      },
+      name: 'Meh',
+      description: 'meh meh meh meh meh meh',
+      cause: 'meeeeeh',
+      attendee_count: 1,
+      mapId: 5,
+      feedId: 5,
+      status: 'upcoming',
+      eventStart: 1499708657000,
+      eventDuration: 3600000,
+      address: '611 market street, san francisco CA 99999'
+    },
+      6: {
+      organizers:
+      {
+        userID: 70,
+        userName: 'sneakyMustache'
+      },
+      name: 'Save the Planet',
+      description: 'Climate change is real and few will survive the inevitable apocalypse. The few remaining Earth dwellers will...will learn how to...hm...',
+      cause: 'mother earth',
+      attendee_count: 365,
+      mapId: 6,
+      feedId: 6,
+      status: 'upcoming',
+      eventStart: 1499708657000,
+      eventDuration: 3600000,
+      address: '611 market street, san francisco CA 99999'
+    },
+      7: {
+      organizers:
+      {
+        userID: 10,
+        userName: 'blackSpaniel'
+      },
+      name: 'TEST EVENT',
+      description: 'TEST DESCRIPTION',
+      cause: 'TEST CAUSE',
+      attendee_count: 4,
+      mapId: 7,
+      feedId: 7,
+      status: 'upcoming',
+      eventStart: 1499708657000,
+      eventDuration: 3600000,
+      address: '611 market street, san francisco CA 99999'
     }
+    
   },
 
   user: {
     userId: 10,
     userName: 'blackSpaniel',
-    events_attending: [1, 2],
-    events_organizing: [3]
+    events_attending: [1, 2, 6],
+    events_organizing: [3, 7]
   },
 
   users: {
