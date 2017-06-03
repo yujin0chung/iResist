@@ -18,6 +18,32 @@ export const Button = styled.div`
 	border-radius: 3px;
 `;
 
+export const Status = styled.span`
+  size: 10px;
+  color: lightgrey;
+  padding-left: 5px;
+`;
+
+export const Title = styled.div`
+  size: 15px;
+  border-bottom: solid lightgrey 0.2px;
+  padding: 10px;
+`;
+
+export const Name = styled.div`
+  padding-top: 15px;
+  padding-bottom: 10px;
+`;
+
+export const Info = styled.p`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Icon = styled.img`
+  width: 15px;
+  float: right;
+`;
 export const AttendButton = Button.extend`
   color: limegreen;
   border-color: limegreen;
