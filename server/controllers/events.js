@@ -18,6 +18,10 @@ module.exports.createEvent = (req, res) => {
   })
 }
 
+module.exports.joinEvent = (req, res) => {
+  
+}
+
 module.exports.getAllEvents = (req, res) => { //testing this out to see if events are being received
   console.log('THESE ARE ALL THE EVENT: ', res.body)
 

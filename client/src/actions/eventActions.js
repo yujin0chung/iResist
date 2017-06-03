@@ -95,4 +95,3 @@ export const deleteEvent = () => {
     // INSERT OTHER CHANGES HERE
   };
 };
-
