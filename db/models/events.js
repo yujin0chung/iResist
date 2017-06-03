@@ -1,6 +1,8 @@
 const knex = require('../').knex
 const formatDate = require('../lib/formatDate');
 
+
+
 module.exports.findAllEvents = (cb) => {
   knex.select().from('events')
     .then(data => {
