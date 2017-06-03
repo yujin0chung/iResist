@@ -57,6 +57,25 @@ module.exports.findEventData = (eventIds, cb) => {
     })
 }
 
+module.exports.createEvent = (data, cb) => {
+  console.log('EVENT DATA IN MODEL: ', data.name)
+  const values = [
+    {name: data.name}, 
+    {description: data.description},
+    {cause: data.cause},
+    {address: data.address},
+    {attendee_count: 1}
+    ]
+  knex('events').insert(values)
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(e => {
+      console.log('??????', e)
+      cb(e, null);
+    })
+}
+
 module.exports.findAttendees = (eventId, cb) => {
 
 }
