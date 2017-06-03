@@ -51,6 +51,11 @@ passport.use('local-signup', new LocalStrategy({
 
         return profile;
       })
+      .then(profile => {
+        models.User.insertUser(email);
+
+        return profile;
+      })
       .tap(profile => {
         // create a new local auth account with the user's profile id
         return models.Auth.forge({
