@@ -17,3 +17,15 @@ module.exports.createEvent = (req, res) => {
     }
   })
 }
+
+module.exports.getAllEvents = (req, res) => { //testing this out to see if events are being received
+  console.log('THESE ARE ALL THE EVENT: ', res.body)
+
+  models.Events.findAllEvents(res.body, (err, data) => {
+    if (err) {
+      res.send(500, err);
+    } else {
+      res.send(200, data);
+    }
+  })
+}
