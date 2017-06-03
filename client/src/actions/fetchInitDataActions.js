@@ -2,6 +2,7 @@ import axios from 'axios';
 import dummyStore from '../data/store';
 import { changeView } from './navActions.js';
 
+
 export const fetchInitDataStart = () => {
   return {
     type: 'FETCH_START',

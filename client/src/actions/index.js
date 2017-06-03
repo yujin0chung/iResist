@@ -6,11 +6,11 @@ import * as fetchInitDataActions from './fetchInitDataActions';
 
 // export event actions
 export const postEvent = eventActions.postEvent;
-export const createEvent = eventActions.createEvent;
-export const createEventError = eventActions.createEventError;
 export const editEvent = eventActions.editEvent;
 export const deleteEvent = eventActions.deleteEvent;
 export const attendEvent = eventActions.attendEvent;
+export const addUserToEvent = eventActions.addUserToEvent;
+export const removeUserFromEvent = eventActions.removeUserFromEvent;
 
 // navigation actions
 export const viewDashboard = navActions.viewDashboard;

@@ -1,12 +1,8 @@
 import React from 'react';
 import MyProtestList from './MyProtestList.jsx';
 import styled from 'styled-components';
+import { Title } from './StyledComponents.jsx';
 
-const Title = styled.h4`
-  font-weight: normal;
-  padding-bottom: 15px;
-  padding-left: 10px;
-`;
 
 class Dashboard extends React.Component {
   constructor (props) {

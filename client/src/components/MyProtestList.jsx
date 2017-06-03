@@ -18,6 +18,7 @@ const MyProtestList = (props) => {
             key={protestId}
             protestId={protestId}
             protest={props.fetchInitDataReducer.data.events[protestId]}
+            userId={userId}
             role='organizing'
           />)
         }
@@ -26,6 +27,7 @@ const MyProtestList = (props) => {
             {...props}
             key={protestId}
             protestId={protestId}
+            userId={userId}
             protest={props.fetchInitDataReducer.data.events[protestId]}
             role='attending'
           />)
