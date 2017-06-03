@@ -76,7 +76,9 @@ module.exports.createEvent = (data, cb) => {
     duration: eventEnd - eventStart
   }
 
-  knex('events').insert(values)
+  knex('events')
+    .returning('id')
+    .insert(values)
     .then(data => {
       cb(null, data);
     })
