@@ -32,7 +32,9 @@ class ProtestForm extends React.Component {
 
   handleLocSearch () {
     axios.get('/api/geocoder', {
-      address: this.state.address
+      params: {
+        address: this.state.address
+      }
     })
     .then(response => {
       console.log('RESPONSE: ', response);
