@@ -27,6 +27,7 @@ export const AbandonButton = Button.extend`
   color: red;
   border-color: red;
 `;
+
 export const Status = styled.span`
   size: 10px;
   color: lightgrey;
