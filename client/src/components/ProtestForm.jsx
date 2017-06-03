@@ -28,6 +28,10 @@ class ProtestForm extends React.Component {
     this.props.postEvent(this.state);
   }
 
+  handleLocSearch () {
+
+  }
+
   render() {
     const { name, address, date, timeStart, timeEnd } = this.state;
     const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length > 0 && timeEnd.length > 0;
@@ -54,6 +58,7 @@ class ProtestForm extends React.Component {
             <label>
               Address:
               <input type="text" value={this.state.address} onChange={(e) => this.setState({ address: e.target.value })} />
+              <input type="button" value="Find location on map" />
             </label> < br/>
               <Map className="add-protest-map" center={[0, 0]} zoom={1}>
                 <TileLayer
