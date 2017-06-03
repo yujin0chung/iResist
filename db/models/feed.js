@@ -1,4 +1,4 @@
-const knex = require('knex')(require('../../knexfile'));
+const knex = require('../').knex
 
 module.exports.allFeeds = (cb) => {
   knex.select().from('feed')

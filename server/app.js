@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/', routes.auth);
 app.use('/api', routes.api);
 app.use('/api/dashboard', routes.dashboard);
+app.use('/api/createEvent', routes.events);
 app.use('/api/profiles', routes.profiles);
 
 module.exports = app;
