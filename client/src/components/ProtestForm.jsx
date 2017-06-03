@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createEvent } from '../actions/eventActions';
 import { HomeIcon } from './HomeIcon.jsx';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 
 class ProtestForm extends React.Component {
@@ -32,7 +33,7 @@ class ProtestForm extends React.Component {
     const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length > 0 && timeEnd.length > 0;
     return (
       <div>
-          <HomeIcon 
+          <HomeIcon
             className="fa fa-home"
             onClick={() => this.props.changeView('DASHBOARD')}
           >
@@ -54,6 +55,12 @@ class ProtestForm extends React.Component {
               Address:
               <input type="text" value={this.state.address} onChange={(e) => this.setState({ address: e.target.value })} />
             </label> < br/>
+              <Map className="add-protest-map" center={[0, 0]} zoom={1}>
+                <TileLayer
+                  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                />
+              </Map>
             <label>
               Choose a date:
               <input type="date" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value })} />
@@ -63,7 +70,7 @@ class ProtestForm extends React.Component {
               <input type="time" value={this.state.timeStart} onChange={(e) => this.setState({ timeStart: e.target.value })} />
               <input type="time" value={this.state.timeEnd} onChange={(e) => this.setState({ timeEnd: e.target.value })} />
             </label> < br/>
-          <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => {this.handleSubmit(e)}}/>
+          <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => { this.handleSubmit(e); }}/>
           </form>
       </div>
     );

@@ -2,6 +2,11 @@
   height: 500px;
 }
 
+.add-protest-map {
+  height: 300px;
+  width: 400px;
+}
+
 
 .container {
   padding-left: 30px;
