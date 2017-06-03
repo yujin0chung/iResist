@@ -40,6 +40,7 @@
     "leaflet": "^1.0.3",
     "mocha": "^3.2.0",
     "morgan": "^1.8.1",
+    "node-geocoder": "^3.16.0",
     "node-mocks-http": "^1.6.1",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",
