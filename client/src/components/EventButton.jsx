@@ -9,7 +9,7 @@ const EventButton = (props) => {
 
   return participating ? 
     (<AbandonButton>Leave</AbandonButton>) :  
-    (<AttendButton onClick={() => props.addUserToEvent(props.protestId, props.userId, true)}>Join</AttendButton>)
+    (<AttendButton onClick={() => props.addUserToEvent(props.protestId, props.userId, true)}>Join</AttendButton>);
 }
 
 export default EventButton;
