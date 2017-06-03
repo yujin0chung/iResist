@@ -74,14 +74,17 @@ module.exports.createEvent = (data, cb) => {
     time: eventStart,
     duration: eventEnd - eventStart
   }
-  knex('events').insert(values)
-    .then(data => {
-      cb(null, data);
-    })
-    .catch(e => {
-      console.log('??????', e)
-      cb(e, null);
-    })
+
+  console.log('VALUES IN MODEL: ', values)
+  console.log('CURRENT UTC: ', Date.now())
+  // knex('events').insert(values)
+  //   .then(data => {
+  //     cb(null, data);
+  //   })
+  //   .catch(e => {
+  //     console.log('??????', e)
+  //     cb(e, null);
+  //   })
 }
 
 module.exports.findAttendees = (eventId, cb) => {
