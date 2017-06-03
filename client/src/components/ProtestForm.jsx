@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createEvent } from '../actions/eventActions';
 import { HomeIcon } from './HomeIcon.jsx';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import axios from 'axios';
 
 
 class ProtestForm extends React.Component {
@@ -16,10 +18,15 @@ class ProtestForm extends React.Component {
       address: '',
       date: '',
       timeStart: '',
-      timeEnd: ''
+      timeEnd: '',
+      lat: 0,
+      long: 0,
+      protests: [],
+      zoom: 1
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLocSearch = this.handleLocSearch.bind(this);
   }
 
   handleSubmit (e) {
@@ -27,12 +34,31 @@ class ProtestForm extends React.Component {
     this.props.postEvent(this.state);
   }
 
+  handleLocSearch () {
+    axios.get('/api/geocoder', {
+      params: {
+        address: this.state.address
+      }
+    })
+    .then(response => {
+      this.setState({
+        lat: response.data[0].latitude,
+        long: response.data[0].longitude,
+        protests: [[response.data[0].latitude, response.data[0].longitude]],
+        zoom: 14
+      });
+    })
+    .catch(error => {
+      console.log('ERROR: ', error);
+    });
+  }
+
   render() {
-    const { name, address, date, timeStart, timeEnd } = this.state;
-    const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length > 0 && timeEnd.length > 0;
+    const { name, address, date, timeStart, timeEnd, lat, long} = this.state;
+    const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length > 0 && timeEnd.length > 0 && lat !== 0 && long !== 0;
     return (
       <div>
-          <HomeIcon 
+          <HomeIcon
             className="fa fa-home"
             onClick={() => this.props.changeView('DASHBOARD')}
           >
@@ -53,7 +79,17 @@ class ProtestForm extends React.Component {
             <label>
               Address:
               <input type="text" value={this.state.address} onChange={(e) => this.setState({ address: e.target.value })} />
+              <input type="button" value="Find location on map" onClick={this.handleLocSearch}/>
             </label> < br/>
+              <Map className="add-protest-map" center={[this.state.lat, this.state.long]} zoom={this.state.zoom}>
+                <TileLayer
+                  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                />
+                {this.state.protests.map((position, i) =>
+                  <Marker key={`marker-${i}`} position={position}></Marker>
+                )}
+              </Map>
             <label>
               Choose a date:
               <input type="date" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value })} />
@@ -63,7 +99,7 @@ class ProtestForm extends React.Component {
               <input type="time" value={this.state.timeStart} onChange={(e) => this.setState({ timeStart: e.target.value })} />
               <input type="time" value={this.state.timeEnd} onChange={(e) => this.setState({ timeEnd: e.target.value })} />
             </label> < br/>
-          <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => {this.handleSubmit(e)}}/>
+          <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => { this.handleSubmit(e); }}/>
           </form>
       </div>
     );
