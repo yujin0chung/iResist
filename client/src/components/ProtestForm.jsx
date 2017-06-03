@@ -40,7 +40,11 @@ class ProtestForm extends React.Component {
       }
     })
     .then(response => {
-      console.log('RESPONSE: ', response);
+      this.setState({
+        lat: response.data[0].latitude,
+        long: response.data[0].longitude,
+        protests: [[response.data[0].latitude, response.data[0].longitude]]
+      });
     })
     .catch(error => {
       console.log('ERROR: ', error);
