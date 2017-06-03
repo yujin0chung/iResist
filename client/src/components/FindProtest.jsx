@@ -15,14 +15,12 @@ class FindProtest extends React.Component {
         </div>
       );
     }
-
     let upcomingEvents = [];
     for (var event in events) {
       if (events[event].status === 'upcoming') {
         upcomingEvents.push(event);
       }
     }
-
     const attending = this.props.fetchInitDataReducer.data.user.events_attending;
     const organizing = this.props.fetchInitDataReducer.data.user.events_organizing;
 
