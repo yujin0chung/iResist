@@ -16,7 +16,7 @@ export const createEventError = error => {
 
 export const postEvent = event => dispatch => {
   console.log('EVENT FROM POSTEVENT:', event)
-  axios.post('/api/createEvent', event)
+  axios.post('/api/events/create', event)
     .then(response => {
       dispatch(createEvent(response.data));
     })
