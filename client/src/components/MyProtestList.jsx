@@ -3,6 +3,7 @@ import Protest from './Protest.jsx';
 
 
 const MyProtestList = (props) => {
+  console.log('MY PROTEST LIST', props)
   if (props.fetchInitDataReducer.data) {
     let userId = props.fetchInitDataReducer.data.user.userId;
 
@@ -18,6 +19,7 @@ const MyProtestList = (props) => {
             key={protestId}
             protestId={protestId}
             protest={props.fetchInitDataReducer.data.events[protestId]}
+            userId={userId}
             role='organizing'
           />)
         }
@@ -26,6 +28,7 @@ const MyProtestList = (props) => {
             {...props}
             key={protestId}
             protestId={protestId}
+            userId={userId}
             protest={props.fetchInitDataReducer.data.events[protestId]}
             role='attending'
           />)

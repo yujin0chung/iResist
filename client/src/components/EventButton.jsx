@@ -4,20 +4,12 @@ import _ from 'lodash';
 import { AttendButton, AbandonButton } from './StyledComponents.jsx';
 
 const EventButton = (props) => {
-    
+
   const participating = props.role === 'organizing' || props.role === 'attending';
-  if (participating) {
-    return (<AbandonButton>Leave</AbandonButton>);
-  }
-  return (<AttendButton>Join</AttendButton>);
-//   {
-//     participating ? 
-//       <AbandonButton>Leave</AbandonButton> : 
-//       <AttendButton>Join</AttendButton>
-//   }
+
+  return participating ? 
+    (<AbandonButton>Leave</AbandonButton>) :  
+    (<AttendButton onClick={() => props.addUserToEvent(props.protestId, props.userId, true)}>Join</AttendButton>)
 }
 
-
-
-//EventButton = connect()(EventButton);
 export default EventButton;
