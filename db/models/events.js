@@ -1,4 +1,4 @@
-const knex = require('knex')(require('../../knexfile'));
+const knex = require('../').knex
 
 module.exports.findAllEvents = (cb) => {
   knex.select().from('events')
@@ -59,13 +59,16 @@ module.exports.findEventData = (eventIds, cb) => {
 
 module.exports.createEvent = (data, cb) => {
   console.log('EVENT DATA IN MODEL: ', data.name)
-  const values = [
-    {name: data.name}, 
-    {description: data.description},
-    {cause: data.cause},
-    {address: data.address},
-    {attendee_count: 1}
-    ]
+
+  const values = {
+    name: data.name, 
+    description: data.description,
+    cause: data.cause,
+    address: data.address,
+    attendee_count: 1,
+    time: 1496426520254,
+    duration: 3600000
+  }
   knex('events').insert(values)
     .then(data => {
       cb(null, data);

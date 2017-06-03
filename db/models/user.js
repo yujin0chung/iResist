@@ -1,4 +1,4 @@
-const knex = require('knex')(require('../../knexfile'));
+const knex = require('../').knex
 
 module.exports.user = (userId, cb) => {
   knex.select().from('users').where('id', userId)
