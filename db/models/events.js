@@ -67,6 +67,7 @@ module.exports.createEvent = (data, cb) => {
   const endMinutes = data.timeEnd.split(':')[1];
   const eventStart = formatDate(data.date, startHours, startMinutes);
   const eventEnd = formatDate(data.date, endHours, endMinutes);
+  
   const values = {
     name: data.name, 
     description: data.description,
@@ -79,14 +80,14 @@ module.exports.createEvent = (data, cb) => {
 
   console.log('VALUES IN MODEL: ', values)
   console.log('CURRENT UTC: ', Date.now())
-  // knex('events').insert(values)
-  //   .then(data => {
-  //     cb(null, data);
-  //   })
-  //   .catch(e => {
-  //     console.log('??????', e)
-  //     cb(e, null);
-  //   })
+  knex('events').insert(values)
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(e => {
+      console.log('??????', e)
+      cb(e, null);
+    })
 }
 
 module.exports.findAttendees = (eventId, cb) => {
