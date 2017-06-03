@@ -31,13 +31,15 @@ class ProtestForm extends React.Component {
   }
 
   handleLocSearch () {
-    axios.get('/api/geocoder')
-      .then(response => {
-        console.log('RESPONSE: ', response);
-      })
-      .catch(error => {
-        console.log('ERROR: ', error);
-      });
+    axios.get('/api/geocoder', {
+      address: this.state.address
+    })
+    .then(response => {
+      console.log('RESPONSE: ', response);
+    })
+    .catch(error => {
+      console.log('ERROR: ', error);
+    });
   }
 
   render() {
