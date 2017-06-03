@@ -1,6 +1,7 @@
 import React from 'react';
 import dateFormat from 'dateformat';
 import MapContainer from './MapContainer.jsx';
+import EventButton from './EventButton.jsx';
 import styled from 'styled-components';
 import { Status, Title, Name, Info, Icon } from './StyledComponents.jsx';
 
@@ -11,7 +12,8 @@ class Protest extends React.Component {
     super(props);
 
     this.state = {
-      displayDetails: false
+      displayDetails: false,
+
     };
 
     this.handleProtestClick = this.handleProtestClick.bind(this);
@@ -42,6 +44,7 @@ class Protest extends React.Component {
             <p><b>Attendee Count:</b> {this.props.protest.attendee_count}</p>
           </Info>
           <MapContainer {...this.props} mapType='dashboardMap' />
+          <EventButton {...this.props} />
         </div>
       );
     } else {
