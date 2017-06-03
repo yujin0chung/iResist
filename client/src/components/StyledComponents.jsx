@@ -19,13 +19,13 @@ export const Button = styled.div`
 `;
 
 export const AttendButton = Button.extend`
-  color: seagreen;
-  border-color: seagreen;
+  color: limegreen;
+  border-color: limegreen;
 `;
 
 export const AbandonButton = Button.extend`
-  color: red;
-  border-color: red;
+  color: tomato;
+  border-color: tomato;
 `;
 
 export const Status = styled.span`
