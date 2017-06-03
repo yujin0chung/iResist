@@ -11,19 +11,18 @@ export const createEventError = error => {
   return {
     type: 'CREATE_ERROR',
     error
-  }
-}
+  };
+};
 
 export const postEvent = event => dispatch => {
-  console.log('EVENT FROM POSTEVENT:', event)
-  axios.post('/api/events/create', event)
+  axios.post('/api/createEvent', event)
     .then(response => {
       dispatch(createEvent(response.data));
     })
     .catch(error => {
       dispatch(createEventError(error));
-    })
-}
+    });
+};
 
 export const joinEvent = (eventId, userId, joining) => {
   return {
@@ -31,15 +30,15 @@ export const joinEvent = (eventId, userId, joining) => {
     eventId,
     userId,
     joining
-  }
-} 
+  };
+};
 
 export const joinEventError = (error) => {
   return {
     type: 'JOIN_ERROR',
     error
-  }
-}
+  };
+};
 
 export const addUserToEvent = (eventId, userId, joining) => dispatch => {
   axios.post('/api/joinEvent', {
@@ -54,8 +53,8 @@ export const addUserToEvent = (eventId, userId, joining) => dispatch => {
     })
     .catch(error => {
       dispatch(joinEventError(error));
-    })
-}
+    });
+};
 
 
 export const editEvent = () => {
