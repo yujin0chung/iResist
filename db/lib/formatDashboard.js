@@ -1,5 +1,4 @@
 module.exports = (data) => {
-  console.log('RAW DATA: ', data)
   const response = {
     events: {},
     maps: {},
@@ -82,6 +81,16 @@ module.exports = (data) => {
     response.events[event.id].attendee_count = countAttendees(event, data);
     response.events[event.id].mapId = findMap(event, data);
     response.events[event.id].feedId = findFeed(event, data);
+    if (event.time > Date.now()) {
+      response.events[event.id].status = 'upcoming';
+    } else if (event.time + event.duration < Date.now()) {
+      response.events[event.id].status = 'passed';
+    } else {
+      response.events[event.id].status = 'ongoing';
+    }
+    response.events[event.id].eventStart = event.time;
+    response.events[event.id].eventDuration = event.duration;
+    response.events[event.id].address = event.address;
     data.allMaps.forEach(map => {
       if (map.event_id === event.id) {
         response.maps[map.id] = map;
