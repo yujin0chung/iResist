@@ -80,14 +80,14 @@ module.exports.createEvent = (data, cb) => {
 
   console.log('VALUES IN MODEL: ', values)
   console.log('CURRENT UTC: ', Date.now())
-  knex('events').insert(values)
-    .then(data => {
-      cb(null, data);
-    })
-    .catch(e => {
-      console.log('??????', e)
-      cb(e, null);
-    })
+  // knex('events').insert(values)
+  //   .then(data => {
+  //     cb(null, data);
+  //   })
+  //   .catch(e => {
+  //     console.log('??????', e)
+  //     cb(e, null);
+  //   })
 }
 
 module.exports.findAttendees = (eventId, cb) => {
