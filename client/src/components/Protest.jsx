@@ -13,7 +13,6 @@ class Protest extends React.Component {
 
     this.state = {
       displayDetails: false,
-
     };
 
     this.handleProtestClick = this.handleProtestClick.bind(this);

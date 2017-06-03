@@ -3,7 +3,6 @@ import Protest from './Protest.jsx';
 
 
 const MyProtestList = (props) => {
-  console.log('MY PROTEST LIST', props)
   if (props.fetchInitDataReducer.data) {
     let userId = props.fetchInitDataReducer.data.user.userId;
 
