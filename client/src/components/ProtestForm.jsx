@@ -54,8 +54,8 @@ class ProtestForm extends React.Component {
   }
 
   render() {
-    const { name, address, date, timeStart, timeEnd } = this.state;
-    const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length > 0 && timeEnd.length > 0;
+    const { name, address, date, timeStart, timeEnd, lat, long} = this.state;
+    const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length > 0 && timeEnd.length > 0 && lat !== 0 && long !== 0;
     return (
       <div>
           <HomeIcon
