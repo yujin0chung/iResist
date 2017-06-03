@@ -18,7 +18,10 @@ class ProtestForm extends React.Component {
       address: '',
       date: '',
       timeStart: '',
-      timeEnd: ''
+      timeEnd: '',
+      lat: 0,
+      long: 0,
+      protests: []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -72,11 +75,14 @@ class ProtestForm extends React.Component {
               <input type="text" value={this.state.address} onChange={(e) => this.setState({ address: e.target.value })} />
               <input type="button" value="Find location on map" onClick={this.handleLocSearch}/>
             </label> < br/>
-              <Map className="add-protest-map" center={[0, 0]} zoom={1}>
+              <Map className="add-protest-map" center={[this.state.lat, this.state.long]} zoom={1}>
                 <TileLayer
                   url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                   attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 />
+                {this.state.protests.map((position, i) =>
+                  <Marker key={`marker-${i}`} position={position}></Marker>
+                )}
               </Map>
             <label>
               Choose a date:
