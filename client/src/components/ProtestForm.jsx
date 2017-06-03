@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createEvent } from '../actions/eventActions';
 import { HomeIcon } from './HomeIcon.jsx';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import axios from 'axios';
 
 
 class ProtestForm extends React.Component {
@@ -30,7 +31,13 @@ class ProtestForm extends React.Component {
   }
 
   handleLocSearch () {
-
+    axios.get('/api/geocoder')
+      .then(response => {
+        console.log('RESPONSE: ', response);
+      })
+      .catch(error => {
+        console.log('ERROR: ', error);
+      });
   }
 
   render() {
