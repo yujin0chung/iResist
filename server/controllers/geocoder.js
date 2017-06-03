@@ -9,6 +9,11 @@ const options = {
 const geocoder = NodeGeocoder(options);
 
 module.exports.geocode = (req, res) => {
-
-  res.send(200, 'you hit the endpoint!');
+  geocoder.geocode(req.query.address)
+  .then(response => {
+    res.send(200, response);
+  })
+  .catch(err => {
+    res.send(500, err);
+  });
 };
