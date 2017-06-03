@@ -1,18 +1,35 @@
 import React from 'react';
 import Protest from './Protest.jsx';
-import styled from 'styled-components';
+import _ from 'lodash';
 import { HomeIcon } from './StyledComponents.jsx';
 
 
 class FindProtest extends React.Component {
   render() {
     const events = this.props.fetchInitDataReducer.data.events;
+    if (events.length === 0) {
+      return (
+        <div>
+          No upcoming protest, 
+          why don't you lead one?
+        </div>
+      );
+    }
+
     let upcomingEvents = [];
     for (var event in events) {
       if (events[event].status === 'upcoming') {
         upcomingEvents.push(event);
       }
     }
+
+    const attending = this.props.fetchInitDataReducer.data.user.events_attending;
+    const organizing = this.props.fetchInitDataReducer.data.user.events_organizing;
+
+    const notParticipating = _.reject(upcomingEvents, event => {
+      return _.includes(attending, parseInt(event)) || _.includes(organizing, parseInt(event));
+    });
+
     return (
       <div>
         <HomeIcon 
@@ -22,7 +39,7 @@ class FindProtest extends React.Component {
         </HomeIcon>
         <h3>Find a Protest</h3>
         {
-          upcomingEvents.map(protestId => <Protest
+          notParticipating.map(protestId => <Protest
             {...this.props}
             key={protestId}
             protestId={protestId}
