@@ -8,8 +8,8 @@ const EventButton = (props) => {
   const participating = props.role === 'organizing' || props.role === 'attending';
 
   return participating ? 
-    (<AbandonButton>Leave</AbandonButton>) :  
-    (<AttendButton onClick={() => props.addUserToEvent(props.protestId, props.userId, true)}>Join</AttendButton>);
+    (<AbandonButton onClick={() => props.removeUserFromEvent(props.protestId, props.userId)}>Betray the cause</AbandonButton>) :  
+    (<AttendButton onClick={() => props.addUserToEvent(props.protestId, props.userId)}>Join</AttendButton>);
 }
 
 export default EventButton;
