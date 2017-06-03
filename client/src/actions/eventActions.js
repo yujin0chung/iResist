@@ -25,6 +25,39 @@ export const postEvent = event => dispatch => {
     })
 }
 
+export const joinEvent = (eventId, userId, joining) => {
+  return {
+    type: 'JOIN_EVENT',
+    eventId,
+    userId,
+    joining
+  }
+} 
+
+export const joinEventError = (error) => {
+  return {
+    type: 'JOIN_ERROR',
+    error
+  }
+}
+
+export const addUserToEvent = (eventId, userId, joining) => dispatch => {
+  axios.post('/api/joinEvent', {
+    params: {
+      userId,
+      eventId,
+      joining
+    }
+  })
+    .then(response => {
+      dispatch(joinEvent(eventId, userId, joining));
+    })
+    .catch(error => {
+      dispatch(joinEventError(error));
+    })
+}
+
+
 export const editEvent = () => {
   return {
     type: 'INSERT TYPE HERE',
@@ -39,9 +72,3 @@ export const deleteEvent = () => {
   };
 };
 
-export const attendEvent = () => {
-  return {
-    type: 'INSERT TYPE HERE',
-    // INSERT OTHER CHANGES HERE
-  };
-};
