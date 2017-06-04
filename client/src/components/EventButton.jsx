@@ -4,7 +4,8 @@ import _ from 'lodash';
 import { AttendButton, AbandonButton, EditButton } from './StyledComponents.jsx';
 
 const EventButton = (props) => {
-
+  console.log('EVENT BUTTON PROPS', props)
+  console.log('EVENT BUTTON USER ID', props.userId)
   const leader = props.leader;
   if (leader) { return (<EditButton>Make Changes</EditButton>) }
 

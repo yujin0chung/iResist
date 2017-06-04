@@ -11,6 +11,7 @@ class ProtestForm extends React.Component {
 
     this.state = {
       name: '',
+      userId: this.props.fetchInitDataReducer.data.user.userId,
       description: '',
       cause: '',
       address: '',
@@ -53,6 +54,7 @@ class ProtestForm extends React.Component {
   }
 
   render() {
+    console.log('PROTEST FORM THIS.PROPS', this.props)
     const { name, address, date, timeStart, timeEnd, lat, long} = this.state;
     const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length > 0 && timeEnd.length > 0 && lat !== 0 && long !== 0;
     return (
@@ -98,7 +100,7 @@ class ProtestForm extends React.Component {
               <input type="time" value={this.state.timeStart} onChange={(e) => this.setState({ timeStart: e.target.value })} />
               <input type="time" value={this.state.timeEnd} min={this.state.timeStart} onChange={(e) => this.setState({ timeEnd: e.target.value })} />
             </label> < br/>
-          <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => { this.handleSubmit(e); }}/>
+          <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => { this.handleSubmit(e); this.props.changeView('DASHBOARD')}}/>
           <input type="button" value="Cancel" onClick={() => this.props.changeView('DASHBOARD')} />
           </form>
       </div>
