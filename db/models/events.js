@@ -121,3 +121,17 @@ module.exports.joinEvent = (eventId, userId, type, cb) => {
 };
 
 
+module.exports.leaveEvent = (eventId, userId, type, cb) => {
+  knex('users_events')
+    .where('event_id', eventId)
+    .andWhere('user_id', userId)
+    .del()
+      .then(data => {
+        cb(null, data);
+      })
+      .catch(err => {
+        console.log('LEAVE EVENT ERROR DB:', err)
+        cb(err, null);
+      })
+}
+
