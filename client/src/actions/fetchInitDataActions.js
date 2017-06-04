@@ -31,9 +31,13 @@ export const fetchInitData = (userId) => {
   return dispatch => {
     dispatch(fetchInitDataStart());
     dispatch(changeView('SPINNER'));
-    axios.get('/')
+    axios.get('/api/dashboard', {
+      params: {
+        id: userId
+      }
+    })
       .then(response => {
-        dispatch(fetchInitDataSuccess(dummyStore));
+        dispatch(fetchInitDataSuccess(response.data));
         dispatch(changeView('DASHBOARD'));
       })
       .catch(error => {
