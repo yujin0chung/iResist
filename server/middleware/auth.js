@@ -31,6 +31,13 @@ module.exports.verify = (req, res, next) => {
   res.redirect('/login');
 };
 
+module.exports.apiVerify = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.send(403, 'YOU DO NOT HAVE PERMISSION TO ACCESS THAT RESOURCE');
+};
+
 module.exports.session = session({
   // store: new RedisStore({
   //   client: redisClient,
