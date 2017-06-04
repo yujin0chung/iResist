@@ -28,8 +28,7 @@ export const joinEvent = (eventId, userId) => {
   return {
     type: 'JOIN_EVENT',
     eventId,
-    userId,
-    joining
+    userId
   };
 };
 

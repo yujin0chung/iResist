@@ -14,8 +14,11 @@ const EventButton = (props) => {
     (<AbandonButton onClick={() => {
        props.removeUserFromEvent(props.protestId, props.userId);
        props.changeView('DASHBOARD');
-     }}>Betray the cause</AbandonButton>) :  
-    (<AttendButton onClick={() => props.addUserToEvent(props.protestId, props.userId)}>Join</AttendButton>);
+    }}>Betray the cause</AbandonButton>) :  
+    (<AttendButton onClick={() => 
+       {props.addUserToEvent(props.protestId, props.userId);
+       props.changeView('DASHBOARD')}}>Join
+     </AttendButton>);
 }
 
 export default EventButton;

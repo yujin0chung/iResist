@@ -109,12 +109,13 @@ module.exports.decrementAttendeeCount = (eventId, cb) => {
     });
 }
 
-module.exports.joinEvent = (eventId, userId, cb) => {
-  knex('users_events').insert({user_id: userId, event_id: eventId})
+module.exports.joinEvent = (eventId, userId, type, cb) => {
+  knex('users_events').insert({user_id: userId, event_id: eventId, type: type})
     .then(data => {
       cb(null, data);
     })
     .catch(err => {
+      console.log('ERROR FROM MODELS/JOINEVENT:', err)
       cb(err, null);
     })
 }
