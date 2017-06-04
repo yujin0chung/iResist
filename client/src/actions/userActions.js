@@ -2,13 +2,14 @@ import axios from 'axios';
 import { changeView } from './navActions.js';
 import { fetchInitData } from './fetchInitDataActions';
 
-export const getUserIdSuccess = () => {
+export const getUserIdSuccess = (userId) => {
   return {
     type: 'GET_USER_ID_SUCCESS',
+    userId
   };
 };
 
-export const getUserId = (userId) => {
+export const getUserId = () => {
   return dispatch => {
     dispatch(changeView('SPINNER'));
     axios.get('/api/user/id')

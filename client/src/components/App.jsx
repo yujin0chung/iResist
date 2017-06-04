@@ -17,7 +17,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchInitData();
+    // this.props.fetchInitData();
+    this.props.getUserId();
   }
 
   updateView(view) {
@@ -35,8 +36,7 @@ class App extends React.Component {
     }
     if (currentView === 'ORGANIZE_PROTEST') {
       return (<ProtestForm {...this.props} />);
-    }
-    else {
+    } else {
       return (
         <div>
           <Header>iResist</Header>
