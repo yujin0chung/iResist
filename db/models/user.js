@@ -26,7 +26,8 @@ module.exports.insertUser = (userName) => {
 };
 
 module.exports.createEvent = (eventId, userId, cb) => {
-  knex('user_events').insert({
+  console.log('FROM USER CREATE EVENT: ', eventId, userId)
+  knex('users_events').insert({
     user_id: userId,
     event_id: eventId,
     type: 'organizer'
@@ -35,6 +36,7 @@ module.exports.createEvent = (eventId, userId, cb) => {
     cb(null, data);
   })
   .catch(e => {
+    console.log('ERROR IS: ', e)
     cb(e, null);
   })
 }
