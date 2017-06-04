@@ -25,10 +25,13 @@ class Protest extends React.Component {
   }
 
   render() {
+
+    console.log('PROTEST PROPS', this.props)
     const startTime = new Date(this.props.protest.eventStart);
     const endTime = new Date(this.props.protest.eventStart + this.props.protest.eventDuration);
     const status = this.props.protest.status;
     const leader = this.props.role !== 'attending' && this.props.role !== 'none';
+    const userId = this.props.fetchInitDataReducer.data.user.userId;
 
     if (this.state.displayDetails) {
       return (
@@ -43,7 +46,7 @@ class Protest extends React.Component {
             <p><b>Attendee Count:</b> {this.props.protest.attendee_count}</p>
           </Info>
           <MapContainer {...this.props} mapType='dashboardMap' />
-          <EventButton {...this.props} />
+          <EventButton {...this.props} leader={leader} userId={userId} />
         </div>
       );
     } else {

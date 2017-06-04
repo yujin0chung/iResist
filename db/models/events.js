@@ -58,6 +58,7 @@ module.exports.findEventData = (eventIds, cb) => {
     })
 }
 
+
 module.exports.createEvent = (data, cb) => {
   const startHours = data.timeStart.split(':')[0];
   const startMinutes = data.timeStart.split(';')[1];
@@ -87,9 +88,35 @@ module.exports.createEvent = (data, cb) => {
     })
 }
 
-module.exports.findAttendees = (eventId, cb) => {
 
+module.exports.incrementAttendeeCount = (eventId, cb) => {
+  knex('events').where('id', '=', eventId).increment('attendee_count', 1)
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(err => {
+      cb(err, null);
+    });
 }
 
+module.exports.decrementAttendeeCount = (eventId, cb) => {
+  knex('events').where('id', '=', eventId).decrement('attendee_count', 1)
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(err => {
+      cb(err, null);
+    });
+}
+
+module.exports.joinEvent = (eventId, userId, cb) => {
+  knex('users_events').insert({user_id: userId, event_id: eventId})
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(err => {
+      cb(err, null);
+    })
+}
 
 

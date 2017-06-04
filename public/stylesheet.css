@@ -10,5 +10,9 @@
 
 .container {
   padding-left: 30px;
+  font-family: 'Cabin', sans-serif;
 }
 
+.body {
+  font-family: 'Open Sans', sans-serif;
+}

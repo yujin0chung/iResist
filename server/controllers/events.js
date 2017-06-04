@@ -19,7 +19,7 @@ module.exports.createEvent = (req, res) => {
 }
 
 module.exports.joinEvent = (req, res) => {
-  
+  console.log('JOIN EVENT REQ.BODY:', req.body);
 }
 
 module.exports.getAllEvents = (req, res) => { //testing this out to see if events are being received

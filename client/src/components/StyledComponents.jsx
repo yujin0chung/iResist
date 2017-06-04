@@ -1,6 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
+export const Header = styled.div`
+  font-family: Cabin;
+  font-size: 40px;
+  padding-left: 8px;
+  padding-bottom: 15px;
+`;
+
+export const Fist = styled.div`
+  background-image: url("images/fist.png");
+  background-size: 50% 50%
+`
+
 export const HomeIcon = styled.i`
   padding-left: 3px;
   padding-bottom: 10px;
@@ -28,6 +40,11 @@ export const AbandonButton = Button.extend`
   border-color: tomato;
 `;
 
+export const EditButton = Button.extend`
+  color: grey;
+  border-color: grey;
+`;
+
 export const Status = styled.span`
   size: 10px;
   color: lightgrey;
@@ -41,6 +58,7 @@ export const Title = styled.div`
 `;
 
 export const Name = styled.div`
+  font-family: Open Sans;
   padding-top: 15px;
   padding-bottom: 10px;
 `;
