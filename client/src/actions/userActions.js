@@ -14,6 +14,7 @@ export const getUserId = () => {
     dispatch(changeView('SPINNER'));
     axios.get('/api/user/id')
       .then(response => {
+        console.log('THIS IS THE RESPONSE FROM THE SERVER: ', response);
         dispatch(getUserIdSuccess(response.data));
         dispatch(fetchInitData(response.data.userId));
       })
