@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Header = styled.div`
-  font-family: 'Nobile', sans-serif;
+  font-family: Cabin;
   font-size: 40px;
   padding-left: 8px;
   padding-bottom: 15px;
@@ -22,12 +22,11 @@ export const HomeIcon = styled.i`
 
 export const Button = styled.div`
   color: tomato;
-  font-family: 'Cousine', monospace;
 	font-size: 1em;
   text-align: center;
 	margin: 1em;
 	padding: 0.25em 1em;
-	border: 0.8px solid tomato;
+	border: 2px solid tomato;
 	border-radius: 3px;
 `;
 
@@ -47,122 +46,30 @@ export const EditButton = Button.extend`
 `;
 
 export const Status = styled.span`
-  font-size: 13px;
+  size: 10px;
   color: lightgrey;
-  font-weight: 100;
-  padding-left: 10px;
+  padding-left: 5px;
 `;
 
 export const Title = styled.div`
-  font-family: 'Open Sans', sans-serif;
-  size: 35px;
+  size: 15px;
   border-bottom: solid lightgrey 0.2px;
   padding: 10px;
 `;
 
 export const Name = styled.div`
-  font-family: 'Open Sans', sans-serif;
+  font-family: Open Sans;
   padding-top: 15px;
   padding-bottom: 10px;
 `;
 
 export const Info = styled.p`
   display: flex;
-  margin: none;
-  flex-direction: column;
+  flex-direction: column;ss
 `;
 
 export const Icon = styled.img`
   width: 15px;
   float: right;
 `;
-
-export const Load = styled.div`
-  display: -webkit-flex
-  display: flex,
-  WebkitFlex: 0 1 auto,
-  flex: 0 1 auto,
-  WebkitFlexDirection: column,
-  flexDirection: column,
-  WebkitFlexGrow: 1,
-  flexGrow: 1,
-  WebkitFlexShrink: 0,
-  flexShrink: 0,
-  WebkitFlexBasis: 25%,
-  flexBasis: 25%,
-  maxWidth: 25%,
-  height: 200px,
-  WebkitAlignItems: center,
-  alignItems: center,
-  WebkitJustifyContent: center,
-  justifyContent: cente
-`
-
-export const ProtestProfile = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-left: 10px;
-  padding-right: 20px;
-  border: .65px solid black;
-`
-export const PageTitle = styled.div`
-  font-family: 'Cousine', monospace;
-  font-size: 25px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-`
-
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 47px;
-`
-
-export const InputInfo = styled.div`
-  flex-flow: column wrap;
-  justify-content: center;
-`
-export const Input = styled.input`
-  font-size: 14px;
-  height: 30px;
-  width: 300px;
-  padding-left: 10px;
-  border-radius: 3px;
-  border: solid #dddddd 1px;
-  margin-bottom: 15px;
-  margin-right: 15px;
-`
-
-export const Text = styled.textarea`
-  font-size: 14px;
-  height: 30px;
-  width: 300px;
-  padding-left: 10px;
-  border-radius: 3px;
-  border: solid #dddddd 1px;
-  margin-bottom: 15px;
-  margin-right: 15px;
-`
-
-export const Label = styled.label`
-  font-family: 'Open Sans', sans-serif;
-  font-size: 13px;
-  font-weight: normal;
-`
-
-export const Search = styled.input`
-  font-family: 'Open Sans', sans-serif;
-  color: tomato;
-  font-size: 11px;
-  border: 0.8px solid tomato;
-  height: 29px;
-  border-radius: 3px;
-  background-color: white;
-  margin-bottom: 15px;
-`
-
-export const Submit = Search.extend`
-  width: 150px;
-`
 

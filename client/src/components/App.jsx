@@ -5,7 +5,6 @@ import * as actionCreators from '../actions/index';
 import FindProtest from './FindProtest.jsx';
 import Dashboard from './Dashboard.jsx';
 import ProtestForm from './ProtestForm.jsx';
-import Spinner from './Spinner.jsx';
 import { Header, Button, Fist } from './StyledComponents.jsx';
 import styled from 'styled-components';
 
@@ -30,7 +29,7 @@ class App extends React.Component {
 
     const currentView = this.props.views.currentView;
     if (currentView === 'SPINNER') {
-      return (<Spinner />);
+      return (<h1>SPIN LOAD SPIN</h1>);
     }
     if (currentView === 'FIND_PROTEST') {
       return (<FindProtest {...this.props} />);
@@ -43,10 +42,8 @@ class App extends React.Component {
           <Header>iResist</Header>
           <Fist />
           <Dashboard {...this.props} />
-          <div style={{paddingTop: '35px'}}>
-            <Button onClick={() => this.updateView('FIND_PROTEST')}>Find a Protest</Button>
-            <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>Organize a Protest</Button>
-          </div>
+          <Button onClick={() => this.updateView('FIND_PROTEST')}>Find a Protest</Button>
+          <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>Organize a Protest</Button>
         </div>
       );
     }
