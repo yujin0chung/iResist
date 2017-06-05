@@ -1,4 +1,4 @@
-const knex = require('../').knex
+const knex = require('../').knex;
 const formatDate = require('../lib/formatDate');
 
 
@@ -10,8 +10,8 @@ module.exports.findAllEvents = (cb) => {
     })
     .catch(e => {
       cb(e, null);
-    })
-}
+    });
+};
 
 module.exports.findAllAttendees = (cb) => {
   knex.select().from('users_events')
@@ -20,8 +20,8 @@ module.exports.findAllAttendees = (cb) => {
     })
     .catch(e => {
       cb(e, null);
-    })
-}
+    });
+};
 
 module.exports.findEventAttendees = (eventId, cb) => {
   knex.select().from('users_events')
@@ -31,11 +31,11 @@ module.exports.findEventAttendees = (eventId, cb) => {
     })
     .catch(e => {
       cb(e, null);
-    })
-}
+    });
+};
 
-module.exports.findEventByIds = (userId, type,  cb) => {
-  
+module.exports.findEventByIds = (userId, type, cb) => {
+
   knex.select('event_id')
     .from('users_events')
     .where('user_id', userId)
@@ -45,8 +45,8 @@ module.exports.findEventByIds = (userId, type,  cb) => {
     })
     .catch(e => {
       cb(e, null);
-    })
-}
+    });
+};
 
 module.exports.findEventData = (eventIds, cb) => {
   knex.select().from('events').where('id', 'in', eventIds)
@@ -55,8 +55,8 @@ module.exports.findEventData = (eventIds, cb) => {
     })
     .catch(e => {
       cb(e, null);
-    })
-}
+    });
+};
 
 
 module.exports.createEvent = (data, cb) => {
@@ -66,16 +66,16 @@ module.exports.createEvent = (data, cb) => {
   const endMinutes = data.timeEnd.split(':')[1];
   const eventStart = formatDate(data.date, startHours, startMinutes);
   const eventEnd = formatDate(data.date, endHours, endMinutes);
-  
+
   const values = {
-    name: data.name, 
+    name: data.name,
     description: data.description,
     cause: data.cause,
     address: data.address,
     attendee_count: 1,
     time: eventStart,
     duration: eventEnd - eventStart
-  }
+  };
 
   knex('events')
     .returning('id')
@@ -85,8 +85,8 @@ module.exports.createEvent = (data, cb) => {
     })
     .catch(e => {
       cb(e, null);
-    })
-}
+    });
+};
 
 
 module.exports.incrementAttendeeCount = (eventId, cb) => {
@@ -97,7 +97,7 @@ module.exports.incrementAttendeeCount = (eventId, cb) => {
     .catch(err => {
       cb(err, null);
     });
-}
+};
 
 module.exports.decrementAttendeeCount = (eventId, cb) => {
   knex('events').where('id', '=', eventId).decrement('attendee_count', 1)
@@ -107,7 +107,7 @@ module.exports.decrementAttendeeCount = (eventId, cb) => {
     .catch(err => {
       cb(err, null);
     });
-}
+};
 
 module.exports.joinEvent = (eventId, userId, type, cb) => {
   knex('users_events').insert({user_id: userId, event_id: eventId, type: type})
@@ -115,9 +115,9 @@ module.exports.joinEvent = (eventId, userId, type, cb) => {
       cb(null, data);
     })
     .catch(err => {
-      console.log('ERROR FROM MODELS/JOINEVENT:', err)
+      console.log('ERROR FROM MODELS/JOINEVENT:', err);
       cb(err, null);
-    })
-}
+    });
+};
 
 
