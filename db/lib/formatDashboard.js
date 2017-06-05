@@ -54,7 +54,7 @@ module.exports = (data) => {
   const userEventsAttending = (user, data) => {
     var attending = [];
     data.allAttendees.forEach(attendee => {
-      if (attendee.user_id === user.id && attendee.type === 'attendee') {
+      if (attendee.user_id === user[0].id && attendee.type === 'attendee') {
         attending.push(attendee.event_id);
       }
     })
@@ -64,7 +64,7 @@ module.exports = (data) => {
   const userEventsOrganizing = (user, data) => {
     var organizing = [];
     data.allAttendees.forEach(attendee => {
-      if (attendee.user_id === user.id && attendee.type === 'organizer') {
+      if (attendee.user_id === user[0].id && attendee.type === 'organizer') {
         organizing.push(attendee.event_id);
       }
     })

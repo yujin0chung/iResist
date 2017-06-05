@@ -41,6 +41,7 @@ module.exports.getDashboard = (req, res) => {
                               console.log('FAILED ON USER');
                               res.send(500, err);
                             } else {
+                  
                               var response = {
                                 allEvents: allEvents,
                                 allAttendees: allAttendees,
