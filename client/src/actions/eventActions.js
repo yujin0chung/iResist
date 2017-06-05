@@ -1,5 +1,24 @@
 import axios from 'axios';
 
+export const getAllEventsSuccess = events => {
+  return {
+    type: 'GET_ALL_EVENTS_SUCCESS',
+    events
+  };
+};
+
+export const getAllEvents = () => {
+  return dispatch => {
+    axios.get('/api/events/all')
+      .then(events => {
+        dispatch(getAllEventsSuccess(events));
+      })
+      .catch(err => {
+        return ['ERROR-ERROR', err];
+      });
+  };
+};
+
 export const createEvent = event => {
   return {
     type: 'RECEIVE_EVENT',
@@ -65,7 +84,7 @@ export const leaveEventError = (error) => {
     type: 'LEAVE_ERROR',
     error
   };
-} ;
+};
 
 export const removeUserFromEvent = (eventId, userId) => dispatch => {
   axios.post('/api/events/leave', {
