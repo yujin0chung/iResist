@@ -67,19 +67,19 @@ class ProtestForm extends React.Component {
           <form onSubmit={() => this.handleSubmit()}>
             <label>
               Protest Name:
-              <input type="text" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
-            </label> < br/>
-            <label>
-              Description:
-              <input type="text" value={this.state.description} onChange={(e) => this.setState({ description: e.target.value})} />
+              <input type="text" value={this.state.name} placeholder="Required" onChange={(e) => this.setState({ name: e.target.value })} />
             </label> < br/>
             <label>
               Cause:
               <input type="text" value={this.state.cause} onChange={(e) => this.setState({ cause: e.target.value })} />
             </label> < br/>
             <label>
+              Description:
+              <textarea value={this.state.description} onChange={(e) => this.setState({ description: e.target.value})} />
+            </label> < br/>
+            <label>
               Address:
-              <input type="text" value={this.state.address} onChange={(e) => this.setState({ address: e.target.value })} />
+              <input type="text" value={this.state.address} placeholder="Include an address" onChange={(e) => this.setState({ address: e.target.value })} />
               <input type="button" value="Find location on map" onClick={this.handleLocSearch}/>
             </label> < br/>
               <Map className="add-protest-map" center={[this.state.lat, this.state.long]} zoom={this.state.zoom}>
