@@ -6,6 +6,9 @@ export const asyncWrapper = (actions, redirect) => {
     Promise.all(actions)
     .then(response => {
       dispatch(changeView(redirect));
+    })
+    .catch(err => {
+      dispatch(changeView('ERROR'));
     });
   };
 };
