@@ -53,7 +53,7 @@ class Protest extends React.Component {
     } else {
       return (
         <div>
-          <Title onClick={this.handleProtestClick}>
+           <Title onClick={this.handleProtestClick}>
             {this.props.protest.name}
             <Status>{this.props.protest.status}</Status>
             {leader ? <Icon src="images/leaderIcon.svg" /> : <div></div>}
