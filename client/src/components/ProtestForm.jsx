@@ -56,6 +56,9 @@ class ProtestForm extends React.Component {
   render() {
     console.log('PROTEST FORM', this.state)
     const { name, address, date, timeStart, timeEnd, lat, long} = this.state;
+    const validDate = JSON.stringify(new Date()).slice(1, 11);
+    // validDate=JSON.stringify(validDate).slice(1, 11);
+    console.log(validDate);
     const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length > 0 && timeEnd.length > 0 && lat !== 0 && long !== 0;
     return (
       <div>
@@ -93,7 +96,7 @@ class ProtestForm extends React.Component {
               </Map>
             <label>
               Choose a date:
-              <input type="date" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value })} />
+              <input type="date" value={this.state.date} min={validDate} onChange={(e) => this.setState({ date: e.target.value })} />
             </label> < br/>
             <label>
               Choose the time range:
