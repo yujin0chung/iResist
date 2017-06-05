@@ -10,6 +10,7 @@ module.exports.createEvent = (req, res) => {
         if (err) {
           res.send(500, err) 
         } else {
+          console.log('Should be event id: ', data[0])
           models.Map.makeMap(data[0], req.body.lat, req.body.long, (err, mapData) => {
             if (err) {
               res.send(500, err) 
