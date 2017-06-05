@@ -12,6 +12,7 @@ export const deleteEvent = eventActions.deleteEvent;
 export const attendEvent = eventActions.attendEvent;
 export const addUserToEvent = eventActions.addUserToEvent;
 export const removeUserFromEvent = eventActions.removeUserFromEvent;
+export const getAllEvents = eventActions.getAllEvents;
 
 // navigation actions
 export const viewDashboard = navActions.viewDashboard;
