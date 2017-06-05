@@ -26,9 +26,9 @@ class Protest extends React.Component {
 
   render() {
 
-    console.log('PROTEST PROPS', this.props)
-    const startTime = new Date(this.props.protest.eventStart);
-    const endTime = new Date(this.props.protest.eventStart + this.props.protest.eventDuration);
+    console.log('PROTEST PROPS', this.props);
+    const startTime = new Date(Number(this.props.protest.eventStart));
+    const endTime = new Date(Number(this.props.protest.eventStart) + Number(this.props.protest.eventDuration));
     const status = this.props.protest.status;
     const leader = this.props.role !== 'attending' && this.props.role !== 'none';
     const userId = this.props.fetchInitDataReducer.data.user.userId;
@@ -53,7 +53,7 @@ class Protest extends React.Component {
       return (
         <div>
           <Title onClick={this.handleProtestClick}>
-            {this.props.protest.name} 
+            {this.props.protest.name}
             <Status>{this.props.protest.status}</Status>
             {leader ? <Icon src="images/leaderIcon.svg" /> : <div></div>}
           </Title>
