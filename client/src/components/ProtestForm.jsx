@@ -53,13 +53,20 @@ class ProtestForm extends React.Component {
     });
   }
 
+  validTime (startTimeString, endTimeString){
+    var startTime = Number(startTimeString.split(":").join(""));
+    var endTime = Number(endTimeString.split(":").join(""));
+    if(endTime < startTime){
+      return false;
+    }
+    return true;
+  }
+
   render() {
     console.log('PROTEST FORM', this.state)
     const { name, address, date, timeStart, timeEnd, lat, long} = this.state;
     const validDate = JSON.stringify(new Date()).slice(1, 11);
-    // validDate=JSON.stringify(validDate).slice(1, 11);
-    console.log(validDate);
-    const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length > 0 && timeEnd.length > 0 && lat !== 0 && long !== 0;
+    const formValid = name.length > 0 && address.length > 0 && date.length > 0 && (this.validTime(this.state.timeStart, this.state.timeEnd)) && lat !== 0 && long !== 0;
     return (
       <div>
           <HomeIcon
@@ -101,7 +108,7 @@ class ProtestForm extends React.Component {
             <label>
               Choose the time range:
               <input type="time" value={this.state.timeStart} onChange={(e) => this.setState({ timeStart: e.target.value })} />
-              <input type="time" value={this.state.timeEnd} min={this.state.timeStart} onChange={(e) => this.setState({ timeEnd: e.target.value })} />
+              <input type="time" value={this.state.timeEnd} onChange={(e) => this.setState({ timeEnd: e.target.value })} />
             </label> < br/>
           <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => { this.handleSubmit(e); this.props.changeView('DASHBOARD')}}/>
           <input type="button" value="Cancel" onClick={() => this.props.changeView('DASHBOARD')} />
