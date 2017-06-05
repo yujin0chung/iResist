@@ -30,13 +30,14 @@ module.exports.joinEvent = (req, res) => {
       console.log('ERR FROM CONTROLLERS/EVENTS:', err)
       res.send(500, err);
     } else {
-        models.Events.incrementAttendeeCount(req.body.eventId, (err, data) => {
-          if (err) {
-            res.send(500, err);
-          } else {
-            res.send(200, data);
-          }
-        })
+        models.Events.incrementAttendeeCount(req.body.eventId) //, (err, data) => {
+        //   if (err) {
+        //     console.log('ERROR FROM INCREMENT ATTENDEE COUNT', err)
+        //     res.send(500, err);
+        //   } else {
+        //     res.send(200, data);
+        //   }
+        // })
       res.send(200, data);
     }
   });
@@ -49,7 +50,7 @@ module.exports.leaveEvent = (req, res) => {
       console.log('LEAVE EVENT ERROR FROM CONTROLLER:', err);
       res.send(500, err);
     } else {
-      // models.Events.decrementAttendeeCount(req.body.eventId, (err, data) => {
+        models.Events.decrementAttendeeCount(req.body.eventId) //, (err, data) => {
       //   if (err) {
       //     console.log('ERROR FROM DECREMENT', err);
       //     res.send(500, err);
