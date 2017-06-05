@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { HomeIcon, Form, PageTitle, Input, InputInfo, Label, Search, Submit } from './StyledComponents.jsx';
+import { HomeIcon, Form, PageTitle, Input, Text, InputInfo, Label, Search, Submit } from './StyledComponents.jsx';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 // import moment from 'moment';
 // import TimePicker from 'rc-time-picker';
@@ -67,7 +67,7 @@ class ProtestForm extends React.Component {
     
         <HomeIcon
           className="fa fa-home fa-lg"
-          style={{paddingLeft: '45px'}}
+          style={{paddingLeft: '43px'}}
           onClick={() => this.props.changeView('DASHBOARD')}
         >
         </HomeIcon>
@@ -91,7 +91,7 @@ class ProtestForm extends React.Component {
 
             <Label>
               Description
-              <div><Input type="text" style={{height: '100px'}}value={this.state.description} onChange={(e) => this.setState({ description: e.target.value})} /></div>
+              <div><Text type="text" style={{height: '100px'}}value={this.state.description} onChange={(e) => this.setState({ description: e.target.value})} /></div>
             </Label> < br/>
 
             <Label>

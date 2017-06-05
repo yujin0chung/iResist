@@ -134,6 +134,17 @@ export const Input = styled.input`
   margin-right: 15px;
 `
 
+export const Text = styled.textarea`
+  font-size: 14px;
+  height: 30px;
+  width: 300px;
+  padding-left: 10px;
+  border-radius: 3px;
+  border: solid #dddddd 1px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+`
+
 export const Label = styled.label`
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
@@ -143,7 +154,7 @@ export const Label = styled.label`
 export const Search = styled.input`
   font-family: 'Open Sans', sans-serif;
   color: tomato;
-  font-size: 13px;
+  font-size: 11px;
   border: 0.8px solid tomato;
   height: 29px;
   border-radius: 3px;
