@@ -9,10 +9,14 @@
 
 
 .container {
-  padding-left: 30px;
-  font-family: 'Cabin', sans-serif;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', 'Roboto', sans-serif;
+}
+
+p:nth-last-child {
+  padding-bottom: 40px;
 }
