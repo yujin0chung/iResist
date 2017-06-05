@@ -91,22 +91,22 @@ module.exports.createEvent = (data, cb) => {
 
 module.exports.incrementAttendeeCount = (eventId, cb) => {
   knex('events').where('id', '=', eventId).increment('attendee_count', 1)
-    .then(data => {
-      cb(null, data);
-    })
-    .catch(err => {
-      cb(err, null);
-    });
+    // .then(data => {
+    //   cb(null, data);
+    // })
+    // .catch(err => {
+    //   cb(err, null);
+    // });
 };
 
 module.exports.decrementAttendeeCount = (eventId, cb) => {
   knex('events').where('id', '=', eventId).decrement('attendee_count', 1)
-    .then(data => {
-      cb(null, data);
-    })
-    .catch(err => {
-      cb(err, null);
-    });
+    // .then(data => {
+    //   cb(null, data);
+    // })
+    // .catch(err => {
+    //   cb(err, null);
+    // });
 };
 
 module.exports.joinEvent = (eventId, userId, type, cb) => {
@@ -120,4 +120,18 @@ module.exports.joinEvent = (eventId, userId, type, cb) => {
     });
 };
 
+
+module.exports.leaveEvent = (eventId, userId, type, cb) => {
+  knex('users_events')
+    .where('event_id', eventId)
+    .andWhere('user_id', userId)
+    .del()
+      .then(data => {
+        cb(null, data);
+      })
+      .catch(err => {
+        console.log('LEAVE EVENT ERROR DB:', err)
+        cb(err, null);
+      })
+}
 

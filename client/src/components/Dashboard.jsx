@@ -1,7 +1,7 @@
 import React from 'react';
 import MyProtestList from './MyProtestList.jsx';
 import styled from 'styled-components';
-import { Title } from './StyledComponents.jsx';
+import { PageTitle } from './StyledComponents.jsx';
 
 
 class Dashboard extends React.Component {
@@ -16,7 +16,7 @@ class Dashboard extends React.Component {
       <div>
         {/*<ListTitle>My ongoing protests</ListTitle>
           <MyProtestList {...this.props} time='ongoing'/>*/}
-        <Title>My Protests</Title>
+        <PageTitle style={{paddingLeft: '10px'}}>My Protests</PageTitle>
           <MyProtestList {...this.props} time='upcoming'/>
       </div>
     );

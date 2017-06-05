@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { HomeIcon } from './StyledComponents.jsx';
+import { HomeIcon, Form, PageTitle, Input, Text, InputInfo, Label, Search, Submit } from './StyledComponents.jsx';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+// import moment from 'moment';
+// import TimePicker from 'rc-time-picker';
 import axios from 'axios';
 
 
@@ -54,55 +56,82 @@ class ProtestForm extends React.Component {
   }
 
   render() {
-    console.log('PROTEST FORM', this.state)
+    
     const { name, address, date, timeStart, timeEnd, lat, long} = this.state;
     const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length > 0 && timeEnd.length > 0 && lat !== 0 && long !== 0;
+    // const format = 'h:mm a';
+    // const now = moment().hour(0).minute(0);
+    
     return (
       <div>
-          <HomeIcon
-            className="fa fa-home"
-            onClick={() => this.props.changeView('DASHBOARD')}
-          >
-          </HomeIcon>
-          <form onSubmit={() => this.handleSubmit()}>
-            <label>
-              Protest Name:
-              <input type="text" value={this.state.name} placeholder="Required" onChange={(e) => this.setState({ name: e.target.value })} />
-            </label> < br/>
-            <label>
-              Cause:
-              <input type="text" value={this.state.cause} onChange={(e) => this.setState({ cause: e.target.value })} />
-            </label> < br/>
-            <label>
-              Description:
-              <textarea value={this.state.description} onChange={(e) => this.setState({ description: e.target.value})} />
-            </label> < br/>
-            <label>
-              Address:
-              <input type="text" value={this.state.address} placeholder="Include an address" onChange={(e) => this.setState({ address: e.target.value })} />
-              <input type="button" value="Find location on map" onClick={this.handleLocSearch}/>
-            </label> < br/>
-              <Map className="add-protest-map" center={[this.state.lat, this.state.long]} zoom={this.state.zoom}>
-                <TileLayer
-                  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                />
-                {this.state.protests.map((position, i) =>
-                  <Marker key={`marker-${i}`} position={position}></Marker>
-                )}
-              </Map>
-            <label>
-              Choose a date:
-              <input type="date" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value })} />
-            </label> < br/>
-            <label>
-              Choose the time range:
-              <input type="time" value={this.state.timeStart} onChange={(e) => this.setState({ timeStart: e.target.value })} />
-              <input type="time" value={this.state.timeEnd} min={this.state.timeStart} onChange={(e) => this.setState({ timeEnd: e.target.value })} />
-            </label> < br/>
-          <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => { this.handleSubmit(e); this.props.changeView('DASHBOARD')}}/>
-          <input type="button" value="Cancel" onClick={() => this.props.changeView('DASHBOARD')} />
-          </form>
+    
+        <HomeIcon
+          className="fa fa-home fa-lg"
+          style={{paddingLeft: '43px'}}
+          onClick={() => this.props.changeView('DASHBOARD')}
+        >
+        </HomeIcon>
+
+        <Form onSubmit={() => this.handleSubmit()}>
+
+          <PageTitle >
+            Lead a Protest
+          </PageTitle>
+
+          <InputInfo>
+            <Label>
+              <div>Protest Name</div>
+              <div><Input type="text" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} /></div>
+            </Label> < br/>
+
+            <Label>
+              Cause
+              <div><Input type="text" value={this.state.cause} onChange={(e) => this.setState({ cause: e.target.value })} /></div>
+            </Label> < br/>
+
+            <Label>
+              Description
+              <div><Text type="text" style={{height: '100px'}}value={this.state.description} onChange={(e) => this.setState({ description: e.target.value})} /></div>
+            </Label> < br/>
+
+            <Label>
+              Address
+              <div style={{display: 'flex', flexDirection: 'row'}}>
+                <Input type="text" value={this.state.address} onChange={(e) => this.setState({ address: e.target.value })} />
+                <Search type="button" value="Find on map" style={{}} onClick={this.handleLocSearch}/>
+              </div>
+            </Label> < br/>
+
+          </InputInfo>
+
+          <Map className="add-protest-map" center={[this.state.lat, this.state.long]} zoom={this.state.zoom} style={{marginBottom: '20px'}}>
+            <TileLayer
+              url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            />
+            {this.state.protests.map((position, i) =>
+              <Marker key={`marker-${i}`} position={position}></Marker>
+            )}
+          </Map>
+
+          <Label>
+            Select a date
+            <div><Input type="date" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value })} /></div>
+          </Label> < br/>
+
+          <Label>
+            Select time range
+            <div><Input type="time" value={this.state.timeStart} onChange={(e) => this.setState({ timeStart: e.target.value })} /></div>
+            <div><Input type="time" value={this.state.timeEnd} min={this.state.timeStart} onChange={(e) => this.setState({ timeEnd: e.target.value })} /></div>
+          </Label> < br/>
+
+          <div style={{display: 'flex', flexDirection: 'row'}}>
+            <Submit type="submit" value="Submit" disabled={!formValid} onClick={(e) => { this.handleSubmit(e); this.props.changeView('DASHBOARD')}}/>
+            <div style={{margin: '6px'}}></div>
+            <Submit type="button" value="Cancel" onClick={() => this.props.changeView('DASHBOARD')} />
+          </div>
+
+        </Form>
       </div>
     );
   }

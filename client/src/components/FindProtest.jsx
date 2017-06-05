@@ -1,7 +1,7 @@
 import React from 'react';
 import Protest from './Protest.jsx';
 import _ from 'lodash';
-import { HomeIcon } from './StyledComponents.jsx';
+import { HomeIcon, PageTitle } from './StyledComponents.jsx';
 
 
 class FindProtest extends React.Component {
@@ -31,11 +31,11 @@ class FindProtest extends React.Component {
     return (
       <div>
         <HomeIcon 
-          className="fa fa-home"
+          className="fa fa-home fa-lg"
           onClick={() => this.props.changeView('DASHBOARD')}
           >
         </HomeIcon>
-        <h3>Find a Protest</h3>
+        <PageTitle>Find a Protest</PageTitle>
         {
           notParticipating.map(protestId => <Protest
             {...this.props}
