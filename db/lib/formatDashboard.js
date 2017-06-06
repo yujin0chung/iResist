@@ -1,3 +1,6 @@
+const tzwhere = require('tzwhere');
+tzwhere.init();
+
 module.exports = (data) => {
   const response = {
     events: {},
@@ -94,6 +97,7 @@ module.exports = (data) => {
     data.allMaps.forEach(map => {
       if (map.event_id === event.id) {
         response.maps[map.id] = map;
+        response.events[event.id].tzOffset = tzwhere.tzOffsetAt(map.lat, map.long)
       }
     }) 
   })
