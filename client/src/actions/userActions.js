@@ -14,7 +14,6 @@ export const getUserId = () => {
     dispatch(changeView('SPINNER'));
     axios.get('/api/user/id')
       .then(response => {
-        console.log('THIS IS THE RESPONSE FROM THE SERVER: ', response);
         dispatch(getUserIdSuccess(response.data.user));
         dispatch(fetchInitData(response.data.user.id));
       })
@@ -38,7 +37,7 @@ export const getUserEvents = (userId) => dispatch => {
     }
   })
   .then(response => {
-    dispatch(getUserEventsSucess(response.data))
+    dispatch(getUserEventsSuccess(response.data))
   })
   .catch(err => {
     return ['ERROR-ERROR', err];
