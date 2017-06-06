@@ -28,7 +28,7 @@ export const events = (state = {}, action) => {
     });
   case 'GET_ALL_EVENTS_SUCCESS':
     return Object.assign({}, state, {
-      events: action.events
+      allEvents: action.events.data
     });
   default:
     return state;
