@@ -7,4 +7,6 @@ router.get('/id', middleware.auth.apiVerify, (req, res) => {
   controllers.getUserId(req, res);
 });
 
+router.get('/events');
+
 module.exports = router;

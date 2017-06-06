@@ -55,3 +55,15 @@ module.exports.getEventIdForAllOrganizers = (cb) => {
       cb(e, null);
     });
 };
+
+module.exports.getUserEvents = (userId, cb) => {
+  knex.select('event_id', 'type')
+    .from('users_events')
+    .where('user_id', userId)
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(e => {
+      cb(e, null);
+    });
+}
