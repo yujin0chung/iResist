@@ -16,28 +16,42 @@ module.exports.allUsers = (cb) => {
       cb(null, data);
     })
     .catch(e => {
-      cb(e, null)
+      cb(e, null);
 
-    })
-}
+    });
+};
 
 module.exports.insertUser = (userName) => {
   knex('users').insert({username: userName, credibility: 0}).then();
 };
 
 module.exports.createEvent = (eventId, userId, cb) => {
-  console.log('FROM USER CREATE EVENT: ', eventId, userId)
+  console.log('FROM USER CREATE EVENT: ', eventId, userId);
   knex('users_events').returning('event_id')
     .insert({
-    user_id: userId,
-    event_id: eventId,
-    type: 'organizer'
-  })
+      user_id: userId,
+      event_id: eventId,
+      type: 'organizer'
+    })
   .then(data => {
     cb(null, data);
   })
   .catch(e => {
-    console.log('ERROR IS: ', e)
+    console.log('ERROR IS: ', e);
     cb(e, null);
-  })
-}
+  });
+};
+
+module.exports.getEventIdForAllOrganizers = (cb) => {
+  knex('users')
+    .join('users_events', 'users.id', 'users_events.user_id')
+    .select('users.id', 'users.username', 'users_events.event_id')
+    .where('users_events.type', 'organizer')
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(e => {
+      console.log('ERROR IS: ', e);
+      cb(e, null);
+    });
+};
