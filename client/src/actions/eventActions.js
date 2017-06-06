@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { fetchInitData } from './fetchInitDataActions';
 
 export const getAllEventsSuccess = events => {
   return {
@@ -64,7 +65,7 @@ export const addUserToEvent = (eventId, userId) => dispatch => {
     userId
   })
     .then(response => {
-      dispatch(joinEvent(eventId, userId));
+      dispatch(fetchInitData(userId));
     })
     .catch(error => {
       dispatch(joinEventError(error));
@@ -92,7 +93,7 @@ export const removeUserFromEvent = (eventId, userId) => dispatch => {
     userId
   })
     .then(response => {
-      dispatch(leaveEvent(eventId, userId));
+      dispatch(fetchInitData(userId));
     })
     .catch(error => {
       dispatch(leaveEventError(error));
