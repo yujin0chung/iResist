@@ -74,8 +74,14 @@ module.exports.getAllEvents = (req, res) => { //testing this out to see if event
         if (err) {
           res.send(500, err);
         } else {
-          const output = formatEvents(allEvents, allOrganizers);
-          res.send(200, output);
+          models.Map.allMaps((err, allMaps) => {
+            if (err) {
+              res.send(500, err);
+            } else{
+              const output = formatEvents(allEvents, allOrganizers, allMaps);
+              res.send(200, output);
+            }
+          })
         }
       });
     }
