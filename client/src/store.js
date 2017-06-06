@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/index.js';
+import { getUserId } from './actions/userActions.js';
 import { createLogger } from 'redux-logger';
 
 const middleware = [ thunk ];
@@ -21,6 +22,7 @@ if (process.env.NODE_ENV !== 'production') {
   );
 // }
 
+store.dispatch(getUserId());
 
 // Allows for hot-reloading (changes being rendered to screen w/out refreshing page)
 if (module.hot) {
