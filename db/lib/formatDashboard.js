@@ -83,16 +83,17 @@ module.exports = (data) => {
     response.events[event.id].cause = event.cause;
     response.events[event.id].attendee_count = countAttendees(event, data);
     response.events[event.id].mapId = findMap(event, data);
-    response.events[event.id].feedId = findFeed(event, data);  
-    if (Number(event.time) > Date.now()) {
+    response.events[event.id].feedId = findFeed(event, data);
+    response.events[event.id].eventStart = Number(event.time);
+    response.events[event.id].eventDuration = Number(event.duration);
+
+    if (event.time > Date.now()) {
       response.events[event.id].status = 'upcoming';
-    } else if (Number(event.time) + Number(event.duration) < Date.now()) {
+    } else if (event.time + event.duration < Date.now()) {
       response.events[event.id].status = 'passed';
     } else {
       response.events[event.id].status = 'ongoing';
     }
-    response.events[event.id].eventStart = event.time;
-    response.events[event.id].eventDuration = event.duration;
     response.events[event.id].address = event.address;
     data.allMaps.forEach(map => {
       if (map.event_id === event.id) {
