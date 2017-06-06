@@ -22,15 +22,14 @@ if (process.env.NODE_ENV !== 'production') {
   );
 // }
 
-store.dispatch(getUserId());
 
 // Allows for hot-reloading (changes being rendered to screen w/out refreshing page)
-if (module.hot) {
-  module.hot.accept('./reducers/', () => {
-    const nextRootReducer = require('./reducers/index.js').default;
-    store.replaceReducer(nextRootReducer);
-  });
-};
+// if (module.hot) {
+//   module.hot.accept('./reducers/', () => {
+//     const nextRootReducer = require('./reducers/index.js').default;
+//     store.replaceReducer(nextRootReducer);
+//   });
+// };
 
 // export default configureStore;
 export default store;

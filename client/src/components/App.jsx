@@ -17,12 +17,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchInitData();
-    // this.props.getUserId();
-    this.props.asyncWrapper([this.props.getAllEvents(), this.props.getUserEvents(this.props.user.userId)], 'DASHBOARD')
-      // .then(this.props.getUserEvents(this.props.user.userId));
-    // this.props.getUserEvents(2);
-    // setTimeout(() => {this.props.asyncWrapper([this.props.getAllEvents(), this.props.getUserEvents(this.props.user.userId)], 'DASHBOARD')}, 500)
+    this.props.getUserId();
+    this.props.asyncWrapper([this.props.getAllEvents()], 'DASHBOARD')
   }
 
   updateView(view) {

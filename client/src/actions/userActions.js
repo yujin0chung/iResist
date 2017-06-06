@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { changeView } from './navActions.js';
 import { fetchInitData } from './fetchInitDataActions';
+import { asyncWrapper } from './asyncWrappers';
 
 export const getUserIdSuccess = (user) => {
   return {
@@ -14,8 +15,9 @@ export const getUserId = () => {
     dispatch(changeView('SPINNER'));
     axios.get('/api/user/id')
       .then(response => {
-        dispatch(getUserIdSuccess(response.data.user));
-        dispatch(fetchInitData(response.data.user.id));
+        dispatch(getUserIdSuccess(response.data.user))
+        dispatch(asyncWrapper(dispatch(fetchInitData(response.data.user.id)), dispatch(getUserEvents(response.data.user.id))
+        ))
       })
       .catch(error => {
         dispatch(changeView('ERROR'));
