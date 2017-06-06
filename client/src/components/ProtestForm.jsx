@@ -66,7 +66,7 @@ class ProtestForm extends React.Component {
     console.log('PROTEST FORM', this.state)
     const { name, address, date, timeStart, timeEnd, lat, long} = this.state;
     const validDate = JSON.stringify(new Date()).slice(1, 11);
-    const formValid = name.length > 0 && address.length > 0 && date.length > 0 && (this.validTime(this.state.timeStart, this.state.timeEnd)) && lat !== 0 && long !== 0;
+    const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length && timeEnd.length && (this.validTime(this.state.timeStart, this.state.timeEnd)) && lat !== 0 && long !== 0;
     return (
       <div>
           <HomeIcon
