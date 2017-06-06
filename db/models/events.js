@@ -61,7 +61,7 @@ module.exports.findEventData = (eventIds, cb) => {
 
 module.exports.createEvent = (data, cb) => {
   const startHours = data.timeStart.split(':')[0];
-  const startMinutes = data.timeStart.split(';')[1];
+  const startMinutes = data.timeStart.split(':')[1];
   const endHours = data.timeEnd.split(':')[0];
   const endMinutes = data.timeEnd.split(':')[1];
   const eventStart = formatDate(data.date, startHours, startMinutes);
@@ -119,5 +119,3 @@ module.exports.joinEvent = (eventId, userId, type, cb) => {
       cb(err, null);
     });
 };
-
-
