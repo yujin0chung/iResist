@@ -9,8 +9,7 @@ import { Status, Title, Name, Info, Icon } from './StyledComponents.jsx';
 
 class Protest extends React.Component {
   constructor(props) {
-    super(props);
-
+    super(props); 
     this.state = {
       displayDetails: false,
     };

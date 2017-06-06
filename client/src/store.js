@@ -12,14 +12,14 @@ if (process.env.NODE_ENV !== 'production') {
   middleware.push(createLogger());
 };
 
-const configureStore = (preloadedState) => {
+// const configureStore = (preloadedState) => {
   const store = createStore(
     rootReducer,
     //defaultState here,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(...middleware)
   );
-}
+// }
 
 
 // Allows for hot-reloading (changes being rendered to screen w/out refreshing page)
@@ -30,4 +30,5 @@ if (module.hot) {
   });
 };
 
-export default configureStore;
+// export default configureStore;
+export default store;
