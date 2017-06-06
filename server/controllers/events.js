@@ -1,4 +1,5 @@
 const models = require('../../db/models');
+const formatEvents = require('../../db/lib/formatEvents');
 
 module.exports.createEvent = (req, res) => {
 
@@ -54,8 +55,8 @@ module.exports.getAllEvents = (req, res) => { //testing this out to see if event
         if (err) {
           res.send(500, err);
         } else {
-          console.log('ALL EVENTS AND ALL ORGANIZERS', allEvents, allOrganizers);
-          res.send(200, {allEvents, allOrganizers});
+          const output = formatEvents(allEvents, allOrganizers);
+          res.send(200, output);
         }
       });
     }
