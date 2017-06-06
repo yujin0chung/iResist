@@ -1,9 +1,12 @@
-module.exports = (date, hour, minute) => {
+const tzwhere = require('tzwhere')
+tzwhere.init();
+
+module.exports = (lat, long, date, hour, minute) => {
+  const tzOffset = tzwhere.tzOffsetAt(lat, long)
+
+  console.log('OFFSET IS: ', tzOffset)
   date = date.split('-');
-  // console.log('this is the hour in formatDate', hour);
-  // console.log('this is the minute in formatDate', minute);
   const month = (parseInt(date[1]) - 1)
-  console.log(Date.UTC(parseInt(date[0]), month, parseInt(date[2]), parseInt(hour), parseInt(minute)));
-  return Date.UTC(parseInt(date[0]), month, parseInt(date[2]), parseInt(hour), parseInt(minute));
+  return Date.UTC(parseInt(date[0]), month, parseInt(date[2]), parseInt(hour), parseInt(minute)) - tzOffset;
 
 }

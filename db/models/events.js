@@ -4,7 +4,7 @@ const formatDate = require('../lib/formatDate');
 
 
 module.exports.findAllEvents = (cb) => {
-  console.log('THIS IS THE CB', cb);
+
   knex('events')
     .join('maps', 'events.id', 'maps.event_id')
     .select('events.id', 'events.name', 'events.description', 'events.cause', 'events.address', 'events.attendee_count', 'events.time', 'events.duration', 'maps.id as mapId')
@@ -67,8 +67,8 @@ module.exports.createEvent = (data, cb) => {
   const startMinutes = data.timeStart.split(':')[1];
   const endHours = data.timeEnd.split(':')[0];
   const endMinutes = data.timeEnd.split(':')[1];
-  const eventStart = formatDate(data.date, startHours, startMinutes);
-  const eventEnd = formatDate(data.date, endHours, endMinutes);
+  const eventStart = formatDate(data.lat, data.long, data.date, startHours, startMinutes);
+  const eventEnd = formatDate(data.lat, data.long, data.date, endHours, endMinutes);
 
   const values = {
     name: data.name,
