@@ -87,9 +87,9 @@ module.exports = (data) => {
     response.events[event.id].eventStart = Number(event.time);
     response.events[event.id].eventDuration = Number(event.duration);
 
-    if (event.time > Date.now()) {
+    if (Number(event.time) > Date.now()) {
       response.events[event.id].status = 'upcoming';
-    } else if (event.time + event.duration < Date.now()) {
+    } else if (Number(event.time) + Number(event.duration) < Date.now()) {
       response.events[event.id].status = 'passed';
     } else {
       response.events[event.id].status = 'ongoing';
