@@ -56,7 +56,12 @@ class ProtestForm extends React.Component {
   validTime (startTimeString, endTimeString){
     var startTime = Number(startTimeString.split(":").join(""));
     var endTime = Number(endTimeString.split(":").join(""));
-    if(endTime < startTime){
+    var today = JSON.stringify(new Date()).slice(1, 11) === this.state.date;
+    var currentTime = Number(Date().split(" ")[4].split(":").slice(0, 2).join(""));
+    if(today && currentTime > startTime){
+      return false;
+    }
+    if(endTime < startTime ){
       return false;
     }
     return true;
