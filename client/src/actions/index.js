@@ -42,6 +42,8 @@ export const fetchInitData = fetchInitDataActions.fetchInitData;
 
 //user actions
 export const getUserId = userActions.getUserId;
+export const getUserEventsSuccess = userActions.getUserEventsSuccess;
+export const getUserEvents = userActions.getUserEvents;
 
 //async wrapper
 export const asyncWrapper = asyncWrappers.asyncWrapper;
