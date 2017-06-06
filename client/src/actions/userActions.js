@@ -23,3 +23,24 @@ export const getUserId = () => {
       });
   };
 };
+
+export const getUserEventsSuccess = (userEvents) => {
+  return {
+    type: 'GET_USER_EVENTS_SUCCESS',
+    userEvents
+  };
+};
+
+export const getUserEvents = (userId) => dispatch => {
+  axios.get('/api/user/events', {
+    params: {
+      userId: userId
+    }
+  })
+  .then(response => {
+    dispatch(getUserEventsSucess(response.data))
+  })
+  .catch(err => {
+    return ['ERROR-ERROR', err];
+  });
+};
