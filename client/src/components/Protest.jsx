@@ -39,8 +39,8 @@ class Protest extends React.Component {
           <Name onClick={this.handleProtestClick}>{this.props.protest.name}</Name>
           <Info>
             <p><b>Cause:</b> {this.props.protest.cause}</p>
-            <p><b>Start:</b> {dateFormat(startTime, 'mmmm dd, yyyy: hh:mm')}</p>
-            <p><b>End:</b> {dateFormat(endTime, 'mmmm dd, yyyy: hh:mm')}</p>
+            <p><b>Start:</b> {dateFormat(startTime, 'mmmm dd, yyyy: h:MM TT')}</p>
+            <p><b>End:</b> {dateFormat(endTime, 'mmmm dd, yyyy: h:MM TT')}</p>
             <p><b>Address:</b> {this.props.protest.address}</p>
             <p><b>Description:</b> {this.props.protest.description}</p>
             <p><b>Attendee Count:</b> {this.props.protest.attendee_count}</p>
