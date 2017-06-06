@@ -18,7 +18,6 @@ class ProtestForm extends React.Component {
       date: '',
       timeStart: '',
       timeEnd: '',
-      zoneOffset: parseInt(new Date().toString().split('-')[2])/100,
       lat: 0,
       long: 0,
       protests: [],

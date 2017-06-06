@@ -63,6 +63,7 @@
     "redux-thunk": "^2.2.0",
     "styled-components": "^2.0.0",
     "supertest": "^3.0.0",
+    "tzwhere": "^1.0.0",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"
   },
