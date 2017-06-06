@@ -122,3 +122,17 @@ module.exports.joinEvent = (eventId, userId, type, cb) => {
       cb(err, null);
     });
 };
+
+module.exports.leaveEvent = (eventId, userId, cb) => {
+  knex('users_events').where({
+    user_id: userId,
+    event_id: eventId
+  }).del()
+  .then(data => {
+    cb(null, data);
+  })
+  .catch(e => {
+    console.log('ERROR FROM MODELS/LEAVEEVENT: ', e);
+    cb (e, null);
+  })
+};

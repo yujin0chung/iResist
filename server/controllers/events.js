@@ -44,6 +44,25 @@ module.exports.joinEvent = (req, res) => {
   });
 };
 
+module.exports.leaveEvent = (req, res) => {
+  console.log('LEAVE EVENT REQ.BODY:', req.body);
+  models.Events.leaveEvent(req.body.eventId, req.body.userId, (err, data) => {
+    if (err) {
+      console.log('ERR FROM CONTROLLERS/EVENTS:', err);
+      res.send(500, err);
+    } else {
+      models.Events.decrementAttendeeCount(req.body.eventId, (err, data) => {
+        if (err) {
+          res.send(500, err);
+        } else {
+          res.send(200, data);
+        }
+      });
+      res.send(200, data);
+    }
+  });
+};
+
 module.exports.getAllEvents = (req, res) => { //testing this out to see if events are being received
   console.log('THESE ARE ALL THE EVENT: ', res.body);
 
