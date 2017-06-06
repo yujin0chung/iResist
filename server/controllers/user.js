@@ -1,4 +1,5 @@
 const models = require('../../db/models');
+const formatUser = require('../../db/lib/formatUser');
 
 module.exports.getUserId = (req, res) => {
   res.send(200, {
@@ -12,7 +13,7 @@ module.exports.getUserEvents = (req, res) => {
       res.send(500, err);
     }
     else {
-      res.send(200, userEvents);
+      res.send(200, formatUser(userEvents));
     }
   });
 }
