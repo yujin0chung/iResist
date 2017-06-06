@@ -9,8 +9,7 @@ import { Status, Title, Name, Info, Icon } from './StyledComponents.jsx';
 
 class Protest extends React.Component {
   constructor(props) {
-    super(props);
-
+    super(props); 
     this.state = {
       displayDetails: false,
     };
@@ -53,7 +52,7 @@ class Protest extends React.Component {
     } else {
       return (
         <div>
-          <Title onClick={this.handleProtestClick}>
+           <Title onClick={this.handleProtestClick}>
             {this.props.protest.name}
             <Status>{this.props.protest.status}</Status>
             {leader ? <Icon src="images/leaderIcon.svg" /> : <div></div>}

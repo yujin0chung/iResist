@@ -21,7 +21,7 @@ const MyProtestList = (props) => {
             userId={userId}
             role='organizing'
           />)
-        }
+        } 
         {
           protestsAttending.map((protestId) => <Protest
             {...props}

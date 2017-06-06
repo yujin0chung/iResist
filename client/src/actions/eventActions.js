@@ -94,6 +94,7 @@ export const removeUserFromEvent = (eventId, userId) => dispatch => {
   })
     .then(response => {
       dispatch(fetchInitData(userId));
+
     })
     .catch(error => {
       dispatch(leaveEventError(error));
