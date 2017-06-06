@@ -4,6 +4,7 @@ import * as mapActions from './mapActions';
 import * as navActions from './navActions';
 import * as fetchInitDataActions from './fetchInitDataActions';
 import * as userActions from './userActions';
+import * as asyncWrappers from './asyncWrappers';
 
 // export event actions
 export const postEvent = eventActions.postEvent;
@@ -12,6 +13,7 @@ export const deleteEvent = eventActions.deleteEvent;
 export const attendEvent = eventActions.attendEvent;
 export const addUserToEvent = eventActions.addUserToEvent;
 export const removeUserFromEvent = eventActions.removeUserFromEvent;
+export const getAllEvents = eventActions.getAllEvents;
 
 // navigation actions
 export const viewDashboard = navActions.viewDashboard;
@@ -40,3 +42,6 @@ export const fetchInitData = fetchInitDataActions.fetchInitData;
 
 //user actions
 export const getUserId = userActions.getUserId;
+
+//async wrapper
+export const asyncWrapper = asyncWrappers.asyncWrapper;

@@ -4,7 +4,10 @@ const formatDate = require('../lib/formatDate');
 
 
 module.exports.findAllEvents = (cb) => {
-  knex.select().from('events')
+  console.log('THIS IS THE CB', cb);
+  knex('events')
+    .join('maps', 'events.id', 'maps.event_id')
+    .select('events.id', 'events.name', 'events.description', 'events.cause', 'events.address', 'events.attendee_count', 'events.time', 'events.duration', 'maps.id as mapId')
     .then(data => {
       cb(null, data);
     })
