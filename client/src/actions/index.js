@@ -28,6 +28,7 @@ export const changeView = navActions.changeView;
 export const dropPin = mapActions.dropPin;
 export const votePin = mapActions.votePin;
 export const removePin = mapActions.removePin;
+export const getAllMaps = mapActions.getAllMaps;
 
 // feed actions
 export const postItem = feedActions.postItem;

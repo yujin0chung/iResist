@@ -5,3 +5,4 @@ module.exports.dashboard = require('./dashboard');
 module.exports.events = require('./events');
 module.exports.geocoder = require('./geocoder');
 module.exports.user = require('./user');
+module.exports.maps = require('./maps');

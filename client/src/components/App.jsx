@@ -19,6 +19,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.getUserId();
     this.props.asyncWrapper([this.props.getAllEvents()], 'DASHBOARD');
+    this.props.getAllMaps();
   }
 
   updateView(view) {
@@ -26,7 +27,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('props',this.props)
+    console.log('props', this.props);
     const currentView = this.props.views.currentView;
     if (currentView === 'SPINNER') {
       return (<h1>SPIN LOAD SPIN</h1>);
