@@ -26,7 +26,7 @@ class App extends React.Component {
   }
 
   render() {
-
+    console.log('props',this.props)
     const currentView = this.props.views.currentView;
     if (currentView === 'SPINNER') {
       return (<h1>SPIN LOAD SPIN</h1>);

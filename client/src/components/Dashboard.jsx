@@ -1,6 +1,7 @@
 import React from 'react';
 import MyProtestList from './MyProtestList.jsx';
 import styled from 'styled-components';
+import _ from 'lodash';
 import { Title } from './StyledComponents.jsx';
 
 
@@ -8,16 +9,49 @@ class Dashboard extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      showPastProtests: false
+    };
+    this.togglePastProtests = this.togglePastProtests.bind(this);
+  }
+
+  togglePastProtests() {
+    this.setState({
+      showPastProtests: !this.state.showPastProtests
+    })
   }
 
   render() {
+    
+    const events = this.props.events.allEvents;
+
+    const upcoming = _.filter(events, event => {
+      return event.status === 'upcoming';
+    });
+
+    const past = _.filter(events, event => {
+      return event.status === 'passed';
+    });
+
+    const ongoing = _.filter(events, event => {
+      return event.status === 'ongoing';
+    });
+
     return (
       <div>
-        {/*<ListTitle>My ongoing protests</ListTitle>
-          <MyProtestList {...this.props} time='ongoing'/>*/}
-        <Title>My Protests</Title>
-          <MyProtestList {...this.props} time='upcoming'/>
+
+        <Title>Ongoing Protests</Title>
+          <MyProtestList eventListType={ongoing} {...this.props}  />
+
+        <Title>Upcoming Protests</Title>
+          <MyProtestList eventListType={upcoming} {...this.props} />
+
+        <div style={{display: 'flex', flexDirection: 'row'}}>
+        <Title>Past Protests</Title>
+          <i onClick={() => this.togglePastProtests()} className="fa fa-angle-down" aria-hidden="true" style={{paddingLeft: '15px', paddingTop: '10px'}}></i>
+        </div>
+          {this.state.showPastProtests ? <MyProtestList  eventListType={past} {...this.props} /> : <div></div>}
+    
       </div>
     );
   }

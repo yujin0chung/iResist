@@ -9,34 +9,39 @@ const MyProtestList = (props) => {
     const protestsAttending = props.user.events_attending;
     const protestsOrganizing = props.user.events_organizing;
 
-    if (props.time === 'upcoming') {
+    if (props) {
       return (
       <div>
-        {
-          protestsOrganizing.map((protestId) => <Protest
+        {props.eventListType.map(event => {
+        if (protestsAttending.concat(protestsOrganizing).indexOf(event.id) !== -1) {
+          if (protestsOrganizing.indexOf(event.id)!==- 1) {
+            return <Protest
             {...props}
-            key={protestId}
-            protestId={protestId}
-            protest={props.events.allEvents[protestId]}
+            key={event.id}
+            protestId={event.id}
+            protest={props.events.allEvents[event.id]}
             userId={userId}
             role='organizing'
-          />)
-        } 
-        {
-          protestsAttending.map((protestId) => <Protest
+            />
+          } else {
+          return <Protest
             {...props}
-            key={protestId}
-            protestId={protestId}
+            key={event.id}
+            protestId={event.id}
             userId={userId}
-            protest={props.events.allEvents[protestId]}
+            protest={props.events.allEvents[event.id]}
             role='attending'
-          />)
+            />
+            }
+          }
+         })
         }
       </div>
       );
-    } else {
-      return <p>ongoing protest</p>;
-    }
+    } 
+    // else {
+    //   return <p>ongoing protest</p>;
+    // }
   } else {
     return <div></div>;
   }
