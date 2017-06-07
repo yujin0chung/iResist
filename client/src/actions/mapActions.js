@@ -19,6 +19,13 @@ export const removePin = () => {
   };
 };
 
+export const getAllMapsSuccess = (maps) => {
+  return {
+    type: 'GET_ALL_MAPS_SUCCESS',
+    maps
+  };
+};
+
 export const getAllMaps = () => {
   return dispatch => {
     axios.get('/api/maps/all')
