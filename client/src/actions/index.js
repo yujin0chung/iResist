@@ -2,7 +2,7 @@ import * as eventActions from './eventActions.js';
 import * as feedActions from './feedActions';
 import * as mapActions from './mapActions';
 import * as navActions from './navActions';
-import * as fetchInitDataActions from './fetchInitDataActions';
+import * as fetchDataActions from './fetchDataActions';
 import * as userActions from './userActions';
 import * as asyncWrappers from './asyncWrappers';
 
@@ -35,11 +35,8 @@ export const postItem = feedActions.postItem;
 export const voteItem = feedActions.voteItem;
 export const deleteItem = feedActions.deleteItem;
 
-// init actions
-// export const fetchInitDataStart = fetchInitDataActions.fetchInitDataStart;
-// export const fetchInitDataError = fetchInitDataActions.fetchInitDataError;
-// export const fetchInitDataSuccess = fetchInitDataActions.fetchInitDataSuccess;
-export const fetchInitData = fetchInitDataActions.fetchInitData;
+// fetch actions
+export const fetchData = fetchDataActions.fetchData;
 
 //user actions
 export const getUserId = userActions.getUserId;

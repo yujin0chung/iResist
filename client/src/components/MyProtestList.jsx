@@ -3,8 +3,8 @@ import Protest from './Protest.jsx';
 
 
 const MyProtestList = (props) => {
-  
-  if (props.fetchInitDataReducer.data) {
+
+  // if (props.fetchInitDataReducer.data) {
     let userId = props.user.userId;
     const protestsAttending = props.user.events_attending;
     const protestsOrganizing = props.user.events_organizing;
@@ -38,13 +38,13 @@ const MyProtestList = (props) => {
         }
       </div>
       );
-    } 
+    }
     // else {
     //   return <p>ongoing protest</p>;
     // }
-  } else {
-    return <div></div>;
-  }
+  // } else {
+  //   return <div></div>;
+  // }
 
 };
 
