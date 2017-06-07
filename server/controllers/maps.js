@@ -1,7 +1,7 @@
 const models = require('../../db/models');
 
 module.exports.getAllMaps = (req, res) => {
-  models.Maps.getAllMaps((err, maps) => {
+  models.Maps.allMaps((err, maps) => {
     if (err) {
       res.send(500, err);
     } else {
