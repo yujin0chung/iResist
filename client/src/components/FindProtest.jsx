@@ -6,8 +6,17 @@ import { HomeIcon } from './StyledComponents.jsx';
 
 class FindProtest extends React.Component {
   render() {
-    const events = this.props.fetchInitDataReducer.data.events;
-    if (events.length === 0) {
+    
+    const events = this.props.events.allEvents;
+   
+    let upcomingEvents = [];
+    for (var event in events) {
+      if (events[event].status === 'upcoming') {
+        upcomingEvents.push(event);
+      }
+    }
+
+    if (upcomingEvents.length === 0) {
       return (
         <div>
           No upcoming protest, 
@@ -15,14 +24,9 @@ class FindProtest extends React.Component {
         </div>
       );
     }
-    let upcomingEvents = [];
-    for (var event in events) {
-      if (events[event].status === 'upcoming') {
-        upcomingEvents.push(event);
-      }
-    }
-    const attending = this.props.fetchInitDataReducer.data.user.events_attending;
-    const organizing = this.props.fetchInitDataReducer.data.user.events_organizing;
+
+    const attending = this.props.user.events_attending;
+    const organizing = this.props.user.events_organizing;
 
     const notParticipating = _.reject(upcomingEvents, event => {
       return _.includes(attending, parseInt(event)) || _.includes(organizing, parseInt(event));
