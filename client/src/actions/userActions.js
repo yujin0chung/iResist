@@ -10,21 +10,6 @@ export const getUserIdSuccess = (user) => {
   };
 };
 
-export const getUserId = () => {
-  return dispatch => {
-    dispatch(changeView('SPINNER'));
-    axios.get('/api/user/id')
-      .then(response => {
-        dispatch(getUserIdSuccess(response.data.user))
-        dispatch(asyncWrapper(dispatch(fetchInitData(response.data.user.id)), dispatch(getUserEvents(response.data.user.id))
-        ))
-      })
-      .catch(error => {
-        dispatch(changeView('ERROR'));
-      });
-  };
-};
-
 export const getUserEventsSuccess = (userEvents) => {
   return {
     type: 'GET_USER_EVENTS_SUCCESS',
@@ -39,9 +24,24 @@ export const getUserEvents = (userId) => dispatch => {
     }
   })
   .then(response => {
-    dispatch(getUserEventsSuccess(response.data))
+    dispatch(getUserEventsSuccess(response.data));
   })
   .catch(err => {
     return ['ERROR-ERROR', err];
   });
+};
+
+export const getUserId = (cb) => {
+  return dispatch => {
+    dispatch(changeView('SPINNER'));
+    axios.get('/api/user/id')
+      .then(response => {
+        dispatch(getUserIdSuccess(response.data.user));
+        dispatch(asyncWrapper(dispatch(fetchInitData(response.data.user.id)), dispatch(getUserEvents(response.data.user.id))
+        ));
+      })
+      .catch(error => {
+        dispatch(changeView('ERROR'));
+      });
+  };
 };
