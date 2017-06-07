@@ -18,3 +18,15 @@ export const removePin = () => {
     // INSERT OTHER CHANGES HERE
   };
 };
+
+export const getAllMaps = () => {
+  return dispatch => {
+    axios.get('/api/maps/all')
+      .then(events => {
+        dispatch(getAllMapsSuccess(maps));
+      })
+      .catch(err => {
+        return ['ERROR-ERROR', err];
+      });
+  };
+};
