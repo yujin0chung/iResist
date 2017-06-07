@@ -3,7 +3,7 @@ import Protest from './Protest.jsx';
 
 
 const MyProtestList = (props) => {
-  console.log('PROPS FROM MYPROTESTLIST:', props);
+  
   if (props.fetchInitDataReducer.data) {
     let userId = props.user.userId;
     const protestsAttending = props.user.events_attending;
