@@ -17,8 +17,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getUserId().then(() => console.log('the promise ran'));
+    this.props.getUserId();
     this.props.asyncWrapper([this.props.getAllEvents()], 'DASHBOARD');
+    this.props.getAllMaps();
   }
 
   updateView(view) {

@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const dropPin = () => {
   return {
     type: 'INSERT TYPE HERE',
@@ -29,7 +31,7 @@ export const getAllMapsSuccess = (maps) => {
 export const getAllMaps = () => {
   return dispatch => {
     axios.get('/api/maps/all')
-      .then(events => {
+      .then(maps => {
         dispatch(getAllMapsSuccess(maps));
       })
       .catch(err => {
