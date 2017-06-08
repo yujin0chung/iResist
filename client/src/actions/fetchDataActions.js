@@ -19,3 +19,15 @@ export const fetchData = (userId, destinationView) => {
     });
   };
 };
+
+export const fetchDayOfData = (userId, eventId, destinationView) => {
+  return dispatch => {
+    return promise.All([
+
+    ]).then(output => {
+      dispatch(changeView(destinationView));
+    }).catch(err => {
+      dispatch(changeView('ERROR'));
+    });
+  };
+};
