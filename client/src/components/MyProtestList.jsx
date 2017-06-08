@@ -21,7 +21,8 @@ const MyProtestList = (props) => {
                 protest={props.events.allEvents[event.id]}
                 userId={userId}
                 role='organizing'
-              />
+                eventType={props.eventType}
+              />;
             } else {
               return <Protest
                 {...props}
@@ -30,7 +31,8 @@ const MyProtestList = (props) => {
                 userId={userId}
                 protest={props.events.allEvents[event.id]}
                 role='attending'
-              />
+                eventType={props.eventType}
+              />;
             }
           }
         })
