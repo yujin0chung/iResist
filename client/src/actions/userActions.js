@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { changeView } from './navActions.js';
-import { fetchInitData } from './fetchInitDataActions';
+import { fetchData } from './fetchDataActions';
 import { asyncWrapper } from './asyncWrappers';
 
 export const getUserIdSuccess = (user) => {
@@ -18,30 +18,29 @@ export const getUserEventsSuccess = (userEvents) => {
 };
 
 export const getUserEvents = (userId) => dispatch => {
-  axios.get('/api/user/events', {
+  return axios.get('/api/user/events', {
     params: {
       userId: userId
     }
   })
   .then(response => {
-    dispatch(getUserEventsSuccess(response.data));
-  })
-  .catch(err => {
-    return ['ERROR-ERROR', err];
+    return dispatch(getUserEventsSuccess(response.data));
   });
+  // .catch(err => {
+  //   return ['ERROR-ERROR', err];
+  // });
 };
 
-export const getUserId = (cb) => {
+export const getUserId = () => {
   return dispatch => {
     dispatch(changeView('SPINNER'));
     axios.get('/api/user/id')
       .then(response => {
         dispatch(getUserIdSuccess(response.data.user));
-        dispatch(asyncWrapper(dispatch(fetchInitData(response.data.user.id)), dispatch(getUserEvents(response.data.user.id))
-        ));
-      })
-      .catch(error => {
-        dispatch(changeView('ERROR'));
+        dispatch(fetchData(response.data.user.id, 'DASHBOARD'));
       });
+      // .catch(error => {
+      //   dispatch(changeView('ERROR'));
+      // });
   };
 };

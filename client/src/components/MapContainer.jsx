@@ -4,7 +4,7 @@ import l from 'leaflet';
 
 const MapContainer = (props) => {
   const mapId = props.protest.mapId;
-  const position = [props.fetchInitDataReducer.data.maps[mapId].lat, props.fetchInitDataReducer.data.maps[mapId].long];
+  const position = [props.maps.allMaps[mapId].lat, props.maps.allMaps[mapId].long];
   const map = (
     <Map className={props.mapType} center={position} zoom={17}>
       <TileLayer

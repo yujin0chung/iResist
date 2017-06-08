@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { fetchInitData } from './fetchInitDataActions';
+import { fetchData } from './fetchDataActions';
 
 export const getAllEventsSuccess = events => {
   return {
@@ -10,13 +10,13 @@ export const getAllEventsSuccess = events => {
 
 export const getAllEvents = () => {
   return dispatch => {
-    axios.get('/api/events/all')
+    return axios.get('/api/events/all')
       .then(events => {
-        dispatch(getAllEventsSuccess(events));
-      })
-      .catch(err => {
-        return ['ERROR-ERROR', err];
+        return dispatch(getAllEventsSuccess(events));
       });
+      // .catch(err => {
+      //   return ['ERROR-ERROR', err];
+      // });
   };
 };
 
@@ -65,7 +65,7 @@ export const addUserToEvent = (eventId, userId) => dispatch => {
     userId
   })
     .then(response => {
-      dispatch(fetchInitData(userId));
+      dispatch(fetchData(userId, 'DASHBOARD'));
     })
     .catch(error => {
       dispatch(joinEventError(error));
@@ -93,7 +93,7 @@ export const removeUserFromEvent = (eventId, userId) => dispatch => {
     userId
   })
     .then(response => {
-      dispatch(fetchInitData(userId));
+      dispatch(fetchData(userId, 'DASHBOARD'));
 
     })
     .catch(error => {

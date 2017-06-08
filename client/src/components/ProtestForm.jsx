@@ -11,7 +11,7 @@ class ProtestForm extends React.Component {
 
     this.state = {
       name: '',
-      userId: this.props.fetchInitDataReducer.data.user.userId,
+      userId: this.props.user.userId,
       description: '',
       cause: '',
       address: '',
@@ -53,22 +53,22 @@ class ProtestForm extends React.Component {
     });
   }
 
-  validTime (startTimeString, endTimeString){
-    var startTime = Number(startTimeString.split(":").join(""));
-    var endTime = Number(endTimeString.split(":").join(""));
+  validTime (startTimeString, endTimeString) {
+    var startTime = Number(startTimeString.split(':').join(''));
+    var endTime = Number(endTimeString.split(':').join(''));
     var today = JSON.stringify(new Date()).slice(1, 11) === this.state.date;
-    var currentTime = Number(Date().split(" ")[4].split(":").slice(0, 2).join(""));
-    if(today && currentTime > startTime){
+    var currentTime = Number(Date().split(' ')[4].split(':').slice(0, 2).join(''));
+    if (today && currentTime > startTime) {
       return false;
     }
-    if(endTime < startTime ){
+    if (endTime < startTime ) {
       return false;
     }
     return true;
   }
 
   render() {
-    console.log('PROTEST FORM', this.state)
+    console.log('PROTEST FORM', this.state);
     const { name, address, date, timeStart, timeEnd, lat, long} = this.state;
     const validDate = JSON.stringify(new Date()).slice(1, 11);
     const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length && timeEnd.length && (this.validTime(this.state.timeStart, this.state.timeEnd)) && lat !== 0 && long !== 0;
@@ -115,7 +115,7 @@ class ProtestForm extends React.Component {
               <input type="time" value={this.state.timeStart} onChange={(e) => this.setState({ timeStart: e.target.value })} />
               <input type="time" value={this.state.timeEnd} onChange={(e) => this.setState({ timeEnd: e.target.value })} />
             </label> < br/>
-          <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => { this.handleSubmit(e); this.props.changeView('DASHBOARD')}}/>
+          <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => { this.handleSubmit(e); this.props.changeView('DASHBOARD') ;}}/>
           <input type="button" value="Cancel" onClick={() => this.props.changeView('DASHBOARD')} />
           </form>
       </div>
