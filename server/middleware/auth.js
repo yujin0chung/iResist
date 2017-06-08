@@ -38,11 +38,15 @@ module.exports.apiVerify = (req, res, next) => {
   res.send(403, 'YOU DO NOT HAVE PERMISSION TO ACCESS THAT RESOURCE');
 };
 
+const redisStore = new RedisStore({
+  client: redisClient,
+  url: redisUrl
+});
+
+module.exports.redisStore = redisStore;
+module.exports.redisSecret = redisSecret;
 module.exports.session = session({
-  store: new RedisStore({
-    client: redisClient,
-    url: redisUrl
-  }),
+  store: redisStore,
   secret: redisSecret,
   resave: false,
   saveUninitialized: false
