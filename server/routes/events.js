@@ -8,5 +8,6 @@ router.post('/leave', controllers.leaveEvent);
 router.get('/getAllEvents', controllers.getAllEvents);
 router.get('/all', controllers.getAllEvents);
 router.post('/update', controllers.updateEvent);
+router.delete('/delete', controllers.deleteEvent);
 
 module.exports = router;
