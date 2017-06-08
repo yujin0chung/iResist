@@ -70,6 +70,7 @@ module.exports.createEvent = (data, cb) => {
   const eventStart = formatDate(data.lat, data.long, data.date, startHours, startMinutes);
   const eventEnd = formatDate(data.lat, data.long, data.date, endHours, endMinutes);
 
+  console.log('DATA FROM CREATE EVENT', data)
   const values = {
     name: data.name,
     description: data.description,
@@ -139,8 +140,6 @@ module.exports.leaveEvent = (eventId, userId, cb) => {
 
 
 module.exports.updateEventById = (updatedEvent, cb) => {
-  console.log('UPDATE EVENT BY ID QUERY', updatedEvent)
-  console.log('EVENT ID!', updatedEvent.eventId)
 
   const startHours = updatedEvent.timeStart.split(':')[0];
   const startMinutes = updatedEvent.timeStart.split(':')[1];
@@ -156,13 +155,14 @@ module.exports.updateEventById = (updatedEvent, cb) => {
       description: updatedEvent.description,
       cause: updatedEvent.cause,
       address: updatedEvent.address,
-      time: updatedEvent.timeStart,
+      time: eventStart,
       duration: eventEnd - eventStart
     })
     .then(data => {
       cb(null, data);
     })
     .catch(error => {
+      console.log('ERROR FROM UPDATE EVENTS QUERY', error);
       cb(error, null);
     })
 }
