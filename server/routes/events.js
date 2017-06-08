@@ -7,5 +7,6 @@ router.post('/join', controllers.joinEvent);
 router.post('/leave', controllers.leaveEvent);
 router.get('/getAllEvents', controllers.getAllEvents);
 router.get('/all', controllers.getAllEvents);
+router.post('/update', controllers.updateEvent);
 
 module.exports = router;

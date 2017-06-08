@@ -136,3 +136,23 @@ module.exports.leaveEvent = (eventId, userId, cb) => {
     cb (e, null);
   })
 };
+
+
+module.exports.updateEventById = (eventId, newInfo, cb) => {
+  knex('events')
+    .where('id', '=', eventId)
+    .update({
+      name: newInfo.name,
+      description: newInfo.description,
+      cause: newInfo.cause,
+      address: newInfo.address,
+      time: newInfo.time,
+      duration: newInfo.duration
+    })
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(error => {
+      cb(error, null);
+    })
+}

@@ -87,3 +87,13 @@ module.exports.getAllEvents = (req, res) => { //testing this out to see if event
     }
   });
 };
+
+module.exports.updateEvent = (req, res) => {
+  models.Events.updateEventById(req.body.eventId, req.body, (err, data) => {
+    if (err) {
+      res.send(500, err);
+    } else {
+      res.send(200, data);
+    }
+  })
+}
