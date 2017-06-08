@@ -5,6 +5,7 @@ import * as navActions from './navActions';
 import * as fetchDataActions from './fetchDataActions';
 import * as userActions from './userActions';
 import * as asyncWrappers from './asyncWrappers';
+import * as usersActions from './usersActions';
 
 // export event actions
 export const postEvent = eventActions.postEvent;
@@ -41,3 +42,6 @@ export const getUserEvents = userActions.getUserEvents;
 
 //async wrapper
 export const asyncWrapper = asyncWrappers.asyncWrapper;
+
+//users actions
+export const getUsersForEvent = usersActions.getUsersForEvent;
