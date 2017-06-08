@@ -3709,6 +3709,12 @@ passport-twitter@^1.0.4:
     passport-oauth1 "1.x.x"
     xtraverse "0.1.x"
 
+passport.socketio@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/passport.socketio/-/passport.socketio-3.7.0.tgz#2ee5fafe9695d4281c8cddd3fe975ecd18e6726e"
+  dependencies:
+    xtend "^4.0.0"
+
 passport@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/passport/-/passport-0.3.2.tgz#9dd009f915e8fe095b0124a01b8f82da07510102"
