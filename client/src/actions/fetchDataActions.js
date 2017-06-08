@@ -6,30 +6,6 @@ import { getAllEvents } from './eventActions';
 import { getAllMaps } from './mapActions';
 import { getUserEvents } from './userActions';
 
-// export const fetchInitDataStart = () => {
-//   return {
-//     type: 'FETCH_START',
-//     fetching: true
-//   };
-// };
-
-// export const fetchInitDataError = (error) => {
-//   return {
-//     type: 'FETCH_ERROR',
-//     fetching: false,
-//     hasErrored: true,
-//     error
-//   };
-// };
-
-// export const fetchInitDataSuccess = (data) => {
-//   return {
-//     type: 'FETCH_SUCCESS',
-//     fetching: false,
-//     data
-//   };
-// };
-
 export const fetchData = (userId, destinationView) => {
   return dispatch => {
     return Promise.all([
@@ -41,21 +17,5 @@ export const fetchData = (userId, destinationView) => {
     }).catch(err => {
       dispatch(changeView('ERROR'));
     });
-    // let actions [getAllEvents, getAllMaps, getUserEvents]
-    // return dispatch(asyncWrapper([getAllEvents(), getAllMaps(), getUserEvents(userId)], destinationView));
-    // dispatch(changeView('SPINNER'));
-    // axios.get('/api/dashboard', {
-    //   params: {
-    //     id: userId
-    //   }
-    // })
-    //   .then(response => {
-    //     dispatch(fetchInitDataSuccess(response.data));
-    //     dispatch(changeView('DASHBOARD'));
-    //   })
-    //   .catch(error => {
-    //     dispatch(fetchInitDataError(error));
-    //     dispatch(changeView('ERROR'));
-    //   });
   };
 };
