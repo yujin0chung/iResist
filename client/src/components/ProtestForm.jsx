@@ -214,9 +214,10 @@ class ProtestForm extends React.Component {
             value="Cancel"
             onClick={() => this.props.changeView("DASHBOARD")}
           />
-          {/*{this.state.isEditing ? 
-            <input type="button" value="CANCEL EVENT" onClick={() => this.props.changeView('DASHBOARD')} />
-          }*/}
+          {this.state.isEditing ? 
+            <input type="button" value="CANCEL EVENT" onClick={() => {this.props.deleteEvent(this.state.eventId); this.props.changeView('DASHBOARD')}} /> :
+            <div></div>
+          }
         </form>
       </div>
     );
