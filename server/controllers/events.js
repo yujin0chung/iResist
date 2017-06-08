@@ -74,7 +74,6 @@ module.exports.leaveEvent = (req, res) => {
 
 module.exports.getAllEvents = (req, res) => {
   //testing this out to see if events are being received
-  console.log("THESE ARE ALL THE EVENT: ", res.body);
 
   models.Events.findAllEvents((err, allEvents) => {
     if (err) {
@@ -107,3 +106,15 @@ module.exports.updateEvent = (req, res) => {
     }
   });
 };
+
+module.exports.deleteEvent = (req, res) => {
+  models.Events.deleteEventById(req.query.eventId, (err, data) => {
+    console.log('DELETE EVENT SERVER REQ.BODY', req.query)
+    if (err) {
+      console.log('DELETE EVENT ERROR FROM SERVER', err)
+      res.send(500, err);
+    } else {
+      res.send(200, data);
+    }
+  });
+}
