@@ -1,7 +1,7 @@
 import React from 'react';
 import io from 'socket.io-client';
 
-class DayOContainer extends React.Component {
+class DayOfContainer extends React.Component {
   constructor(props) {
     super(props);
 
