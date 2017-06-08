@@ -46,6 +46,10 @@ export const events = (state = {}, action) => {
     return Object.assign({}, state, {
       error: action.error
     })
+  case 'DELETE_EVENT_ERROR':
+    return Object.assign({}, state, {
+      error: action.error
+    })
   default:
     return state;
   }
