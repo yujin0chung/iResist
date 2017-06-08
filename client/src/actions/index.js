@@ -15,14 +15,9 @@ export const addUserToEvent = eventActions.addUserToEvent;
 export const removeUserFromEvent = eventActions.removeUserFromEvent;
 export const getAllEvents = eventActions.getAllEvents;
 export const getEvent = eventActions.getEvent;
+export const setDayOfEvent = eventActions.setDayOfEvent;
 
 // navigation actions
-export const viewDashboard = navActions.viewDashboard;
-export const viewCreateEditEvent = navActions.viewCreateEditEvent;
-export const viewEventDropDown = navActions.viewEventDropDown;
-export const viewEventCard = navActions.viewEventCard;
-export const viewMap = navActions.viewMap;
-export const viewFeed = navActions.viewFeed;
 export const changeView = navActions.changeView;
 
 // map actions
