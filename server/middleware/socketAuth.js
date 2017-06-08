@@ -7,14 +7,17 @@ const onAuthorizeSuccess = (data, accept) =>{
 };
 
 const onAuthorizeFail = (data, message, error, accept) => {
+  console.log('THE AUTH DENIED ACCESS TO SOMETHING');
   if (error) {
     accept(new Error(message));
   }
 };
 
-io.use(passportSocketIo.authorize({
+const socketAuth = passportSocketIo.authorize({
   secret: auth.redisSecret,
   store: auth.redisStore,
   success: onAuthorizeSuccess,
   fail: onAuthorizeFail,
-}));
+});
+
+module.exports = socketAuth;
