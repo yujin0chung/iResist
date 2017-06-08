@@ -32,7 +32,17 @@ import { getUserEvents } from './userActions';
 
 export const fetchData = (userId, destinationView) => {
   return dispatch => {
-    dispatch(asyncWrapper([getAllevents(userId), getAllMaps(), getUserEvents(userId)], destinationView));
+    return Promise.all([
+      dispatch(getAllEvents()),
+      dispatch(getUserEvents(userId)),
+      dispatch(getAllMaps())
+    ]).then(output => {
+      dispatch(changeView(destinationView));
+    }).catch(err => {
+      dispatch(changeView('ERROR'));
+    });
+    // let actions [getAllEvents, getAllMaps, getUserEvents]
+    // return dispatch(asyncWrapper([getAllEvents(), getAllMaps(), getUserEvents(userId)], destinationView));
     // dispatch(changeView('SPINNER'));
     // axios.get('/api/dashboard', {
     //   params: {

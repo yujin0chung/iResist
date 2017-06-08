@@ -18,29 +18,29 @@ export const getUserEventsSuccess = (userEvents) => {
 };
 
 export const getUserEvents = (userId) => dispatch => {
-  axios.get('/api/user/events', {
+  return axios.get('/api/user/events', {
     params: {
       userId: userId
     }
   })
   .then(response => {
-    dispatch(getUserEventsSuccess(response.data));
-  })
-  .catch(err => {
-    return ['ERROR-ERROR', err];
+    return dispatch(getUserEventsSuccess(response.data));
   });
+  // .catch(err => {
+  //   return ['ERROR-ERROR', err];
+  // });
 };
 
-export const getUserId = (cb) => {
+export const getUserId = () => {
   return dispatch => {
     dispatch(changeView('SPINNER'));
     axios.get('/api/user/id')
       .then(response => {
         dispatch(getUserIdSuccess(response.data.user));
-        dispatch(fetchData(response.data.user.id), 'DASHBOARD');
-      })
-      .catch(error => {
-        dispatch(changeView('ERROR'));
+        dispatch(fetchData(response.data.user.id, 'DASHBOARD'));
       });
+      // .catch(error => {
+      //   dispatch(changeView('ERROR'));
+      // });
   };
 };

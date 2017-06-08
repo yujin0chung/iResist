@@ -18,6 +18,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.getUserId();
+    // this.props.asyncWrapper([this.props.getAllEvents(), this.props.getAllMaps(), this.props.getUserEvents(userId)], destinationView);
     // this.props.asyncWrapper([this.props.getAllEvents()], 'DASHBOARD');
     // this.props.getAllMaps();
   }

@@ -10,13 +10,13 @@ export const getAllEventsSuccess = events => {
 
 export const getAllEvents = () => {
   return dispatch => {
-    axios.get('/api/events/all')
+    return axios.get('/api/events/all')
       .then(events => {
-        dispatch(getAllEventsSuccess(events));
-      })
-      .catch(err => {
-        return ['ERROR-ERROR', err];
+        return dispatch(getAllEventsSuccess(events));
       });
+      // .catch(err => {
+      //   return ['ERROR-ERROR', err];
+      // });
   };
 };
 

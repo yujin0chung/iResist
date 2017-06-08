@@ -30,12 +30,12 @@ export const getAllMapsSuccess = (maps) => {
 
 export const getAllMaps = () => {
   return dispatch => {
-    axios.get('/api/maps/all')
+    return axios.get('/api/maps/all')
       .then(maps => {
-        dispatch(getAllMapsSuccess(maps));
-      })
-      .catch(err => {
-        return ['ERROR-ERROR', err];
+        return dispatch(getAllMapsSuccess(maps));
       });
+      // .catch(err => {
+      //   return ['ERROR-ERROR', err];
+      // });
   };
 };
