@@ -120,7 +120,7 @@ module.exports.deleteEvent = (req, res) => {
 };
 
 module.exports.getAllUsersForEvent = (req, res) => {
-  models.Events.findAllUsersForEvent((err, allUsers) => {
+  models.Events.findAllUsersForEvent(req.query.eventId, (err, allUsers) => {
     if (err) {
       res.send(500, err);
     } else {
