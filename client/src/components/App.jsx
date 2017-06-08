@@ -15,15 +15,7 @@ class App extends React.Component {
     super(props);
     this.state = {};
 
-    if (process.env.URL) {
-      URL = `${process.env.URL}:${process.env.PORT}`;
-    } else {
-      URL = 'http://127.0.0.1:3000';
-    }
-
-    console.log('io.connect URL is:', URL);
-
-    this.client = io.connect(URL);
+    this.client = io();
     this.updateView = this.updateView.bind(this);
   }
 
