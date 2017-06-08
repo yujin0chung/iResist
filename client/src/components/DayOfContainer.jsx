@@ -1,10 +1,22 @@
 import React from 'react';
+import io from 'socket.io-client';
 
 class DayOContainer extends React.Component {
   constructor(props) {
     super(props);
 
     this.store = {};
+    this.client = io();
+  }
+
+  componentDidMount() {
+    this.client.on('connect', () => {
+      this.client.emit('room', this.props.collegeId);
+    });
+
+    this.client.on('roomResponse', (response) => {
+      console.log(response);
+    });
   }
 
   render () {

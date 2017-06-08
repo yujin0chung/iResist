@@ -7,7 +7,6 @@ import Dashboard from './Dashboard.jsx';
 import ProtestForm from './ProtestForm.jsx';
 import { Header, Button, Fist } from './StyledComponents.jsx';
 import styled from 'styled-components';
-import io from 'socket.io-client';
 
 
 class App extends React.Component {
@@ -15,23 +14,11 @@ class App extends React.Component {
     super(props);
     this.state = {};
 
-    this.client = io();
     this.updateView = this.updateView.bind(this);
   }
 
   componentDidMount() {
     this.props.getUserId();
-
-    this.client.on('connect', () => {
-      this.client.emit('room', this.props.collegeId);
-    });
-
-    this.client.on('roomResponse', (response) => {
-      console.log(response);
-    });
-    // this.props.asyncWrapper([this.props.getAllEvents(), this.props.getAllMaps(), this.props.getUserEvents(userId)], destinationView);
-    // this.props.asyncWrapper([this.props.getAllEvents()], 'DASHBOARD');
-    // this.props.getAllMaps();
   }
 
   updateView(view) {
