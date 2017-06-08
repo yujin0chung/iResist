@@ -22,6 +22,7 @@ export const fetchData = (userId, destinationView) => {
 
 export const fetchDayOfData = (userId, eventId, destinationView) => {
   return dispatch => {
+    dispatch(changeView('SPINNER'));
     return promise.All([
 
     ]).then(output => {
