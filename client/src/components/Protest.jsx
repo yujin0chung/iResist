@@ -9,7 +9,7 @@ import { Status, Title, Name, Info, Icon } from './StyledComponents.jsx';
 
 class Protest extends React.Component {
   constructor(props) {
-    super(props); 
+    super(props);
     this.state = {
       displayDetails: false,
     };
@@ -18,9 +18,14 @@ class Protest extends React.Component {
   }
 
   handleProtestClick() {
-    this.setState({
-      displayDetails: !this.state.displayDetails
-    });
+    if (this.props.eventType === 'ongoing') {
+      this.props.setDayOfEvent(this.props.protestId);
+      this.props.changeView('DAY_OF');
+    } else {
+      this.setState({
+        displayDetails: !this.state.displayDetails
+      });
+    }
   }
 
   render() {
