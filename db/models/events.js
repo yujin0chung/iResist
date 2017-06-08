@@ -164,5 +164,38 @@ module.exports.updateEventById = (updatedEvent, cb) => {
     .catch(error => {
       console.log('ERROR FROM UPDATE EVENTS QUERY', error);
       cb(error, null);
+    });
+}
+
+module.exports.deleteEventById = (eventId, cb) => {
+  console.log('EVENT ID FROM DELETE EVENT QUERY', eventId)
+  knex('maps')
+    .where('event_id', eventId)
+    .del()
+    .then(() => (
+      knex('users_events')
+
+    ))
+    .then(() => (
+      knex('feed')
+        .where('id', eventId)
+        .del()
+    ))
+    .then(() => (
+      knex('users_events')
+        .where('id', eventId)
+        .del()
+    ))
+    .then(() => {
+      knex('events')
+        .where('id', eventId)
+        .del()
+    })
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(error => {
+      console.log('DELETE EVENT ERROR', error)
+      cb(error, null);
     })
 }
