@@ -4,8 +4,9 @@ import _ from 'lodash';
 import { AttendButton, AbandonButton, EditButton } from './StyledComponents.jsx';
 
 const EventButton = (props) => {
+
   const leader = props.leader;
-  if (leader) { return (<EditButton>Make Changes</EditButton>) }
+  if (leader) { return (<EditButton onClick={() => props.changeView('ORGANIZE_PROTEST', props.protestId)}>Make Changes</EditButton>) }
 
   const participating = props.role === 'organizing' || props.role === 'attending';
   return participating ? 
@@ -18,5 +19,6 @@ const EventButton = (props) => {
        props.changeView('DASHBOARD')}}>Join
      </AttendButton>);
 }
+
 
 export default EventButton;

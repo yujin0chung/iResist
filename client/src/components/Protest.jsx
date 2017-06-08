@@ -45,7 +45,7 @@ class Protest extends React.Component {
             <p><b>Attendee Count:</b> {this.props.protest.attendee_count}</p>
           </Info>
           <MapContainer {...this.props} mapType='dashboardMap' />
-          <EventButton {...this.props} leader={leader} userId={userId} />
+          <EventButton {...this.props} leader={leader} userId={userId} protestId={this.props.protest.id} />
         </div>
       );
     } else {

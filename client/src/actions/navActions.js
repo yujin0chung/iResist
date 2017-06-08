@@ -1,6 +1,7 @@
-export const changeView = (newView) => {
+export const changeView = (newView, optionalEventId) => {
   return {
     type: 'CHANGE_VIEW',
-    newView
+    newView,
+    optionalEventId
   };
 };

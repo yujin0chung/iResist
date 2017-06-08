@@ -3,16 +3,14 @@ import { connect } from 'react-redux';
 import { HomeIcon } from './StyledComponents.jsx';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import axios from 'axios';
-import _ from 'lodash';
 
 
-class ProtestForm extends React.Component {
+class EditProtest extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       name: '',
-      userId: this.props.user.userId,
+      userId: this.props.fetchInitDataReducer.data.user.userId,
       description: '',
       cause: '',
       address: '',
@@ -27,41 +25,11 @@ class ProtestForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLocSearch = this.handleLocSearch.bind(this);
-    this.getEventData = this.getEventData.bind(this);
   }
-
-
-
-  getEventData() {
-    let event;
-    if (this.props.views.optionalEventId) {
-    //console.log('THIS.PROP.EVENTS', this.props.events)
-    event = _.find(this.props.events.allEvents, event =>  { return event.id === this.props.views.optionalEventId });
-    console.log('GET EVENT DATA EVENT', event)
-    let wholeDate = JSON.stringify(new Date(Number(event.time)));
-    console.log('WHOLE DATE', wholeDate)
-    let day = wholeDate.split("").slice(1, 11).join("");
-    console.log('this is the day ', day);
-     
-    this.setState({
-      eventId: this.props.views.optionalEventId || '',
-      name: event.name,
-      description: event.description,
-      cause: event.cause,
-      address: event.address,
-      date: day
-    })
-    }
-  }
-
-  componentWillMount() {
-    this.getEventData()
-  }
-
 
   handleSubmit (e) {
     e.preventDefault();
-    this.props.views.optionalEventId !== '' ? this.props.updateEvent(this.state) : this.props.postEvent(this.state);
+    this.props.postEvent(this.state);
     this.props.changeView('DASHBOARD');
   }
 
@@ -84,35 +52,29 @@ class ProtestForm extends React.Component {
     });
   }
 
-  validTime (startTimeString, endTimeString) {
-    var startTime = Number(startTimeString.split(':').join(''));
-    var endTime = Number(endTimeString.split(':').join(''));
+  validTime (startTimeString, endTimeString){
+    var startTime = Number(startTimeString.split(":").join(""));
+    var endTime = Number(endTimeString.split(":").join(""));
     var today = JSON.stringify(new Date()).slice(1, 11) === this.state.date;
-    var currentTime = Number(Date().split(' ')[4].split(':').slice(0, 2).join(''));
-    if (today && currentTime > startTime) {
+    var currentTime = Number(Date().split(" ")[4].split(":").slice(0, 2).join(""));
+    if(today && currentTime > startTime){
       return false;
     }
-    if (endTime < startTime ) {
+    if(endTime < startTime ){
       return false;
     }
     return true;
   }
 
-
   render() {
-
-    console.log('THIS.PROPS.VIEWS.OPTIONALEVENTId', this.props.views.optionalEventId);
-    console.log('THIS IS state FROM FORM', this.state)
-    
-
+    console.log('PROTEST FORM', this.state)
     const { name, address, date, timeStart, timeEnd, lat, long} = this.state;
     const validDate = JSON.stringify(new Date()).slice(1, 11);
     const formValid = name.length > 0 && address.length > 0 && date.length > 0 && timeStart.length && timeEnd.length && (this.validTime(this.state.timeStart, this.state.timeEnd)) && lat !== 0 && long !== 0;
-    
     return (
       <div>
           <HomeIcon
-            className="fa fa-home fa-lg"
+            className="fa fa-home"
             onClick={() => this.props.changeView('DASHBOARD')}
           >
           </HomeIcon>
@@ -152,7 +114,7 @@ class ProtestForm extends React.Component {
               <input type="time" value={this.state.timeStart} onChange={(e) => this.setState({ timeStart: e.target.value })} />
               <input type="time" value={this.state.timeEnd} onChange={(e) => this.setState({ timeEnd: e.target.value })} />
             </label> < br/>
-          <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => { this.handleSubmit(e); this.props.changeView('DASHBOARD') ;}}/>
+          <input type="submit" value="Submit" disabled={!formValid} onClick={(e) => { this.handleSubmit(e); this.props.changeView('DASHBOARD')}}/>
           <input type="button" value="Cancel" onClick={() => this.props.changeView('DASHBOARD')} />
           </form>
       </div>
@@ -161,4 +123,4 @@ class ProtestForm extends React.Component {
 }
 
 
-export default ProtestForm;
+export default EditProtest;

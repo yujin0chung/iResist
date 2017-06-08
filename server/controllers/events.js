@@ -89,7 +89,9 @@ module.exports.getAllEvents = (req, res) => { //testing this out to see if event
 };
 
 module.exports.updateEvent = (req, res) => {
-  models.Events.updateEventById(req.body.eventId, req.body, (err, data) => {
+  console.log('REQ.BODY FROM UPDATE EVENT SERVER', req.body.updatedEvent)
+  console.log('REQ BODY FROM UPDATE EVENT EVENT.ID', req.body.updatedEvent.eventId)
+  models.Events.updateEventById(req.body.updatedEvent, (err, data) => {
     if (err) {
       res.send(500, err);
     } else {

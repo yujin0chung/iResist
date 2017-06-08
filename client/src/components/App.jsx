@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions/index';
 import FindProtest from './FindProtest.jsx';
+import EditProtest from './EditProtest.jsx';
 import Dashboard from './Dashboard.jsx';
 import ProtestForm from './ProtestForm.jsx';
 import { Header, Button, Fist } from './StyledComponents.jsx';
@@ -35,6 +36,9 @@ class App extends React.Component {
     }
     if (currentView === 'FIND_PROTEST') {
       return (<FindProtest {...this.props} />);
+    }
+    if (currentView === 'EDIT_PROTEST') {
+      return (<EditProtest {...this.props} />)
     }
     if (currentView === 'ORGANIZE_PROTEST') {
       return (<ProtestForm {...this.props} />);

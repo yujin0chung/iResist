@@ -1,6 +1,34 @@
 import axios from 'axios';
 import { fetchData } from './fetchDataActions';
 
+export const getEventSuccess = event => {
+  return {
+    type: 'GET_EVENT_SUCCESS',
+    event
+  }
+}
+
+export const getEventError = error => {
+  return {
+    type: 'GET_EVENT_ERROR',
+    error
+  }
+}
+
+export const getEvent = (eventId) => {
+  axios.get('/api/events/event', {
+    params: {
+      eventId
+    }
+  })
+  .then(response => {
+    dispatch(getEventSuccess(response.data))
+  })
+  .catch(error => {
+    dispatch(getEventError(error))
+  });
+}
+
 export const getAllEventsSuccess = events => {
   return {
     type: 'GET_ALL_EVENTS_SUCCESS',
@@ -102,12 +130,35 @@ export const removeUserFromEvent = (eventId, userId) => dispatch => {
 };
 
 
-export const editEvent = () => {
+export const updateEventSuccess = (updatedEvent) => {
   return {
-    type: 'INSERT TYPE HERE',
+    type: 'UPDATE_EVENT',
+    updatedEvent
     // INSERT OTHER CHANGES HERE
   };
 };
+
+export const updateEventError = error => {
+  return {
+    type: 'UPDATE_EVENT_ERROR',
+    error
+  };
+};
+
+export const updateEvent = (updatedEvent) => dispatch => {
+  axios.post('/api/events/update', {
+    params: {
+      updatedEvent
+    }
+  })
+  .then(response => {
+    console.log('RESPONSE FROM UPDATE EVENT', response.data)
+    dispatch(updateEvent(response.data));
+  })
+  .catch(error => {
+    dispatch(updateEventError(error));
+  });
+}
 
 export const deleteEvent = () => {
   return {

@@ -138,16 +138,26 @@ module.exports.leaveEvent = (eventId, userId, cb) => {
 };
 
 
-module.exports.updateEventById = (eventId, newInfo, cb) => {
+module.exports.updateEventById = (updatedEvent, cb) => {
+  console.log('UPDATE EVENT BY ID QUERY', updatedEvent)
+  console.log('EVENT ID!', updatedEvent.eventId)
+
+  const startHours = updatedEvent.timeStart.split(':')[0];
+  const startMinutes = updatedEvent.timeStart.split(':')[1];
+  const endHours = updatedEvent.timeEnd.split(':')[0];
+  const endMinutes = updatedEvent.timeEnd.split(':')[1];
+  const eventStart = formatDate(updatedEvent.lat, updatedEvent.long, updatedEvent.date, startHours, startMinutes);
+  const eventEnd = formatDate(updatedEvent.lat, updatedEvent.long, updatedEvent.date, endHours, endMinutes);
+
   knex('events')
-    .where('id', '=', eventId)
+    .where('id', '=', updatedEvent.eventId)
     .update({
-      name: newInfo.name,
-      description: newInfo.description,
-      cause: newInfo.cause,
-      address: newInfo.address,
-      time: newInfo.time,
-      duration: newInfo.duration
+      name: updatedEvent.name,
+      description: updatedEvent.description,
+      cause: updatedEvent.cause,
+      address: updatedEvent.address,
+      time: updatedEvent.timeStart,
+      duration: eventEnd - eventStart
     })
     .then(data => {
       cb(null, data);

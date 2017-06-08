@@ -8,12 +8,13 @@ import * as asyncWrappers from './asyncWrappers';
 
 // export event actions
 export const postEvent = eventActions.postEvent;
-export const editEvent = eventActions.editEvent;
+export const updateEvent = eventActions.updateEvent;
 export const deleteEvent = eventActions.deleteEvent;
 export const attendEvent = eventActions.attendEvent;
 export const addUserToEvent = eventActions.addUserToEvent;
 export const removeUserFromEvent = eventActions.removeUserFromEvent;
 export const getAllEvents = eventActions.getAllEvents;
+export const getEvent = eventActions.getEvent;
 
 // navigation actions
 export const viewDashboard = navActions.viewDashboard;
