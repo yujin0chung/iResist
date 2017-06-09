@@ -34,6 +34,7 @@ export const deleteItem = feedActions.deleteItem;
 
 // fetch actions
 export const fetchData = fetchDataActions.fetchData;
+export const fetchDayOfData = fetchDataActions.fetchDayOfData;
 
 //user actions
 export const getUserId = userActions.getUserId;

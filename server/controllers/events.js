@@ -121,6 +121,7 @@ module.exports.deleteEvent = (req, res) => {
 };
 
 module.exports.getAllUsersForEvent = (req, res) => {
+  console.log(req.query, req.params);
   models.Events.findAllUsersForEvent(req.query.eventId, (err, allUsers) => {
     if (err) {
       res.send(500, err);

@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const getUserEventsSuccess = (users) => {
   return {
     type: 'GET_USERS_FOR_EVENT_SUCCESS',

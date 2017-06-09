@@ -20,7 +20,7 @@ class Protest extends React.Component {
   handleProtestClick() {
     if (this.props.eventType === 'ongoing') {
       this.props.setDayOfEvent(this.props.protestId);
-      this.props.changeView('DAY_OF');
+      this.props.fetchDayOfData(this.props.user.userId, this.props.protestId, 'DAY_OF');
     } else {
       this.setState({
         displayDetails: !this.state.displayDetails
