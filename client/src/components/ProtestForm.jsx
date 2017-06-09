@@ -31,6 +31,7 @@ class ProtestForm extends React.Component {
     this.getEventData = this.getEventData.bind(this);
   }
 
+
   componentDidMount() {
     if (this.state.isEditing) {
       this.getEventData();
@@ -98,7 +99,14 @@ class ProtestForm extends React.Component {
 
   render() {
     const { name, address, date, timeStart, timeEnd, lat, long } = this.state;
-    const validDate = JSON.stringify(new Date()).slice(1, 11);
+    const validDate = JSON.stringify(new Date()).slice(1, 11); //old one
+    // var validDate = (new Date).toLocaleDateString().split('/');
+    // validDate[0] = '0' + validDate[0];
+    // validDate[1] = '0' + validDate[1];
+    // var temp = validDate[0];
+    // validDate[0] = validDate[1];
+    // validDate[1] = temp;
+    // validDate = validDate.reverse().join("-");
     const formValid =
       name.length > 0 &&
       address.length > 0 &&
@@ -214,7 +222,7 @@ class ProtestForm extends React.Component {
             value="Cancel"
             onClick={() => this.props.changeView("DASHBOARD")}
           />
-          {this.state.isEditing ? 
+          {this.state.isEditing ?
             <input type="button" value="CANCEL EVENT" onClick={() => {this.props.deleteEvent(this.state.eventId); this.props.changeView('DASHBOARD')}} /> :
             <div></div>
           }
