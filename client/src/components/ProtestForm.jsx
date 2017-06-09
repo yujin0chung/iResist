@@ -4,6 +4,9 @@ import { HomeIcon } from "./StyledComponents.jsx";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import axios from "axios";
 import _ from "lodash";
+import moment from 'moment';
+import momentTimezone from 'moment-timezone';
+import tzlookup from 'tz-lookup';
 
 class ProtestForm extends React.Component {
   constructor(props) {
@@ -23,6 +26,7 @@ class ProtestForm extends React.Component {
       long: 0,
       protests: [],
       zoom: 1,
+      timezone: "",
       isEditing: this.props.views.optionalEventId ? true : false
     };
 
@@ -88,6 +92,7 @@ class ProtestForm extends React.Component {
     var currentTime = Number(
       Date().split(" ")[4].split(":").slice(0, 2).join("")
     );
+    console.log('this is the current time: ', currentTime);
     if (today && currentTime > startTime) {
       return false;
     }
@@ -99,14 +104,12 @@ class ProtestForm extends React.Component {
 
   render() {
     const { name, address, date, timeStart, timeEnd, lat, long } = this.state;
-    const validDate = JSON.stringify(new Date()).slice(1, 11);
-    // var validDate = (new Date).toLocaleDateString().split('/');
-    // validDate[0] = '0' + validDate[0];
-    // validDate[1] = '0' + validDate[1];
-    // var temp = validDate[0];
-    // validDate[0] = validDate[1];
-    // validDate[1] = temp;
-    // validDate = validDate.reverse().join("-");
+    // const validDate = JSON.stringify(new Date()).slice(1, 11);
+    var timezone = tzlookup(this.state.lat, this.state.long);
+    var timestamp = Date.now();
+    console.log(timezone);
+    var validDate = moment.tz(timestamp, timezone).format().slice(0, 10);
+
     const formValid =
       name.length > 0 &&
       address.length > 0 &&

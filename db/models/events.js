@@ -174,7 +174,6 @@ module.exports.deleteEventById = (eventId, cb) => {
     .del()
     .then(() => (
       knex('users_events')
-
     ))
     .then(() => (
       knex('feed')
