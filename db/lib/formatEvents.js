@@ -23,9 +23,9 @@ module.exports = (allEvents, allOrganizers, allMaps) => {
   });
 
   allMaps.forEach(map => {
-     output[map.event_id].tzOffset = tzwhere.tzOffsetAt(map.lat, map.long)
+    output[map.event_id].tzOffset = tzwhere.tzOffsetAt(map.lat, map.long);
   });
-  
+
   return output;
 };
 

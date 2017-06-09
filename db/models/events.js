@@ -70,7 +70,7 @@ module.exports.createEvent = (data, cb) => {
   const eventStart = formatDate(data.lat, data.long, data.date, startHours, startMinutes);
   const eventEnd = formatDate(data.lat, data.long, data.date, endHours, endMinutes);
 
-  console.log('DATA FROM CREATE EVENT', data)
+  console.log('DATA FROM CREATE EVENT', data);
   const values = {
     name: data.name,
     description: data.description,
@@ -183,10 +183,10 @@ module.exports.updateEventById = (updatedEvent, cb) => {
       console.log('ERROR FROM UPDATE EVENTS QUERY', error);
       cb(error, null);
     });
-}
+};
 
 module.exports.deleteEventById = (eventId, cb) => {
-  console.log('EVENT ID FROM DELETE EVENT QUERY', eventId)
+  console.log('EVENT ID FROM DELETE EVENT QUERY', eventId);
   knex('maps')
     .where('event_id', eventId)
     .del()
@@ -201,19 +201,19 @@ module.exports.deleteEventById = (eventId, cb) => {
     ))
     .then(() => (
       knex('users_events')
-        .where('id', eventId)
+        .where('event_id', eventId)
         .del()
     ))
     .then(() => {
       knex('events')
         .where('id', eventId)
-        .del()
+        .del();
     })
     .then(data => {
       cb(null, data);
     })
     .catch(error => {
-      console.log('DELETE EVENT ERROR', error)
+      console.log('DELETE EVENT ERROR', error);
       cb(error, null);
-    })
-}
+    });
+};
