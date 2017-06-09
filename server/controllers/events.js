@@ -1,5 +1,6 @@
 const models = require('../../db/models');
 const formatEvents = require('../../db/lib/formatEvents');
+const formatUsers = require('../../db/lib/formatUsers');
 
 module.exports.createEvent = (req, res) => {
   models.Events.createEvent(req.body, (err, data) => {
@@ -124,7 +125,8 @@ module.exports.getAllUsersForEvent = (req, res) => {
     if (err) {
       res.send(500, err);
     } else {
-      res.send(200, allUsers);
+      const users = formatUsers(allUsers);
+      res.send(200, users);
     }
   });
 };
