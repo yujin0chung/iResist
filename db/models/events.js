@@ -192,11 +192,10 @@ module.exports.deleteEventById = (eventId, cb) => {
     .del()
     .then(() => (
       knex('users_events')
-
     ))
     .then(() => (
       knex('feed')
-        .where('id', eventId)
+        .where('event_id', eventId)
         .del()
     ))
     .then(() => (
@@ -206,8 +205,8 @@ module.exports.deleteEventById = (eventId, cb) => {
     ))
     .then(() => {
       knex('events')
-        .where('id', eventId)
-        .del();
+        .where('event_id', eventId)
+        .del()
     })
     .then(data => {
       cb(null, data);
