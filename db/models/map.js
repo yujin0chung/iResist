@@ -34,3 +34,7 @@ module.exports.makeMap = (eventId, lat, long, cb) => {
       cb(e, null);
     });
 };
+
+module.exports.getDayOfMap = (eventId, cb) => {
+
+};
