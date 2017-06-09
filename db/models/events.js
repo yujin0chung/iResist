@@ -135,7 +135,25 @@ module.exports.leaveEvent = (eventId, userId, cb) => {
   .catch(e => {
     console.log('ERROR FROM MODELS/LEAVEEVENT: ', e);
     cb (e, null);
-  })
+  });
+};
+
+module.exports.findAllUsersForEvent = (eventId, cb) => {
+  console.log('THIS IS THE DATA ABOUT TO GO INTO THE NEW QUERY', eventId);
+  knex.raw(
+    `
+    SELECT users.id, users.username, users.credibility, users_events.type FROM users
+    INNER JOIN users_events ON users.id = users_events.user_id
+    INNER JOIN events ON events.id = users_events.event_id
+    WHERE events.id = ?;
+    `, eventId
+    )
+    .then(data => {
+      cb(null, data.rows);
+    })
+    .catch(err => {
+      cb(err, null);
+    });
 };
 
 
