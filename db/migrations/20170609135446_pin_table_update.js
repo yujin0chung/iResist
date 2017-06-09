@@ -3,8 +3,8 @@ exports.up = function(knex, Promise) {
   return knex.schema.table('pins', function(t) {
     t.string('text', 200).nullable();
     t.string('type', 200).nullable();
-    t.bigInteger('latitude').notNullable();
-    t.bigInteger('longitude').notNullable();
+    t.float('latitude').notNullable();
+    t.float('longitude').notNullable();
     t.integer('credibility').nullable();
     t.dropColumn('pin_location');
   });
