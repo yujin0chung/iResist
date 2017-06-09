@@ -1,4 +1,4 @@
-const knex = require('../').knex
+const knex = require('../').knex;
 
 module.exports.allMaps = (cb) => {
   knex.select().from('maps')
@@ -7,8 +7,8 @@ module.exports.allMaps = (cb) => {
     })
     .catch(e => {
       cb(e, null);
-    })
-}
+    });
+};
 
 module.exports.findMapById = (eventId, cb) => {
   knex.select().from('maps')
@@ -18,19 +18,19 @@ module.exports.findMapById = (eventId, cb) => {
     })
     .catch(e => {
       cb(e, null);
-    })
-}
+    });
+};
 
 module.exports.makeMap = (eventId, lat, long, cb) => {
   knex('maps').insert({
-      event_id: eventId,
-      lat: lat,
-      long: long
-    })
+    event_id: eventId,
+    lat: lat,
+    long: long
+  })
     .then(data => {
       cb(null, data);
     })
     .catch(e => {
       cb(e, null);
-    })
-}
+    });
+};

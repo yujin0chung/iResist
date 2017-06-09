@@ -18,11 +18,11 @@ class Dashboard extends React.Component {
   togglePastProtests() {
     this.setState({
       showPastProtests: !this.state.showPastProtests
-    })
+    });
   }
 
   render() {
-    
+
     const events = this.props.events.allEvents;
 
     const upcoming = _.filter(events, event => { return event.status === 'upcoming' });
@@ -35,17 +35,17 @@ class Dashboard extends React.Component {
       <div>
 
         <Title>Ongoing Protests</Title>
-          <MyProtestList eventListType={ongoing} {...this.props}  />
+          <MyProtestList eventListType={ongoing} {...this.props} eventType="ongoing"/>
 
         <Title>Upcoming Protests</Title>
-          <MyProtestList eventListType={upcoming} {...this.props} />
+          <MyProtestList eventListType={upcoming} {...this.props} eventType="upcoming"/>
 
         <div style={{display: 'flex', flexDirection: 'row'}}>
         <Title>Past Protests</Title>
           <i onClick={() => this.togglePastProtests()} className="fa fa-angle-down" aria-hidden="true" style={{paddingLeft: '15px', paddingTop: '10px'}}></i>
         </div>
-          {this.state.showPastProtests ? <MyProtestList  eventListType={past} {...this.props} /> : <div></div>}
-    
+          {this.state.showPastProtests ? <MyProtestList eventListType={past} {...this.props} eventType="past"/> : <div></div>}
+
       </div>
     );
   }

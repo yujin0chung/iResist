@@ -163,16 +163,24 @@ export const deleteEventError = error => {
   };
 };
 
+
 export const deleteEvent = (eventId) => dispatch => {
   axios.delete('/api/events/delete', {
-    params: { 
-      eventId 
+    params: {
+      eventId
     }
   })
   .then(response => {
-    dispatch(getAllEvents())
+    dispatch(getAllEvents());
   })
   .catch(error => {
-    dispatch(deleteEventError(error))
+    dispatch(deleteEventError(error));
   });
+};
+
+export const setDayOfEvent = (eventId) => {
+  return {
+    type: 'OPEN_DAY_OF_EVENT',
+    eventId
+  };
 };

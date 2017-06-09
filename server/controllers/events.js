@@ -1,5 +1,6 @@
-const models = require("../../db/models");
-const formatEvents = require("../../db/lib/formatEvents");
+const models = require('../../db/models');
+const formatEvents = require('../../db/lib/formatEvents');
+const formatUsers = require('../../db/lib/formatUsers');
 
 module.exports.createEvent = (req, res) => {
   models.Events.createEvent(req.body, (err, data) => {
@@ -10,7 +11,7 @@ module.exports.createEvent = (req, res) => {
         if (err) {
           res.send(500, err);
         } else {
-          console.log("Should be event id: ", data[0]);
+          console.log('Should be event id: ', data[0]);
           models.Map.makeMap(
             data[0],
             req.body.lat,
@@ -30,14 +31,14 @@ module.exports.createEvent = (req, res) => {
 };
 
 module.exports.joinEvent = (req, res) => {
-  console.log("JOIN EVENT REQ.BODY:", req.body);
+  console.log('JOIN EVENT REQ.BODY:', req.body);
   models.Events.joinEvent(
     req.body.eventId,
     req.body.userId,
-    (type = "attendee"),
+    (type = 'attendee'),
     (err, data) => {
       if (err) {
-        console.log("ERR FROM CONTROLLERS/EVENTS:", err);
+        console.log('ERR FROM CONTROLLERS/EVENTS:', err);
         res.send(500, err);
       } else {
         models.Events.incrementAttendeeCount(req.body.eventId, (err, data) => {
@@ -54,10 +55,10 @@ module.exports.joinEvent = (req, res) => {
 };
 
 module.exports.leaveEvent = (req, res) => {
-  console.log("LEAVE EVENT REQ.BODY:", req.body);
+  console.log('LEAVE EVENT REQ.BODY:', req.body);
   models.Events.leaveEvent(req.body.eventId, req.body.userId, (err, data) => {
     if (err) {
-      console.log("ERR FROM CONTROLLERS/EVENTS:", err);
+      console.log('ERR FROM CONTROLLERS/EVENTS:', err);
       res.send(500, err);
     } else {
       models.Events.decrementAttendeeCount(req.body.eventId, (err, data) => {
@@ -109,12 +110,25 @@ module.exports.updateEvent = (req, res) => {
 
 module.exports.deleteEvent = (req, res) => {
   models.Events.deleteEventById(req.query.eventId, (err, data) => {
-    console.log('DELETE EVENT SERVER REQ.BODY', req.query)
+    console.log('DELETE EVENT SERVER REQ.BODY', req.query);
     if (err) {
-      console.log('DELETE EVENT ERROR FROM SERVER', err)
+      console.log('DELETE EVENT ERROR FROM SERVER', err);
       res.send(500, err);
     } else {
       res.send(200, data);
     }
   });
-}
+};
+
+module.exports.getAllUsersForEvent = (req, res) => {
+  console.log(req.query, req.params);
+  models.Events.findAllUsersForEvent(req.query.eventId, (err, allUsers) => {
+    if (err) {
+      res.send(500, err);
+    } else {
+      const users = formatUsers(allUsers);
+      res.send(200, users);
+    }
+  });
+};
+
