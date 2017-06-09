@@ -35,7 +35,7 @@ module.exports.makeMap = (eventId, lat, long, cb) => {
     });
 };
 
-module.exports.getDayOfMap = (eventId, cb) => {
+module.exports.dayOfMap = (eventId, cb) => {
   console.log('THIS IS THE DATA ABOUT TO GO INTO THE NEW QUERY', eventId);
   knex.raw(
     `
