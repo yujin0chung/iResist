@@ -70,6 +70,7 @@ module.exports.createEvent = (data, cb) => {
   const eventStart = formatDate(data.lat, data.long, data.date, startHours, startMinutes);
   const eventEnd = formatDate(data.lat, data.long, data.date, endHours, endMinutes);
 
+  console.log('DATA FROM CREATE EVENT', data)
   const values = {
     name: data.name,
     description: data.description,
@@ -136,3 +137,65 @@ module.exports.leaveEvent = (eventId, userId, cb) => {
     cb (e, null);
   })
 };
+
+
+module.exports.updateEventById = (updatedEvent, cb) => {
+
+  const startHours = updatedEvent.timeStart.split(':')[0];
+  const startMinutes = updatedEvent.timeStart.split(':')[1];
+  const endHours = updatedEvent.timeEnd.split(':')[0];
+  const endMinutes = updatedEvent.timeEnd.split(':')[1];
+  const eventStart = formatDate(updatedEvent.lat, updatedEvent.long, updatedEvent.date, startHours, startMinutes);
+  const eventEnd = formatDate(updatedEvent.lat, updatedEvent.long, updatedEvent.date, endHours, endMinutes);
+
+  knex('events')
+    .where('id', '=', updatedEvent.eventId)
+    .update({
+      name: updatedEvent.name,
+      description: updatedEvent.description,
+      cause: updatedEvent.cause,
+      address: updatedEvent.address,
+      time: eventStart,
+      duration: eventEnd - eventStart
+    })
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(error => {
+      console.log('ERROR FROM UPDATE EVENTS QUERY', error);
+      cb(error, null);
+    });
+}
+
+module.exports.deleteEventById = (eventId, cb) => {
+  console.log('EVENT ID FROM DELETE EVENT QUERY', eventId)
+  knex('maps')
+    .where('event_id', eventId)
+    .del()
+    .then(() => (
+      knex('users_events')
+
+    ))
+    .then(() => (
+      knex('feed')
+        .where('id', eventId)
+        .del()
+    ))
+    .then(() => (
+      knex('users_events')
+        .where('id', eventId)
+        .del()
+    ))
+    .then(() => {
+      knex('events')
+        .where('id', eventId)
+        .del()
+    })
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(error => {
+      console.log('DELETE EVENT ERROR', error)
+      cb(error, null);
+    })
+}

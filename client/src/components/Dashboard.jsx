@@ -25,17 +25,11 @@ class Dashboard extends React.Component {
     
     const events = this.props.events.allEvents;
 
-    const upcoming = _.filter(events, event => {
-      return event.status === 'upcoming';
-    });
+    const upcoming = _.filter(events, event => { return event.status === 'upcoming' });
 
-    const past = _.filter(events, event => {
-      return event.status === 'passed';
-    });
+    const past = _.filter(events, event => { return event.status === 'passed' });
 
-    const ongoing = _.filter(events, event => {
-      return event.status === 'ongoing';
-    });
+    const ongoing = _.filter(events, event => { return event.status === 'ongoing' });
 
     return (
       <div>

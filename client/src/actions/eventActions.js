@@ -1,6 +1,35 @@
 import axios from 'axios';
 import { fetchData } from './fetchDataActions';
 
+export const getEventSuccess = event => {
+  return {
+    type: 'GET_EVENT_SUCCESS',
+    event
+  };
+};
+
+export const getEventError = error => {
+  return {
+    type: 'GET_EVENT_ERROR',
+    error
+  };
+};
+
+export const getEvent = eventId => {
+  axios
+    .get('/api/events/event', {
+      params: {
+        eventId
+      }
+    })
+    .then(response => {
+      dispatch(getEventSuccess(response.data));
+    })
+    .catch(error => {
+      dispatch(getEventError(error));
+    });
+};
+
 export const getAllEventsSuccess = events => {
   return {
     type: 'GET_ALL_EVENTS_SUCCESS',
@@ -10,20 +39,19 @@ export const getAllEventsSuccess = events => {
 
 export const getAllEvents = () => {
   return dispatch => {
-    return axios.get('/api/events/all')
-      .then(events => {
-        return dispatch(getAllEventsSuccess(events));
-      });
-      // .catch(err => {
-      //   return ['ERROR-ERROR', err];
-      // });
+    return axios.get('/api/events/all').then(events => {
+      return dispatch(getAllEventsSuccess(events));
+    });
+    // .catch(err => {
+    //   return ['ERROR-ERROR', err];
+    // });
   };
 };
 
 export const createEvent = event => {
   return {
     type: 'RECEIVE_EVENT',
-    event,
+    event
   };
 };
 
@@ -35,7 +63,8 @@ export const createEventError = error => {
 };
 
 export const postEvent = event => dispatch => {
-  axios.post('/api/events/create', event)
+  axios
+    .post('/api/events/create', event)
     .then(response => {
       dispatch(createEvent(response.data));
     })
@@ -52,7 +81,7 @@ export const joinEvent = (eventId, userId) => {
   };
 };
 
-export const joinEventError = (error) => {
+export const joinEventError = error => {
   return {
     type: 'JOIN_ERROR',
     error
@@ -60,10 +89,11 @@ export const joinEventError = (error) => {
 };
 
 export const addUserToEvent = (eventId, userId) => dispatch => {
-  axios.post('/api/events/join', {
-    eventId,
-    userId
-  })
+  axios
+    .post('/api/events/join', {
+      eventId,
+      userId
+    })
     .then(response => {
       dispatch(fetchData(userId, 'DASHBOARD'));
     })
@@ -80,7 +110,7 @@ export const leaveEvent = (eventId, userId) => {
   };
 };
 
-export const leaveEventError = (error) => {
+export const leaveEventError = error => {
   return {
     type: 'LEAVE_ERROR',
     error
@@ -88,30 +118,61 @@ export const leaveEventError = (error) => {
 };
 
 export const removeUserFromEvent = (eventId, userId) => dispatch => {
-  axios.post('/api/events/leave', {
-    eventId,
-    userId
-  })
+  axios
+    .post('/api/events/leave', {
+      eventId,
+      userId
+    })
     .then(response => {
       dispatch(fetchData(userId, 'DASHBOARD'));
-
     })
     .catch(error => {
       dispatch(leaveEventError(error));
     });
 };
 
-
-export const editEvent = () => {
+export const updateEventSuccess = updatedEvent => {
   return {
-    type: 'INSERT TYPE HERE',
-    // INSERT OTHER CHANGES HERE
+    type: 'UPDATE_EVENT',
+    updatedEvent
   };
 };
 
-export const deleteEvent = () => {
+export const updateEventError = error => {
   return {
-    type: 'INSERT TYPE HERE',
-    // INSERT OTHER CHANGES HERE
+    type: 'UPDATE_EVENT_ERROR',
+    error
   };
+};
+
+export const updateEvent = updatedEvent => dispatch => {
+  axios
+    .post('/api/events/update', updatedEvent)
+    .then(response => {
+      dispatch(updateEventSuccess(response.data));
+    })
+    .catch(error => {
+      dispatch(updateEventError(error));
+    });
+};
+
+export const deleteEventError = error => {
+  return {
+    type: 'DELETE_EVENT_ERROR',
+    error
+  };
+};
+
+export const deleteEvent = (eventId) => dispatch => {
+  axios.delete('/api/events/delete', {
+    params: { 
+      eventId 
+    }
+  })
+  .then(response => {
+    dispatch(getAllEvents())
+  })
+  .catch(error => {
+    dispatch(deleteEventError(error))
+  });
 };
