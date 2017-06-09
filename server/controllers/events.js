@@ -4,6 +4,7 @@ const formatUsers = require('../../db/lib/formatUsers');
 
 module.exports.createEvent = (req, res) => {
   models.Events.createEvent(req.body, (err, data) => {
+     console.log('CREATE EVENT EVENT', req.body)
     if (err) {
       res.send(500, err);
     } else {

@@ -216,9 +216,7 @@ class ProtestForm extends React.Component {
             type="submit"
             value="Submit"
             disabled={!formValid}
-            onClick={e => {
-              this.handleSubmit(e);
-            }}
+            onClick={ e => this.handleSubmit(e) }
           />
           <input
             type="button"
