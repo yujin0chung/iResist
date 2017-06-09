@@ -13,7 +13,7 @@ module.exports.getAllMaps = (req, res) => {
 };
 
 module.exports.getDayOfMap = (req, res) => {
-  models.Map.dayOfMap((err, map) => {
+  models.Map.dayOfMap(req.query.eventId, (err, map) => {
     if (err) {
       res.send(500, err);
     } else {
