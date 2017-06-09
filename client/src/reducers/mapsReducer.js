@@ -5,6 +5,11 @@ export const maps = (state = {}, action) => {
       allMaps: action.maps.data
     });
   }
+  case 'GET_DAY_OF_MAP_SUCCESS': {
+    return Object.assign({}, state, {
+      pins: action.pins.data
+    });
+  }
   default:
     return state;
   }
