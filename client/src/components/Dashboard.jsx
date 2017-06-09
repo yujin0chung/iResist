@@ -45,8 +45,8 @@ class Dashboard extends React.Component {
           <i onClick={() => this.togglePastProtests()} className="fa fa-angle-down" aria-hidden="true" style={{paddingLeft: '15px', paddingTop: '10px'}}></i>
         </div>
         
-        {this.state.showPastProtests ? <MyProtestList eventListType={past} {...this.props} eventType="past"/> : <div></div>}
-
+        { this.state.showPastProtests ? <MyProtestList eventListType={past} {...this.props} eventType="past"/> : <div></div> }
+        
       </div>
     );
   }

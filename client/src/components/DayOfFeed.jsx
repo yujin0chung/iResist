@@ -49,7 +49,6 @@ class DayOfFeed extends React.Component {
   }
 
   render() {
-    console.log('DAY OF FEED THIS.STATE', this.state);
 
     return (
       <div>
