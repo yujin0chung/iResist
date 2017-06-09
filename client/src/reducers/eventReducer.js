@@ -26,14 +26,14 @@ export const events = (state = {}, action) => {
     return Object.assign({}, state, {
       error: action.error
     });
-  case 'GET_EVENT_SUCCESS': 
+  case 'GET_EVENT_SUCCESS':
     return Object.assign({}, state, {
       event: action.event
     });
   case 'GET_EVENT_ERROR':
     return Object.assign({}, state, {
       error: action.error
-    })
+    });
   case 'GET_ALL_EVENTS_SUCCESS':
     return Object.assign({}, state, {
       allEvents: action.events.data
@@ -41,15 +41,19 @@ export const events = (state = {}, action) => {
   case 'UPDATE_EVENT_SUCCESS':
     return Object.assign({}, state, {
       updatedEvent: action.updatedEvent
-    })
+    });
   case 'UPDATE_EVENT_ERROR':
     return Object.assign({}, state, {
       error: action.error
-    })
+    });
   case 'DELETE_EVENT_ERROR':
     return Object.assign({}, state, {
       error: action.error
-    })
+    });
+  case 'OPEN_DAY_OF_EVENT':
+    return Object.assign({}, state, {
+      activeEvent: action.eventId
+    });
   default:
     return state;
   }

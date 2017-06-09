@@ -9,5 +9,6 @@ router.get('/getAllEvents', controllers.getAllEvents);
 router.get('/all', controllers.getAllEvents);
 router.post('/update', controllers.updateEvent);
 router.delete('/delete', controllers.deleteEvent);
+router.get('/users', controllers.getAllUsersForEvent);
 
 module.exports = router;

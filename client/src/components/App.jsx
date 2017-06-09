@@ -7,7 +7,7 @@ import Dashboard from './Dashboard.jsx';
 import ProtestForm from './ProtestForm.jsx';
 import { Header, Button, Fist } from './StyledComponents.jsx';
 import styled from 'styled-components';
-import io from 'socket.io-client';
+import DayOfContainer from './DayOfContainer.jsx';
 
 
 class App extends React.Component {
@@ -15,23 +15,11 @@ class App extends React.Component {
     super(props);
     this.state = {};
 
-    this.client = io();
     this.updateView = this.updateView.bind(this);
   }
 
   componentDidMount() {
     this.props.getUserId();
-
-    this.client.on('connect', () => {
-      this.client.emit('room', this.props.collegeId);
-    });
-
-    this.client.on('roomResponse', (response) => {
-      console.log(response);
-    });
-    // this.props.asyncWrapper([this.props.getAllEvents(), this.props.getAllMaps(), this.props.getUserEvents(userId)], destinationView);
-    // this.props.asyncWrapper([this.props.getAllEvents()], 'DASHBOARD');
-    // this.props.getAllMaps();
   }
 
   updateView(view) {
@@ -39,29 +27,35 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("props", this.props);
+    console.log('props', this.props);
     const currentView = this.props.views.currentView;
-    if (currentView === "SPINNER") {
+    if (currentView === 'SPINNER') {
       return <h1>SPIN LOAD SPIN</h1>;
     }
-    if (currentView === "FIND_PROTEST") {
+    if (currentView === 'FIND_PROTEST') {
       return <FindProtest {...this.props} />;
     }
-    if (currentView === "EDIT_PROTEST") {
+    if (currentView === 'EDIT_PROTEST') {
       return <EditProtest {...this.props} />;
     }
-    if (currentView === "ORGANIZE_PROTEST") {
+    if (currentView === 'ORGANIZE_PROTEST') {
       return <ProtestForm {...this.props} />;
+    }
+    if (currentView === 'DAY_OF') {
+      return (<DayOfContainer {...this.props} />);
+    }
+    if (currentView === 'ORGANIZE_PROTEST') {
+      return (<ProtestForm {...this.props} />);
     } else {
       return (
         <div>
           <Header>iResist</Header>
           <Fist />
           <Dashboard {...this.props} />
-          <Button onClick={() => this.updateView("FIND_PROTEST")}>
+          <Button onClick={() => this.updateView('FIND_PROTEST')}>
             Find a Protest
           </Button>
-          <Button onClick={() => this.updateView("ORGANIZE_PROTEST")}>
+          <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>
             Organize a Protest
           </Button>
         </div>
