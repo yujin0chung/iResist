@@ -34,34 +34,13 @@ const EventButton = props => {
   else { 
     button = <div></div>
   }
-  {console.log('EVENT BUTTON', button)}
 
-       return ( <div>{button}</div> );
+  return ( 
+    <div>{button}</div> 
+    );
             
 
 };
-
-/*
-  if (leader && event.status !== "passed") {
-    return (
-      <EditButton onClick={() => props.changeView("ORGANIZE_PROTEST", props.protestId)}>
-        Make Changes
-      </EditButton>
-    );
-  } 
-  return participating && event.status !== "passed" ? 
-    <AbandonButton onClick={() => {
-      props.removeUserFromEvent(props.protestId, props.userId);
-      props.changeView("DASHBOARD");
-      }}
-      >Betray the cause
-    </AbandonButton> : 
-    <AttendButton onClick={() => {
-      props.addUserToEvent(props.protestId, props.userId);
-      props.changeView("DASHBOARD");
-      }}
-      >Join
-    </AttendButton>;*/
 
 
 export default EventButton;
