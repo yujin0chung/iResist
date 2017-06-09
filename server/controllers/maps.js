@@ -1,5 +1,6 @@
 const models = require('../../db/models');
 const formatMaps = require('../../db/lib/formatMaps');
+const formatPins = require('../../db/lib/formatPins');
 
 module.exports.getAllMaps = (req, res) => {
   models.Map.allMaps((err, maps) => {
@@ -15,9 +16,11 @@ module.exports.getAllMaps = (req, res) => {
 module.exports.getDayOfMap = (req, res) => {
   models.Map.dayOfMap(req.query.eventId, (err, map) => {
     if (err) {
+      console.log(err);
       res.send(500, err);
     } else {
-      res.send(200, map);
+      let formattedMap = formatPins(map);
+      res.send(200, formattedMap);
     }
   });
 };
