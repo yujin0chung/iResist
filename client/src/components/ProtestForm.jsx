@@ -99,7 +99,7 @@ class ProtestForm extends React.Component {
 
   render() {
     const { name, address, date, timeStart, timeEnd, lat, long } = this.state;
-    const validDate = JSON.stringify(new Date()).slice(1, 11); //old one
+    const validDate = JSON.stringify(new Date()).slice(1, 11);
     // var validDate = (new Date).toLocaleDateString().split('/');
     // validDate[0] = '0' + validDate[0];
     // validDate[1] = '0' + validDate[1];
