@@ -15,7 +15,6 @@ module.exports.getAllFeed = (req, res) => {
 
 module.exports.getEventFeed = (req, res) => {
   models.Feed.getFeedByEventId(req.query.eventId, (err, feedItems) => {
-    console.log('GET EVENT FEED REQ.QUERY.EVENTid', req.query.eventId)
     if (err) {
       res.send(500, err);
     } else {
