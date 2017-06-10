@@ -6,6 +6,7 @@ import { getAllEvents } from './eventActions';
 import { getAllMaps, getDayOfMap } from './mapActions';
 import { getUserEvents } from './userActions';
 import { getUsersForEvent } from './usersActions';
+import { getFeeds } from './feedActions';
 
 export const fetchData = (userId, destinationView) => {
   return dispatch => {
@@ -26,7 +27,8 @@ export const fetchDayOfData = (userId, eventId, destinationView) => {
     dispatch(changeView('SPINNER'));
     return Promise.all([
       dispatch(getUsersForEvent(eventId)),
-      dispatch(getDayOfMap(eventId))
+      dispatch(getDayOfMap(eventId)),
+      dispatch(getFeeds(eventId))
     ]).then(output => {
       dispatch(changeView(destinationView));
     }).catch(err => {
