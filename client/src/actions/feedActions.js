@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const postItem = () => {
   return {
     type: 'INSERT TYPE HERE',
@@ -19,50 +21,49 @@ export const deleteItem = () => {
   };
 };
 
-export const getAllFeedSuccess = (feed) => {
+export const getFeedsSuccess = (feeds) => {
   return {
-    type: 'GET_ALL_FEED_SUCCESS',
-    feed
+    type: 'GET_FEEDS_SUCCESS',
+    feeds
   };
 };
 
-export const getAllFeedError = (err) => {
+export const getFeedItemsSuccess = (feedItems) => {
   return {
-    type: 'GET_ALL_FEED_ERROR',
-    err
+    type: 'GET_FEED_ITEMS_SUCCESS',
+    feedItems
   };
 };
 
-export const getAllFeed = () => dispatch => {
-  axios.get('/api/feed/all')
-    .then(feed => {
-      return dispatch(getAllFeedSuccess(feed));
-    })
-    .catch(err => {
-      return dispatch(getAllFeed(err));
-    });
+export const getFeedsError = (error) => {
+  return {
+    type: 'GET_FEEDS_ERROR',
+    error
+  };
+};
+
+export const getFeedItemsError = (error) => {
+  return {
+    type: 'GET_FEED_ITEMS_ERROR',
+    error
+  }
+}
+
+export const getFeeds = (eventId) => dispatch => {
+  axios.get('/api/feed/event', {
+    params: { eventId }
+  })
+  .then(feeds => {
+    dispatch(getFeedsSuccess(feeds));
+    dispatch(getFeedItemsSuccess(feeds))
+  })
+  .catch(error => {
+    dispatch(getFeedItemsError(error));
+    dispatch(getFeedsError(error))
+  });
 };
 
 
-
-// export const getFeedMessagesError = error => {
-//   return {
-//     type: 'GET_MESSAGES_ERROR',
-//     error
-//   };
-// };
-
-// export const getFeedMessages = (eventId) => dispatch => {
-//   axios.get('/api/feed/messages', {
-//     params: { eventId }
-//   })
-//   .then(response => {
-//     dispatch(getFeedMessagesSuccess(response.data));
-//   })
-//   .catch(error => {
-//     dispatch(getFeedMessagesError(error));
-//   });
-// };
 
 // export const postMessageSuccess = message => {
 //   return {

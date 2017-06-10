@@ -34,7 +34,7 @@ export const voteItem = feedActions.voteItem;
 export const deleteItem = feedActions.deleteItem;
 //export const postMessage = feedActions.postMessage;
 //export const getFeedMessages = feedActions.getFeedMessages;
-export const getAllFeed = feedActions.getAllFeed;
+export const getFeeds = feedActions.getFeeds;
 
 // fetch actions
 export const fetchData = fetchDataActions.fetchData;
