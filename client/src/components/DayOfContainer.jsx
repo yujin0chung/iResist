@@ -1,5 +1,8 @@
 import React from 'react';
 import io from 'socket.io-client';
+import DayOfFeed from './DayOfFeed.jsx';
+import DayOfInfo from './DayOfInfo.jsx';
+import DayOfMap from './DayOfMap.jsx';
 
 class DayOfContainer extends React.Component {
   constructor(props) {
@@ -11,10 +14,10 @@ class DayOfContainer extends React.Component {
 
   componentDidMount() {
     this.client.on('connect', () => {
-      this.client.emit('room', this.props.collegeId);
+      this.client.emit('event', this.props.events.activeEvent);
     });
 
-    this.client.on('roomResponse', (response) => {
+    this.client.on('joinEventReponse', (response) => {
       console.log(response);
     });
   }
@@ -23,6 +26,7 @@ class DayOfContainer extends React.Component {
     return (
       <div>
         <h1>You are looking at the day of container</h1>
+        <DayOfMap { ...this.props } client={ this.client }/>
       </div>
     );
   }
