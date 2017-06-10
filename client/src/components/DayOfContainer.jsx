@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 import DayOfFeed from './DayOfFeed.jsx';
 import DayOfInfo from './DayOfInfo.jsx';
 import DayOfMap from './DayOfMap.jsx';
+import SubmitFeedItem from './SubmitFeedItem.jsx';
 
 class DayOfContainer extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class DayOfContainer extends React.Component {
     return (
       <div>
         <h1>You are looking at the day of container</h1>
+        <SubmitFeedItem />
         <DayOfMap { ...this.props } client={ this.client }/>
       </div>
     );
@@ -33,5 +35,3 @@ class DayOfContainer extends React.Component {
 }
 
 export default DayOfContainer;
-
-
