@@ -88,11 +88,12 @@ class ProtestForm extends React.Component {
   validTime(startTimeString, endTimeString) {
     var startTime = Number(startTimeString.split(":").join(""));
     var endTime = Number(endTimeString.split(":").join(""));
-    var today = JSON.stringify(new Date()).slice(1, 11) === this.state.date;
-    var currentTime = Number(
-      Date().split(" ")[4].split(":").slice(0, 2).join("")
-    );
-    console.log('this is the current time: ', currentTime);
+    var timezone1 = tzlookup(this.state.lat, this.state.long);
+    var timestamp1 = Date.now();
+    var validDate1 = moment.tz(timestamp1, timezone1).format().slice(0, 10);
+    var today = validDate1 === this.state.date;
+    var currentTime = moment.tz(timestamp1, timezone1).format().slice(11, 16).split(":").slice(0, 2).join("");
+    // console.log('this is the current time: ', currentTime);
     if (today && currentTime > startTime) {
       return false;
     }
@@ -104,11 +105,10 @@ class ProtestForm extends React.Component {
 
   render() {
     const { name, address, date, timeStart, timeEnd, lat, long } = this.state;
-    // const validDate = JSON.stringify(new Date()).slice(1, 11);
     var timezone = tzlookup(this.state.lat, this.state.long);
     var timestamp = Date.now();
-    console.log(timezone);
     var validDate = moment.tz(timestamp, timezone).format().slice(0, 10);
+    console.log(moment.tz(timestamp, timezone).format());
 
     const formValid =
       name.length > 0 &&
