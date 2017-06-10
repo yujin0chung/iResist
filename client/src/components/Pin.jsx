@@ -10,7 +10,17 @@ class Pin extends React.Component {
 
   render () {
     return (
-      <Marker></Marker>
+      <Marker>
+        <Popup>
+          <span>
+            {this.props.text}<br/>
+            Cred: {this.props.pinCred} <br/>
+            Age: {this.props.age} <br/>
+            User: {this.props.user}; <br/>
+            User Cred: {this.props.userCred} <br/>
+          </span>
+        </Popup>
+      </Marker>
     );
   }
 }
