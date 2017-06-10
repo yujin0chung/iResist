@@ -34,8 +34,25 @@ export const getAllMaps = () => {
       .then(maps => {
         return dispatch(getAllMapsSuccess(maps));
       });
-      // .catch(err => {
-      //   return ['ERROR-ERROR', err];
-      // });
+  };
+};
+
+export const getDayOfMapSuccess = (map) => {
+  return {
+    type: 'GET_DAY_OF_MAP_SUCCESS',
+    map
+  };
+};
+
+export const getDayOfMap = (eventId) => {
+  return dispatch => {
+    return axios.get('/api/maps/dayof', {
+      params: {
+        eventId: eventId
+      }
+    })
+      .then(map => {
+        return dispatch(getDayOfMapSuccess(map));
+      });
   };
 };

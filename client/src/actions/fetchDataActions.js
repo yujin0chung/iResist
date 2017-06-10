@@ -3,7 +3,7 @@ import dummyStore from '../data/store';
 import { changeView } from './navActions.js';
 import { asyncWrapper } from './asyncWrappers';
 import { getAllEvents } from './eventActions';
-import { getAllMaps } from './mapActions';
+import { getAllMaps, getDayOfMap } from './mapActions';
 import { getUserEvents } from './userActions';
 import { getUsersForEvent } from './usersActions';
 
@@ -25,7 +25,8 @@ export const fetchDayOfData = (userId, eventId, destinationView) => {
   return dispatch => {
     dispatch(changeView('SPINNER'));
     return Promise.all([
-      dispatch(getUsersForEvent(eventId))
+      dispatch(getUsersForEvent(eventId)),
+      dispatch(getDayOfMap(eventId))
     ]).then(output => {
       dispatch(changeView(destinationView));
     }).catch(err => {
