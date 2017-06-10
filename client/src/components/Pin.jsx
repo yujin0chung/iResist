@@ -5,23 +5,43 @@ class Pin extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      inputPinText: ''
+    };
   }
 
   render () {
-    return (
-      <Marker>
-        <Popup>
-          <span>
-            {this.props.text}<br/>
-            Cred: {this.props.pinCred} <br/>
-            Age: {this.props.age} <br/>
-            User: {this.props.user}; <br/>
-            User Cred: {this.props.userCred} <br/>
-          </span>
-        </Popup>
-      </Marker>
-    );
+    if (this.props.type === 'display') {
+      return (
+        <Marker>
+          <Popup>
+            <span>
+              <p>{this.props.text}</p>
+              <p>Cred: {this.props.pinCred}</p>
+              <p>Age: {this.props.age}</p>
+              <p>User: {this.props.user}</p>
+              <p>User Cred: {this.props.userCred}</p>
+            </span>
+          </Popup>
+        </Marker>
+      );
+    } else {
+      return (
+        <Marker>
+          <Popup>
+            <form>
+              <input
+                type="text"
+                value={this.state.inputPinText}
+                placeholder="What's going on?"
+                onChange={e => this.setState({ inputPinText: e.target.value })}
+                autofocus
+              />
+            </form>
+          </Popup>
+        </Marker>
+      );
+    }
   }
 }
 
