@@ -22,19 +22,21 @@ module.exports.findFeedById = (eventId, cb) => {
 }
 
 
+
 module.exports.getFeedByEventId = (eventId, cb) => {
-  console.log('EVENT ID FROM GET FEED QUERY', eventId)
-  knex('feed_items').select(['feed_items.id', 'feed_items.text', 'feed_items.url', 'feed_items.credibility'])
+  knex('feed_items').select(['feed_items.feed_id', 'feed_items.id', 'feed_items.text', 'feed_items.url', 'feed_items.credibility', 'feed_items.user_id'])
     .innerJoin('feed', 'feed.id', 'feed_items.feed_id')
     .innerJoin('events', 'events.id', 'feed.event_id')
+    .where('events.id', eventId)
     .then(data => {
       cb(null, data);
     })
     .catch(err => {
-      console.log('ERROR FROM GET FEED BY EVENT ID!', err)
       cb(err, null);
     });
 }
+
+
 
 
   
