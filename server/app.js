@@ -28,5 +28,6 @@ app.use('/api/profiles', routes.profiles);
 app.use('/api/geocoder', routes.geocoder);
 app.use('/api/user', routes.user);
 app.use('/api/maps', routes.maps);
+app.use('/api/feed', routes.feed);
 
 module.exports = app;
