@@ -39,7 +39,7 @@ module.exports.dayOfMap = (eventId, cb) => {
   console.log('THIS IS THE DATA ABOUT TO GO INTO THE NEW QUERY', eventId);
   knex.raw(
     `
-    SELECT pins.id, pins.text, pins.type, pins.latitude, pins.longitude, pins.credibility, pins.user_id, pins.time FROM pins
+    SELECT pins.id, pins.map_id, pins.text, pins.type, pins.latitude, pins.longitude, pins.credibility, pins.user_id, pins.time FROM pins
     INNER JOIN maps ON pins.map_id = maps.id
     INNER JOIN events ON events.id = maps.event_id
     WHERE events.id = ?;
