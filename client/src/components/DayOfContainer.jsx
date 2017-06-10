@@ -11,12 +11,11 @@ class DayOfContainer extends React.Component {
   }
 
   componentDidMount() {
-    let room = 'feed';
     this.client.on('connect', () => {
-      this.client.emit('room', room);
+      this.client.emit('room', this.props.collegeId);
     });
 
-    this.client.on('post', (response) => {
+    this.client.on('roomResponse', (response) => {
       console.log(response);
     });
   }
