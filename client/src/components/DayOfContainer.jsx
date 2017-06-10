@@ -26,7 +26,7 @@ class DayOfContainer extends React.Component {
     return (
       <div>
         <h1>You are looking at the day of container</h1>
-        <DayOfMap { ...this.props } />
+        <DayOfMap { ...this.props } client={ this.client }/>
       </div>
     );
   }
