@@ -8,13 +8,22 @@ class DayOfMap extends React.Component {
     this.state = {};
   }
 
+  handleClick(d) {
+    console.log('I REGISTERED A CLICK!', d);
+  }
+
   render() {
     const mapId = this.props.events.allEvents[this.props.events.activeEvent].mapId;
     const currentMap = this.props.maps.allMaps[mapId];
     return (
       <div>
         <h2>This will be the map</h2>
-        <Map className='day-of-map' center={[currentMap.lat, currentMap.long]} zoom={15}>
+        <Map
+          className='day-of-map'
+          center={[currentMap.lat, currentMap.long]}
+          zoom={15}
+          onClick={this.handleClick}
+        >
           <TileLayer
             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
