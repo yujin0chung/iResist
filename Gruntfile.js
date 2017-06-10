@@ -18,6 +18,24 @@ module.exports = function(grunt) {
       }
     },
 
+    // exec: {
+    //   jest: 'node node_modules/jest-cli/bin/jest'
+    // }, 
+
+    watch: {
+      files: ['**/*.js'],
+      tasks: ['exec:jest']
+    },
+
+    // jest: {
+    //   test: {
+    //     options: {
+    //       coverage: true,
+    //       testPathPattern: /.*-spec.js/
+    //     }
+    //   }
+    // },
+
     pgcreatedb: {
       default: {
         connection: {
@@ -34,6 +52,7 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-pg');
 

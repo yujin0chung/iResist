@@ -5,9 +5,16 @@ module.exports.onConnect = (client, io) => {
   client.on('room', function(event) {
     client.join(event);
     io.to(event).emit('roomResponse', 'You are in room: ' + event);
-
-    // client.on('comment', function(post) {
-    //   socketController.comments.addComment(post, room, client);
-    // });
   });
+
+  // client.on('leave room', room => {
+  //   client.leave(room);
+  // });
+
+  client.on('new post', post => {
+    io.emit('post', post);
+  });
+
 };
+
+

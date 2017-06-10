@@ -19,6 +19,10 @@ class FindProtest extends React.Component {
     if (upcomingEvents.length === 0) {
       return (
         <div>
+          <HomeIcon
+          className="fa fa-home fa-lg"
+          onClick={() => this.props.changeView("DASHBOARD")}
+          />
           No upcoming protest, 
           why don't you lead one?
         </div>

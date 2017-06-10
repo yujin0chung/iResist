@@ -21,9 +21,13 @@ class DayOfContainer extends React.Component {
 
   render () {
     return (
-      <h1>You are looking at the day of container</h1>
+      <div>
+        <h1>You are looking at the day of container</h1>
+      </div>
     );
   }
 }
 
 export default DayOfContainer;
+
+
