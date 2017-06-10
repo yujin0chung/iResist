@@ -2,9 +2,9 @@ const socket = require('../index');
 const io = socket.io;
 
 module.exports.onConnect = (client, io) => {
-  client.on('room', function(event) {
+  client.on('event', function(event) {
     client.join(event);
-    io.to(event).emit('roomResponse', 'You are in room: ' + event);
+    io.to(event).emit('joinEventReponse', 'You are in event: ' + event);
   });
 
   // client.on('leave room', room => {
