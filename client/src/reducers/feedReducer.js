@@ -1,18 +1,10 @@
 export const feed = (state = {}, action) => {
   switch (action.type) {
-  case 'POST_MESSAGE_SUCCESS':
+  case 'GET_ALL_FEED_SUCCESS':
     return Object.assign({}, state, {
-      message: action.message
+      feed: action.feed
     });
-  case 'POST_MESSAGE_ERROR':
-    return Object.assign({}, state, {
-      error: action.error
-    });
-  case 'GET_MESSAGES_SUCCESS':
-    return Object.assign({}, state, {
-      messages: action.messages
-    });
-  case 'GET_MESSAGES_ERROR':
+  case 'GET_ALL_FEED_ERROR':
     return Object.assign({}, state, {
       error: action.error
     });
