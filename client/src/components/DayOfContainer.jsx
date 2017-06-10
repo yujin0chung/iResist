@@ -1,6 +1,5 @@
 import React from 'react';
 import io from 'socket.io-client';
-import DayOfFeed from './DayOfFeed.jsx';
 
 class DayOfContainer extends React.Component {
   constructor(props) {
@@ -24,7 +23,6 @@ class DayOfContainer extends React.Component {
     return (
       <div>
         <h1>You are looking at the day of container</h1>
-        <DayOfFeed socket={this.client} {...this.props} />
       </div>
     );
   }
