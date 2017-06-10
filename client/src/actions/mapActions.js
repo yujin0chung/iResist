@@ -46,7 +46,11 @@ export const getDayOfMapSuccess = (map) => {
 
 export const getDayOfMap = (eventId) => {
   return dispatch => {
-    return axios.get('/api/maps/dayof')
+    return axios.get('/api/maps/dayof', {
+      params: {
+        eventId: eventId
+      }
+    })
       .then(map => {
         return dispatch(getDayOfMapSuccess(map));
       });
