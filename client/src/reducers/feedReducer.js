@@ -8,6 +8,14 @@ export const feed = (state = {}, action) => {
     return Object.assign({}, state, {
       error: action.error
     });
+  case 'GET_MESSAGES_SUCCESS':
+    return Object.assign({}, state, {
+      messages: action.messages
+    });
+  case 'GET_MESSAGES_ERROR':
+    return Object.assign({}, state, {
+      error: action.error
+    });
   default: return state;
   }
 };
