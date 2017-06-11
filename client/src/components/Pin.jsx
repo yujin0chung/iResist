@@ -15,7 +15,7 @@ class Pin extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.handlePinSubmit(this.state.inputPinText);
+    this.props.handlePinSubmit(this.state.inputPinText, this.props.lat, this.props.long);
   }
 
   render () {

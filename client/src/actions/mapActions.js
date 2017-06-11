@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const dropPin = () => {
   return {
-    type: 'INSERT TYPE HERE',
+    type: 'USER_DROPPED_PIN',
     // INSERT OTHER CHANGES HERE
   };
 };
