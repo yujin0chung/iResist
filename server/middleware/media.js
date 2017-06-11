@@ -1,8 +1,13 @@
-const creds = require('../../config/configVars');
+
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const AWS = require('aws-sdk');
 const uuidV4 = require('uuid/v4');
+
+try {
+  creds = require('../../config/configVars');
+} catch (e) {
+}
 
 let awsId;
 let awsSecret;
