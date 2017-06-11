@@ -9,6 +9,13 @@ class Pin extends React.Component {
     this.state = {
       inputPinText: ''
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.handlePinSubmit(this.state.inputPinText);
   }
 
   render () {
@@ -37,6 +44,11 @@ class Pin extends React.Component {
                 placeholder="What's going on?"
                 onChange={e => this.setState({ inputPinText: e.target.value })}
                 autoFocus
+              />
+              <input
+                type="submit"
+                value="Submit"
+                onClick={ e => this.handleSubmit(e) }
               />
             </form>
           </Popup>

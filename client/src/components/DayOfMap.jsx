@@ -11,6 +11,7 @@ class DayOfMap extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handlePinSubmit = this.handlePinSubmit.bind(this);
   }
 
   handleClick(data) {
@@ -28,6 +29,10 @@ class DayOfMap extends React.Component {
     this.setState({
       inputPins: [pin]
     });
+  }
+
+  handlePinSubmit(pinText) {
+    console.log(pinText);
   }
 
   render() {
@@ -52,7 +57,7 @@ class DayOfMap extends React.Component {
             </Popup>
           </Marker>
           {this.state.inputPins.map((pin) => {
-            return <Pin lat={pin.lat} long={pin.lng}/>;
+            return <Pin lat={pin.lat} long={pin.lng} handlePinSubmit={this.handlePinSubmit}/>;
           })}
         </Map>
       </div>
