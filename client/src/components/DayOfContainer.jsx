@@ -4,6 +4,7 @@ import DayOfFeed from './DayOfFeed.jsx';
 import DayOfMap from './DayOfMap.jsx';
 import SubmitFeedItem from './SubmitFeedItem.jsx';
 import DayOfInfo from './DayOfInfo.jsx';
+import UploadMedia from './UploadMedia.jsx';
 
 
 class DayOfContainer extends React.Component {
@@ -61,6 +62,9 @@ class DayOfContainer extends React.Component {
           <button onClick={() => this.handleCurrentDayOfView('MAP')}>Map</button>
           <button onClick={() => this.handleCurrentDayOfView('FEED')}>Feed</button>
         </div>
+        <SubmitFeedItem />
+        <UploadMedia />
+        <DayOfMap { ...this.props } client={ this.client }/>
       </div>
     );
   }
