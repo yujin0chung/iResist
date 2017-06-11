@@ -37,15 +37,16 @@ class DayOfMap extends React.Component {
     });
 
     let newPin = {
-      map_id: this.props.allMaps[this.props.events.allEvents[this.props.events.activeEvent]].id,
+      map_id: this.props.maps.allMaps[this.props.events.allEvents[this.props.events.activeEvent].id].id,
       text: pinText,
       latitude: lat,
       longitude: long,
       credibility: 0,
       time: Date.now(),
-      user_id: user.user_id,
+      user_id: this.props.user.user_id,
     };
-    // call an action to add a pin here
+
+    console.log(newPin);
   }
 
   render() {

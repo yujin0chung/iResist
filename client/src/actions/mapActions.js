@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-export const dropPin = () => {
+export const dropPin = (pin, eventId) => {
   return {
     type: 'USER_DROPPED_PIN',
-    // INSERT OTHER CHANGES HERE
+    pin,
+    eventId
   };
 };
 
