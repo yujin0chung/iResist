@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const postItem = () => {
   return {
     type: 'INSERT TYPE HERE',
@@ -19,55 +21,71 @@ export const deleteItem = () => {
   };
 };
 
-export const getFeedMessagesSuccess = messages => {
+export const getFeedsSuccess = (feeds) => {
   return {
-    type: 'GET_MESSAGES_SUCCESS',
-    messages
+    type: 'GET_FEEDS_SUCCESS',
+    feeds
   };
 };
 
-export const getFeedMessagesError = error => {
+export const getFeedItemsSuccess = (feedItems) => {
   return {
-    type: 'GET_MESSAGES_ERROR',
+    type: 'GET_FEED_ITEMS_SUCCESS',
+    feedItems
+  };
+};
+
+export const getFeedsError = (error) => {
+  return {
+    type: 'GET_FEEDS_ERROR',
     error
   };
 };
 
-export const getFeedMessages = (eventId) => dispatch => {
-  axios.get('/api/feed/messages', {
-    params: {
-      eventId: eventId
-    }
+export const getFeedItemsError = (error) => {
+  return {
+    type: 'GET_FEED_ITEMS_ERROR',
+    error
+  }
+}
+
+export const getFeeds = (eventId) => dispatch => {
+  axios.get('/api/feed/event', {
+    params: { eventId }
   })
-  .then(response => {
-    dispatch(getFeedMessagesSuccess(response.data));
+  .then(feeds => {
+    dispatch(getFeedsSuccess(feeds));
+    dispatch(getFeedItemsSuccess(feeds))
   })
   .catch(error => {
-    dispatch(getFeedMessagesError(error));
+    dispatch(getFeedItemsError(error));
+    dispatch(getFeedsError(error))
   });
 };
 
-export const postMessageSuccess = message => {
-  return {
-    type: 'POST_MESSAGE_SUCCESS',
-    message
-  };
-};
-
-export const postMessageError = error => {
-  return {
-    type: 'POST_MESSAGE_ERROR',
-    error
-  };
-};
 
 
-export const postMessage = message => dispatch => {
-  axios.post('/api/feed/postMessage', message)
-    .then(response => {
-      dispatch(postMessageSuccess(message));
-    })
-    .catch(error => {
-      dispatch(postMessageError(error));
-    });
-};
+// export const postMessageSuccess = message => {
+//   return {
+//     type: 'POST_MESSAGE_SUCCESS',
+//     message
+//   };
+// };
+
+// export const postMessageError = error => {
+//   return {
+//     type: 'POST_MESSAGE_ERROR',
+//     error
+//   };
+// };
+
+
+// export const postMessage = message => dispatch => {
+//   axios.post('/api/feed/postMessage', message)
+//     .then(response => {
+//       dispatch(postMessageSuccess(message));
+//     })
+//     .catch(error => {
+//       dispatch(postMessageError(error));
+//     });
+// };

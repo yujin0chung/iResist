@@ -7,13 +7,13 @@ module.exports.onConnect = (client, io) => {
     io.to(event).emit('joinEventReponse', 'You are in event: ' + event);
   });
 
-  // client.on('leave room', room => {
-  //   client.leave(room);
-  // });
-
-  client.on('new post', post => {
-    io.emit('post', post);
+  client.on('disconnect', () => {
+    console.log('user disconnected')
   });
+
+  // client.on('new post', post => {
+  //   io.emit('post', post);
+  // });
 
 };
 

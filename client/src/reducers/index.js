@@ -4,6 +4,7 @@ import { events } from './eventReducer.js';
 import { user } from './userReducer.js';
 import { maps } from './mapsReducer.js';
 import { users } from './usersReducer';
+import { feeds } from './feedReducer.js';
 //import reducers here
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   events,
   user,
   maps,
-  users
+  users,
+  feeds
 });
 
 export default rootReducer;
