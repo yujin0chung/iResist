@@ -14,7 +14,7 @@ class Pin extends React.Component {
   render () {
     if (this.props.type === 'display') {
       return (
-        <Marker>
+        <Marker position={[this.props.lat, this.props.long]}>
           <Popup>
             <span>
               <p>{this.props.text}</p>
@@ -28,7 +28,7 @@ class Pin extends React.Component {
       );
     } else {
       return (
-        <Marker>
+        <Marker position={[this.props.lat, this.props.long]}>
           <Popup>
             <form>
               <input

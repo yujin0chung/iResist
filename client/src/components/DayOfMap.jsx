@@ -9,10 +9,25 @@ class DayOfMap extends React.Component {
     this.state = {
       inputPins: []
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(data) {
-    console.log('I REGISTERED A CLICK!', data);
+    if (this.state.inputPins.length > 0) {
+      this.setState({
+        inputPins: []
+      });
+    }
+
+    let pin = {
+      lat: data.latlng.lat,
+      lng: data.latlng.lng
+    };
+
+    this.setState({
+      inputPins: [pin]
+    });
   }
 
   render() {
@@ -36,6 +51,9 @@ class DayOfMap extends React.Component {
               <span>Event meeting location</span>
             </Popup>
           </Marker>
+          {this.state.inputPins.map((pin) => {
+            return <Pin lat={pin.lat} long={pin.lng}/>;
+          })}
         </Map>
       </div>
     );
