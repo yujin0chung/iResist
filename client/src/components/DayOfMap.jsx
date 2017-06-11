@@ -1,15 +1,18 @@
 import React from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import Pin from './Pin.jsx';
 
 class DayOfMap extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      inputPins: []
+    };
   }
 
-  handleClick(d) {
-    console.log('I REGISTERED A CLICK!', d);
+  handleClick(data) {
+    console.log('I REGISTERED A CLICK!', data);
   }
 
   render() {

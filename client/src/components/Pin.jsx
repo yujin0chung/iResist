@@ -1,5 +1,6 @@
 import React from 'react';
 import { Marker, Popup } from 'react-leaflet';
+import PopupForm from './PopupForm.jsx';
 
 class Pin extends React.Component {
   constructor (props) {
