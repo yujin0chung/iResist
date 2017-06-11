@@ -38,7 +38,6 @@ module.exports.findEventAttendees = (eventId, cb) => {
 };
 
 module.exports.findEventByIds = (userId, type, cb) => {
-
   knex.select('event_id')
     .from('users_events')
     .where('user_id', userId)

@@ -33,7 +33,6 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-
         <Title>Ongoing Protests</Title>
           <MyProtestList eventListType={ongoing} {...this.props} eventType="ongoing"/>
 
@@ -44,9 +43,9 @@ class Dashboard extends React.Component {
           <Title>Past Protests</Title>
           <i onClick={() => this.togglePastProtests()} className="fa fa-angle-down" aria-hidden="true" style={{paddingLeft: '15px', paddingTop: '10px'}}></i>
         </div>
-        
+
         { this.state.showPastProtests ? <MyProtestList eventListType={past} {...this.props} eventType="past"/> : <div></div> }
-        
+
       </div>
     );
   }
