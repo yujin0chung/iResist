@@ -1,6 +1,6 @@
 import React from 'react';
 import { Marker, Popup } from 'react-leaflet';
-import PopupForm from './PopupForm.jsx';
+import AutoOpenMarker from './AutoOpenMarker.jsx';
 
 class Pin extends React.Component {
   constructor (props) {
@@ -28,7 +28,7 @@ class Pin extends React.Component {
       );
     } else {
       return (
-        <Marker position={[this.props.lat, this.props.long]}>
+        <AutoOpenMarker position={[this.props.lat, this.props.long]}>
           <Popup>
             <form>
               <input
@@ -36,11 +36,11 @@ class Pin extends React.Component {
                 value={this.state.inputPinText}
                 placeholder="What's going on?"
                 onChange={e => this.setState({ inputPinText: e.target.value })}
-                autofocus
+                autoFocus
               />
             </form>
           </Popup>
-        </Marker>
+        </AutoOpenMarker>
       );
     }
   }
