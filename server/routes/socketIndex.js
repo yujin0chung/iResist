@@ -1,9 +1,13 @@
 const socket = require('../index');
 const io = socket.io;
+<<<<<<< HEAD
 const models = require('../../db/models');
 const express = require('express');
 const formatFeedItems = require('../../db/lib/formatFeedItem');
 const formatFeed = require('../../db/lib/formatFeed');
+=======
+const controllers = require('../controllers');
+>>>>>>> (feat) call controller
 
 module.exports.onConnect = (client, io) => {
 
@@ -14,6 +18,7 @@ module.exports.onConnect = (client, io) => {
   client.on('event', function(event) {
 
     client.join(event);
+<<<<<<< HEAD
 
     models.Feed.getFeedByEventId(event, (err, feedItems) => {
       if (err) {
@@ -27,6 +32,13 @@ module.exports.onConnect = (client, io) => {
     // io.to(event).emit('joinEventReponse', 'You are in event: ' + event);
 >>>>>>> (feaT) emit new pin data to server
     client.emit('joinEventResponse', 'You are in event: ' + event);
+=======
+    io.to(event).emit('joinEventReponse', 'You are in event: ' + event);
+
+    client.on('newPin', pin => {
+      constrollers.Maps.postPin(client, io, room, pin);
+    });
+>>>>>>> (feat) call controller
   });
 
   client.on('disconnect', () => {
@@ -61,9 +73,7 @@ module.exports.onConnect = (client, io) => {
   //   io.emit('post', post);
   // });
 
-  client.on('newPin', pin => {
-    console.log(pin);
-  });
+
 
 };
 
