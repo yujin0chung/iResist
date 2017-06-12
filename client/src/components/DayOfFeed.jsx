@@ -12,7 +12,7 @@ class DayOfFeed extends React.Component {
       credibility: '' || 6, 
       userId: this.props.user.userId,
       username: this.props.user.username,
-      feedId: 0, 
+      feedId: '' || 1,
       type: '' || 'MESSAGE',
       posts: [],
       feedItemId: ''
@@ -23,7 +23,7 @@ class DayOfFeed extends React.Component {
 
   componentDidMount() {
     const { client, feedItems } = this.props;
-    //this.props.getFeeds(this.props.events.activeEvent);
+   //this.props.getFeeds(this.props.events.activeEvent);
 
     client.on('postedFeedItemId', (id) => {
       console.log('POSTED FEED ITEM ID FROM COMPO', id[0])
