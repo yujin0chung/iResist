@@ -77,11 +77,9 @@ class DayOfFeed extends React.Component {
         />
         </form>
         {(feedItems !== undefined && !Object.is(feedItems, {})) ? 
-          feedItems.map(item => <div><b>{item.username}</b> : {item.text}</div>) :
+          feedItems.map(item => <div><FeedItem username={item.username} text={item.text} key={this.state.feedItemId}/></div>) :
           <div></div>
         }
-
-
       </div>
     );
   }

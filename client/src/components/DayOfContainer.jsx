@@ -2,13 +2,21 @@ import React from 'react';
 import io from 'socket.io-client';
 import DayOfFeed from './DayOfFeed.jsx';
 import DayOfMap from './DayOfMap.jsx';
+<<<<<<< HEAD
 import SubmitFeedItem from './SubmitFeedItem.jsx';
+=======
+import DayOfInfo from './DayOfInfo.jsx';
+>>>>>>> Replaces changeView day of rerendering logic to use single click handler
 
 
 class DayOfContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      currentDayOf: 'INFO'
+    };
     this.client = io('http://localhost:3000');
+    this.handleCurrentDayOfView = this.handleCurrentDayOfView.bind(this);
   }
   
 
@@ -28,16 +36,8 @@ class DayOfContainer extends React.Component {
     })
   }
 
-  clickDayOfInfo() {
-    this.setState({clickedDayOfInfo: !this.state.clickedDayOfInfo})
-  }
-
-  clickDayOfMap() {
-    this.setState({clickedDayOfMap: !this.state.clickedDayOfMap})
-  }
-
-  clickDayOfFeed() {
-    this.setState({clickedDayOfInfo: !this.state.clickedDayOfFeed})
+  handleCurrentDayOfView(view) {
+    this.setState({currentDayOf: view})
   }
 
   render () {
@@ -46,7 +46,24 @@ class DayOfContainer extends React.Component {
     return (
       <div>
         <h1>You are looking at the day of container</h1>
-
+        {this.state.currentDayOf === 'INFO' ? 
+          <DayOfInfo {...this.props} client={this.client} event={event} /> :
+          <div></div>
+        }
+        {this.state.currentDayOf === 'MAP' ? 
+          <DayOfMap {...this.props} client={this.client} /> :
+          <div></div>
+        }
+        {this.state.currentDayOf === 'FEED' ? 
+          <DayOfFeed {...this.props} client={this.client} /> :
+          <div></div>
+        }
+        <div className="tabs">
+          <button onClick={() => this.handleCurrentDayOfView('INFO')}>Info</button>
+          <button onClick={() => this.handleCurrentDayOfView('MAP')}>Map</button>
+          <button onClick={() => this.handleCurrentDayOfView('FEED')}>Feed</button>
+        </div>
+>>>>>>> Replaces changeView day of rerendering logic to use single click handler
       </div>
     );
   }
