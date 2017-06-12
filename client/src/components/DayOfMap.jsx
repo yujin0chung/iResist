@@ -74,8 +74,9 @@ class DayOfMap extends React.Component {
           {this.state.inputPins.map((pin, i) => {
             return <Pin lat={pin.lat} long={pin.lng} handlePinSubmit={this.handlePinSubmit} key={i}/>;
           })}
-          {this.props.maps.allMaps[mapId].pins.map(pin => {
-            return <Pin
+          {this.props.maps.allMaps[mapId].pins !== undefined ?
+            this.props.maps.allMaps[mapId].pins.map(pin => {
+              return <Pin
               lat={this.props.maps.pins[pin].latitude}
               long={this.props.maps.pins[pin].longitude}
               text={this.props.maps.pins[pin].text}
@@ -86,7 +87,8 @@ class DayOfMap extends React.Component {
               type='display'
               key={this.props.maps.pins[pin].id}
             />;
-          })}
+            }) : <div></div>
+          }
         </Map>
       </div>
     );
