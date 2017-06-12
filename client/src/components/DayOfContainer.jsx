@@ -12,7 +12,7 @@ class DayOfContainer extends React.Component {
     this.state = {
       currentDayOf: 'INFO'
     };
-    this.client = io('http://localhost:3000');
+    this.client = io();
     this.handleCurrentDayOfView = this.handleCurrentDayOfView.bind(this);
   }
   
@@ -60,7 +60,6 @@ class DayOfContainer extends React.Component {
           <button onClick={() => this.handleCurrentDayOfView('MAP')}>Map</button>
           <button onClick={() => this.handleCurrentDayOfView('FEED')}>Feed</button>
         </div>
->>>>>>> Replaces changeView day of rerendering logic to use single click handler
       </div>
     );
   }
