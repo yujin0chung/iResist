@@ -73,3 +73,6 @@ export const Icon = styled.img`
   float: right;
 `;
 
+export const Tab = styled.div`
+  
+`

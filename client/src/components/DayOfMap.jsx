@@ -9,7 +9,9 @@ class DayOfMap extends React.Component {
 
   render() {
     return (
-      <h2>This will be the map</h2>
+      <div>
+        <h2>This will be the map</h2>
+      </div>
     );
   }
 }

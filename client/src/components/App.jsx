@@ -8,6 +8,9 @@ import ProtestForm from './ProtestForm.jsx';
 import { Header, Button, Fist } from './StyledComponents.jsx';
 import styled from 'styled-components';
 import DayOfContainer from './DayOfContainer.jsx';
+import DayOfMap from './DayOfMap.jsx';
+import DayOfFeed from './DayOfFeed.jsx';
+
 
 
 class App extends React.Component {

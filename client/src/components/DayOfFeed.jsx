@@ -1,73 +1,85 @@
 import React from 'react';
 import { Input } from 'react-bootstrap';
+import FeedItem from './FeedItem.jsx';
+import SubmitFeedItem from './SubmitFeedItem.jsx';
 
 class DayOfFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: '',
-      messages: []
+      text: '' || 'TEST TEXT',
+      url: '' || 'TEST URL.COM',
+      credibility: '' || 6, 
+      userId: this.props.user.userId,
+      username: this.props.user.username,
+      feedId: '' || 1,
+      type: '' || 'MESSAGE',
+      posts: [],
+      feedItemId: ''
     };
-
   this.handlePost = this.handlePost.bind(this);
   this.handleChange = this.handleChange.bind(this);
-  
   }
 
   componentDidMount() {
-    const { socket } = this.props;
-    // socket.emit('feed mounted', user);
+    const { client, feedItems } = this.props;
+   //this.props.getFeeds(this.props.events.activeEvent);
 
-    socket.on('receiveMessages', payload => {
-      this.updateMessagesFeed(payload);
-    });
-
-    socket.on('new feed item', post => {
-      this.props.receivePost(post);
+    client.on('postedFeedItemId', (id) => {
+      this.setState({feedItemId: id[0]});
     })
 
+    client.on('newFeedItemFromServer', post => {
+      this.props.receiveFeedItem(post);
+    })
   }
 
-  updateMessagesFeed(payload) {
-    this.setState({ posts: payload.messages });
-  }
 
   handlePost(e) {
-    const { socket, user } = this.props;
     e.preventDefault();
-    let message = e.target.value.trim();
     let newPost = {
-      message: message,
-      user: user
+      text: this.state.text,
+      type: this.state.type,
+      url: this.state.url,
+      credibility: this.state.credibility,
+      userId: this.state.userId,
+      username: this.state.username,
+      feedId: this.state.feedId,
+      feedItemId: this.state.feedItemId
     };
-
-    this.props.postMessage(newPost);
-
-    this.state.posts.push(message);
-    socket.emit('new post', newPost);
-    this.setState({ text: ''});
-
+    this.props.client.emit('newFeedItem', newPost);
+    this.state.posts.push(newPost);
+    // this.props.postItem(newPost);
+    this.setState({
+      text: '',
+      url: '',
+      credibility: '',
+      type: ''
+    });
   }
 
   handleChange(e) {
-    const { socket, user } = this.props;
-    this.setState({ text: e.target.value });
+    this.setState({text: e.target.value });
   }
 
   render() {
-
+    const feedItems = this.props.feeds.feedItems;
     return (
+  
       <div>
-        {this.state.posts.map(post => (
-          <Input 
-            type="textarea"
-            name="post"
-            placeholder="Post message"
-            value={this.state.text}
-            onChange={(e) => this.handleChange(e)}
-            onKeyDown={(e) => this.handleSubmit(e)}
-          />
-        ))}
+        <h3>Post a message</h3>
+        <form onSubmit={this.handlePost}>
+        <input
+          type="textarea"
+          placeholder="What's happening at the protest?"
+          value={this.state.text}
+          onChange={this.handleChange}
+        />
+        </form>
+        {(feedItems !== undefined && !Object.is(feedItems, {})) ? 
+          feedItems.map(item => <div><FeedItem username={item.username} text={item.text} key={this.state.feedItemId}/></div>) :
+          <div></div>
+        }
       </div>
     );
   }

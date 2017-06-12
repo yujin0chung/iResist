@@ -11,7 +11,7 @@ class FindProtest extends React.Component {
    
     let upcomingEvents = [];
     for (var event in events) {
-      if (events[event].status === 'upcoming') {
+      if (events[event].status === 'upcoming' || events[event].status === 'ongoing') {
         upcomingEvents.push(event);
       }
     }
