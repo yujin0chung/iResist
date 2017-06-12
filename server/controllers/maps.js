@@ -30,7 +30,8 @@ module.exports.postPin = (client, io, event, pin) => {
     if (err) {
       // emit an error code
     } else {
-      // emit a success code out to everyone
+      let formattedPin = formatPins(pin);
+      console.log(formattedPin);
     }
   });
 };
