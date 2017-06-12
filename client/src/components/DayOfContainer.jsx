@@ -20,25 +20,22 @@ class DayOfContainer extends React.Component {
   componentDidMount() {
     this.client.on('connect', () => {
       this.client.emit('event', this.props.events.activeEvent);
-      // this.props.getFeeds(this.props.events.activeEvent);
     });
 
     this.client.on('joinEventReponse', (response) => {
       console.log(response);
-      console.log('HI!!!!!')
     });
 
-    this.client.on('fetchFeedItems', (items) => {
-      console.log('FETCH FEED ITEMS IN CONTAINER', items)
-    })
+    this.client.on('newFeedItemFromServer', insertedPost => {
+      this.props.receiveFeedItem(insertedPost);
+    });
   }
 
   handleCurrentDayOfView(view) {
-    this.setState({currentDayOf: view})
+    this.setState({ currentDayOf: view });
   }
 
   render () {
-    console.log('DAY OF CONTAINER THIS.STATE', this.state)
     let event = _.find(this.props.events.allEvents, event => (event.id === this.props.events.activeEvent ));
     return (
       <div>
