@@ -47,12 +47,6 @@ class App extends React.Component {
     if (currentView === 'DAY_OF') {
       return (<DayOfContainer {...this.props} />);
     }
-    if (currentView === 'DAY_OF_MAP') {
-      return (<DayOfMap {...this.props} />);
-    }
-    if (currentView === 'DAY_OF_FEED') {
-      return (<DayOfFeed {...this.props} />);
-    }
     if (currentView === 'ORGANIZE_PROTEST') {
       return (<ProtestForm {...this.props} />);
     } else {
