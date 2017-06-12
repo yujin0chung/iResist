@@ -32,10 +32,6 @@ class DayOfMap extends React.Component {
   }
 
   handlePinSubmit(pinText, lat, long) {
-    this.setState({
-      inputPins: []
-    });
-
     let newPin = {
       map_id: this.props.maps.allMaps[this.props.events.allEvents[this.props.events.activeEvent].id].id,
       text: pinText,
@@ -46,9 +42,11 @@ class DayOfMap extends React.Component {
       user_id: this.props.user.userId,
     };
 
-    console.log(newPin);
-
     this.props.client.emit('newPin', newPin);
+
+    this.setState({
+      inputPins: []
+    });
   }
 
   render() {
@@ -62,6 +60,7 @@ class DayOfMap extends React.Component {
           center={[currentMap.lat, currentMap.long]}
           zoom={15}
           onClick={this.handleClick}
+          keyboard={false}
         >
           <TileLayer
             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
@@ -72,10 +71,26 @@ class DayOfMap extends React.Component {
               <span>Event meeting location</span>
             </Popup>
           </Marker>
-          {this.state.inputPins.map((pin) => {
-            return <Pin lat={pin.lat} long={pin.lng} handlePinSubmit={this.handlePinSubmit}/>;
+          {this.state.inputPins.map((pin, i) => {
+            return <Pin lat={pin.lat} long={pin.lng} handlePinSubmit={this.handlePinSubmit} key={i}/>;
+          })}
+          {this.props.maps.allMaps[mapId].pins.map(pin => {
+            return <Pin
+              lat={this.props.maps.pins[pin].latitude}
+              long={this.props.maps.pins[pin].longitude}
+              text={this.props.maps.pins[pin].text}
+              pinCred={this.props.maps.pins[pin].credibility}
+              age={this.props.maps.pins[pin].time}
+              user={this.props.users.users[this.props.maps.pins[pin].user_id].username}
+              userCred={this.props.users.users[this.props.maps.pins[pin].user_id].credibility}
+              type='display'
+              key={this.props.maps.pins[pin].id}
+            />;
           })}
         </Map>
+        {this.props.maps.allMaps[mapId].pins.map(pin => {
+          return <p>{this.props.maps.pins[pin].id}</p>;
+        })}
       </div>
     );
   }
