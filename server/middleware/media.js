@@ -38,9 +38,11 @@ module.exports = multer({
     bucket: 'i-resist-media-storage',
     acl: 'public-read',
     metadata: function(req, file, cb) {
+      console.log('FILE in metadata IS ', file)
       cb(null, {fieldName: file.fieldname});
     },
     key: function(req, file, cb) {
+      console.log('FILE IN KEY: ', file)
       cb(null, uuidV4() + file.originalname);
     }
   })
