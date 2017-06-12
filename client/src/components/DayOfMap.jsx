@@ -43,10 +43,12 @@ class DayOfMap extends React.Component {
       longitude: long,
       credibility: 0,
       time: Date.now(),
-      user_id: this.props.user.user_id,
+      user_id: this.props.user.userId,
     };
 
     console.log(newPin);
+
+    this.props.client.emit('newPin', newPin);
   }
 
   render() {
