@@ -27,6 +27,7 @@ export const votePin = mapActions.votePin;
 export const removePin = mapActions.removePin;
 export const getAllMaps = mapActions.getAllMaps;
 export const getDayOfMap = mapActions.getDayOfMap;
+export const receivedPin = mapActions.receivedPin;
 
 // feed actions
 export const postItem = feedActions.postItem;
