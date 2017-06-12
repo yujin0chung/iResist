@@ -36,6 +36,7 @@ module.exports.postFeedItem = (req, res) => {
 
 module.exports.uploadMedia = (req, res) => {
   console.log('got an upload', req.file);
+  
   res.send(200, req.file);
 }
 

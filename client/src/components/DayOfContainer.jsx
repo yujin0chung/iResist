@@ -19,6 +19,7 @@ class DayOfContainer extends React.Component {
 
 
   componentDidMount() {
+    console.log('Props; ', this.props)
     this.client.on('connect', () => {
       this.client.emit('event', this.props.events.activeEvent);
     });
@@ -63,7 +64,7 @@ class DayOfContainer extends React.Component {
           <button onClick={() => this.handleCurrentDayOfView('FEED')}>Feed</button>
         </div>
         <SubmitFeedItem />
-        <UploadMedia />
+        <UploadMedia {...this.props}/>
         <DayOfMap { ...this.props } client={ this.client }/>
       </div>
     );

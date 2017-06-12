@@ -24,12 +24,13 @@ if (process.env.AWS_SECRET) {
   awsSecret = creds.awsSecret;
 }
 
-const s3 = new AWS.S3();
 AWS.config.update({
   accessKeyId: awsId,
   secretAccessKey: awsSecret,
   subregion: 'us-west-2'
 });
+
+const s3 = new AWS.S3();
 
 module.exports = multer({
   storage: multerS3({
