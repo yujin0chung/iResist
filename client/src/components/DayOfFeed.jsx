@@ -17,15 +17,11 @@ class DayOfFeed extends React.Component {
       type: '' || 'MESSAGE',
       feedItemId: ''
     };
-    this.handlePost = this.handlePost.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  componentDidMount() {
-    const { client } = this.props;
-    client.on('postedFeedItemId', (id) => {
+    this.props.client.on('postedFeedItemId', (id) => {
       this.setState({feedItemId: id[0]});
     });
+    this.handlePost = this.handlePost.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handlePost(e) {
