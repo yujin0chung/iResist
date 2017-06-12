@@ -19,8 +19,8 @@ if (process.env.AWS_ACCESS_KEY_ID) {
   awsId = creds.awsId ;
 }
 
-if (process.env.AWS_SECRET_ACCESS_KEY) {
-  awsSecret = process.env.AWS_SECRET_ACCESS_KEY;
+if (process.env.AWS_SECRET_KEY) {
+  awsSecret = process.env.AWS_SECRET_KEY;
 } else {
   awsSecret = creds.awsSecret;
 }
