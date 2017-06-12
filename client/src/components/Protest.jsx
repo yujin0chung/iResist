@@ -36,7 +36,7 @@ class Protest extends React.Component {
     $.ajax({
       type: "GET",
       dataType: "json",
-      url: `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}`,
+      url: `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${Math.floor(latitude)}&lon=${Math.floor(longitude)}`,
       data: { units: "imperial", appid: "6bf0bd6fff2f38ae4f3f66c7f55c2b7a" },
       success: (weather) => {
         this.setState({
