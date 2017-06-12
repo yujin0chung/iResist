@@ -57,3 +57,10 @@ export const getDayOfMap = (eventId) => {
       });
   };
 };
+
+export const receivedPin = (pin) => {
+  return {
+    type: 'RECEIVED_PIN',
+    pin
+  };
+};
