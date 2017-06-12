@@ -25,8 +25,8 @@ module.exports.getDayOfMap = (req, res) => {
   });
 };
 
-module.exports.postPin = (client, io, room, pin) => {
-  models.Map.postPin = ((err, pin) => {
+module.exports.postPin = (client, io, event, pin) => {
+  models.Map.postPin(pin, (err, pin) => {
     if (err) {
       // emit an error code
     } else {
