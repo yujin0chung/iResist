@@ -32,8 +32,6 @@ export const getDayOfMap = mapActions.getDayOfMap;
 export const postItem = feedActions.postItem;
 export const voteItem = feedActions.voteItem;
 export const deleteItem = feedActions.deleteItem;
-//export const postMessage = feedActions.postMessage;
-//export const getFeedMessages = feedActions.getFeedMessages;
 export const getFeeds = feedActions.getFeeds;
 export const receiveFeedItem = feedActions.receiveFeedItem;
 
