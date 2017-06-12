@@ -9,28 +9,20 @@ module.exports.onConnect = (client, io) => {
 
   client.on('event', function(event) {    
 
-    console.log('EVENT FROM ON CONNECT IN SERVER', event)
-
     client.join(event);
 
     models.Feed.getFeedByEventId(event, (err, feedItems) => {
       if (err) {
         console.error(err);
       } else {
-        console.log('GETFEED QUERY FEED ITEMS', feedItems);
         const feeds = formatFeed(feedItems);
         const feed_items = formatFeedItems(feedItems);
-        console.log('FEED ITEMS FORMATTED FROM SER', feeds)
-        console.log('FEED ITEMS FROM FORMATT4D', feed_items)
         io.emit('fetchFeedItems', {feeds, feed_items})
       }
     });
-
-
     // io.to(event).emit('joinEventReponse', 'You are in event: ' + event);
     client.emit('joinEventResponse', 'You are in event: ' + event);
   });
-
 
   client.on('disconnect', () => {
     console.log('user disconnected')
@@ -38,7 +30,6 @@ module.exports.onConnect = (client, io) => {
 
   client.on('newFeedItem', (post) => {
       models.Feed.postItem(post, (err, id) => {
-        console.log('RETURNED FEED ITEM ID', id)
         if (err) {
           console.error(err);
         } else {
@@ -47,7 +38,6 @@ module.exports.onConnect = (client, io) => {
       });
     io.emit('newFeedItemFromServer', post);
   });
-
 };
 
 
