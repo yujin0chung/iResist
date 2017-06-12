@@ -15,7 +15,7 @@ class DayOfContainer extends React.Component {
     this.client = io();
     this.handleCurrentDayOfView = this.handleCurrentDayOfView.bind(this);
   }
-  
+
 
   componentDidMount() {
     this.client.on('connect', () => {
@@ -29,6 +29,10 @@ class DayOfContainer extends React.Component {
     this.client.on('newFeedItemFromServer', insertedPost => {
       this.props.receiveFeedItem(insertedPost);
     });
+
+    this.client.on('newPin', (pin) => {
+      this.props.receivedPin(pin);
+    });
   }
 
   handleCurrentDayOfView(view) {
@@ -40,15 +44,15 @@ class DayOfContainer extends React.Component {
     return (
       <div>
         <h1>You are looking at the day of container</h1>
-        {this.state.currentDayOf === 'INFO' ? 
+        {this.state.currentDayOf === 'INFO' ?
           <DayOfInfo {...this.props} client={this.client} event={event} /> :
           <div></div>
         }
-        {this.state.currentDayOf === 'MAP' ? 
+        {this.state.currentDayOf === 'MAP' ?
           <DayOfMap {...this.props} client={this.client} /> :
           <div></div>
         }
-        {this.state.currentDayOf === 'FEED' ? 
+        {this.state.currentDayOf === 'FEED' ?
           <DayOfFeed {...this.props} client={this.client} /> :
           <div></div>
         }

@@ -6,7 +6,7 @@ export const maps = (state = {}, action) => {
     });
   }
   case 'GET_DAY_OF_MAP_SUCCESS': {
-    let newState = Object.assign(state);
+    let newState = Object.assign({}, state);
     if (action.map.data.allPins.length > 0) {
       const targetPin = action.map.data.allPins[0];
       const targetMap = action.map.data[targetPin].map_id;
@@ -15,6 +15,14 @@ export const maps = (state = {}, action) => {
     return Object.assign({}, newState, {
       pins: action.map.data
     });
+  }
+  case 'RECEIVED_PIN': {
+    let newState = Object.assign({}, state);
+    const pinId = action.pin.allPins[0];
+    const mapId = action.pin[pinId].map_id;
+    newState.pins.allPins.push(pinId);
+    newState.pins[pinId] = action.pin[pinId];
+    return newState;
   }
   default:
     return state;
