@@ -2,11 +2,8 @@ import React from 'react';
 import io from 'socket.io-client';
 import DayOfFeed from './DayOfFeed.jsx';
 import DayOfMap from './DayOfMap.jsx';
-<<<<<<< HEAD
 import SubmitFeedItem from './SubmitFeedItem.jsx';
-=======
 import DayOfInfo from './DayOfInfo.jsx';
->>>>>>> Replaces changeView day of rerendering logic to use single click handler
 
 
 class DayOfContainer extends React.Component {
