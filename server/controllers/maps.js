@@ -31,7 +31,7 @@ module.exports.postPin = (client, io, event, pin) => {
       // emit an error code
     } else {
       let formattedPin = formatPins(pin);
-      console.log(formattedPin);
+      client.to(event).emit('newPin', formattedPin);
     }
   });
 };

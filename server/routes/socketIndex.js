@@ -31,7 +31,7 @@ module.exports.onConnect = (client, io) => {
     io.to(event).emit('joinEventReponse', 'You are in event: ' + event);
 
     client.on('newPin', pin => {
-      constrollers.Maps.postPin(client, io, room, pin);
+      controllers.Maps.postPin(client, io, event, pin);
     });
   });
 
