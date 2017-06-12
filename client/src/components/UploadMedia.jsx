@@ -21,8 +21,11 @@ class UploadMedia extends React.Component {
         console.log(err);
       }
      console.log('location', JSON.parse(res.text))
-      axios.post('api/feed/updatedb', {
-        user: this.props.user.userId,
+      axios.post('api/feed/postItem', {
+        userId: this.props.user.userId,
+        username: this.props.user.username,
+        text: null,
+        credibility: null,
         url: JSON.parse(res.text).location,
         type: JSON.parse(res.text).mimetype,
         eventId: this.props.events.activeEvent

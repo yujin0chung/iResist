@@ -12,14 +12,14 @@ try {
 let awsId;
 let awsSecret;
 
-if (process.env.AWS_ID) {
-  awsId = process.env.AWS_ID;
+if (process.env.AWS_ACCESS_KEY_ID) {
+  awsId = process.env.AWS_ACCESS_KEY_ID;
 } else {
   awsId = creds.awsId;
 }
 
-if (process.env.AWS_SECRET) {
-  awsSecret = process.env.AWS_SECRET;
+if (process.env.AWS_SECRET_ACCESS_KEY) {
+  awsSecret = process.env.AWS_SECRET_ACCESS_KEY;
 } else {
   awsSecret = creds.awsSecret;
 }
