@@ -31,7 +31,7 @@ class DayOfContainer extends React.Component {
     });
 
     this.client.on('newPin', (pin) => {
-      console.log(pin);
+      this.props.receivedPin(pin);
     });
   }
 
