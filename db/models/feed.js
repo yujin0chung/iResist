@@ -50,8 +50,8 @@ module.exports.postItem = (item, cb) => {
 
 module.exports.getFeedItems = (eventId, cb) => {
   knex('feed_items').select()
-    // .innerJoin('feed', 'feed.id', 'feed_items.feed_id')
-    // .innerJoin('events', 'events.id', 'feed_items.feed_id')
+    .innerJoin('feed', 'feed.id', 'feed_items.feed_id')
+    .innerJoin('events', 'events.id', 'feed_items.feed_id')
     .where('events', 'events.id', eventId)
     .then(data => {
       console.log('DATA FROM GET FEED ITEMS', data)

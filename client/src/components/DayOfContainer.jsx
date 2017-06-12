@@ -1,7 +1,6 @@
 import React from 'react';
 import io from 'socket.io-client';
 import DayOfFeed from './DayOfFeed.jsx';
-import DayOfInfo from './DayOfInfo.jsx';
 import DayOfMap from './DayOfMap.jsx';
 import SubmitFeedItem from './SubmitFeedItem.jsx';
 
@@ -9,12 +8,7 @@ import SubmitFeedItem from './SubmitFeedItem.jsx';
 class DayOfContainer extends React.Component {
   constructor(props) {
     super(props);
-
-    this.store = {};
     this.client = io('http://localhost:3000');
-
-  //   this.client.emit('test2server');
-  //  this.client.on('test!', ()=>console.log('we called the client'));
   }
   
 
@@ -32,18 +26,27 @@ class DayOfContainer extends React.Component {
     this.client.on('fetchFeedItems', (items) => {
       console.log('FETCH FEED ITEMS IN CONTAINER', items)
     })
+  }
 
-    //this.props.getFeeds(this.props.activeEvent);
+  clickDayOfInfo() {
+    this.setState({clickedDayOfInfo: !this.state.clickedDayOfInfo})
+  }
 
+  clickDayOfMap() {
+    this.setState({clickedDayOfMap: !this.state.clickedDayOfMap})
+  }
+
+  clickDayOfFeed() {
+    this.setState({clickedDayOfInfo: !this.state.clickedDayOfFeed})
   }
 
   render () {
+    console.log('DAY OF CONTAINER THIS.STATE', this.state)
+    let event = _.find(this.props.events.allEvents, event => (event.id === this.props.events.activeEvent ));
     return (
       <div>
         <h1>You are looking at the day of container</h1>
-        <DayOfMap { ...this.props } client={ this.client }/>
-        <DayOfMap { ...this.props } client={ this.client } />
-        <DayOfFeed {...this.props} client={ this.client } />
+
       </div>
     );
   }

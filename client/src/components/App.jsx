@@ -8,6 +8,9 @@ import ProtestForm from './ProtestForm.jsx';
 import { Header, Button, Fist } from './StyledComponents.jsx';
 import styled from 'styled-components';
 import DayOfContainer from './DayOfContainer.jsx';
+import DayOfMap from './DayOfMap.jsx';
+import DayOfFeed from './DayOfFeed.jsx';
+
 
 
 class App extends React.Component {
@@ -43,6 +46,12 @@ class App extends React.Component {
     }
     if (currentView === 'DAY_OF') {
       return (<DayOfContainer {...this.props} />);
+    }
+    if (currentView === 'DAY_OF_MAP') {
+      return (<DayOfMap {...this.props} />);
+    }
+    if (currentView === 'DAY_OF_FEED') {
+      return (<DayOfFeed {...this.props} />);
     }
     if (currentView === 'ORGANIZE_PROTEST') {
       return (<ProtestForm {...this.props} />);
