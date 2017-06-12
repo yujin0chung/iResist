@@ -13,8 +13,9 @@ const io = require('socket.io')(server);
 
 io.use(socketAuth);
 
-io.on('connection', function(client) {
-  socketRoutes.onConnect(client, io);
+io.on('connection', function(socket) {  
+  socketRoutes.onConnect(socket, io);
+  
 });
 
 module.exports.io = io;

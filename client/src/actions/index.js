@@ -35,6 +35,7 @@ export const deleteItem = feedActions.deleteItem;
 //export const postMessage = feedActions.postMessage;
 //export const getFeedMessages = feedActions.getFeedMessages;
 export const getFeeds = feedActions.getFeeds;
+export const receiveFeedItem = feedActions.receiveFeedItem;
 
 // fetch actions
 export const fetchData = fetchDataActions.fetchData;

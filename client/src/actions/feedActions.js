@@ -63,6 +63,37 @@ export const getFeeds = (eventId) => dispatch => {
   });
 };
 
+export const postFeedItemSuccess = (item) => {
+  return {
+    type: 'POST_FEED_ITEM_SUCCESS',
+    item
+  };
+};
+
+export const postFeedItemError = (error) => {
+  return {
+    type: 'POST_FEED_ITEM_ERROR',
+    error
+  };
+};
+
+export const postFeedItem = (item) => dispatch => {
+  axios.post('/api/feed/postItem', item)
+    .then(response => {
+      dispatch(postFeedItemSuccess(response.data));
+    })
+    .catch(error => {
+      dispatch(postFeedItemError(error));
+    })
+}
+
+export const receiveFeedItem = (item) => {
+  return {
+    type: 'RECEIVE_FEED_ITEM',
+    item
+  }
+}
+
 
 
 // export const postMessageSuccess = message => {
