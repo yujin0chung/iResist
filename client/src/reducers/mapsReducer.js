@@ -16,6 +16,15 @@ export const maps = (state = {}, action) => {
       pins: action.map.data
     });
   }
+  case 'RECEIVED_PIN': {
+    let newState = Object.assign(state);
+    const pinId = action.pin.allPins[0];
+    const mapId = action.pin[pinId].map_id;
+    newState.pins.allPins.push(pinId);
+    newState.allMaps[mapId].pins.push(pinId);
+    newState.pins[pinId] = action.pin[pinId];
+    return newState;
+  }
   default:
     return state;
   }
