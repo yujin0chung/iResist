@@ -36,7 +36,7 @@ class Protest extends React.Component {
     $.ajax({
       type: "GET",
       dataType: "json",
-      url: `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${Math.floor(latitude)}&lon=${Math.floor(longitude)}`,
+      url: `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${Math.round(latitude)}&lon=${Math.round(longitude)}`,
       data: { units: "imperial", appid: "6bf0bd6fff2f38ae4f3f66c7f55c2b7a" },
       success: (weather) => {
         this.setState({
@@ -61,10 +61,11 @@ class Protest extends React.Component {
     var longitude = this.props.maps.allMaps[mapId].long;
 
     if (this.state.displayDetails) {
-      {this.fetchWeather(latitude, longitude);}
+      // {this.fetchWeather(latitude, longitude);}
       return (
         <div>
           <Name onClick={this.handleProtestClick}>{this.props.protest.name}</Name>
+          {this.fetchWeather(latitude, longitude)}
           <Info>
             <p><b>Cause:</b> {this.props.protest.cause}</p>
             <p><b>Start:</b> {dateFormat(startTime, 'mmmm dd, yyyy: h:MM TT')}</p>
