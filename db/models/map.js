@@ -65,9 +65,9 @@ module.exports.postPin = (pin, cb) => {
   })
     .returning(['id', 'map_id', 'text', 'latitude', 'longitude', 'credibility', 'user_id', 'time'])
     .then(data => {
-      console.log(data);
+      cb(null, data);
     })
-    .catch(err =>
-      console.log(err)
-    );
+    .catch(err => {
+      cb(err, null);
+    });
 };
