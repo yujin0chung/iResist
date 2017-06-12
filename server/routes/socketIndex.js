@@ -7,26 +7,8 @@ const formatFeed = require('../../db/lib/formatFeed');
 const controllers = require('../controllers');
 
 module.exports.onConnect = (client, io) => {
-
-<<<<<<< HEAD
-  client.on('event', function(event) {    
-    client.join(event);
-=======
   client.on('event', function(event) {
-
     client.join(event);
-
-    models.Feed.getFeedByEventId(event, (err, feedItems) => {
-      if (err) {
-        console.error(err);
-      } else {
-        const feeds = formatFeed(feedItems);
-        const feed_items = formatFeedItems(feedItems);
-        io.emit('fetchFeedItems', {feeds, feed_items});
-      }
-    });
-    // io.to(event).emit('joinEventReponse', 'You are in event: ' + event);
->>>>>>> (feaT) emit new pin data to server
     client.emit('joinEventResponse', 'You are in event: ' + event);
     io.to(event).emit('joinEventReponse', 'You are in event: ' + event);
 
@@ -40,7 +22,6 @@ module.exports.onConnect = (client, io) => {
   });
 
   client.on('newFeedItem', (post) => {
-<<<<<<< HEAD
     models.Feed.postItem(post, (err, insertedPost) => {
 
       if (err) {
@@ -51,17 +32,6 @@ module.exports.onConnect = (client, io) => {
         client.emit('newFeedItemFromServer', insertedPost[0]);
       }
     });
-
-=======
-    models.Feed.postItem(post, (err, id) => {
-      if (err) {
-        console.error(err);
-      } else {
-        client.emit('postedFeedItemId', id);
-      }
-    });
-    io.emit('newFeedItemFromServer', post);
->>>>>>> (feaT) emit new pin data to server
   });
   // client.on('new post', post => {
   //   io.emit('post', post);

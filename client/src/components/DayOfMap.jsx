@@ -88,9 +88,6 @@ class DayOfMap extends React.Component {
             />;
           })}
         </Map>
-        {this.props.maps.allMaps[mapId].pins.map(pin => {
-          return <p>{this.props.maps.pins[pin].id}</p>;
-        })}
       </div>
     );
   }
