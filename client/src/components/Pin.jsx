@@ -15,6 +15,7 @@ class Pin extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log('this is the event: ', e.key);
     this.props.handlePinSubmit(this.state.inputPinText, this.props.lat, this.props.long);
   }
 
@@ -35,9 +36,9 @@ class Pin extends React.Component {
       );
     } else {
       return (
-        <AutoOpenMarker position={[this.props.lat, this.props.long]}>
+        <AutoOpenMarker position={[this.props.lat, this.props.long]} keyboard={false}>
           <Popup>
-            <form>
+            <form onSubmit={ e => this.handleSubmit(e) }>
               <input
                 type="text"
                 value={this.state.inputPinText}
@@ -48,9 +49,8 @@ class Pin extends React.Component {
               <input
                 type="submit"
                 value="Submit"
-                onClick={ e => this.handleSubmit(e) }
               />
-            </form>
+            </form >
           </Popup>
         </AutoOpenMarker>
       );
