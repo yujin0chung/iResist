@@ -40,7 +40,7 @@ class Protest extends React.Component {
       data: { units: "imperial", appid: "6bf0bd6fff2f38ae4f3f66c7f55c2b7a" },
       success: (weather) => {
         this.setState({
-          currentTemp: weather.main.temp,
+          currentTemp: Math.floor(weather.main.temp),
           currentWeatherDescription: weather.weather[0].description
         })
       }
