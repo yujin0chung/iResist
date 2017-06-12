@@ -19,12 +19,9 @@ class DayOfContainer extends React.Component {
   
 
   componentDidMount() {
-    this.client.emit('test2server');
-    this.client.on('test!', ()=>console.log('we called the client'));
-
     this.client.on('connect', () => {
       this.client.emit('event', this.props.events.activeEvent);
-      //this.props.getFeeds(this.props.events.activeEvent);
+      // this.props.getFeeds(this.props.events.activeEvent);
     });
 
     this.client.on('joinEventReponse', (response) => {
@@ -32,7 +29,11 @@ class DayOfContainer extends React.Component {
       console.log('HI!!!!!')
     });
 
-    this.props.getFeeds(this.props.activeEvent);
+    this.client.on('fetchFeedItems', (items) => {
+      console.log('FETCH FEED ITEMS IN CONTAINER', items)
+    })
+
+    //this.props.getFeeds(this.props.activeEvent);
 
   }
 

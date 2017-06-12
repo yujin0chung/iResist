@@ -2,19 +2,17 @@ export const feeds = (state = {}, action) => {
   switch (action.type) {
   case 'RECEIVE_FEED_ITEM': 
     console.log('ACTION FROM RECEIVE FEED', action)
-    console.log('ACTION.DATA FROM RECEIVE FEED', action.data)
     console.log('STATE FROM RECEIVE FEED ITEM', state)
+    // let newState = Object.assign({}, state);
+    // let feedItemId = action.item.feedItemId;
+    // if (action.item.length > 0) {
+    //   newState.feedItems[feedItemId] = action.item;
+    // }
+    // console.log('NEW STATE', newState)
+    // newState.feedItems[action.item.feedItemId] = action.item;
     return Object.assign({}, state, {
+      //feedItems: [...state.feedItems, action.item]
       feedItems: [...state.feedItems, action.item]
-    //  { feedItemId: {
-    //   type: action.item.type,
-    //   text: action.item.text,
-    //   credibility: action.item.credibility,
-    //   userId: action.item.userId,
-    //   username: action.item.username,
-    //   url: action.item.url,
-    //   feedId: action.item.feedId
-    // }});
   });
   case 'GET_FEEDS_SUCCESS':
     return Object.assign({}, state, {
@@ -23,7 +21,7 @@ export const feeds = (state = {}, action) => {
   case 'GET_FEED_ITEMS_SUCCESS':
     return Object.assign({}, state, {
       feedItems: action.feedItems.data.feedItems
-    })
+    });
   case 'GET_FEEDS_ERROR':
     return Object.assign({}, state, {
       error: action.error

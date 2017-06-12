@@ -12,32 +12,29 @@ class DayOfFeed extends React.Component {
       credibility: '' || 6, 
       userId: this.props.user.userId,
       username: this.props.user.username,
-      feedId: '' || 1,
+      feedId: 0, 
       type: '' || 'MESSAGE',
-      posts: []
-  };
+      posts: [],
+      feedItemId: ''
+    };
   this.handlePost = this.handlePost.bind(this);
   this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
-    const { client, feedItems, activeEvent } = this.props;
+    const { client, feedItems } = this.props;
+    //this.props.getFeeds(this.props.events.activeEvent);
+
+    client.on('postedFeedItemId', (id) => {
+      console.log('POSTED FEED ITEM ID FROM COMPO', id[0])
+      this.setState({feedItemId: id[0]});
+    })
 
     client.on('newFeedItemFromServer', post => {
       this.props.receiveFeedItem(post);
       console.log('received feed item from server');
     })
-    // client.on('newFeedItem', this.newFeedItem);
-    // client.on('userJoin', this.userJoin);
-    // client.on('userLeft', this.userLeft);
-
-    // client.emit('addUser', this.state.username);
-    // client.on('newPostItem', post => {
-    //   this.props.getFeedItemsSuccess(post);
-    // })
   }
-
-
 
 
   handlePost(e) {
@@ -49,17 +46,18 @@ class DayOfFeed extends React.Component {
       credibility: this.state.credibility,
       userId: this.state.userId,
       username: this.state.username,
-      feedId: this.state.feedId
+      feedId: this.state.feedId,
+      feedItemId: this.state.feedItemId
     };
     this.props.client.emit('newFeedItem', newPost);
     this.state.posts.push(newPost);
-    this.props.postItem(newPost);
+    // this.props.postItem(newPost);
     this.setState({
       text: '',
       url: '',
       credibility: '',
       type: ''
-    })
+    });
   }
 
   handleChange(e) {
@@ -67,6 +65,7 @@ class DayOfFeed extends React.Component {
   }
 
   render() {
+    console.log('THIS.STATE.FEEDITEM ID', this.state.feedItemId)
     console.log('THIS.STATE FROM DAY OF FEED', this.state)
     let event = _.find(this.props.events.allEvents, event => (event.id === this.props.views.optionalEventId));
     console.log('THIS.PROPS FROM DAHY OF FEED', this.props)
@@ -84,18 +83,17 @@ class DayOfFeed extends React.Component {
             //onKeyDown={(e) => this.handleSubmit(e)}
           />
         ))}*/}
-        {/*<h3>{this.props.event.name}</h3>
-        <h1>Post a message</h1>*/}
+        <h3>Post a message</h3>
         <form onSubmit={this.handlePost}>
         <input
           type="textarea"
-          placeholder="Post a message"
+          placeholder="What's happening at the protest?"
           value={this.state.text}
           onChange={this.handleChange}
         />
         </form>
         {(feedItems !== undefined && !Object.is(feedItems, {})) ? 
-          feedItems.map(item => <div>{item.text}</div>) :
+          feedItems.map(item => <div><b>{item.username}</b> : {item.text}</div>) :
           <div></div>
         }
         <SubmitFeedItem />
