@@ -35,6 +35,21 @@ module.exports.postFeedItem = (req, res) => {
   });
 }
 
+module.exports.updateDb = (req, res) => {
+  const itemInfo = {
+    url: req.body.url,
+    type: req.body.type,
+    event: req.body.eventId
+  }
+  models.Feed.updateDb(itemInfo, (err, data) => {
+    if (err) {
+      res.send(500, err);
+    } else {
+      res.send(200, data);
+    }
+  })
+}
+
 module.exports.uploadMedia = (req, res) => {
   console.log('got an upload', req.file);
   

@@ -6,6 +6,7 @@ const upload = require('../middleware').media;
 router.get('/all', controllers.getAllFeed);
 router.get('/event', controllers.getEventFeed);
 router.post('/postItem', controllers.postFeedItem);
+router.post('/updatedb', controllers.UpdateDb);
 router.route('/upload')
   .post(upload.single('mediaUpload'), controllers.uploadMedia);
   
