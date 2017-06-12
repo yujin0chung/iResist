@@ -24,3 +24,13 @@ module.exports.getDayOfMap = (req, res) => {
     }
   });
 };
+
+module.exports.postPin = (client, io, room, pin) => {
+  models.Map.postPin = ((err, pin) => {
+    if (err) {
+      // emit an error code
+    } else {
+      // emit a success code out to everyone
+    }
+  });
+};
