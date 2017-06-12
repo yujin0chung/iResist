@@ -52,3 +52,22 @@ module.exports.dayOfMap = (eventId, cb) => {
       cb(err, null);
     });
 };
+
+module.exports.postPin = (pin, cb) => {
+  knex('pins').insert({
+    map_id: pin.map_id,
+    text: pin.text,
+    latitude: pin.latitude,
+    longitude: pin.longitude,
+    credibility: 0,
+    user_id: pin.user_id,
+    time: pin.time
+  })
+    .returning(['id', 'map_id', 'text', 'latitude', 'longitude', 'credibility', 'user_id', 'time'])
+    .then(data => {
+      console.log(data);
+    })
+    .catch(err =>
+      console.log(err)
+    );
+};
