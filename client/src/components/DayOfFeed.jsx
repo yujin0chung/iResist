@@ -9,7 +9,7 @@ class DayOfFeed extends React.Component {
     this.state = {
       text: '' || 'TEST TEXT',
       url: '' || 'TEST URL.COM',
-      credibility: '' || 6, 
+      credibility: '' || 6,
       userId: this.props.user.userId,
       username: this.props.user.username,
       feedId: '' || 1,
@@ -64,8 +64,8 @@ class DayOfFeed extends React.Component {
 
   render() {
     const feedItems = this.props.feeds.feedItems;
+    console.log('this should be the event Id ', this.props.events.activeEvent);
     return (
-  
       <div>
         <h3>Post a message</h3>
         <form onSubmit={this.handlePost}>
@@ -76,10 +76,11 @@ class DayOfFeed extends React.Component {
           onChange={this.handleChange}
         />
         </form>
-        {(feedItems !== undefined && !Object.is(feedItems, {})) ? 
+        {(feedItems !== undefined && !Object.is(feedItems, {})) ?
           feedItems.map(item => <div><FeedItem username={item.username} text={item.text} key={this.state.feedItemId}/></div>) :
           <div></div>
         }
+        <SubmitFeedItem />
       </div>
     );
   }
