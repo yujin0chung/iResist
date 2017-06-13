@@ -18,7 +18,6 @@ module.exports.getFeedByEventId = (eventId, cb) => {
 
 
 module.exports.postItem = (item, cb) => {
-  console.log('ITEM IN ')
   knex('feed_items')
     .insert({event_id: Number(item.eventId), text: item.text, url: item.url, credibility: Number(item.credibility), type: item.type, user_id: Number(item.userId), username: item.username, time: item.time})
     .returning('*')

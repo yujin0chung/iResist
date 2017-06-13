@@ -50,7 +50,7 @@ class UploadMedia extends React.Component {
     console.log('props: ', this.props);
     return (
       <div>
-        <Dropzone style={{height: '15px'}} onDrop={this.onDrop.bind(this)} multiple={false}>
+        <Dropzone style={{height: '30px'}} onDrop={this.onDrop.bind(this)} multiple={false}>
           <div> click to select a file </div>
         </Dropzone>
       </div>
