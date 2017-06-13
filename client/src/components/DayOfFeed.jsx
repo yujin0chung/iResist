@@ -9,7 +9,11 @@ class DayOfFeed extends React.Component {
     this.state = {
       text: '',
       url: '',
+      text: '' || 'TEST TEXT',
+      url: '' || 'TEST URL.COM',
       credibility: '' || 0,
+      userId: this.props.user.userId,
+      username: this.props.user.username,
       type: '' || 'MESSAGE',
       pageNumber: 2 //default is already 1
     };
@@ -79,10 +83,14 @@ class DayOfFeed extends React.Component {
           />
         </form>
         {(feedItems !== undefined && !Object.is(feedItems, {})) ?
+
           feedItems.map(item =>
             <FeedItem
               username={item.username}
               text={item.text}
+              key={item.itemId}
+              username={item.username} 
+              text={item.text} 
               time={item.time}
               userId={this.props.user.userId}
               itemId={item.id}

@@ -12,17 +12,22 @@ class FeedItem extends React.Component {
     this.handleVoteType = this.handleVoteType.bind(this);
   }
 
+  rotate(e) {
+    let img = document.getElementById(e.target.id);
+    img.setAttribute('style', "{height: '200px', width: '350px', transform: 'rotate(90deg)'}");
+  }
+
   componentWillMount() {
     if (this.props.type === 'image/jpeg') {
-      this.state.element = <img style={{width: '500px', height: '350px'}} src={this.props.url} />;
+      this.state.element = <img id={this.props.id} onClick={this.rotate.bind(this)} style={{height: '200px', width: '350px'}} src={this.props.url} />
     } else if (this.props.type === 'image/png') {
-      this.state.element = <img src={this.props.url} type='image/png' controls/>;
+      this.state.element = <img id={this.props.id} onClick={this.rotate.bind(this)} style={{height: '200px', width: '350px'}} src={this.props.url} />
     } else if (this.props.type === 'video/mp4') {
-      this.state.element = <video src={this.props.url} autoPlay={false} type='video/mp4' controls/>;
+      this.state.element = <video id={this.props.id} src={this.props.url} autoPlay={false} type='video/mp4' controls/>
     } else if (this.props.type === 'video/quicktime') {
-      this.state.element = <video src={this.props.url} autoPlay={false} type='video/quicktime' controls/>;
-    } else {
-      this.state.element = <span>{this.props.text}</span>;
+      this.state.element = <video id={this.props.id} src={this.props.url} autoPlay={false} type='video/quicktime' controls/>
+    }  else {
+      this.state.element = <span>{this.props.text}</span>
     }
   }
 
