@@ -39,6 +39,7 @@ module.exports.postItem = (item, cb) => {
 };
 
 module.exports.checkForFeedItemVote = (vote, cb) => {
+  console.log('I RAN');
   knex('feed_item_credibility')
     .where({
       user_id: vote.userId,
