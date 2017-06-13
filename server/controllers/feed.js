@@ -25,12 +25,13 @@ module.exports.getEventFeed = (req, res) => {
   });
 }
 
-module.exports.postFeedItem = (req, res) => {
-  models.Feed.postItem(req.body.item, (err, data) => {
+module.exports.postFeedItem = (client, io, event, post) => {
+  models.Feed.postItem(post, (err, insertedPost) => {
     if (err) {
-      res.send(500, err);
+      console.error(err);
     } else {
-      res.send(200, data);
+      io.to(event).emit('postedFeedItemId', insertedPost[0].id);
+      io.to(event).emit('newFeedItemFromServer', insertedPost[0]);
     }
   });
 }

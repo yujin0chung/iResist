@@ -34,7 +34,8 @@ class DayOfFeed extends React.Component {
       url: this.state.url,
       userId: this.state.userId,
       username: this.state.username,
-      credibility: this.state.credibility
+      credibility: this.state.credibility,
+      time: Date.now()
     };
     this.props.client.emit('newFeedItem', newPost);
     this.setState({

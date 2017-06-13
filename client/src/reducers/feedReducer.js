@@ -4,7 +4,7 @@ export const feeds = (state = {}, action) => {
     console.log('STATE FROM RECEIVE FEED ITEM', state);
     return Object.assign({}, state, {
       feedItems: [...state.feedItems, action.item]
-  });
+    });
   case 'GET_FEED_ITEMS_SUCCESS':
     return Object.assign({}, state, {
       feedItems: action.feedItems.data.feedItems
