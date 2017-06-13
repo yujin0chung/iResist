@@ -17,8 +17,8 @@ class FeedItem extends React.Component {
       this.state.element = <video src={this.props.url} autoPlay={false} type='video/mp4' controls/>
     } else if (this.props.type === 'video/quicktime') {
       this.state.element = <video src={this.props.url} autoPlay={false} type='video/quicktime' controls/>
-    } else if (this.props.type === 'video/png') {
-      this.state.element = <video src={this.props.url} autoPlay={false} type='video/png' controls/>
+    } else if (this.props.type === 'image/png') {
+      this.state.element = <video src={this.props.url} autoPlay={false} type='image/png' controls/>
     } else {
       this.state.element = <span>{this.props.text}</span>
     } 
