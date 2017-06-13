@@ -13,13 +13,13 @@ class FeedItem extends React.Component {
   componentDidMount() {
     if (this.props.type === 'image/jpeg') {
       this.state.element = <img style={{width: '500px', height: '350px'}} src={this.props.url} />
+    } else if (this.props.type === 'image/png') {
+      this.state.element = <video src={this.props.url} autoPlay={false} type='image/png' controls/>
     } else if (this.props.type === 'video/mp4') {
       this.state.element = <video src={this.props.url} autoPlay={false} type='video/mp4' controls/>
     } else if (this.props.type === 'video/quicktime') {
       this.state.element = <video src={this.props.url} autoPlay={false} type='video/quicktime' controls/>
-    } else if (this.props.type === 'image/png') {
-      this.state.element = <video src={this.props.url} autoPlay={false} type='image/png' controls/>
-    } else {
+    }  else {
       this.state.element = <span>{this.props.text}</span>
     } 
   }
