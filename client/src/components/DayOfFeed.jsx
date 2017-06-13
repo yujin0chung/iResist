@@ -13,9 +13,9 @@ class DayOfFeed extends React.Component {
       credibility: '' || 0,
       userId: this.props.user.userId,
       username: this.props.user.username,
-      // feedId: '' || 1,
       type: '' || 'MESSAGE',
-      feedItemId: ''
+      feedItemId: '',
+      loadCount: 0
     };
     this.props.client.on('postedFeedItemId', (id) => {
       this.setState({feedItemId: id[0]});
@@ -37,6 +37,7 @@ class DayOfFeed extends React.Component {
       credibility: this.state.credibility,
       time: Date.now()
     };
+    this.loadMorePosts = this.loadMorePosts.bind(this);
     this.props.client.emit('newFeedItem', newPost);
     this.setState({
       text: '',
@@ -48,6 +49,10 @@ class DayOfFeed extends React.Component {
 
   handleChange(e) {
     this.setState({text: e.target.value });
+  }
+
+  loadMorePosts() {
+    this.setState({loadCount: this.state.loadCount++ })
   }
 
   render() {
@@ -65,14 +70,11 @@ class DayOfFeed extends React.Component {
           />
         </form>
         {(feedItems !== undefined && !Object.is(feedItems, {})) ?
-          feedItems.map(item => <div><FeedItem username={item.username} text={item.text} key={this.state.feedItemId}/></div>) :
+          feedItems.map(item => <div><FeedItem username={item.username} text={item.text} key={this.state.feedItemId} time={item.time}/></div>) :
           <div></div>
         }
-<<<<<<< HEAD
-        <UploadMedia {...this.props} />
-=======
+        {/*<button onClick={() => {this.loadMorePosts(); this.props.getFeeds(this.props.events.activeEvent, this.state.loadCount)}}>Load More Posts></button>*/}
         <UploadMedia {...this.props}/>
->>>>>>> merge conflicts fix
       </div>
     );
   }

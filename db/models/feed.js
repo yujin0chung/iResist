@@ -4,6 +4,8 @@ module.exports.getFeedByEventId = (eventId, cb) => {
   knex('feed_items').select(['feed_items.event_id', 'feed_items.id', 'feed_items.text', 'feed_items.type','feed_items.url', 'feed_items.credibility', 'feed_items.user_id', 'feed_items.username', 'feed_items.time'])
     .innerJoin('events', 'events.id', 'feed_items.event_id')
     .where('events.id', eventId)
+    // .limit(10)
+    // .offset(10 * Number(loadCount))
     .then(data => {
       cb(null, data);
     })
@@ -11,6 +13,8 @@ module.exports.getFeedByEventId = (eventId, cb) => {
       cb(err, null);
     });
 };
+
+
 
 
 module.exports.postItem = (item, cb) => {
