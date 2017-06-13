@@ -13,6 +13,7 @@ class Pin extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCred = this.handleCred.bind(this);
   }
 
   handleSubmit(e) {
@@ -29,6 +30,10 @@ class Pin extends React.Component {
     });
   }
 
+  handleCred(polarity) {
+    this.props.handleCredChange(polarity, this.props.userId, this.props.pinId);
+  }
+
   render () {
     if (this.props.type === 'display') {
       return (
@@ -40,6 +45,8 @@ class Pin extends React.Component {
               <p>Age: {this.state.displayAge}</p>
               <p>User: {this.props.user}</p>
               <p>User Cred: {this.props.userCred}</p>
+              <button onClick={e => this.handleCred(1)}>Upcred!</button>
+              <button onClick={e => this.handleCred(-1)}>Downcred!</button>
             </span>
           </Popup>
         </Marker>
