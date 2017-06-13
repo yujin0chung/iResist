@@ -7,8 +7,8 @@ class FeedItem extends React.Component {
     this.state = {
       userId: this.props.userId,
       itemId: this.props.itemId,
-      type: '',
-      polarity: 0
+      polarity: 0,
+      element: ''
     };
     this.handleVoteType = this.handleVoteType.bind(this);
   }
