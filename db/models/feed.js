@@ -1,21 +1,31 @@
 const knex = require('../').knex;
+const models = require('./../../db/models');
 
-module.exports.getFeedByEventId = (eventId, cb) => {
-  knex('feed_items').select(['feed_items.event_id', 'feed_items.id', 'feed_items.text', 'feed_items.type','feed_items.url', 'feed_items.credibility', 'feed_items.user_id', 'feed_items.username', 'feed_items.time'])
-    .innerJoin('events', 'events.id', 'feed_items.event_id')
-    .where('events.id', eventId)
-    // .limit(10)
-    // .offset(10 * Number(loadCount))
-    .then(data => {
-      cb(null, data);
-    })
-    .catch(err => {
-      cb(err, null);
-    });
+module.exports.getFeedByEventId = (eventId, pageNumber, cb) => {
+  console.log('PAGE NUMBER FROM QUERY', pageNumber)
+    models.FeedItem.where({event_id: eventId})
+      .orderBy('id', 'DESC')
+      .fetchPage({pageSize: 10, page: pageNumber})
+      .then(items => {
+        console.log('ITEMS FROM GET FEED BY EVENT QUERY', items.toJSON());
+        if (items.toJSON().length)
+        cb(null, items.toJSON());
+      })
+      .catch(error => {
+        cb(error, null);
+      });
+  // knex('feed_items').select(['feed_items.event_id', 'feed_items.id', 'feed_items.text', 'feed_items.type','feed_items.url', 'feed_items.credibility', 'feed_items.user_id', 'feed_items.username', 'feed_items.time'])
+  //   .innerJoin('events', 'events.id', 'feed_items.event_id')
+  //   .where('events.id', eventId)
+  //   // .limit(10)
+  //   // .offset(10 * Number(loadCount))
+  //   .then(data => {
+  //     cb(null, data);
+  //   })
+  //   .catch(err => {
+  //     cb(err, null);
+  //   });
 };
-
-
-
 
 module.exports.postItem = (item, cb) => {
   knex('feed_items')
@@ -28,4 +38,3 @@ module.exports.postItem = (item, cb) => {
       cb(err, null);
     });
 };
-

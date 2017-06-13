@@ -37,10 +37,11 @@ export const getFeedItemsError = (error) => {
   };
 };
 
-export const getFeeds = (eventId) => dispatch => {
+export const getFeeds = (eventId, pageNumber) => dispatch => {
   axios.get('/api/feed/event', {
     params: { 
-      eventId
+      eventId,
+      pageNumber
     }
   })
   .then(feedItems => {

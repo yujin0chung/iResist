@@ -76,3 +76,6 @@ export const Icon = styled.img`
 export const Tab = styled.div`
   
 `
+
+export const Vote = styled.div`
+`

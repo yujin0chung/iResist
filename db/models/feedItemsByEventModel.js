@@ -1,18 +1,18 @@
 const db = require('../');
 
-var Event = bookshelf.Model.extend({
+var Event = db.Model.extend({
   tableName: 'events',
   feedItems: function() {
-    return this.hasMany(FeedItems);
+    return this.hasMany('FeedItem');
   }
 });
 
-var FeedItems = bookshelf.Model.extend({
+var FeedItem = db.Model.extend({
   tableName: 'feed_items',
   event: function() {
-    return this.belongsTo(Event);
+    return this.belongsTo('Event');
   }
 });
 
-module.exports = db.model('FeedItems', FeedItems);
-module.exports = db.model('Event', Event);
+module.exports.FeedItem = db.model('FeedItem', FeedItem);
+module.exports.Event = db.model('Event', Event);

@@ -11,38 +11,38 @@ class DayOfFeed extends React.Component {
       text: '' || 'TEST TEXT',
       url: '' || 'TEST URL.COM',
       credibility: '' || 0,
-      userId: this.props.user.userId,
-      username: this.props.user.username,
       type: '' || 'MESSAGE',
-      feedItemId: '',
-      loadCount: 0
+      pageNumber: 2 //default is already 1
     };
-    this.props.client.on('postedFeedItemId', (id) => {
-      this.setState({feedItemId: id[0]});
-    });
     this.handlePost = this.handlePost.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleCredChange = this.handleCredChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({ pageNumber: 2 });
+  }
+
+  handleLoadItems(pageNumber) {
+    this.props.getFeeds(this.props.events.activeEvent, pageNumber);
   }
 
   handlePost(e) {
     e.preventDefault();
     let newPost = {
-      itemId: this.state.feedItemId,
       eventId: this.props.events.activeEvent,
       type: this.state.type,
       text: this.state.text,
       url: this.state.url,
-      userId: this.state.userId,
-      username: this.state.username,
+      userId: this.props.user.userId,
+      username: this.props.user.username,
       credibility: this.state.credibility,
       time: Date.now()
     };
-    this.loadMorePosts = this.loadMorePosts.bind(this);
     this.props.client.emit('newFeedItem', newPost);
     this.setState({
       text: '',
       url: '',
-      credibility: '',
       type: ''
     });
   }
@@ -51,13 +51,18 @@ class DayOfFeed extends React.Component {
     this.setState({text: e.target.value });
   }
 
-  loadMorePosts() {
-    this.setState({loadCount: this.state.loadCount++ })
+  handleCredChange(feedItemVote) {
+    // const feedItemVote = {
+    //   polarity,
+    //   rateeId,
+    //   feedItemId,
+    //   raterId: this.props.user.userId
+    // };
+    this.props.client.emit('voteFeedItem', feedItemVote);
   }
 
   render() {
     const feedItems = this.props.feeds.feedItems;
-    console.log('this should be the event Id ', this.props.events.activeEvent);
     return (
       <div>
         <h3>Post a message</h3>
@@ -70,10 +75,20 @@ class DayOfFeed extends React.Component {
           />
         </form>
         {(feedItems !== undefined && !Object.is(feedItems, {})) ?
-          feedItems.map(item => <div><FeedItem url={item.url} type={item.type} username={item.username} text={item.text} key={this.state.feedItemId} time={item.time}/></div>) :
+          feedItems.map(item => 
+            <FeedItem 
+              username={item.username} 
+              text={item.text} 
+              time={item.time}
+              userId={this.props.user.userId}
+              itemId={item.id} 
+              credibility={item.credibility}
+              handleCredVote={this.handleCredChange}
+              client={this.props.client}/>) :
           <div></div>
         }
-        {/*<button onClick={() => {this.loadMorePosts(); this.props.getFeeds(this.props.events.activeEvent, this.state.loadCount)}}>Load More Posts></button>*/}
+        <button onClick={() => this.handleLoadItems(this.state.pageNumber++)}>Load More Posts></button>
+        <button onClick={() => this.handleLoadItems(this.state.pageNumber--)}>Go back</button>
         <UploadMedia {...this.props}/>
       </div>
     );
@@ -81,3 +96,6 @@ class DayOfFeed extends React.Component {
 }
 
 export default DayOfFeed;
+
+
+//if 
