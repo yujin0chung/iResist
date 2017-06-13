@@ -8,8 +8,7 @@ class FeedItem extends React.Component {
       userId: this.props.userId,
       itemId: this.props.itemId,
       type: '',
-      element: ''
-      
+      polarity: 0
     };
     this.handleVoteType = this.handleVoteType.bind(this);
   }
@@ -29,16 +28,17 @@ class FeedItem extends React.Component {
   }
 
   handleVoteType(type) {
-    this.setState({type: type})
+    this.setState({polarity: polarity});
+    this.props.handleCredVote(this.state);
   }
   render() {
     return(
       <div style={{display: 'flex', flexDirection: 'row'}}>
-        <b>{this.props.username}</b> : <span>{this.props.text}</span> <span>Posted <Timestamp time={this.props.time} format='time'  utc={true}/></span>
+        <b>{this.props.username}</b> : <span>{this.props.text}</span> 
         <div className="credibility">
           <input placeholder="How credible?" value={this.props.credibility} />
-          <button onClick={() => {this.handleVoteType('up'); this.props.client.emit('voteFeedItem', this.state)}}>Upcred</button>
-          <button onClick={() => {this.handleVoteType('down'); this.props.client.emit('voteFeedItem', this.state)}}>Downcred</button>
+          <button onClick={() => this.handleVoteType(1)}>Upcred</button>
+          <button onClick={() => this.handleVoteType(-1)}>Downcred</button>
         </div>
       </div>
 
