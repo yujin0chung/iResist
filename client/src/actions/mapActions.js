@@ -64,3 +64,10 @@ export const receivedPin = (pin) => {
     pin
   };
 };
+
+export const receivedPinVote = (vote) => {
+  return {
+    type: 'RECEIVED_PIN_VOTE',
+    vote
+  };
+};
