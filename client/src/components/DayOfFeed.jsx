@@ -70,7 +70,7 @@ class DayOfFeed extends React.Component {
           />
         </form>
         {(feedItems !== undefined && !Object.is(feedItems, {})) ?
-          feedItems.map(item => <div><FeedItem username={item.username} text={item.text} key={this.state.feedItemId} time={item.time}/></div>) :
+          feedItems.map(item => <div><FeedItem url={item.url} type={item.type} username={item.username} text={item.text} key={this.state.feedItemId} time={item.time}/></div>) :
           <div></div>
         }
         {/*<button onClick={() => {this.loadMorePosts(); this.props.getFeeds(this.props.events.activeEvent, this.state.loadCount)}}>Load More Posts></button>*/}

@@ -15,7 +15,6 @@ class UploadMedia extends React.Component {
   onDrop(files) {
     superagent.post('api/feed/upload')
     .attach('mediaUpload', files[0])
-    .attach('eventId', '4')
     .end((err, res) => {
       if (err) {
         console.log(err);
@@ -50,7 +49,7 @@ class UploadMedia extends React.Component {
     console.log('props: ', this.props);
     return (
       <div>
-        <Dropzone style={{height: '30px'}} onDrop={this.onDrop.bind(this)} multiple={false}>
+        <Dropzone style={{height: '30px'}} onDrop={this.onDrop.bind(this)} multiple={false} acceptedFiles={'image/jpeg', 'video/mp4', 'video/quicktime', 'image/png'}>
           <div> click to select a file </div>
         </Dropzone>
       </div>
