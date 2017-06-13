@@ -12,7 +12,6 @@ try {
 let awsId;
 let awsSecret;
 
-console.log('PROCESS IN THE SERVER============> ', process.env)
 if (process.env.AWS_ACCESS_KEY_ID) {
   awsId = process.env.AWS_ACCESS_KEY_ID;
 } else {
