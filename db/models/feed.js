@@ -39,13 +39,35 @@ module.exports.postItem = (item, cb) => {
 };
 
 module.exports.checkForFeedItemVote = (vote, cb) => {
-  console.log('I RAN');
   knex('feed_item_credibility')
     .where({
       user_id: vote.userId,
       feed_item_id: vote.itemId
     })
     .select()
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(err => {
+      cb(err, null);
+    });
+};
+
+module.exports.insertFeedItemVote = (vote, cb) => {
+  console.log('insertFeedItemVote ran');
+  knex('feed_item_credibility')
+    .insert({
+      user_id: vote.userId,
+      feed_item_id: vote.itemId,
+      up_down: vote.polarity
+    })
+    .then(data => {
+      return knex('feed_items')
+        .where({
+          id: vote.itemId
+        })
+        .increment('credibility', vote.polarity);
+    })
     .then(data => {
       cb(null, data);
     })
