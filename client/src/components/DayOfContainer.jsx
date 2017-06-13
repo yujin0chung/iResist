@@ -63,8 +63,7 @@ class DayOfContainer extends React.Component {
           <button onClick={() => this.handleCurrentDayOfView('MAP')}>Map</button>
           <button onClick={() => this.handleCurrentDayOfView('FEED')}>Feed</button>
         </div>
-        <UploadMedia {...this.props}/>
-        <DayOfMap { ...this.props } client={ this.client }/>
+        <DayOfMap { ...this.props } />
       </div>
     );
   }

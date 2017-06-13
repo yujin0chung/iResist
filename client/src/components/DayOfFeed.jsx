@@ -2,6 +2,7 @@ import React from 'react';
 import { Input } from 'react-bootstrap';
 import FeedItem from './FeedItem.jsx';
 import SubmitFeedItem from './SubmitFeedItem.jsx';
+import UploadMedia from './UploadMedia.jsx';
 
 class DayOfFeed extends React.Component {
   constructor(props) {
@@ -9,10 +10,10 @@ class DayOfFeed extends React.Component {
     this.state = {
       text: '' || 'TEST TEXT',
       url: '' || 'TEST URL.COM',
-      credibility: '' || 6, 
+      credibility: '' || 0,
       userId: this.props.user.userId,
       username: this.props.user.username,
-      feedId: '' || 1,
+      // feedId: '' || 1,
       type: '' || 'MESSAGE',
       feedItemId: ''
     };
@@ -55,7 +56,6 @@ class DayOfFeed extends React.Component {
   render() {
     const feedItems = this.props.feeds.feedItems;
     return (
-  
       <div>
         <h3>Post a message</h3>
         <form onSubmit={this.handlePost}>
@@ -66,11 +66,11 @@ class DayOfFeed extends React.Component {
             onChange={this.handleChange}
           />
         </form>
-        {(feedItems !== undefined && !Object.is(feedItems, {})) ? 
+        {(feedItems !== undefined && !Object.is(feedItems, {})) ?
           feedItems.map(item => <div><FeedItem username={item.username} text={item.text} key={this.state.feedItemId}/></div>) :
           <div></div>
         }
-        <SubmitFeedItem/>
+        <UploadMedia {...this.props} />
       </div>
     );
   }
