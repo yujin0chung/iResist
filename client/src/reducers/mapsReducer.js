@@ -29,6 +29,11 @@ export const maps = (state = {}, action) => {
     newState.pins[action.vote.pinId].credibility += action.vote.change;
     return newState;
   }
+  case 'RECEIVED_PIN_VOTE_ERROR': {
+    let newState = Object.assign({}, state);
+    newState.pins[action.error.pinId].errorMsg = action.error.msg;
+    return newState;
+  }
   default:
     return state;
   }
