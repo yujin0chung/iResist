@@ -7,21 +7,34 @@ module.exports.getAllFeed = (req, res) => {
     if (err) {
       res.send(500, err);
     } else {
+<<<<<<< HEAD
       console.log('FEED FROM GET ALL FEED', feed);
+=======
+>>>>>>> Adds getfeeditems collectio length error into getEventFeed server handler
       res.send(200, feed);
     }
   });
 };
 
 module.exports.getEventFeed = (req, res) => {
+<<<<<<< HEAD
   console.log('GET EVENGT FEED', req.query);
   models.Feed.getFeedByEventId(req.query.eventId, req.query.pageNumber, (err, feedItems, totalLength) => {
+=======
+  models.Feed.getFeedByEventId(req.query.eventId, req.query.pageNumber, (err, feedItems, collectionLength) => {
+>>>>>>> Adds getfeeditems collectio length error into getEventFeed server handler
     if (err) {
       res.send(500, err);
     } else {
-      const feeds = formatFeed(feedItems);
-      const feed_items = formatFeedItems(feedItems);
-      res.send(200, {feeds: feeds, feedItems: feed_items, totalCollectionLength: totalLength});
+      models.Feed.getFeedItemsCollectionLength(req.query.eventId, (err, collectionLength) => {
+        if (err) {
+          res.send(500, err);
+        } else {
+          const feeds = formatFeed(feedItems);
+          const feed_items = formatFeedItems(feedItems);
+          res.send(200, {feeds: feeds, feedItems: feed_items, collectionLength: collectionLength });
+        }
+      });
     }
   });
 };
@@ -33,21 +46,6 @@ module.exports.postFeedItem = (client, io, event, post) => {
     } else {
       // io.to(event).emit('postedFeedItemId', insertedPost[0].id);
       io.to(event).emit('newFeedItemFromServer', insertedPost[0]);
-    }
-  });
-};
-
-module.exports.updateDb = (req, res) => {
-  const itemInfo = {
-    url: req.body.url,
-    type: req.body.type,
-    event: req.body.eventId
-  };
-  models.Feed.updateDb(itemInfo, (err, data) => {
-    if (err) {
-      res.send(500, err);
-    } else {
-      res.send(200, data);
     }
   });
 };
