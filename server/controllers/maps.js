@@ -47,7 +47,7 @@ module.exports.votePin = (client, io, event, pin) => {
           } else {
             io.to(event).emit('newPinVote', {
               pinId: pin.pinId,
-              change: pin.polarity * 2
+              change: pin.polarity
             });
           }
         });
