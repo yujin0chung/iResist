@@ -9,12 +9,8 @@ class FeedItem extends React.Component {
       itemId: this.props.itemId,
       polarity: 0,
       element: ''
-<<<<<<< HEAD
     };
     this.handleVoteType = this.handleVoteType.bind(this);
-=======
-    }
->>>>>>> Biggest change was changing componentDidMount to componentWillMount in Feeditem
   }
 
   componentWillMount() {
@@ -36,23 +32,16 @@ class FeedItem extends React.Component {
     this.props.handleCredVote(this.state);
   }
   render() {
-<<<<<<< HEAD
+    console.log('here are all the props: ', this.props);
     return(
       <div style={{display: 'flex', flexDirection: 'row'}}>
-        <b>{this.props.username}</b> : <span>{this.props.text}</span> 
+        <b>{this.props.username}</b> : {this.state.element}
         <div className="credibility">
           <input placeholder="How credible?" value={this.props.credibility} />
           <button onClick={() => this.handleVoteType(1)}>Upcred</button>
           <button onClick={() => this.handleVoteType(-1)}>Downcred</button>
         </div>
       </div>
-
-=======
-    return (
-      <div>
-        <b>{this.props.username}</b> : {this.state.element} <span>Posted <Timestamp time={this.props.time} format='time' utc={true}/></span>
-      </div>
->>>>>>> Biggest change was changing componentDidMount to componentWillMount in Feeditem
     );
   }
 }

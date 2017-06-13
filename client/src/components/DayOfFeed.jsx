@@ -83,8 +83,10 @@ class DayOfFeed extends React.Component {
               itemId={item.id}
               credibility={item.credibility}
               handleCredVote={this.handleCredChange}
+              url={item.url}
+              type={item.type}
               client={this.props.client}/>) :
-          <div></div>
+              <div></div>
         }
         <button onClick={() => this.handleLoadItems(this.state.pageNumber++)}>Load More Posts></button>
         <button onClick={() => this.handleLoadItems(this.state.pageNumber--)}>Go back</button>
