@@ -71,3 +71,10 @@ export const receivedPinVote = (vote) => {
     vote
   };
 };
+
+export const receivedPinVoteError = (error) => {
+  return {
+    type: 'RECEIVED_PIN_VOTE_ERROR',
+    error
+  };
+};
