@@ -23,11 +23,6 @@ module.exports.onConnect = (client, io) => {
     client.on('pinVote', vote => {
       controllers.Maps.votePin(client, io, event, vote);
     });
-    
-    client.on('voteFeedItem', (vote) => {
-      console.log('VOTE COMING IN FROM CLIENT EMIT', vote)
-      controllers.Feed.voteFeedItem(client, io, event, vote);
-    })
   });
 
   client.on('disconnect', () => {

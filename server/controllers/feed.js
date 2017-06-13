@@ -14,13 +14,14 @@ module.exports.getAllFeed = (req, res) => {
 }
 
 module.exports.getEventFeed = (req, res) => {
-  models.Feed.getFeedByEventId(req.query.eventId, (err, feedItems) => {
+  console.log('GET EVENGT FEED', req.query)
+  models.Feed.getFeedByEventId(req.query.eventId, req.query.pageNumber, (err, feedItems, totalLength) => {
     if (err) {
       res.send(500, err);
     } else {
       const feeds = formatFeed(feedItems);
       const feed_items = formatFeedItems(feedItems);
-      res.send(200, {feeds: feeds, feedItems: feed_items});
+      res.send(200, {feeds: feeds, feedItems: feed_items, totalCollectionLength: totalLength});
     }
   });
 }
@@ -34,11 +35,6 @@ module.exports.postFeedItem = (client, io, event, post) => {
       io.to(event).emit('newFeedItemFromServer', insertedPost[0]);
     }
   });
-}
-
-module.exports.voteFeedItem = (client, io, event, vote) => {
-  models.Feed.voteItem(vote, (err, cred) => {
-  })
 }
 
 module.exports.updateDb = (req, res) => {
