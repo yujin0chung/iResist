@@ -2,9 +2,7 @@ import React from 'react';
 import io from 'socket.io-client';
 import DayOfFeed from './DayOfFeed.jsx';
 import DayOfMap from './DayOfMap.jsx';
-import SubmitFeedItem from './SubmitFeedItem.jsx';
 import DayOfInfo from './DayOfInfo.jsx';
-import UploadMedia from './UploadMedia.jsx';
 
 
 class DayOfContainer extends React.Component {
