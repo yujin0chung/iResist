@@ -8,8 +8,7 @@ module.exports.getFeedByEventId = (eventId, pageNumber, cb) => {
       .fetchPage({pageSize: 10, page: pageNumber})
       .then(items => {
         console.log('ITEMS FROM GET FEED BY EVENT QUERY', items.toJSON());
-        if (items.toJSON().length)
-          {cb(null, items.toJSON());}
+        if (items.toJSON().length) { cb(null, items.toJSON()); }
       })
       .catch(error => {
         cb(error, null);
