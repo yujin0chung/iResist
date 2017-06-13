@@ -37,16 +37,19 @@ module.exports.postPin = (client, io, event, pin) => {
 };
 
 module.exports.votePin = (client, io, event, pin) => {
-  models.Map.checkForPinVote(pin, (err, pin) => {
+  console.log('VOTE PIN RAN');
+  models.Map.checkForPinVote(pin, (err, responsePin) => {
     if (err) {
-      // emit an error of some sort
+      console.log('THIS IS THE ERR OF CHECKING FOR PIN VOTE', err);
     } else {
-      if (pin.length === 0) {
-        models.map.insertPinVote(pin, (err, pin) => {
+      console.log('RESPONSE PIN: ', responsePin.length);
+      if (responsePin.length === 0) {
+        console.log('bool ran');
+        models.Map.insertPinVote(pin, (err, insertResponsePin) => {
           if (err) {
-            // emit an error of some sort
+            console.log(err);
           } else {
-            // emit a new pin vote event
+            console.log(pin);
           }
         });
       } else {
