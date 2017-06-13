@@ -1,9 +1,10 @@
 import React from 'react';
+import Timestamp from 'react-timestamp';
 
-const FeedItem = (props) => (
+const FeedItem = ({username, text, time}) => (
 
   <div>
-    <b>{props.username}</b> : <span>{props.text}</span>
+    <b>{username}</b> : <span>{text}</span> <span>Posted <Timestamp time={time} format='time'  utc={true}/></span>
   </div>
 );
 

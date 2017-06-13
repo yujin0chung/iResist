@@ -12,7 +12,8 @@ module.exports = (feedItems) => {
       url: item.url,
       userId: item.user_id,
       username: item.username,
-      credibility: item.credibility
+      credibility: item.credibility,
+      time: item.time
     };
     items.push(post);
   });
