@@ -12,13 +12,19 @@ class DayOfFeed extends React.Component {
       url: '' || 'TEST URL.COM',
       credibility: '' || 0,
       type: '' || 'MESSAGE',
-      loadCount: 0
+      pageNumber: 2 //default is already 1
     };
-    // this.props.client.on('postedFeedItemId', (id) => {
-    //   this.setState({feedItemId: id[0]});
-    // });
     this.handlePost = this.handlePost.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleCredChange = this.handleCredChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({ pageNumber: 2 });
+  }
+
+  handleLoadItems(pageNumber) {
+    this.props.getFeeds(this.props.events.activeEvent, pageNumber);
   }
 
   handlePost(e) {
@@ -33,7 +39,6 @@ class DayOfFeed extends React.Component {
       credibility: this.state.credibility,
       time: Date.now()
     };
-    this.loadMorePosts = this.loadMorePosts.bind(this);
     this.props.client.emit('newFeedItem', newPost);
     this.setState({
       text: '',
@@ -46,8 +51,19 @@ class DayOfFeed extends React.Component {
     this.setState({text: e.target.value });
   }
 
+  handleCredChange(feedItemVote) {
+    // const feedItemVote = {
+    //   polarity,
+    //   rateeId,
+    //   feedItemId,
+    //   raterId: this.props.user.userId
+    // };
+    this.props.client.emit('voteFeedItem', feedItemVote);
+  }
+
   render() {
     const feedItems = this.props.feeds.feedItems;
+    const feedItemsLength = this.props.feeds.feedItems.length;
     return (
       <div>
         <h3>Post a message</h3>
@@ -68,10 +84,12 @@ class DayOfFeed extends React.Component {
               userId={this.props.user.userId}
               itemId={item.id} 
               credibility={item.credibility}
+              handleCredVote={this.handleCredChange}
               client={this.props.client}/>) :
           <div></div>
         }
-        {/*<button onClick={() => {this.loadMorePosts(); this.props.getFeeds(this.props.events.activeEvent, this.state.loadCount)}}>Load More Posts></button>*/}
+        <button onClick={() => this.handleLoadItems(this.state.pageNumber++)}>Load More Posts></button>
+        <button onClick={() => this.handleLoadItems(this.state.pageNumber--)}>Go back</button>
         <UploadMedia {...this.props}/>
       </div>
     );
@@ -79,3 +97,6 @@ class DayOfFeed extends React.Component {
 }
 
 export default DayOfFeed;
+
+
+//if 
