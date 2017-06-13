@@ -71,3 +71,18 @@ module.exports.postPin = (pin, cb) => {
       cb(err, null);
     });
 };
+
+module.exports.checkForPinVote = (pin, cb) => {
+  knex('pin_credibility')
+    .where({
+      user_id: pin.raterId,
+      pin_id: pin.pinId
+    })
+    .select()
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(err => {
+      cb(err, null);
+    });
+};
