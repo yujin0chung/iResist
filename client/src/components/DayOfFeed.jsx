@@ -63,7 +63,6 @@ class DayOfFeed extends React.Component {
 
   render() {
     const feedItems = this.props.feeds.feedItems;
-    const feedItemsLength = this.props.feeds.feedItems.length;
     return (
       <div>
         <h3>Post a message</h3>
