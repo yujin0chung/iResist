@@ -27,13 +27,12 @@ export const votePin = mapActions.votePin;
 export const removePin = mapActions.removePin;
 export const getAllMaps = mapActions.getAllMaps;
 export const getDayOfMap = mapActions.getDayOfMap;
+export const receivedPin = mapActions.receivedPin;
 
 // feed actions
 export const postItem = feedActions.postItem;
 export const voteItem = feedActions.voteItem;
 export const deleteItem = feedActions.deleteItem;
-//export const postMessage = feedActions.postMessage;
-//export const getFeedMessages = feedActions.getFeedMessages;
 export const getFeeds = feedActions.getFeeds;
 export const receiveFeedItem = feedActions.receiveFeedItem;
 

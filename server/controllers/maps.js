@@ -24,3 +24,15 @@ module.exports.getDayOfMap = (req, res) => {
     }
   });
 };
+
+module.exports.postPin = (client, io, event, pin) => {
+  models.Map.postPin(pin, (err, pin) => {
+    if (err) {
+      // emit an error code
+    } else {
+      let formattedPin = formatPins(pin);
+      console.log('I RAN in the postpin function', client, io, event);
+      io.to(event).emit('newPin', formattedPin);
+    }
+  });
+};

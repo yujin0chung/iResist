@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-export const dropPin = () => {
+export const dropPin = (pin, eventId) => {
   return {
-    type: 'INSERT TYPE HERE',
-    // INSERT OTHER CHANGES HERE
+    type: 'USER_DROPPED_PIN',
+    pin,
+    eventId
   };
 };
 
@@ -54,5 +55,12 @@ export const getDayOfMap = (eventId) => {
       .then(map => {
         return dispatch(getDayOfMapSuccess(map));
       });
+  };
+};
+
+export const receivedPin = (pin) => {
+  return {
+    type: 'RECEIVED_PIN',
+    pin
   };
 };
