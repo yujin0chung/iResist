@@ -51,7 +51,14 @@ class DayOfMap extends React.Component {
   }
 
   handleCredChange(polarity, rateeId, pinId) {
-    console.log(polarity, rateeId, pinId);
+    const pinVote = {
+      polarity,
+      rateeId,
+      pinId,
+      raterId: this.props.user.userId
+    };
+
+    this.props.client.emit('pinVote', pinVote);
   }
 
   render() {

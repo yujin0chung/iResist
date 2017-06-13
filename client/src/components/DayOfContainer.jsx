@@ -16,7 +16,7 @@ class DayOfContainer extends React.Component {
   }
   
   componentDidMount() {
-    console.log('Props; ', this.props)
+    console.log('Props; ', this.props);
     this.client.on('connect', () => {
       this.client.emit('event', this.props.events.activeEvent);
     });
