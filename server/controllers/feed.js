@@ -14,7 +14,7 @@ module.exports.getAllFeed = (req, res) => {
 };
 
 module.exports.getEventFeed = (req, res) => {
-  console.log('GET EVENGT FEED', req.query)
+  console.log('GET EVENGT FEED', req.query);
   models.Feed.getFeedByEventId(req.query.eventId, req.query.pageNumber, (err, feedItems, totalLength) => {
     if (err) {
       res.send(500, err);
@@ -63,7 +63,36 @@ module.exports.voteFeedItem = (client, io, event, vote) => {
     if (err) {
       // emit some sort of err
     } else {
-      console.log(responseVote);
+      console.log('THIS IS THE RESPONSE VOTE: ', responseVote);
+      if (responseVote.length === 0) {
+        console.log('the first option ran');
+        models.Feed.insertFeedItemVote(vote, (err, insertResponsePin) => {
+          if (err) {
+            console.log(err);
+          } else {
+            // io.to(event).emit('newPinVote', {
+            //   pinId: pin.pinId,
+            //   change: pin.polarity
+            // });
+          }
+        });
+      } else if (responseVote[0].up_down !== pin.polarity) {
+        // models.Map.replacePinVote(vote, (err, replaceResponePin) => {
+        //   if (err) {
+        //     console.log(err);
+        //   } else {
+        //     io.to(event).emit('newPinVote', {
+        //       pinId: pin.pinId,
+        //       change: pin.polarity * 2
+        //     });
+        //   }
+        // });
+      } else {
+        // client.emit('pinVoteNotPermitted', {
+        //   pinId: pin.pinId,
+        //   msg: 'You have already voted on that pin'
+        // });
+      }
     }
   });
 };
