@@ -15,6 +15,12 @@ class DayOfMap extends React.Component {
     this.handleCredChange = this.handleCredChange.bind(this);
   }
 
+  componentDidMount() {
+    this.props.client.on('pinVoteNotPermitted', (err) => {
+      console.log(err);
+    });
+  }
+
   handleClick(data) {
     if (this.state.inputPins.length > 0) {
       this.setState({
