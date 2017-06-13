@@ -12,6 +12,7 @@ class DayOfMap extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handlePinSubmit = this.handlePinSubmit.bind(this);
+    this.handleCredChange = this.handleCredChange.bind(this);
   }
 
   handleClick(data) {
@@ -49,12 +50,15 @@ class DayOfMap extends React.Component {
     });
   }
 
+  handleCredChange(polarity, rateeId, pinId) {
+    console.log(polarity, rateeId, pinId);
+  }
+
   render() {
     const mapId = this.props.events.allEvents[this.props.events.activeEvent].mapId;
     const currentMap = this.props.maps.allMaps[mapId];
     return (
       <div>
-        <h2>This will be the map</h2>
         <Map
           className='day-of-map'
           center={[currentMap.lat, currentMap.long]}
@@ -86,6 +90,9 @@ class DayOfMap extends React.Component {
               userCred={this.props.users.users[this.props.maps.pins[pin].user_id].credibility}
               type='display'
               key={this.props.maps.pins[pin].id}
+              pinId={this.props.maps.pins[pin].id}
+              userId={this.props.maps.pins[pin].user_id}
+              handleCredChange={this.handleCredChange}
             />;
             }) : <div></div>
           }
