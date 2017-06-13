@@ -5,7 +5,7 @@ module.exports = (feedItems) => {
 
   feedItems.forEach(item => {
     post = {
-      itemId: item.id,
+      id: item.id,
       eventId: item.event_id,
       type: item.type,
       text: item.text,

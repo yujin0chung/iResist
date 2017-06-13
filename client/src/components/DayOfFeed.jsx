@@ -11,15 +11,12 @@ class DayOfFeed extends React.Component {
       text: '' || 'TEST TEXT',
       url: '' || 'TEST URL.COM',
       credibility: '' || 0,
-      userId: this.props.user.userId,
-      username: this.props.user.username,
       type: '' || 'MESSAGE',
-      feedItemId: '',
       loadCount: 0
     };
-    this.props.client.on('postedFeedItemId', (id) => {
-      this.setState({feedItemId: id[0]});
-    });
+    // this.props.client.on('postedFeedItemId', (id) => {
+    //   this.setState({feedItemId: id[0]});
+    // });
     this.handlePost = this.handlePost.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -27,13 +24,12 @@ class DayOfFeed extends React.Component {
   handlePost(e) {
     e.preventDefault();
     let newPost = {
-      itemId: this.state.feedItemId,
       eventId: this.props.events.activeEvent,
       type: this.state.type,
       text: this.state.text,
       url: this.state.url,
-      userId: this.state.userId,
-      username: this.state.username,
+      userId: this.props.user.userId,
+      username: this.props.user.username,
       credibility: this.state.credibility,
       time: Date.now()
     };
@@ -42,7 +38,6 @@ class DayOfFeed extends React.Component {
     this.setState({
       text: '',
       url: '',
-      credibility: '',
       type: ''
     });
   }
@@ -51,13 +46,8 @@ class DayOfFeed extends React.Component {
     this.setState({text: e.target.value });
   }
 
-  loadMorePosts() {
-    this.setState({loadCount: this.state.loadCount++ })
-  }
-
   render() {
     const feedItems = this.props.feeds.feedItems;
-    console.log('this should be the event Id ', this.props.events.activeEvent);
     return (
       <div>
         <h3>Post a message</h3>
@@ -74,10 +64,10 @@ class DayOfFeed extends React.Component {
             <FeedItem 
               username={item.username} 
               text={item.text} 
-              key={this.state.feedItemId} 
               time={item.time}
               userId={this.props.user.userId}
-              itemId={this.state.feedItemId} 
+              itemId={item.id} 
+              credibility={item.credibility}
               client={this.props.client}/>) :
           <div></div>
         }

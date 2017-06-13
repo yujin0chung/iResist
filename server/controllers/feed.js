@@ -30,10 +30,15 @@ module.exports.postFeedItem = (client, io, event, post) => {
     if (err) {
       console.error(err);
     } else {
-      io.to(event).emit('postedFeedItemId', insertedPost[0].id);
+      // io.to(event).emit('postedFeedItemId', insertedPost[0].id);
       io.to(event).emit('newFeedItemFromServer', insertedPost[0]);
     }
   });
+}
+
+module.exports.voteFeedItem = (client, io, event, vote) => {
+  models.Feed.voteItem(vote, (err, cred) => {
+  })
 }
 
 module.exports.updateDb = (req, res) => {
