@@ -88,7 +88,6 @@ module.exports.checkForPinVote = (pin, cb) => {
 };
 
 module.exports.insertPinVote = (pin, cb) => {
-  console.log('INSERT PIN MODEL RAN');
   knex('pin_credibility')
     .insert({
       user_id: pin.raterId,
