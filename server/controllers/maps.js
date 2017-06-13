@@ -45,7 +45,10 @@ module.exports.votePin = (client, io, event, pin) => {
           if (err) {
             console.log(err);
           } else {
-            console.log(pin);
+            io.to(event).emit('newPinVote', {
+              pinId: pin.pinId,
+              change: pin.polarity * 2
+            });
           }
         });
       } else if (responsePin[0].up_down !== pin.polarity) {
@@ -53,11 +56,16 @@ module.exports.votePin = (client, io, event, pin) => {
           if (err) {
             console.log(err);
           } else {
-            console.log(replaceResponePin);
+            io.to(event).emit('newPinVote', {
+              pinId: pin.pinId,
+              change: pin.polarity * 2
+            });
           }
         });
       } else {
-        // send back error
+        client.emit('pinVoteNotPermitted', {
+          msg: 'You have already voted on that pin'
+        });
       }
     }
   });
