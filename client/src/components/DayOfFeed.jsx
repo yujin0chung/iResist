@@ -70,7 +70,7 @@ class DayOfFeed extends React.Component {
           feedItems.map(item => <div><FeedItem username={item.username} text={item.text} key={this.state.feedItemId}/></div>) :
           <div></div>
         }
-
+        <SubmitFeedItem/>
       </div>
     );
   }
