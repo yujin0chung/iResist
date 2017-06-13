@@ -63,7 +63,7 @@ module.exports.voteFeedItem = (client, io, event, vote) => {
     if (err) {
       // emit some sort of err
     } else {
-      // handle success
+      console.log(responseVote);
     }
   });
 };
