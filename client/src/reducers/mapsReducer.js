@@ -24,6 +24,11 @@ export const maps = (state = {}, action) => {
     newState.pins[pinId] = action.pin[pinId];
     return newState;
   }
+  case 'RECEIVED_PIN_VOTE': {
+    let newState = Object.assign({}, state);
+    newState.pins[action.vote.pinId].credibility += action.vote.change;
+    return newState;
+  }
   default:
     return state;
   }
