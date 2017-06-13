@@ -64,3 +64,17 @@ export const receivedPin = (pin) => {
     pin
   };
 };
+
+export const receivedPinVote = (vote) => {
+  return {
+    type: 'RECEIVED_PIN_VOTE',
+    vote
+  };
+};
+
+export const receivedPinVoteError = (error) => {
+  return {
+    type: 'RECEIVED_PIN_VOTE_ERROR',
+    error
+  };
+};

@@ -17,7 +17,7 @@ class DayOfMap extends React.Component {
 
   componentDidMount() {
     this.props.client.on('pinVoteNotPermitted', (err) => {
-      console.log(err);
+      this.props.receivedPinVoteError(err);
     });
   }
 
@@ -106,6 +106,7 @@ class DayOfMap extends React.Component {
               pinId={this.props.maps.pins[pin].id}
               userId={this.props.maps.pins[pin].user_id}
               handleCredChange={this.handleCredChange}
+              pinError={this.props.maps.pins[pin].errorMsg}
             />;
             }) : <div></div>
           }

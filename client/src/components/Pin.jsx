@@ -18,7 +18,6 @@ class Pin extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('this is the event: ', e.key);
     this.props.handlePinSubmit(this.state.inputPinText, this.props.lat, this.props.long);
   }
 
@@ -47,6 +46,7 @@ class Pin extends React.Component {
               <p>User Cred: {this.props.userCred}</p>
               <button onClick={e => this.handleCred(1)}>Upcred!</button>
               <button onClick={e => this.handleCred(-1)}>Downcred!</button>
+              {this.props.pinError ? <p>{this.props.pinError}</p> : <div></div>}
             </span>
           </Popup>
         </Marker>
