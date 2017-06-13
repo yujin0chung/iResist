@@ -83,6 +83,7 @@
     "socket.io": "^2.0.2",
     "styled-components": "^2.0.0",
     "supertest": "^3.0.0",
+    "timeago": "^1.5.4",
     "tz-lookup": "^6.1.0",
     "tzwhere": "^1.0.0",
     "uuid": "^3.0.1",
