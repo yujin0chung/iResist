@@ -9,22 +9,26 @@ class FeedItem extends React.Component {
       itemId: this.props.itemId,
       polarity: 0,
       element: ''
+<<<<<<< HEAD
     };
     this.handleVoteType = this.handleVoteType.bind(this);
+=======
+    }
+>>>>>>> Biggest change was changing componentDidMount to componentWillMount in Feeditem
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.type === 'image/jpeg') {
       this.state.element = <img style={{width: '500px', height: '350px'}} src={this.props.url} />
     } else if (this.props.type === 'image/png') {
-      this.state.element = <video src={this.props.url} autoPlay={false} type='image/png' controls/>
+      this.state.element = <img src={this.props.url} type='image/png' controls/>
     } else if (this.props.type === 'video/mp4') {
       this.state.element = <video src={this.props.url} autoPlay={false} type='video/mp4' controls/>
     } else if (this.props.type === 'video/quicktime') {
       this.state.element = <video src={this.props.url} autoPlay={false} type='video/quicktime' controls/>
     }  else {
       this.state.element = <span>{this.props.text}</span>
-    } 
+    }
   }
 
   handleVoteType(type) {
@@ -32,6 +36,7 @@ class FeedItem extends React.Component {
     this.props.handleCredVote(this.state);
   }
   render() {
+<<<<<<< HEAD
     return(
       <div style={{display: 'flex', flexDirection: 'row'}}>
         <b>{this.props.username}</b> : <span>{this.props.text}</span> 
@@ -42,6 +47,12 @@ class FeedItem extends React.Component {
         </div>
       </div>
 
+=======
+    return (
+      <div>
+        <b>{this.props.username}</b> : {this.state.element} <span>Posted <Timestamp time={this.props.time} format='time' utc={true}/></span>
+      </div>
+>>>>>>> Biggest change was changing componentDidMount to componentWillMount in Feeditem
     );
   }
 }

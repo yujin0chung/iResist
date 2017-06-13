@@ -1,15 +1,14 @@
 import React from 'react';
 import { Input } from 'react-bootstrap';
 import FeedItem from './FeedItem.jsx';
-import SubmitFeedItem from './SubmitFeedItem.jsx';
 import UploadMedia from './UploadMedia.jsx';
 
 class DayOfFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: '' || 'TEST TEXT',
-      url: '' || 'TEST URL.COM',
+      text: '',
+      url: '',
       credibility: '' || 0,
       type: '' || 'MESSAGE',
       pageNumber: 2 //default is already 1
@@ -75,13 +74,13 @@ class DayOfFeed extends React.Component {
           />
         </form>
         {(feedItems !== undefined && !Object.is(feedItems, {})) ?
-          feedItems.map(item => 
-            <FeedItem 
-              username={item.username} 
-              text={item.text} 
+          feedItems.map(item =>
+            <FeedItem
+              username={item.username}
+              text={item.text}
               time={item.time}
               userId={this.props.user.userId}
-              itemId={item.id} 
+              itemId={item.id}
               credibility={item.credibility}
               handleCredVote={this.handleCredChange}
               client={this.props.client}/>) :
@@ -96,6 +95,3 @@ class DayOfFeed extends React.Component {
 }
 
 export default DayOfFeed;
-
-
-//if 
