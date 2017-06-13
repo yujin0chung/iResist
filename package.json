@@ -58,6 +58,7 @@
     "passport-twitter": "^1.0.4",
     "passport.socketio": "^3.7.0",
     "pg": "^6.1.5",
+    "pretty-ms": "^2.1.0",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.5.1",
     "react-bootstrap": "^0.31.0",
