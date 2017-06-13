@@ -13,7 +13,7 @@ class UploadMedia extends React.Component {
   }
 
   onDrop(files) {
-    window.alert('This is the aler from on Drop')
+    window.alert('This is the alert from on Drop', files[0])
     superagent.post('api/feed/upload')
     .attach('mediaUpload', files[0])
     .end((err, res) => {
