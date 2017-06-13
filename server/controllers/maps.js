@@ -64,6 +64,7 @@ module.exports.votePin = (client, io, event, pin) => {
         });
       } else {
         client.emit('pinVoteNotPermitted', {
+          pinId: pin.pinId,
           msg: 'You have already voted on that pin'
         });
       }
