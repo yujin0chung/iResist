@@ -35,3 +35,13 @@ module.exports.postPin = (client, io, event, pin) => {
     }
   });
 };
+
+module.exports.votePin = (client, io, event, pin) => {
+  models.Map.checkForPinVote(pin, (err, pin) => {
+    if (err) {
+      console.log('ERROR: ', err);
+    } else {
+      console.log('PIN: ', pin);
+    }
+  });
+};
