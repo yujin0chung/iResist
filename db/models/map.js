@@ -109,3 +109,27 @@ module.exports.insertPinVote = (pin, cb) => {
       cb(err, null);
     });
 };
+
+module.exports.replacePinVote = (pin, cb) => {
+  knex('pin_credibility')
+    .where({
+      user_id: pin.raterId,
+      pin_id: pin.pinId
+    })
+    .update({
+      up_down: pin.polarity
+    })
+    .then(data => {
+      return knex('pins')
+        .where({
+          id: pin.pinId
+        })
+        .increment('credibility', (pin.polarity * 2));
+    })
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(err => {
+      cb(err, null);
+    });
+};
