@@ -6,7 +6,7 @@ const controllers = require('../controllers');
 
 module.exports.onConnect = (client, io) => {
   client.on('event', function(event) {
-    
+
     client.join(event);
 
     client.emit('joinEventResponse', 'You are in event: ' + event);
@@ -15,9 +15,13 @@ module.exports.onConnect = (client, io) => {
     client.on('newPin', pin => {
       controllers.Maps.postPin(client, io, event, pin);
     });
-    
+
     client.on('newFeedItem', (post) => {
       controllers.Feed.postFeedItem(client, io, event, post);
+    });
+
+    client.on('pinVote', vote => {
+      controllers.Maps.votePin(client, io, event, vote);
     });
   });
 

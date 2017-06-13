@@ -31,8 +31,42 @@ module.exports.postPin = (client, io, event, pin) => {
       // emit an error code
     } else {
       let formattedPin = formatPins(pin);
-      console.log('I RAN in the postpin function', client, io, event);
       io.to(event).emit('newPin', formattedPin);
+    }
+  });
+};
+
+module.exports.votePin = (client, io, event, pin) => {
+  models.Map.checkForPinVote(pin, (err, responsePin) => {
+    if (err) {
+    } else {
+      if (responsePin.length === 0) {
+        models.Map.insertPinVote(pin, (err, insertResponsePin) => {
+          if (err) {
+            console.log(err);
+          } else {
+            io.to(event).emit('newPinVote', {
+              pinId: pin.pinId,
+              change: pin.polarity
+            });
+          }
+        });
+      } else if (responsePin[0].up_down !== pin.polarity) {
+        models.Map.replacePinVote(pin, (err, replaceResponePin) => {
+          if (err) {
+            console.log(err);
+          } else {
+            io.to(event).emit('newPinVote', {
+              pinId: pin.pinId,
+              change: pin.polarity * 2
+            });
+          }
+        });
+      } else {
+        client.emit('pinVoteNotPermitted', {
+          msg: 'You have already voted on that pin'
+        });
+      }
     }
   });
 };

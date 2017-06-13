@@ -14,9 +14,9 @@ class DayOfContainer extends React.Component {
     this.client = io();
     this.handleCurrentDayOfView = this.handleCurrentDayOfView.bind(this);
   }
-  
+
   componentDidMount() {
-    console.log('Props; ', this.props)
+    console.log('Props; ', this.props);
     this.client.on('connect', () => {
       this.client.emit('event', this.props.events.activeEvent);
     });
@@ -31,6 +31,10 @@ class DayOfContainer extends React.Component {
 
     this.client.on('newPin', (pin) => {
       this.props.receivedPin(pin);
+    });
+
+    this.client.on('newPinVote', (vote) => {
+      console.log(vote);
     });
   }
 
