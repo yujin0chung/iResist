@@ -7,7 +7,6 @@ module.exports.getFeedByEventId = (eventId, pageNumber, cb) => {
     .orderBy('id', 'DESC')
     .fetchPage({pageSize: 10, page: pageNumber})
     .then(items => {
-      console.log('ITEMS FROM GET FEED BY EVENT QUERY', items.toJSON());
       cb(null, items.toJSON());
     })
     .catch(err => {

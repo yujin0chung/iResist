@@ -2,7 +2,6 @@ import React from 'react';
 import { Input } from 'react-bootstrap';
 import FeedItem from './FeedItem.jsx';
 import UploadMedia from './UploadMedia.jsx';
-import InfiteScroll from 'redux-infinite-scroll';
 import axios from 'axios';
 import _ from 'lodash'
 
@@ -14,7 +13,7 @@ class DayOfFeed extends React.Component {
       url: '',
       credibility: '' || 0,
       type: 'MESSAGE',
-      pageNumber: 1, //default is already 1,
+      pageNumber: 1, 
       feedItemCount: 0,
       posts: [],
       wantMoreItems: false
@@ -23,7 +22,6 @@ class DayOfFeed extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleCredChange = this.handleCredChange.bind(this);
   }
-
 
   componentDidMount() {
     this.handleLoadItems(this.state.pageNumber++)
@@ -39,7 +37,6 @@ class DayOfFeed extends React.Component {
       this.props.receiveFeedItemVoteError(error);
     });
   }
-
 
   handleLoadItems(pageNumber) { 
     axios.get('/api/feed/event', {
@@ -65,11 +62,11 @@ class DayOfFeed extends React.Component {
       time: Date.now()
     };
     this.props.client.emit('newFeedItem', newPost);
-    // this.setState({
-    //   text: '',
-    //   url: '',
-    //   type: ''
-    // });
+    this.setState({
+      text: '',
+      url: '',
+      type: ''
+    });
   }
 
   handleChange(e) {

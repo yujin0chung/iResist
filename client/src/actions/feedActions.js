@@ -21,7 +21,6 @@ export const deleteItem = () => {
   };
 };
 
-
 export const getFeedItemsSuccess = (feedItems) => {
   return {
     type: 'GET_FEED_ITEMS_SUCCESS',
@@ -58,8 +57,6 @@ export const receiveFeedItem = (item) => {
     item
   };
 };
-
-
 
 export const receiveFeedItemVote = (vote) => {
   return {
