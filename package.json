@@ -88,11 +88,8 @@
     "styled-components": "^2.0.0",
     "superagent": "^3.5.2",
     "supertest": "^3.0.0",
-<<<<<<< HEAD
     "timeago": "^1.5.4",
     "twit": "^2.2.5",
-=======
->>>>>>> removes console logs
     "twitter": "^1.7.0",
     "tz-lookup": "^6.1.0",
     "tzwhere": "^1.0.0",
