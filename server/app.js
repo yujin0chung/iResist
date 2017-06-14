@@ -21,6 +21,7 @@ let twitterAccessToken;
 let twitterAccessTokenSecret;
 
 if (process.env.TWITTER_KEY) {
+  console.log('this is process.env.TWITTER_KEY: ', process.env.TWITTER_KEY);
   twitterKey = process.env.TWITTER_KEY;
 } else {
   twitterKey = creds.twitterKey;
