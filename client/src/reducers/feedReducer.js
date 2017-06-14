@@ -21,7 +21,7 @@ export const feeds = (state = {}, action) => {
     return Object.assign({}, state, {
       error: action.error
     });
-  case 'RECEIVE_FEED_ITEM_VOTE':
+  case 'RECEIVE_FEED_ITEM_VOTE': {
     let newState = Object.assign({}, state);
     let targetIndex;
     for (var i = 0; i < newState.feedItems.length; i++) {
@@ -32,6 +32,19 @@ export const feeds = (state = {}, action) => {
     }
     newState.feedItems[targetIndex].credibility += action.vote.change;
     return newState;
+  }
+  case 'RECEIVE_FEED_ITEM_VOTE_ERROR': {
+    let newState = Object.assign({}, state);
+    let targetIndex;
+    for (var i = 0; i < newState.feedItems.length; i++) {
+      if (newState.feedItems[i].id === action.error.itemId) {
+        targetIndex = i;
+        break;
+      }
+    }
+    newState.feedItems[targetIndex].errorMsg = action.error.msg;
+    return newState;
+  }
   default: return state;
   }
 };
