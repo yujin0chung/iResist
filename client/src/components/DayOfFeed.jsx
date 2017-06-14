@@ -10,16 +10,16 @@ class DayOfFeed extends React.Component {
     this.state = {
       text: '',
       url: '',
-      credibility: 0,
-      userId: this.props.user.userId,
-      username: this.props.user.username,
-      type: '',
-      pageNumber: 2 //default is already 1
+      credibility: '' || 0,
+      type: '' || 'MESSAGE',
+      pageNumber: 1, //default is already 1,
+      feedItemCount: 0
     };
     this.handlePost = this.handlePost.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCredChange = this.handleCredChange.bind(this);
   }
+
 
   componentDidMount() {
     this.setState({ pageNumber: 2 });
@@ -28,6 +28,9 @@ class DayOfFeed extends React.Component {
       this.props.receiveFeedItemVoteError(error);
     });
   }
+
+
+
 
   handleLoadItems(pageNumber, feedItemsIncrement) {
     this.props.getFeeds(this.props.events.activeEvent, pageNumber);
@@ -59,34 +62,12 @@ class DayOfFeed extends React.Component {
   }
 
   handleCredChange(feedItemVote) {
-    // const feedItemVote = {
-    //   polarity,
-    //   rateeId,
-    //   feedItemId,
-    //   raterId: this.props.user.userId
-    // };
     this.props.client.emit('voteFeedItem', feedItemVote);
   }
 
-  renderFeedItems() {
-    if (feedItems !== undefined && !Object.is(feedItems, {})) {
-      feedItems.map(item =>
-        <FeedItem
-          username={item.username}
-          text={item.text}
-          time={item.time}
-          userId={this.props.user.userId}
-          itemId={item.id}
-          credibility={item.credibility}
-          handleCredVote={this.handleCredChange}
-          url={item.url}
-          type={item.type}
-          client={this.props.client}
-      />)
-    }
-  }
 
   render() {
+    console.log('THIS IS THE PAGE NUMBER', this.state.pageNumber);
     console.log('THIS.STATE.FEEDITEMCOUNT', this.state.feedItemCount)
     const feedItems = this.props.feeds.feedItems;
     console.log('this is feedItems: ', feedItems);
@@ -133,12 +114,11 @@ class DayOfFeed extends React.Component {
               <div></div>
         }
      
-        {this.state.feedItemCount + feedItems.length >= this.props.feeds.collectionLength && feedItems.length < 10 ? 
+        {this.state.feedItemCount + feedItems.length >= this.props.feeds.collectionLength && feedItems.length < 10 && feedItem.length !== 0 ? 
           <div></div> :
           <div>
             <button onClick={() => this.handleLoadItems(this.state.pageNumber++, feedItems.length)}>Load More Posts></button>
-            <button onClick={() => 
-              this.handleLoadItems(this.state.pageNumber--, (-feedItems.length))}>Go back</button>
+            <button onClick={() => this.handleLoadItems(this.state.pageNumber--, (-feedItems.length))}>Go back</button>
           </div>
         }
 
@@ -147,10 +127,10 @@ class DayOfFeed extends React.Component {
          <button onClick={() => this.handleLoadItems(this.state.pageNumber--, (-feedItems.length))}>Go back</button>
        }
 
-       {feedItems.length < 10 ? 
+       {/*{feedItems.length < 10 ? 
           <button onClick={() => this.handleLoadItems(this.state.pageNumber--, (-feedItemsLength))}>TEST</button> :
           <div></div>
-       }
+       }*/}
         
   
         <UploadMedia {...this.props}/>

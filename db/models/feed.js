@@ -11,7 +11,7 @@ module.exports.getFeedByEventId = (eventId, pageNumber, cb) => {
       cb(null, items.toJSON());
     })
     .catch(err => {
-      cb(error, null);
+      cb(err, null);
     });
 };
 
@@ -21,7 +21,7 @@ module.exports.getFeedItemsCollectionLength = (eventId, cb) => {
       cb(null, count);
     })
     .catch(err => {
-      cb(error, null);
+      cb(err, null);
     });
 };
 
