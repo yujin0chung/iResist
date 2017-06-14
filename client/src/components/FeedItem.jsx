@@ -13,18 +13,18 @@ class FeedItem extends React.Component {
     this.handleVoteType = this.handleVoteType.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.type === 'image/jpeg') {
       this.state.element = <img style={{width: '500px', height: '350px'}} src={this.props.url} />
     } else if (this.props.type === 'image/png') {
-      this.state.element = <video src={this.props.url} autoPlay={false} type='image/png' controls/>
+      this.state.element = <img src={this.props.url} type='image/png' controls/>
     } else if (this.props.type === 'video/mp4') {
       this.state.element = <video src={this.props.url} autoPlay={false} type='video/mp4' controls/>
     } else if (this.props.type === 'video/quicktime') {
       this.state.element = <video src={this.props.url} autoPlay={false} type='video/quicktime' controls/>
     }  else {
       this.state.element = <span>{this.props.text}</span>
-    } 
+    }
   }
 
   handleVoteType(type) {
@@ -32,16 +32,16 @@ class FeedItem extends React.Component {
     this.props.handleCredVote(this.state);
   }
   render() {
+    console.log('here are all the props: ', this.props);
     return(
       <div style={{display: 'flex', flexDirection: 'row'}}>
-        <b>{this.props.username}</b> : <span>{this.props.text}</span> 
+        <b>{this.props.username}</b> : {this.state.element}
         <div className="credibility">
           <input placeholder="How credible?" value={this.props.credibility} />
           <button onClick={() => this.handleVoteType(1)}>Upcred</button>
           <button onClick={() => this.handleVoteType(-1)}>Downcred</button>
         </div>
       </div>
-
     );
   }
 }

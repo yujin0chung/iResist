@@ -29,19 +29,6 @@ class UploadMedia extends React.Component {
        credibility: 0
      };
      this.props.client.emit('newFeedItem', newPost);
-      // axios.post('api/feed/postItem', {
-      //   userId: this.props.user.userId,
-      //   username: this.props.user.username,
-      //   text: null,
-      //   credibility: null,
-      //   url: JSON.parse(res.text).location,
-      //   type: JSON.parse(res.text).mimetype,
-      //   eventId: this.props.events.activeEvent
-      // }).then(response => {
-      //   console.log('item posted to database');
-      // }).catch(e => {
-      //   console.log(e);
-      // })
     });
   }
 
