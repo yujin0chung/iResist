@@ -70,7 +70,7 @@ module.exports.voteFeedItem = (client, io, event, vote) => {
           } else {
             io.to(event).emit('newFeedItemVote', {
               itemId: vote.itemId,
-              change: item.polarity
+              change: vote.polarity
             });
           }
         });
@@ -81,7 +81,7 @@ module.exports.voteFeedItem = (client, io, event, vote) => {
           } else {
             io.to(event).emit('newFeedItemVote', {
               itemId: vote.itemId,
-              change: item.polarity * 2
+              change: vote.polarity * 2
             });
           }
         });

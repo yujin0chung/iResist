@@ -37,6 +37,10 @@ class DayOfContainer extends React.Component {
       console.log(vote);
       this.props.receivedPinVote(vote);
     });
+
+    this.client.on('newFeedItemVote', (vote) => {
+      console.log(vote);
+    });
   }
 
   handleCurrentDayOfView(view) {

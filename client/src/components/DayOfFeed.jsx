@@ -20,6 +20,10 @@ class DayOfFeed extends React.Component {
 
   componentDidMount() {
     this.setState({ pageNumber: 2 });
+
+    this.props.client.on('feedItemVoteNotPermitted', (error) => {
+      console.log(error);
+    });
   }
 
   handleLoadItems(pageNumber) {
