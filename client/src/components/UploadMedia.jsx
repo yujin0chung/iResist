@@ -48,4 +48,4 @@ class UploadMedia extends React.Component {
   }
 }
 
-export default UploadMedia
+export default UploadMedia;
