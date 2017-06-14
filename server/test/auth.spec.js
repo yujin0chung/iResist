@@ -75,7 +75,7 @@ describe('Authentication', () => {
       })(request, response);
     });
 
-    it('passport passes user if email does not already exist', done => {
+    xit('passport passes user if email does not already exist', done => {
       let request = httpMocks.createRequest({
         body: {
           email: 'TestUser4@mail.com',

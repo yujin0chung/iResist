@@ -1,6 +1,6 @@
 const knex = require('knex')(require('../../knexfile'));
 
-exports.rollbackMigrate = (done) => {
+exports.rollbackMigrate = (cb) => {
   knex.migrate.rollback()
     .then(function () {
       return knex.migrate.latest();
@@ -9,11 +9,11 @@ exports.rollbackMigrate = (done) => {
       return knex.seed.run();
     })
     .then(function () {
-      done();
+      cb();
     })
     .catch(function (err) {
       console.log('error in migration:', err);
-      done();
+      cb();
     });
 };
 

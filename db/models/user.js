@@ -21,8 +21,8 @@ module.exports.allUsers = (cb) => {
     });
 };
 
-module.exports.insertUser = (userName) => {
-  knex('users').insert({username: userName, credibility: 0}).then();
+module.exports.insertUser = (userName, cb) => {
+  knex('users').insert({username: userName, credibility: 0}).then(cb());
 };
 
 module.exports.createEvent = (eventId, userId, cb) => {
@@ -66,4 +66,4 @@ module.exports.getUserEvents = (userId, cb) => {
     .catch(e => {
       cb(e, null);
     });
-}
+};
