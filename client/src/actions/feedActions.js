@@ -59,6 +59,8 @@ export const receiveFeedItem = (item) => {
   };
 };
 
+
+
 export const receiveFeedItemVote = (vote) => {
   return {
     type: 'RECEIVE_FEED_ITEM_VOTE',

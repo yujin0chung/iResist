@@ -26,9 +26,9 @@ class DayOfContainer extends React.Component {
       console.log(response);
     });
 
-    this.client.on('newFeedItemFromServer', insertedPost => {
-      this.props.receiveFeedItem(insertedPost);
-    });
+    // this.client.on('newFeedItemFromServer', insertedPost => {
+    //   this.props.receiveFeedItem(insertedPost);
+    // });
 
     this.client.on('newPin', (pin) => {
       this.props.receivedPin(pin);
