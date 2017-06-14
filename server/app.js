@@ -21,25 +21,25 @@ let twitterAccessToken;
 let twitterAccessTokenSecret;
 
 if (process.env.TWITTER_ACCESS_TOKEN) {
-  twitterKey = TWITTER_ACCESS_TOKEN
+  twitterKey = process.env.TWITTER_ACCESS_TOKEN
 } else {
   twitterKey = creds.twitterKey
 }
 
 if (process.env.TWITTER_ACCESS_TOKEN_SECRET) {
-  twitterSecret = TWITTER_ACCESS_TOKEN_SECRET
+  twitterSecret = process.env.TWITTER_ACCESS_TOKEN_SECRET
 } else {
   twitterSecret = creds.twitterSecrets;
 }
 
 if (process.env.TWITTER_KEY) {
-  twitterAccessToken = TWITTER_KEY;
+  twitterAccessToken = process.env.TWITTER_KEY;
 } else {
   twitterAccessToken = creds.access_token;
 }
 
 if(process.env.TWITTER_SECRET) {
-  twitterAccessTokenSecret = TWITTER_SECRET;
+  twitterAccessTokenSecret = process.env.TWITTER_SECRET;
 } else {
   twitterAccessTokenSecret = creds.twitterAccessTokenSecret
 }
