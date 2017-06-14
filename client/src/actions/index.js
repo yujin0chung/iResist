@@ -38,6 +38,7 @@ export const deleteItem = feedActions.deleteItem;
 export const getFeeds = feedActions.getFeeds;
 export const receiveFeedItem = feedActions.receiveFeedItem;
 export const receiveFeedItemVote = feedActions.receiveFeedItemVote;
+export const receiveFeedItemVoteError = feedActions.receiveFeedItemVoteError;
 
 // fetch actions
 export const fetchData = fetchDataActions.fetchData;
