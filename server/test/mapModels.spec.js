@@ -25,7 +25,9 @@ describe('Map model tests', function() {
           timezone: '',
           isEditing: false },
         function(err, data) {
-          done();
+          map.makeMap(1, 0, 0, function(err, data) {
+            done();
+          });
         });
       });
     });
@@ -40,6 +42,15 @@ describe('Map model tests', function() {
     map.makeMap(1, 0, 0, function(err, data) {
       expect(err).to.equal(null);
       expect(data.rowCount).to.equal(1);
+      done();
+    });
+  });
+
+  it('should be able to fetch a map by event id', function(done) {
+    map.findMapById(1, function(err, data) {
+      expect(err).to.equal(null);
+      expect(data[0].id).to.equal(1);
+      expect(data[0].lat).to.equal(0);
       done();
     });
   });
