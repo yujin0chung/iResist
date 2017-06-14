@@ -39,6 +39,7 @@ export const getFeeds = feedActions.getFeeds;
 export const receiveFeedItem = feedActions.receiveFeedItem;
 export const receiveFeedItemVote = feedActions.receiveFeedItemVote;
 export const receiveFeedItemVoteError = feedActions.receiveFeedItemVoteError;
+export const updateFeedItems = feedActions.updateFeedItems;
 
 // fetch actions
 export const fetchData = fetchDataActions.fetchData;

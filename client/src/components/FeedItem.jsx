@@ -53,11 +53,12 @@ class FeedItem extends React.Component {
       polarity: polarity
     });
   }
+
   render() {
     var time = moment(Number(this.props.time)).format('h:mm a');
     return (
       <div style={{display: 'flex', flexDirection: 'row'}}>
-        <span> <b>{this.props.username}</b> : {this.state.element} at {time} </span>
+        <span> <b>{this.props.username}</b> : {this.state.element} at {time} </span>      
         <div className="credibility">
           <input placeholder="How credible?" value={this.props.credibility} />
           <button onClick={() => this.handleVoteType(1)}>Upcred</button>
