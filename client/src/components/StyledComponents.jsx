@@ -76,7 +76,7 @@ export const Icon = styled.img`
 export const Rotate = styled.div`
   transform: rotate(90deg);
   height: 360px;
-  margin-padding: 10px, 50px, 10px, 0px;
+  
  `;
 
 export const Tab = styled.div`

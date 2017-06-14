@@ -36,8 +36,8 @@ class UploadMedia extends React.Component {
     console.log('props: ', this.props);
     return (
       <div>
-        <Dropzone style={{height: '30px'}} onDrop={this.onDrop.bind(this)} multiple={false} acceptedFiles={'image/jpeg', 'video/mp4', 'video/quicktime', 'image/png'}>
-          <div> click to select a file </div>
+        <Dropzone className='dropzone' onDrop={this.onDrop.bind(this)} multiple={false} acceptedFiles={'image/jpeg', 'video/mp4', 'video/quicktime', 'image/png'}>
+          <div><h2><button>select a file</button></h2></div>
         </Dropzone>
       </div>
     )
