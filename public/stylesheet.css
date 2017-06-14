@@ -19,3 +19,8 @@
 .body {
   font-family: 'Open Sans', sans-serif;
 }
+
+img.media {
+  height: 200px;
+  width: 350px;
+}

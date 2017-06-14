@@ -14,18 +14,19 @@ class FeedItem extends React.Component {
 
   rotate(e) {
     let img = document.getElementById(e.target.id);
-    img.setAttribute('style', "{height: '200px', width: '350px', transform: 'rotate(90deg)'}");
+    console.log('IMG: ', img)
+    img.setAttribute('style', JSON.parse("{{ transform: 'rotate(90deg)'}}"));
   }
 
   componentWillMount() {
     if (this.props.type === 'image/jpeg') {
-      this.state.element = <img id={this.props.itemId} onClick={this.rotate.bind(this)} style={{height: '200px', width: '350px'}} src={this.props.url} />
+      this.state.element = <img className='media' id={this.props.itemId} onClick={this.rotate.bind(this)} src={this.props.url} />
     } else if (this.props.type === 'image/png') {
-      this.state.element = <img id={this.props.itemId} onClick={this.rotate.bind(this)} style={{height: '200px', width: '350px'}} src={this.props.url} />
+      this.state.element = <img className='media' id={this.props.itemId} onClick={this.rotate.bind(this)} src={this.props.url} />
     } else if (this.props.type === 'video/mp4') {
-      this.state.element = <video id={this.props.itemId} src={this.props.url} autoPlay={false} type='video/mp4' controls/>
+      this.state.element = <video className='media' id={this.props.itemId} src={this.props.url} autoPlay={false} type='video/mp4' controls/>
     } else if (this.props.type === 'video/quicktime') {
-      this.state.element = <video id={this.props.itemId} src={this.props.url} autoPlay={false} type='video/quicktime' controls/>
+      this.state.element = <video className='media' id={this.props.itemId} src={this.props.url} autoPlay={false} type='video/quicktime' controls/>
     }  else {
       this.state.element = <span id={this.props.itemId}>{this.props.text}</span>
     }
