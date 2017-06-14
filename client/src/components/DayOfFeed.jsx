@@ -9,12 +9,12 @@ class DayOfFeed extends React.Component {
     this.state = {
       text: '',
       url: '',
-      text: '' || 'TEST TEXT',
-      url: '' || 'TEST URL.COM',
-      credibility: '' || 0,
+      text: '',
+      url: '',
+      credibility: 0,
       userId: this.props.user.userId,
       username: this.props.user.username,
-      type: '' || 'MESSAGE',
+      type: '',
       pageNumber: 2 //default is already 1
     };
     this.handlePost = this.handlePost.bind(this);
