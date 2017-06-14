@@ -1,7 +1,7 @@
 
 exports.up = function(knex, Promise) {
   return knex.schema.table('feed_items', function(t) {
-    t.integer('user_id').notNullable();
+    t.integer('user_id').nullable();
     t.string('type', 200).nullable();
   });
 };

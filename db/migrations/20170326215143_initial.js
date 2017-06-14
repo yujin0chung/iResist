@@ -12,7 +12,7 @@ exports.up = function (knex, Promise) {
     }),
     knex.schema.createTableIfNotExists('auths', function(table) {
       table.increments('id').unsigned().primary();
-      table.string('type', 8).notNullable();
+      table.string('type', 8).nullable();
       table.string('oauth_id', 30).nullable();
       table.string('password', 100).nullable();
       table.string('salt', 100).nullable();
