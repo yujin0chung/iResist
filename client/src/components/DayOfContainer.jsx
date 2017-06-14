@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 import DayOfFeed from './DayOfFeed.jsx';
 import DayOfMap from './DayOfMap.jsx';
 import DayOfInfo from './DayOfInfo.jsx';
+import TwitterFeed from './TwitterFeed.jsx';
 
 
 class DayOfContainer extends React.Component {
@@ -63,10 +64,15 @@ class DayOfContainer extends React.Component {
           <DayOfFeed {...this.props} client={this.client} /> :
           <div></div>
         }
+        {this.state.currentDayOf === 'TWITTER' ?
+          <TwitterFeed {...this.props} />:
+          <div></div>
+        }
         <div className="tabs">
           <button onClick={() => this.handleCurrentDayOfView('INFO')}>Info</button>
           <button onClick={() => this.handleCurrentDayOfView('MAP')}>Map</button>
           <button onClick={() => this.handleCurrentDayOfView('FEED')}>Feed</button>
+          <button onClick={() => this.handleCurrentDayOfView('TWITTER')}>Twitter Feed</button>
         </div>
       </div>
     );
