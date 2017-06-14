@@ -21,6 +21,13 @@
 }
 
 img.media {
-  height: 250px;
-  width: 405px;
+  height: 275px;
+  width: 360px;
+}
+
+.dropzone {
+  
+}
+
+.mediaContainer {
 }

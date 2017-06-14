@@ -23,7 +23,7 @@ class FeedItem extends React.Component {
     } else if (this.props.type === 'image/png') {
       this.state.element = 
         <div className='mediaContainer'>
-          <img className='media' className='media' id={this.props.itemId} onDoubleClick={this.rotate.bind(this)} src={this.props.url} />
+          <img className='media' id={this.props.itemId} onDoubleClick={this.rotate.bind(this)} src={this.props.url} />
         </div>
     } else if (this.props.type === 'video/mp4') {
       this.state.element = 
