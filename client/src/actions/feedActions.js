@@ -67,5 +67,10 @@ export const receiveFeedItemVote = (vote) => {
   };
 };
 
-
+export const receiveFeedItemVoteError = (error) => {
+  return {
+    type: 'RECEIVE_FEED_ITEM_VOTE_ERROR',
+    error
+  };
+};
 
