@@ -68,10 +68,10 @@ module.exports.voteFeedItem = (client, io, event, vote) => {
           if (err) {
             console.log(err);
           } else {
-            // io.to(event).emit('newPinVote', {
-            //   pinId: pin.pinId,
-            //   change: pin.polarity
-            // });
+            io.to(event).emit('newFeedItemVote', {
+              itemId: vote.itemId,
+              change: item.polarity
+            });
           }
         });
       } else if (responseVote[0].up_down !== vote.polarity) {
@@ -79,17 +79,17 @@ module.exports.voteFeedItem = (client, io, event, vote) => {
           if (err) {
             console.log(err);
           } else {
-            // io.to(event).emit('newPinVote', {
-            //   pinId: pin.pinId,
-            //   change: pin.polarity * 2
-            // });
+            io.to(event).emit('newFeedItemVote', {
+              itemId: vote.itemId,
+              change: item.polarity * 2
+            });
           }
         });
       } else {
-        // client.emit('pinVoteNotPermitted', {
-        //   pinId: pin.pinId,
-        //   msg: 'You have already voted on that pin'
-        // });
+        client.emit('feedItemVoteNotPermitted', {
+          itemId: vote.itemId,
+          msg: 'You have already voted on that!'
+        });
       }
     }
   });
