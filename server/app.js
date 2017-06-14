@@ -6,8 +6,6 @@ const routes = require('./routes');
 const io = require('socket.io');
 const Twitter = require('twitter');
 const Twit = require('twit');
-const creds = require('../config/configVars');
-
 const app = express();
 
 try {
