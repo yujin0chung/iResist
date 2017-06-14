@@ -8,8 +8,6 @@ const Twitter = require('twitter');
 const Twit = require('twit');
 const creds = require('../config/configVars');
 
-console.log('these are the creds: ', creds);
-
 const app = express();
 
 var bot = new Twit({
@@ -46,8 +44,12 @@ app.use('/api/feed', routes.feed);
 
 var stream = bot.stream('statuses/filter', {track: '#books'});
 
+
 stream.on('tweet', function(tweet){
     console.log(tweet.text+'\n');
+    app.get('/getTweet', function(req, res) {
+      res.send(tweet);
+    })
 });
 
 module.exports = app;
