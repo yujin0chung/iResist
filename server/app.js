@@ -9,7 +9,7 @@ const Twit = require('twit');
 const app = express();
 
 try {
-  creds = require('../config/configVars');
+  const creds = require('../config/configVars');
 } catch (e) {
 }
 
