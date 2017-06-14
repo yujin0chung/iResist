@@ -7,16 +7,16 @@ exports.up = function(knex, Promise) {
     t.integer('duration').nullable();
     t.integer('latitude').nullable();
     t.integer('longitude').nullable();
-  })
+  });
 };
 
 exports.down = function(knex, Promise) {
   return knex.schema.table('events', function(t) {
-    t.dropColumn('address', 200);
+    t.dropColumn('address');
     t.dropColumn('attendee_count');
     t.dropColumn('time');
     t.dropColumn('duration');
     t.dropColumn('latitude');
     t.dropColumn('longitude');
-  })
+  });
 };

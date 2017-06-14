@@ -1,7 +1,7 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.table('feed_items', function(t) {   
+  return knex.schema.table('feed_items', function(t) {
     t.dropColumn('feed_id');
-    t.integer('event_id').notNullable();
+    t.integer('event_id').nullable();
     t.foreign('event_id').references('id').inTable('events');
   });
 };

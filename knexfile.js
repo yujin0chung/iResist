@@ -43,7 +43,7 @@ const getKnexConfig = (env) => {
     return {
       client: 'postgresql',
       connection: {
-        database: 'iresist',
+        database: 'iresisttest',
         user: 'postgres',
         password: 'postgres',
         host: 'localhost',
