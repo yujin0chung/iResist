@@ -83,6 +83,7 @@
     "redux-thunk": "^2.2.0",
     "socket.io": "^2.0.2",
     "styled-components": "^2.0.0",
+    "superagent": "^3.5.2",
     "supertest": "^3.0.0",
     "timeago": "^1.5.4",
     "twit": "^2.2.5",
