@@ -22,7 +22,7 @@ class DayOfFeed extends React.Component {
     this.setState({ pageNumber: 2 });
 
     this.props.client.on('feedItemVoteNotPermitted', (error) => {
-      console.log(error);
+      this.props.receiveFeedItemVoteError(error);
     });
   }
 
@@ -89,6 +89,7 @@ class DayOfFeed extends React.Component {
               handleCredVote={this.handleCredChange}
               url={item.url}
               type={item.type}
+              errorMsg={item.errorMsg}
               client={this.props.client}/>) :
               <div></div>
         }
