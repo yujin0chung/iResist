@@ -29,7 +29,7 @@ if (process.env.TWITTER_ACCESS_TOKEN) {
 if (process.env.TWITTER_ACCESS_TOKEN_SECRET) {
   twitterSecret = process.env.TWITTER_ACCESS_TOKEN_SECRET
 } else {
-  twitterSecret = creds.twitterSecrets;
+  twitterSecret = creds.twitterSecret;
 }
 
 if (process.env.TWITTER_KEY) {
@@ -45,10 +45,10 @@ if(process.env.TWITTER_SECRET) {
 }
 
 var T = new Twit({
-    consumer_key: creds.twitterKey || process.env.TWITTER_ACCESS_TOKEN,
-    consumer_secret: creds.twitterSecret || process.env.TWITTER_ACCESS_TOKEN_SECRET,
-    access_token: creds.twitterAccessToken || process.env.TWITTER_KEY,
-    access_token_secret: creds.twitterAccessTokenSecret || process.env.TWITTER_SECRET,
+    consumer_key: twitterKey,
+    consumer_secret: twitterSecret,
+    access_token: twitterAccessToken,
+    access_token_secret: twitterAccessTokenSecret,
     timeout_ms: 60*1000
 });
 
@@ -76,17 +76,7 @@ app.use('/api/user', routes.user);
 app.use('/api/maps', routes.maps);
 app.use('/api/feed', routes.feed);
 
-// var stream = bot.stream('statuses/filter', {track: '#books'}); //probably won't use
 
-// app.get('/getTweet', function(req, res){
-//
-// })
-// stream.on('tweet', function(tweet){
-//     console.log(tweet.text+'\n');
-//     app.get('/getTweet', function(req, res) {
-//       res.send(tweet);
-//     })
-// });
 app.get('/getTweet', function (req, res) {
   console.log('here is req: ', req.query.searchTerm);
   T.get('search/tweets', { q: req.query.searchTerm, count: 100 }, function(err, data, response) {
