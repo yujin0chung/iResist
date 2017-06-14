@@ -1,9 +1,10 @@
 export const feeds = (state = {}, action) => {
   switch (action.type) {
   case 'RECEIVE_FEED_ITEM':
+    console.log('ACTION FROM RECEIVE FEED ITEMS', action)
     console.log('STATE FROM RECEIVE FEED ITEM', state);
     return Object.assign({}, state, {
-      feedItems: [...state.feedItems, action.item]
+      feedItems: [action.item, ...state.feedItems]
     });
   case 'GET_FEED_ITEMS_SUCCESS':
     return Object.assign({}, state, {

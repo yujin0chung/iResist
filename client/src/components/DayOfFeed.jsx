@@ -3,6 +3,8 @@ import { Input } from 'react-bootstrap';
 import FeedItem from './FeedItem.jsx';
 import UploadMedia from './UploadMedia.jsx';
 import InfiteScroll from 'redux-infinite-scroll';
+import axios from 'axios';
+import _ from 'lodash'
 
 class DayOfFeed extends React.Component {
   constructor(props) {
@@ -11,9 +13,11 @@ class DayOfFeed extends React.Component {
       text: '',
       url: '',
       credibility: '' || 0,
-      type: '' || 'MESSAGE',
+      type: 'MESSAGE',
       pageNumber: 1, //default is already 1,
-      feedItemCount: 0
+      feedItemCount: 0,
+      posts: [],
+      wantMoreItems: false
     };
     this.handlePost = this.handlePost.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -22,19 +26,30 @@ class DayOfFeed extends React.Component {
 
 
   componentDidMount() {
-    this.setState({ pageNumber: 2 });
-
+    this.handleLoadItems(this.state.pageNumber++)
+    var self = this;
+    this.props.client.on('newFeedItemFromServer', insertedPost => {
+      this.props.receiveFeedItem(insertedPost);
+      let newState = this.state.posts;
+      newState.unshift(insertedPost)
+      self.setState({posts: newState});
+    });
+    
     this.props.client.on('feedItemVoteNotPermitted', (error) => {
       this.props.receiveFeedItemVoteError(error);
     });
   }
 
 
-
-
-  handleLoadItems(pageNumber, feedItemsIncrement) {
-    this.props.getFeeds(this.props.events.activeEvent, pageNumber);
-    this.setState({ feedItemCount: this.state.feedItemCount + feedItemsIncrement })
+  handleLoadItems(pageNumber) { 
+    axios.get('/api/feed/event', {
+      params: {
+        eventId: this.props.events.activeEvent,
+        pageNumber
+      }
+    }).then(feedItems => {
+      this.setState({posts: this.state.posts.concat(feedItems.data.feedItems)})
+    });
   }
 
   handlePost(e) {
@@ -50,11 +65,11 @@ class DayOfFeed extends React.Component {
       time: Date.now()
     };
     this.props.client.emit('newFeedItem', newPost);
-    this.setState({
-      text: '',
-      url: '',
-      type: ''
-    });
+    // this.setState({
+    //   text: '',
+    //   url: '',
+    //   type: ''
+    // });
   }
 
   handleChange(e) {
@@ -65,23 +80,8 @@ class DayOfFeed extends React.Component {
     this.props.client.emit('voteFeedItem', feedItemVote);
   }
 
-
   render() {
-    console.log('THIS IS THE PAGE NUMBER', this.state.pageNumber);
-    console.log('THIS.STATE.FEEDITEMCOUNT', this.state.feedItemCount)
     const feedItems = this.props.feeds.feedItems;
-    console.log('this is feedItems: ', feedItems);
-    // let goBackButton;
-    // if (this.state.feedItemCount === 0 ) {
-    //   goBackButton = <div></div>
-    // }
-    let feedItemsLength;
-    if (feedItems.length < 10) {
-      feedItemsLength = feedItems.length + (10 - feedItems.length)
-    } else {
-      feedItemsLength = feedItems.length;
-    }
-
     return (
       <div>
         <h3>Post a message</h3>
@@ -93,9 +93,8 @@ class DayOfFeed extends React.Component {
             onChange={this.handleChange}
           />
         </form>
-        {(feedItems !== undefined && !Object.is(feedItems, {})) ?
-
-          feedItems.map(item =>
+        {
+          this.state.posts.map(item =>
             <FeedItem
               username={item.username}
               text={item.text}
@@ -110,29 +109,13 @@ class DayOfFeed extends React.Component {
               url={item.url}
               type={item.type}
               errorMsg={item.errorMsg}
-              client={this.props.client}/>) :
-              <div></div>
+              client={this.props.client}/>) 
         }
-     
-        {this.state.feedItemCount + feedItems.length >= this.props.feeds.collectionLength && feedItems.length < 10 && feedItem.length !== 0 ? 
+        {
+        feedItems.length < 10 ?
           <div></div> :
-          <div>
-            <button onClick={() => this.handleLoadItems(this.state.pageNumber++, feedItems.length)}>Load More Posts></button>
-            <button onClick={() => this.handleLoadItems(this.state.pageNumber--, (-feedItems.length))}>Go back</button>
-          </div>
+          <button onClick={() => this.handleLoadItems(this.state.pageNumber++)}>Load More Posts></button>
         }
-
-       { this.state.feedItemCount === 0 ? 
-         <div></div> :
-         <button onClick={() => this.handleLoadItems(this.state.pageNumber--, (-feedItems.length))}>Go back</button>
-       }
-
-       {/*{feedI tems.length < 10 ? 
-          <button onClick={() => this.handleLoadItems(this.state.pageNumber--, (-feedItemsLength))}>TEST</button> :
-          <div></div>
-       }*/}
-        
-  
         <UploadMedia {...this.props}/>
       </div>
     );

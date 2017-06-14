@@ -44,14 +44,13 @@ export const getFeeds = (eventId, pageNumber) => dispatch => {
       pageNumber
     }
   })
-  .then(feedItems => {
-    dispatch(getFeedItemsSuccess(feedItems));
+  .then((feedItems) => {
+    return dispatch(getFeedItemsSuccess(feedItems));
   })
   .catch(error => {
     dispatch(getFeedItemsError(error));
   });
 };
-
 
 export const receiveFeedItem = (item) => {
   return {
