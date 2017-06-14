@@ -127,7 +127,7 @@ class DayOfFeed extends React.Component {
          <button onClick={() => this.handleLoadItems(this.state.pageNumber--, (-feedItems.length))}>Go back</button>
        }
 
-       {/*{feedItems.length < 10 ? 
+       {/*{feedI tems.length < 10 ? 
           <button onClick={() => this.handleLoadItems(this.state.pageNumber--, (-feedItemsLength))}>TEST</button> :
           <div></div>
        }*/}
@@ -142,4 +142,3 @@ class DayOfFeed extends React.Component {
 export default DayOfFeed;
 
 
-//
