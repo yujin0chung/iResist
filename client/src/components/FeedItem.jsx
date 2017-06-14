@@ -34,12 +34,7 @@ class FeedItem extends React.Component {
     });
   }
   render() {
-    console.log('here are all the props: ', this.props);
-    console.log('this is this.props.time and the type: ', this.props.time, typeof this.props.time);
-    console.log('this is this.props.time turned into a number: ', Number(this.props.time));
-    console.log('this is moment.unix', moment(Number(this.props.time)));
     var time = moment(Number(this.props.time)).format('h:mm a');
-    console.log('this is the time', time);
     return (
       <div style={{display: 'flex', flexDirection: 'row'}}>
         <span> <b>{this.props.username}</b> : {this.state.element} at {time} </span>
