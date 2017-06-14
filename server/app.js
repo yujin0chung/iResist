@@ -11,7 +11,7 @@ const creds = require('../config/configVars');
 const app = express();
 
 try {
-  creds = require('../../config/configVars');
+  creds = require('../config/configVars');
 } catch (e) {
 }
 
