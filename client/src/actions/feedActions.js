@@ -39,7 +39,7 @@ export const getFeedItemsError = (error) => {
 
 export const getFeeds = (eventId, pageNumber) => dispatch => {
   axios.get('/api/feed/event', {
-    params: { 
+    params: {
       eventId,
       pageNumber
     }
@@ -60,7 +60,12 @@ export const receiveFeedItem = (item) => {
   };
 };
 
-
+export const receiveFeedItemVote = (vote) => {
+  return {
+    type: 'RECEIVE_FEED_ITEM_VOTE',
+    vote
+  };
+};
 
 
 
