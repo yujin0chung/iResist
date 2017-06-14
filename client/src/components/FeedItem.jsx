@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import { Rotate } from './StyledComponents.jsx'
 
 class FeedItem extends React.Component {
   constructor(props) {
@@ -12,18 +13,37 @@ class FeedItem extends React.Component {
     this.handleVoteType = this.handleVoteType.bind(this);
   }
 
+
   componentWillMount() {
     if (this.props.type === 'image/jpeg') {
-      this.state.element = <img style={{width: '500px', height: '350px'}} src={this.props.url} />;
+      this.state.element = 
+        <div className='mediaContainer' >
+          <img className='media' id={this.props.itemId} onDoubleClick={this.rotate.bind(this)} src={this.props.url} />
+        </div>
     } else if (this.props.type === 'image/png') {
-      this.state.element = <img src={this.props.url} type='image/png' controls/>;
+      this.state.element = 
+        <div className='mediaContainer'>
+          <img className='media' className='media' id={this.props.itemId} onDoubleClick={this.rotate.bind(this)} src={this.props.url} />
+        </div>
     } else if (this.props.type === 'video/mp4') {
-      this.state.element = <video src={this.props.url} autoPlay={false} type='video/mp4' controls/>;
+      this.state.element = 
+        <div className='mediaContainer'>
+          <video className='media' className='media' id={this.props.itemId} src={this.props.url} autoPlay={false} type='video/mp4' controls/>
+        </div>
     } else if (this.props.type === 'video/quicktime') {
-      this.state.element = <video src={this.props.url} autoPlay={false} type='video/quicktime' controls/>;
-    } else {
-      this.state.element = <span>{this.props.text}</span>;
+      this.state.element = 
+        <div className='mediaContainer'>
+          <video className='media' className='media' id={this.props.itemId} src={this.props.url} autoPlay={false} type='video/quicktime' controls/>
+        </div>
+    }  else {
+      this.state.element = <span id={this.props.itemId}>{this.props.text}</span>
     }
+  }
+
+  rotate() {
+    this.setState({
+      element: <Rotate>{this.state.element}</Rotate>
+    })
   }
 
   handleVoteType(polarity) {
@@ -43,7 +63,6 @@ class FeedItem extends React.Component {
           <button onClick={() => this.handleVoteType(1)}>Upcred</button>
           <button onClick={() => this.handleVoteType(-1)}>Downcred</button>
         </div>
-        {this.props.errorMsg ? <p>{this.props.errorMsg}</p> : <div></div>}
       </div>
     );
   }
