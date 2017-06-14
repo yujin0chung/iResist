@@ -35,7 +35,7 @@ if (process.env.TWITTER_ACCESS_TOKEN_SECRET) {
 if (process.env.TWITTER_KEY) {
   twitterAccessToken = process.env.TWITTER_KEY;
 } else {
-  twitterAccessToken = creds.access_token;
+  twitterAccessToken = creds.twitterAccessToken;
 }
 
 if(process.env.TWITTER_SECRET) {
@@ -45,10 +45,10 @@ if(process.env.TWITTER_SECRET) {
 }
 
 var T = new Twit({
-    consumer_key: twitterKey,
-    consumer_secret: twitterSecret,
-    access_token: twitterAccessToken,
-    access_token_secret: twitterAccessTokenSecret,
+    consumer_key: creds.twitterKey || process.env.TWITTER_ACCESS_TOKEN,
+    consumer_secret: creds.twitterSecret || process.env.TWITTER_ACCESS_TOKEN_SECRET,
+    access_token: creds.twitterAccessToken || process.env.TWITTER_KEY,
+    access_token_secret: creds.twitterAccessTokenSecret || process.env.TWITTER_SECRET,
     timeout_ms: 60*1000
 });
 
