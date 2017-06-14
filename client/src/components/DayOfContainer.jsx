@@ -51,6 +51,7 @@ class DayOfContainer extends React.Component {
     let event = _.find(this.props.events.allEvents, event => (event.id === this.props.events.activeEvent ));
     return (
       <div>
+
         <h1>You are looking at the day of container</h1>
         {this.state.currentDayOf === 'INFO' ?
           <DayOfInfo {...this.props} client={this.client} event={event} /> :
