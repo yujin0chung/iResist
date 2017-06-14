@@ -2,14 +2,13 @@ const knex = require('../').knex;
 const models = require('./../../db/models');
 
 module.exports.getFeedByEventId = (eventId, pageNumber, cb) => {
-  console.log('PAGE NUMBER FROM QUERY', pageNumber)
-    models.FeedItem.where({event_id: eventId})
+  console.log('PAGE NUMBER FROM QUERY', pageNumber);
+  models.FeedItem.where({event_id: eventId})
       .orderBy('id', 'DESC')
       .fetchPage({pageSize: 10, page: pageNumber})
       .then(items => {
         console.log('ITEMS FROM GET FEED BY EVENT QUERY', items.toJSON());
-        if (items.toJSON().length)
-        cb(null, items.toJSON());
+        if (items.toJSON().length) { cb(null, items.toJSON()); }
       })
       .catch(error => {
         cb(error, null);
@@ -33,6 +32,69 @@ module.exports.postItem = (item, cb) => {
     .returning('*')
     .then(insertedPost => {
       cb(null, insertedPost);
+    })
+    .catch(err => {
+      cb(err, null);
+    });
+};
+
+module.exports.checkForFeedItemVote = (vote, cb) => {
+  knex('feed_item_credibility')
+    .where({
+      user_id: vote.userId,
+      feed_item_id: vote.itemId
+    })
+    .select()
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(err => {
+      cb(err, null);
+    });
+};
+
+module.exports.insertFeedItemVote = (vote, cb) => {
+  console.log('insertFeedItemVote ran');
+  knex('feed_item_credibility')
+    .insert({
+      user_id: vote.userId,
+      feed_item_id: vote.itemId,
+      up_down: vote.polarity
+    })
+    .then(data => {
+      return knex('feed_items')
+        .where({
+          id: vote.itemId
+        })
+        .increment('credibility', vote.polarity);
+    })
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(err => {
+      cb(err, null);
+    });
+};
+
+
+module.exports.replaceFeedItemVote = (vote, cb) => {
+  knex('feed_item_credibility')
+    .where({
+      user_id: vote.userId,
+      feed_item_id: vote.itemId
+    })
+    .update({
+      up_down: vote.polarity
+    })
+    .then(data => {
+      return knex('feed_items')
+        .where({
+          id: vote.itemId
+        })
+        .increment('credibility', (vote.polarity * 2));
+    })
+    .then(data => {
+      cb(null, data);
     })
     .catch(err => {
       cb(err, null);
