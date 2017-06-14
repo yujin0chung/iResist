@@ -43,6 +43,7 @@ class FeedItem extends React.Component {
           <button onClick={() => this.handleVoteType(1)}>Upcred</button>
           <button onClick={() => this.handleVoteType(-1)}>Downcred</button>
         </div>
+        {this.props.errorMsg ? <p>{this.props.errorMsg}</p> : <div></div>}
       </div>
     );
   }
