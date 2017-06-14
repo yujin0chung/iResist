@@ -73,6 +73,11 @@ export const Icon = styled.img`
   float: right;
 `;
 
+export const Rotate = styled.div`
+  transform: rotate(90deg);
+  height: 350px;
+ `;
+
 export const Tab = styled.div`
   
 `
