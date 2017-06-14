@@ -7,22 +7,13 @@ module.exports.getAllFeed = (req, res) => {
     if (err) {
       res.send(500, err);
     } else {
-<<<<<<< HEAD
-      console.log('FEED FROM GET ALL FEED', feed);
-=======
->>>>>>> Adds getfeeditems collectio length error into getEventFeed server handler
       res.send(200, feed);
     }
   });
 };
 
 module.exports.getEventFeed = (req, res) => {
-<<<<<<< HEAD
-  console.log('GET EVENGT FEED', req.query);
-  models.Feed.getFeedByEventId(req.query.eventId, req.query.pageNumber, (err, feedItems, totalLength) => {
-=======
   models.Feed.getFeedByEventId(req.query.eventId, req.query.pageNumber, (err, feedItems, collectionLength) => {
->>>>>>> Adds getfeeditems collectio length error into getEventFeed server handler
     if (err) {
       res.send(500, err);
     } else {
