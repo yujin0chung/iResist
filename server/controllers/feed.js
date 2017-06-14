@@ -63,10 +63,8 @@ module.exports.voteFeedItem = (client, io, event, vote) => {
     if (err) {
       // emit some sort of err
     } else {
-      console.log('THIS IS THE RESPONSE VOTE: ', responseVote);
       if (responseVote.length === 0) {
-        console.log('the first option ran');
-        models.Feed.insertFeedItemVote(vote, (err, insertResponsePin) => {
+        models.Feed.insertFeedItemVote(vote, (err, insertResponseVote) => {
           if (err) {
             console.log(err);
           } else {
@@ -76,17 +74,17 @@ module.exports.voteFeedItem = (client, io, event, vote) => {
             // });
           }
         });
-      } else if (responseVote[0].up_down !== pin.polarity) {
-        // models.Map.replacePinVote(vote, (err, replaceResponePin) => {
-        //   if (err) {
-        //     console.log(err);
-        //   } else {
-        //     io.to(event).emit('newPinVote', {
-        //       pinId: pin.pinId,
-        //       change: pin.polarity * 2
-        //     });
-        //   }
-        // });
+      } else if (responseVote[0].up_down !== vote.polarity) {
+        models.Feed.replaceFeedItemVote(vote, (err, replaceResponseVote) => {
+          if (err) {
+            console.log(err);
+          } else {
+            // io.to(event).emit('newPinVote', {
+            //   pinId: pin.pinId,
+            //   change: pin.polarity * 2
+            // });
+          }
+        });
       } else {
         // client.emit('pinVoteNotPermitted', {
         //   pinId: pin.pinId,
