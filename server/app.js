@@ -54,7 +54,8 @@ app.use('/api/feed', routes.feed);
 //     })
 // });
 app.get('/getTweet', function (req, res) {
-  T.get('search/tweets', { q: '#trump', count: 100 }, function(err, data, response) {
+  console.log('here is req: ', req.query.searchTerm);
+  T.get('search/tweets', { q: req.query.searchTerm, count: 100 }, function(err, data, response) {
     if (err) {
       console.log(err);
     } else {

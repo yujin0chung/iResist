@@ -9,7 +9,11 @@ class Tweet extends React.Component {
   render() {
     return (
       <div>
-      <span> <strong>{this.props.username}</strong> : {this.props.tweet} at {this.props.time} </span>
+      <span> <strong>{this.props.username}</strong>
+      <br/>
+      {this.props.tweet}
+      <br/>
+      at {this.props.time} </span>
       <br/><br/>
       </div>
     )

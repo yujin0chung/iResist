@@ -16,7 +16,12 @@ class TwitterFeed extends React.Component {
       tweets: []
     })
     axios
-      .get("/getTweet")
+      .get("/getTweet", {
+        params: {
+          searchTerm: this.props.events.allEvents[this.props.events.activeEvent].name,
+        }
+
+      })
       .then(response => {
         console.log('this is the response: ', response)
         var tweetsObj = {};
@@ -38,6 +43,8 @@ class TwitterFeed extends React.Component {
     });
   }
   render() {
+    console.log('these are the props: ', this.props);
+    console.log('this is the search term: ', this.props.events.allEvents[this.props.events.activeEvent].name);
     return(
       <div>
         {
