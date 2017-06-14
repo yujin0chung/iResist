@@ -88,7 +88,7 @@ class DayOfFeed extends React.Component {
             <FeedItem
               username={item.username}
               text={item.text}
-              key={item.itemId}
+              key={item.id}
               username={item.username} 
               text={item.text} 
               time={item.time}
