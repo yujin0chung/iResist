@@ -1,5 +1,5 @@
 import React from 'react';
-import Timestamp from 'react-timestamp';
+import moment from 'moment';
 
 class FeedItem extends React.Component {
   constructor(props) {
@@ -34,10 +34,10 @@ class FeedItem extends React.Component {
     });
   }
   render() {
-    console.log('here are all the props: ', this.props);
+    var time = moment(Number(this.props.time)).format('h:mm a');
     return (
       <div style={{display: 'flex', flexDirection: 'row'}}>
-        <b>{this.props.username}</b> : {this.state.element}
+        <span> <b>{this.props.username}</b> : {this.state.element} at {time} </span>
         <div className="credibility">
           <input placeholder="How credible?" value={this.props.credibility} />
           <button onClick={() => this.handleVoteType(1)}>Upcred</button>

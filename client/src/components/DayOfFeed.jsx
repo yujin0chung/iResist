@@ -66,6 +66,7 @@ class DayOfFeed extends React.Component {
 
   render() {
     const feedItems = this.props.feeds.feedItems;
+    console.log('this is feedItems: ', feedItems);
     return (
       <div>
         <h3>Post a message</h3>
