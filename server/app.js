@@ -4,11 +4,19 @@ const path = require('path');
 const middleware = require('./middleware');
 const routes = require('./routes');
 const io = require('socket.io');
-// const Twitter = require('twitter');
-// const twitterConfig = require()
+const Twitter = require('twitter');
+const Twit = require('twit');
 
 
 const app = express();
+
+var bot = new Twit({
+    consumer_key: process.env.LEARNINGBOT_CONSUMER_KEY,
+    consumer_secret: process.env.LEARNINGBOT_CONSUMER_SECRET,
+    access_token: process.env.LEARNINGBOT_ACCESS_TOKEN,
+    access_token_secret: process.env.LEARNINGBOT_ACCESS_TOKEN_SECRET,
+    timeout_ms: 60*1000
+});
 
 app.use(middleware.morgan('dev'));
 app.use(middleware.cookieParser());
