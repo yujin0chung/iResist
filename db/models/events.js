@@ -69,7 +69,6 @@ module.exports.createEvent = (data, cb) => {
   const eventStart = formatDate(data.lat, data.long, data.date, startHours, startMinutes);
   const eventEnd = formatDate(data.lat, data.long, data.date, endHours, endMinutes);
 
-  console.log('DATA FROM CREATE EVENT', data);
   const values = {
     name: data.name,
     description: data.description,
@@ -205,7 +204,7 @@ module.exports.deleteEventById = (eventId, cb) => {
     .then(() => {
       knex('events')
         .where('event_id', eventId)
-        .del()
+        .del();
     })
     .then(data => {
       cb(null, data);
