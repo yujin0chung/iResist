@@ -7,7 +7,9 @@ export const feeds = (state = {}, action) => {
     });
   case 'GET_FEED_ITEMS_SUCCESS':
     return Object.assign({}, state, {
-      feedItems: action.feedItems.data.feedItems
+      feedItems: action.feedItems.data.feedItems,
+      collectionLength: action.feedItems.data.collectionLength[0].count
+      
     });
   case 'GET_FEED_ITEMS_ERROR':
     return Object.assign({}, state, {
