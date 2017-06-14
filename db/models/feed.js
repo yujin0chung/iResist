@@ -75,3 +75,28 @@ module.exports.insertFeedItemVote = (vote, cb) => {
       cb(err, null);
     });
 };
+
+
+module.exports.replaceFeedItemVote = (vote, cb) => {
+  knex('feed_item_credibility')
+    .where({
+      user_id: vote.userId,
+      feed_item_id: vote.itemId
+    })
+    .update({
+      up_down: vote.polarity
+    })
+    .then(data => {
+      return knex('feed_items')
+        .where({
+          id: vote.itemId
+        })
+        .increment('credibility', (vote.polarity * 2));
+    })
+    .then(data => {
+      cb(null, data);
+    })
+    .catch(err => {
+      cb(err, null);
+    });
+};
