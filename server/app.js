@@ -10,7 +10,7 @@ const creds = require('../config/configVars');
 
 const app = express();
 
-var bot = new Twit({
+var T = new Twit({
     consumer_key: creds.twitterKey,
     consumer_secret: creds.twitterSecret,
     access_token: creds.twitterAccessToken,
@@ -42,14 +42,32 @@ app.use('/api/user', routes.user);
 app.use('/api/maps', routes.maps);
 app.use('/api/feed', routes.feed);
 
-var stream = bot.stream('statuses/filter', {track: '#books'});
+// var stream = bot.stream('statuses/filter', {track: '#books'}); //probably won't use
 
+// app.get('/getTweet', function(req, res){
+//
+// })
+// stream.on('tweet', function(tweet){
+//     console.log(tweet.text+'\n');
+//     app.get('/getTweet', function(req, res) {
+//       res.send(tweet);
+//     })
+// });
+app.get('/getTweet', function (req, res) {
+  T.get('search/tweets', { q: '#trump', count: 100 }, function(err, data, response) {
+    if (err) {
+      console.log(err);
+    } else {
+      data.statuses.forEach(function(s){
+        console.log('text: ', s.text);
+        console.log('time: ', s.created_at);
+        console.log('username: ', s.user.screen_name);
+        console.log('\n');
+      })
+      res.send(data.statuses);
+    }
+  })
+})
 
-stream.on('tweet', function(tweet){
-    console.log(tweet.text+'\n');
-    app.get('/getTweet', function(req, res) {
-      res.send(tweet);
-    })
-});
 
 module.exports = app;
