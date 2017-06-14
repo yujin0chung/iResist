@@ -3,7 +3,7 @@ import { Input } from 'react-bootstrap';
 import FeedItem from './FeedItem.jsx';
 import UploadMedia from './UploadMedia.jsx';
 import axios from 'axios';
-import _ from 'lodash'
+import _ from 'lodash';
 
 class DayOfFeed extends React.Component {
   constructor(props) {
