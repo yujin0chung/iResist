@@ -6,15 +6,17 @@ const routes = require('./routes');
 const io = require('socket.io');
 const Twitter = require('twitter');
 const Twit = require('twit');
+const creds = require('../config/configVars');
 
+console.log('these are the creds: ', creds);
 
 const app = express();
 
 var bot = new Twit({
-    consumer_key: process.env.LEARNINGBOT_CONSUMER_KEY,
-    consumer_secret: process.env.LEARNINGBOT_CONSUMER_SECRET,
-    access_token: process.env.LEARNINGBOT_ACCESS_TOKEN,
-    access_token_secret: process.env.LEARNINGBOT_ACCESS_TOKEN_SECRET,
+    consumer_key: creds.twitterKey,
+    consumer_secret: creds.twitterSecret,
+    access_token: creds.twitterAccessToken,
+    access_token_secret: creds.twitterAccessTokenSecret,
     timeout_ms: 60*1000
 });
 
@@ -41,5 +43,11 @@ app.use('/api/geocoder', routes.geocoder);
 app.use('/api/user', routes.user);
 app.use('/api/maps', routes.maps);
 app.use('/api/feed', routes.feed);
+
+var stream = bot.stream('statuses/filter', {track: '#books'});
+
+stream.on('tweet', function(tweet){
+    console.log(tweet.text+'\n');
+});
 
 module.exports = app;
