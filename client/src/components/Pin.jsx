@@ -58,7 +58,7 @@ class Pin extends React.Component {
                 <ItemUserName>{this.props.user}</ItemUserName>
                 <TimeStamp><TimeImage src='images/Clock.svg'/>{this.state.displayAge} ago</TimeStamp>
                 <div>{this.props.text}</div>
-                {this.props.pinError ? <p>{this.props.pinError}</p> : <div></div>}
+                {this.props.pinError ? <div>{this.props.pinError}</div> : <div></div>}
               </PinContent>
             </PinWrapper>
           </Popup>
