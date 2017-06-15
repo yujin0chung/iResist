@@ -48,7 +48,7 @@ passport.use('local-signup', new LocalStrategy({
         if (profile.related('auths').at(0)) {
           throw profile;
         }
-
+        // console.log('PROFILE AFTER FORGING: ', profile);
         return profile;
       })
       .then(profile => {
