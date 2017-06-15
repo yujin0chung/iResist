@@ -47,7 +47,6 @@ class TwitterFeed extends React.Component {
       });
   }
   render() {
-    console.log('these are the props: ', this.props);
     console.log('this is the search term: ', this.props.events.allEvents[this.props.events.activeEvent].name);
     return(
       <div>
