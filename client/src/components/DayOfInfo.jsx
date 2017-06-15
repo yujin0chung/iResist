@@ -4,7 +4,6 @@ import moment from 'moment'
 
 const DayOfInfo = (props) => (
   <div>
-    {console.log('here are the props: ', Number(props.event.time) + Number(props.event.duration))}
     <PageTitle>{props.event.name}</PageTitle>
       <ProtestInfo>
         <div>
