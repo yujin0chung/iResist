@@ -47,10 +47,10 @@ class Dashboard extends React.Component {
 
         { this.state.showPastProtests ? <MyProtestList eventListType={past} {...this.props} eventType="past"/> : <div></div> }
 
-        <Button onClick={() => this.updateView('FIND_PROTEST')}>
+        <Button onClick={() => this.props.changeView('FIND_PROTEST')}>
             Find a Protest
           </Button>
-          <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>
+          <Button onClick={() => this.props.changeView('ORGANIZE_PROTEST')}>
             Organize a Protest
           </Button>
       </div>

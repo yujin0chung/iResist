@@ -6,7 +6,7 @@ import TwitterFeed from './TwitterFeed.jsx';
 import axios from 'axios';
 import _ from 'lodash';
 import styled from 'styled-components';
-import { DayOfContentWrapper, DayOfTitle, FeedWrapper } from './StyledComponents.jsx';
+import { DayOfContentWrapper, DayOfTitle, FeedWrapper, Load, TextInput } from './StyledComponents.jsx';
 
 class DayOfFeed extends React.Component {
   constructor(props) {
@@ -93,7 +93,7 @@ class DayOfFeed extends React.Component {
     return (
       <div>
       <DayOfContentWrapper>
-        <DayOfTitle/>
+        <DayOfTitle>{this.props.event.name}</DayOfTitle>
         <FeedWrapper>
         {this.state.currentView === 'FEED' ?
           <div>
@@ -150,37 +150,5 @@ class DayOfFeed extends React.Component {
     );
   }
 }
-
-const Load = styled.div`
-  width: 100px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  vertical-align: middle;
-  height: 40px;
-  padding-top: 10px;
-  margin-bottom: 10px;
-  font-size: 13px;
-  color: tomato;
-  border: 1px solid tomato;
-`
-
-const Title = styled.div`
-  display:flex;
-  justify-content:center;
-  margin-bottom:.2em;
-  font-size:2em;
-`;
-
-const TextInput = styled.input`
-  width:315px;
-  height: 40px;
-  background-color:#F7F7F7;
-  border:none;
-  padding: 10px;
-  margin-right: 10px;
-
-`;
 
 export default DayOfFeed;

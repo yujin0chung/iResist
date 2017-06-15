@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import { Rotate } from "./StyledComponents.jsx";
+import { Rotate, Item, VoteUp, VoteDown, VoteHolder } from "./StyledComponents.jsx";
 import styled from "styled-components";
 
 
@@ -20,7 +20,7 @@ class FeedItem extends React.Component {
       this.state.element = (
         <div className="mediaContainer">
           <img
-            style={{ flex: 1,width: '75%',height: '75%'}}
+            style={{ flex: 1,width: '75%',height: '75%', paddingBottom: '15px'}}
             className="media"
             id={this.props.itemId}
             onDoubleClick={this.rotate.bind(this)}
@@ -90,7 +90,6 @@ class FeedItem extends React.Component {
     var time = moment(Number(this.props.time)).format("h:mm a");
     return (
       <Item>
-  
         <VoteHolder>
           <VoteUp className="fa fa-caret-up fa-lg" onClick={() => this.handleVoteType(1)} style={{width: '50%'}} src='images/UpArrow.svg'/>
           <div style={{textAlign: 'inherit',color:'#9B9B9B'}}>{this.props.credibility}</div>
@@ -106,35 +105,5 @@ class FeedItem extends React.Component {
   }
 }
 
-const Item = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  border: 1px solid #eee;
-  margin-top: 9px;
-  border-right: none;
-  border-left: none;
-  border-top: none;
-`;
-
-const VoteHolder = styled.div`
-  flex:1;
-  width: 3em;
-  padding-left: 12px;
-`;
-
-const VoteButton = styled.i`
-  width: 30%;
-`
-
-const VoteUp = styled.i`
-  color: hsla(120, 90%, 42%, 0.93);
-  width: 30%;
-`
-
-const VoteDown = styled.i`
-  color: rgba(245, 97, 35, 0.94);
-  width: 30%;
-`
 
 export default FeedItem;

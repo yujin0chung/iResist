@@ -4,7 +4,7 @@ import DayOfFeed from './DayOfFeed.jsx';
 import DayOfMap from './DayOfMap.jsx';
 import DayOfInfo from './DayOfInfo.jsx';
 import TwitterFeed from './TwitterFeed.jsx';
-import styled from 'styled-components';
+import { Tab, NavBar } from './StyledComponents.jsx';
 
 
 
@@ -83,34 +83,5 @@ class DayOfContainer extends React.Component {
     );
   }
 }
-
-export const NavBar = styled.div`
-  display: flex;
-  flex-direction: row;
-  min-height: 100vh;
-  bottom: 0;
-  padding-bottom: 0.5px;
-  width: 100%;
-  height: 30px;
-  position: fixed;
-`;
-
-export const Tab = styled.div`
-  flex: 1 0 auto;
-	padding: 1.25em 2em;
-  background-color:white;
-	border: 1px solid black;
-  height: 100%;
-  background-color: none;
-  border-left: none;
-  border-bottom: none;
-  text-align: center;
-  bottom:auto;
-  top:auto;
-  &:hover {
-    background-color: tomato;
-  }
-  
-`
 
 export default DayOfContainer;

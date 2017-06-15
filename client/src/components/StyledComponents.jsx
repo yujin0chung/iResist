@@ -87,16 +87,6 @@ export const Rotate = styled.div`
 
 `;
 
-export const NavBar = styled.div`
-  display: flex;
-  flex-direction: row;
-  min-height: 100vh;
-  bottom: 0;
-  padding-bottom: 0.5px;
-  width: 100%;
-  height: 30px;
-  position: fixed;
-`;
 
 export const ProtestInfo = styled.div`
 
@@ -108,15 +98,6 @@ export const Wrapper = styled.div`
   flex: 1;
 `;
 
-export const Tab = styled.div`
-  flex: 1 0 auto;
-	padding: 0.25em 1em;
-	border: 0.8px solid black;
-  height: 100%;
-  background-color: none;
-  text-align: center;
-
-`;
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -170,9 +151,31 @@ export const Submit = Search.extend`
   width: 150px;
 `;
 
-export const Vote = styled.div`
+
+export const Load = styled.div`
+  width: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  vertical-align: middle;
+  height: 40px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: tomato;
+  border: 1px solid tomato;
 `;
 
+export const TextInput = styled.input`
+  width:315px;
+  height: 40px;
+  background-color:#F7F7F7;
+  border:none;
+  padding: 10px;
+  margin-right: 10px;
+
+`;
 export const DayOfTitle = styled.div`
   display:flex;
   justify-content:center;
@@ -186,15 +189,6 @@ export const DayOfContentWrapper = styled.div`
   height: 83vh;
   width: 100vw;
   margin: auto;
-`;
-
-export const VoteHolder = styled.div`
-  flex:1;
-  width: 3em;
-`;
-
-export const VoteImage = styled.img`
-  width: 100%;
 `;
 
 export const CredCount = styled.div`
@@ -230,4 +224,66 @@ export const TimeImage = styled.img`
 export const FeedWrapper = styled.div`
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 70px;
 `
+
+export const Item = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  border: 1px solid #eee;
+  margin-top: 9px;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+`;
+
+export const VoteImage = styled.img`
+  width: 100%;
+`;
+
+export const VoteHolder = styled.div`
+  flex:1;
+  width: 3em;
+  padding-left: 5px;
+  text-align: center;
+`;
+
+export const VoteUp = styled.i`
+  color: hsla(120, 90%, 42%, 0.93);
+  width: 30%;
+`;
+
+export const VoteDown = styled.i`
+  color: rgba(245, 97, 35, 0.94);
+  width: 30%;
+`;
+
+export const NavBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  bottom: 0;
+  padding-bottom: 0.5px;
+  width: 100%;
+  height: 30px;
+  position: fixed;
+`;
+
+export const Tab = styled.div`
+  flex: 1 0 auto;
+	padding: 1.25em 2em;
+  background-color:white;
+	border: 1px solid black;
+  height: 100%;
+  background-color: none;
+  border-left: none;
+  border-bottom: none;
+  text-align: center;
+  bottom:auto;
+  top:auto;
+  &:hover {
+    background-color: tomato;
+  }
+`;
+
