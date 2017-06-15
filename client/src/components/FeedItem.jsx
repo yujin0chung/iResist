@@ -15,9 +15,6 @@ class FeedItem extends React.Component {
 
 
   componentWillMount() {
-    this.setState({
-      time: moment(Number(this.props.time)).format('h:mm a')
-    });
     if (this.props.type === 'image/jpeg') {
       this.state.element =
         <div className='mediaContainer' >

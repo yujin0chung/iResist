@@ -11,6 +11,10 @@ class TwitterFeed extends React.Component {
     this.getTweets = this.getTweets.bind(this);
   }
 
+  componentWillMount () {
+    this.getTweets();
+  }
+
   getTweets(){
     this.setState({
       tweets: []
@@ -38,9 +42,9 @@ class TwitterFeed extends React.Component {
           tweets: tweetArray
         })
       })
-    .catch(error => {
-      console.log("ERROR: ", error);
-    });
+      .catch(error => {
+        console.log("ERROR: ", error);
+      });
   }
   render() {
     console.log('these are the props: ', this.props);
@@ -56,7 +60,7 @@ class TwitterFeed extends React.Component {
             />
           )
         }
-        <button onClick={this.getTweets}>Get Tweets!</button>
+        <button onClick={this.getTweets}>Get More Tweets!</button>
       </div>
     )
   }
