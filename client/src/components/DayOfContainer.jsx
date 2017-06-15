@@ -4,6 +4,8 @@ import DayOfFeed from './DayOfFeed.jsx';
 import DayOfMap from './DayOfMap.jsx';
 import DayOfInfo from './DayOfInfo.jsx';
 import TwitterFeed from './TwitterFeed.jsx';
+import styled from 'styled-components'
+
 
 
 class DayOfContainer extends React.Component {
@@ -52,32 +54,70 @@ class DayOfContainer extends React.Component {
     return (
       <div>
 
-        <h1>You are looking at the day of container</h1>
+        
         {this.state.currentDayOf === 'INFO' ?
           <DayOfInfo {...this.props} client={this.client} event={event} /> :
           <div></div>
         }
         {this.state.currentDayOf === 'MAP' ?
-          <DayOfMap {...this.props} client={this.client} /> :
+          <DayOfMap event={event} {...this.props} client={this.client} /> :
           <div></div>
         }
         {this.state.currentDayOf === 'FEED' ?
-          <DayOfFeed {...this.props} client={this.client} /> :
+          <DayOfFeed event={event} {...this.props} client={this.client} /> :
           <div></div>
         }
         {this.state.currentDayOf === 'TWITTER' ?
           <TwitterFeed {...this.props} /> :
           <div></div>
         }
-        <div className="tabs">
-          <button onClick={() => this.handleCurrentDayOfView('INFO')}>Info</button>
-          <button onClick={() => this.handleCurrentDayOfView('MAP')}>Map</button>
-          <button onClick={() => this.handleCurrentDayOfView('FEED')}>Feed</button>
-          <button onClick={() => this.handleCurrentDayOfView('TWITTER')}>Twitter Feed</button>
+
+        <div className="wrapper" style={{display: 'flex',height: '4em', justifyContent: 'center', marginTop: 'auto', bottom: '0px', position: 'fixed', width: '100%',marginLeft:'-15px'}}>
+          {/*<div style={{marginTop: 'auto'}}>*/}
+          <Tab onClick={() => this.handleCurrentDayOfView('INFO')} role="presentation" className="active"><img src='images/infoIcon.svg'/></Tab>
+          <Tab onClick={() => this.handleCurrentDayOfView('MAP')} role="presentation"><img src='images/mapIcon.svg'/></Tab>
+          <Tab onClick={() => this.handleCurrentDayOfView('FEED')} role="presentation"><img src='images/feedIcon.svg'/></Tab>
+          <Tab style={{borderRight: 'none'}}onClick={() => this.handleCurrentDayOfView('DASHBOARD')} role="presentation"><img src='images/homeIcon2.svg'/></Tab>
         </div>
       </div>
     );
   }
 }
+
+export const NavBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  bottom: 0;
+  padding-bottom: 0.5px;
+  width: 100%;
+  height: 30px;
+  position: fixed;
+`
+
+// export const NavBar = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   min-height: 100vh;
+//   bottom: 0;
+//   padding-bottom: 0.5px;
+//   width: 100%;
+//   height: 30px;
+//   position: fixed;
+// `
+
+
+export const Tab = styled.div`
+  flex: 1 0 auto;
+	padding: 1.25em 2em;
+  background-color:white;
+	border: 0.05px solid black;
+  height: 100%;
+  background-color: none;
+  border-left: none;
+  border-bottom: none;
+  text-align: center;
+  
+`
 
 export default DayOfContainer;

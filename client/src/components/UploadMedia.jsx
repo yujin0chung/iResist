@@ -35,13 +35,9 @@ class UploadMedia extends React.Component {
 
   render() {
     return (
-      <div>
-        <Dropzone className='dropzone' onDrop={this.onDrop.bind(this)} multiple={false} acceptedFiles={'image/jpeg', 'video/mp4', 'video/quicktime', 'image/png'}>
-          <div>
-            <h4>
-              <button>Upload Photo/Video</button>
-            </h4>
-          </div>
+      <div style={{border:'solid 1px black', width:'6em',marginTop:'1em',marginBottom:'1em'}} >
+        <Dropzone className='dropzone' onDrop={this.onDrop.bind(this)} multiple={false} acceptedFiles={'image/jpeg', 'video/mp4', 'video/quicktime', 'image/png'}>          
+              <button>Upload media</button>
         </Dropzone>
       </div>
     );

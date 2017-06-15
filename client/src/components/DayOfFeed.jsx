@@ -3,7 +3,8 @@ import { Input } from 'react-bootstrap';
 import FeedItem from './FeedItem.jsx';
 import UploadMedia from './UploadMedia.jsx';
 import axios from 'axios';
-import _ from 'lodash';
+import _ from 'lodash'
+import styled from 'styled-components'
 
 class DayOfFeed extends React.Component {
   constructor(props) {
@@ -81,17 +82,19 @@ class DayOfFeed extends React.Component {
     const feedItems = this.props.feeds.feedItems;
     return (
       <div>
-        <h3>Post a message</h3>
-        <form onSubmit={this.handlePost}>
-          <input
-            type="textarea"
-            placeholder="What's happening at the protest?"
-            value={this.state.text}
-            onChange={this.handleChange}
-          />
-        </form>
-        <UploadMedia {...this.props}/>
-        {console.log('this is this.state.posts: ', this.state.posts)}
+
+        <div>
+          <Title>{this.props.event.name}</Title>
+            <form onSubmit={this.handlePost}>
+              <TextInput            
+                type="textarea"
+                placeholder="What's happening at the protest?"
+                value={this.state.text}
+                onChange={this.handleChange}
+              />
+            </form>
+          <UploadMedia {...this.props}/>
+        </div>
         {
           this.state.posts.map(item =>
             <FeedItem
@@ -120,5 +123,21 @@ class DayOfFeed extends React.Component {
     );
   }
 }
+
+const Title = styled.div`
+  display:flex;
+  justify-content:center;
+  margin-bottom:.2em;
+  font-size:2em;
+`
+
+const TextInput = styled.input`
+  width:100%;
+  height: 40px;
+  background-color:#F7F7F7;
+  border:none;
+  padding: 10px;
+
+`;
 
 export default DayOfFeed;

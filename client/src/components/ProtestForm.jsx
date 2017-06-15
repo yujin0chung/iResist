@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { HomeIcon } from "./StyledComponents.jsx";
+import { HomeIcon, Form, InputInfo, Input, Text, Label, Search } from "./StyledComponents.jsx";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import axios from "axios";
 import _ from "lodash";
@@ -127,7 +127,7 @@ class ProtestForm extends React.Component {
           className="fa fa-home fa-lg"
           onClick={() => this.props.changeView("DASHBOARD")}
         />
-        <form>
+        <Form>
           <label>
             Protest Name:
             <input
@@ -228,7 +228,7 @@ class ProtestForm extends React.Component {
             <input type="button" value="CANCEL EVENT" onClick={() => {this.props.deleteEvent(this.state.eventId); this.props.changeView('DASHBOARD')}} /> :
             <div></div>
           }
-        </form>
+        </Form>
       </div>
     );
   }

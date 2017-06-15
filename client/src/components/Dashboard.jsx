@@ -2,7 +2,7 @@ import React from 'react';
 import MyProtestList from './MyProtestList.jsx';
 import styled from 'styled-components';
 import _ from 'lodash';
-import { Title } from './StyledComponents.jsx';
+import { Title, Header } from './StyledComponents.jsx';
 
 
 class Dashboard extends React.Component {
