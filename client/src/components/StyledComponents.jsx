@@ -284,6 +284,7 @@ export const NavBar = styled.div`
   width: 100%;
   height: 30px;
   position: fixed;
+  z-index: 1000;
 `;
 
 export const Tab = styled.div`
