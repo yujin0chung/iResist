@@ -4,6 +4,7 @@ import moment from 'moment'
 
 const DayOfInfo = (props) => (
   <div>
+    {console.log('here are the props: ', Number(props.event.time) + Number(props.event.duration))}
     <PageTitle>{props.event.name}</PageTitle>
       <ProtestInfo>
         <div>
@@ -16,7 +17,7 @@ const DayOfInfo = (props) => (
         </div>
         <div>
           <Category>When</Category>
-           <div>{moment(Number(props.event.time)).format("h:mm a")}</div>
+           <div>{moment(Number(props.event.time)).format("h:mm a")} - {moment(Number(props.event.time) + Number(props.event.duration)).format("h:mm a")}</div>
         </div>
         <div>
           <Category>Why</Category>
