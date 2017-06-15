@@ -50,6 +50,8 @@ class TwitterFeed extends React.Component {
     return(
       <div>
         <h3> Most Recent Tweets </h3>
+        <button onClick={this.getTweets}>Get Updated Tweets!</button>
+
         {
           this.state.tweets.map(tweets =>
             <Tweet
@@ -59,7 +61,6 @@ class TwitterFeed extends React.Component {
             />
           )
         }
-        <button onClick={this.getTweets}>Get More Tweets!</button>
       </div>
     )
   }
