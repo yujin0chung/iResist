@@ -29,9 +29,11 @@ class TwitterFeed extends React.Component {
         var tweetsObj = {};
         var tweetArray = [];
         for(var i = 0; i < response.data.length; i++){
+          var year;
           tweetsObj.username = response.data[i].user.screen_name;
           tweetsObj.tweet = response.data[i].text;
-          tweetsObj.time = response.data[i].created_at;
+          year = response.data[i].created_at.split("").slice(26, 30).join("");
+          tweetsObj.time = response.data[i].created_at.split("").slice(0, 16).join("") + " " + year;
           tweetArray.push(tweetsObj);
           tweetsObj = {};
         }
