@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export const Fist = styled.div`
   background-image: url("images/fist.png");
   background-size: 50% 50%
-`
+`;
 
 export const HomeIcon = styled.i`
   padding-left: 3px;
@@ -84,7 +84,7 @@ export const Icon = styled.img`
 export const Rotate = styled.div`
   transform: rotate(90deg);
   height: 360px;
-  
+
 `;
 
 export const NavBar = styled.div`
@@ -96,17 +96,17 @@ export const NavBar = styled.div`
   width: 100%;
   height: 30px;
   position: fixed;
-`
+`;
 
 export const ProtestInfo = styled.div`
-  
-`
+
+`;
 
 export const Wrapper = styled.div`
   padding-bottom: 50px;
   justify-content: center;
   flex: 1;
-`
+`;
 
 export const Tab = styled.div`
   flex: 1 0 auto;
@@ -115,19 +115,19 @@ export const Tab = styled.div`
   height: 100%;
   background-color: none;
   text-align: center;
-  
-`
+
+`;
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding-left: 47px;
-`
+`;
 
 export const InputInfo = styled.div`
   flex-flow: column wrap;
   justify-content: center;
-`
+`;
 export const Input = styled.input`
   font-size: 14px;
   height: 30px;
@@ -137,7 +137,7 @@ export const Input = styled.input`
   border: solid #dddddd 1px;
   margin-bottom: 15px;
   margin-right: 15px;
-`
+`;
 
 export const Text = styled.textarea`
   font-size: 14px;
@@ -148,13 +148,13 @@ export const Text = styled.textarea`
   border: solid #dddddd 1px;
   margin-bottom: 15px;
   margin-right: 15px;
-`
+`;
 
 export const Label = styled.label`
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   font-weight: normal;
-`
+`;
 
 export const Search = styled.input`
   font-family: 'Open Sans', sans-serif;
@@ -165,10 +165,25 @@ export const Search = styled.input`
   border-radius: 3px;
   background-color: white;
   margin-bottom: 15px;
-`
+`;
 export const Submit = Search.extend`
   width: 150px;
-`
+`;
 
 export const Vote = styled.div`
-`
+`;
+
+export const DayOfTitle = styled.div`
+  display:flex;
+  justify-content:center;
+  margin-bottom:1vh;
+  font-size:6vh;
+  height: 7vh;
+  top:0px;
+`;
+
+export const DayOfContentWrapper = styled.div`
+  height: 83vh;
+  width: 100vw;
+  margin: auto;
+`;

@@ -4,7 +4,7 @@ import DayOfFeed from './DayOfFeed.jsx';
 import DayOfMap from './DayOfMap.jsx';
 import DayOfInfo from './DayOfInfo.jsx';
 import TwitterFeed from './TwitterFeed.jsx';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 
 
@@ -54,7 +54,7 @@ class DayOfContainer extends React.Component {
     return (
       <div>
 
-        
+
         {this.state.currentDayOf === 'INFO' ?
           <DayOfInfo {...this.props} client={this.client} event={event} /> :
           <div></div>
@@ -72,7 +72,7 @@ class DayOfContainer extends React.Component {
           <div></div>
         }
 
-        <div className="wrapper" style={{display: 'flex',height: '4em', justifyContent: 'center', marginTop: 'auto', bottom: '0px', position: 'fixed', width: '100%',marginLeft:'-15px'}}>
+        <div className="wrapper" style={{display: 'flex', height: '9vh', justifyContent: 'center', marginTop: 'auto', bottom: '0px', position: 'fixed', width: '100%'}}>
           {/*<div style={{marginTop: 'auto'}}>*/}
           <Tab onClick={() => this.handleCurrentDayOfView('INFO')} role="presentation" className="active"><img src='images/infoIcon.svg'/></Tab>
           <Tab onClick={() => this.handleCurrentDayOfView('MAP')} role="presentation"><img src='images/mapIcon.svg'/></Tab>
@@ -93,7 +93,7 @@ export const NavBar = styled.div`
   width: 100%;
   height: 30px;
   position: fixed;
-`
+`;
 
 // export const NavBar = styled.div`
 //   display: flex;
@@ -117,7 +117,9 @@ export const Tab = styled.div`
   border-left: none;
   border-bottom: none;
   text-align: center;
-  
-`
+  bottom:auto;
+  top:auto;
+
+`;
 
 export default DayOfContainer;
