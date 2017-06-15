@@ -17,9 +17,7 @@ let twitterKey;
 let twitterSecret;
 let twitterAccessToken;
 let twitterAccessTokenSecret;
-console.log('this is process.env: ', process.env);
 if (process.env.TWITTER_KEY) {
-  console.log('this is process.env.TWITTER_KEY: ', process.env.TWITTER_KEY);
   twitterKey = process.env.TWITTER_KEY;
 } else {
   twitterKey = creds.twitterKey;
@@ -82,12 +80,6 @@ app.get('/getTweet', function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      data.statuses.forEach(function(s){
-        console.log('text: ', s.text);
-        console.log('time: ', s.created_at);
-        console.log('username: ', s.user.screen_name);
-        console.log('\n');
-      })
       res.send(data.statuses);
     }
   })

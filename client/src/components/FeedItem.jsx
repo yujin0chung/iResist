@@ -15,23 +15,26 @@ class FeedItem extends React.Component {
 
 
   componentWillMount() {
+    this.setState({
+      time: moment(Number(this.props.time)).format('h:mm a')
+    });
     if (this.props.type === 'image/jpeg') {
-      this.state.element = 
+      this.state.element =
         <div className='mediaContainer' >
           <img className='media' id={this.props.itemId} onDoubleClick={this.rotate.bind(this)} src={this.props.url} />
         </div>
     } else if (this.props.type === 'image/png') {
-      this.state.element = 
+      this.state.element =
         <div className='mediaContainer'>
           <img className='media' id={this.props.itemId} onDoubleClick={this.rotate.bind(this)} src={this.props.url} />
         </div>
     } else if (this.props.type === 'video/mp4') {
-      this.state.element = 
+      this.state.element =
         <div className='mediaContainer'>
           <video className='media' className='media' id={this.props.itemId} src={this.props.url} autoPlay={false} type='video/mp4' controls/>
         </div>
     } else if (this.props.type === 'video/quicktime') {
-      this.state.element = 
+      this.state.element =
         <div className='mediaContainer'>
           <video className='media' className='media' id={this.props.itemId} src={this.props.url} autoPlay={false} type='video/quicktime' controls/>
         </div>
@@ -56,9 +59,11 @@ class FeedItem extends React.Component {
 
   render() {
     var time = moment(Number(this.props.time)).format('h:mm a');
+    console.log('this is the current this.props.time: ', this.props.time);
+    console.log('this is the current time: ', this.state.time);
     return (
       <div style={{display: 'flex', flexDirection: 'row'}}>
-        <span> <b>{this.props.username}</b> : {this.state.element} at {time} </span>      
+        <span> <b>{this.props.username}</b> : {this.state.element} at {time} </span>
         <div className="credibility">
           <input placeholder="How credible?" value={this.props.credibility} />
           <button onClick={() => this.handleVoteType(1)}>Upcred</button>
