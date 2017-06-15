@@ -74,10 +74,11 @@ class DayOfContainer extends React.Component {
 
         <div className="wrapper" style={{display: 'flex', height: '9vh', justifyContent: 'center', marginTop: 'auto', bottom: '0px', position: 'fixed', width: '100%'}}>
           {/*<div style={{marginTop: 'auto'}}>*/}
-          <Tab onClick={() => this.handleCurrentDayOfView('INFO')}><img src='images/infoIcon.svg'/></Tab>
-          <Tab onClick={() => this.handleCurrentDayOfView('MAP')}><img src='images/mapIcon.svg'/></Tab>
-          <Tab onClick={() => this.handleCurrentDayOfView('FEED')}><img src='images/feedIcon.svg'/></Tab>
-          <Tab onClick={() => this.handleCurrentDayOfView('HOME')} style={{borderRight: 'none'}}><img src='images/homeIcon2.svg'/></Tab>
+          <Tab onClick={() => this.handleCurrentDayOfView('INFO')} role="presentation" className="active"><img src='images/infoIcon.svg'/></Tab>
+          <Tab onClick={() => this.handleCurrentDayOfView('MAP')} role="presentation"><img src='images/mapIcon.svg'/></Tab>
+          <Tab onClick={() => this.handleCurrentDayOfView('FEED')} role="presentation"><img src='images/message.svg'/></Tab>
+          <Tab onClick={() => this.handleCurrentDayOfView('TWITTER')} role="presentation"><img src='images/twitter.svg'/></Tab>
+          <Tab style={{borderRight: 'none'}}onClick={() => this.handleCurrentDayOfView('DASHBOARD')} role="presentation"><img src='images/homeIcon2.svg'/></Tab>
         </div>
       </div>
     );
