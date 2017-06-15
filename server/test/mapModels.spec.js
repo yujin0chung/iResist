@@ -55,7 +55,7 @@ describe('Map model tests', function() {
     });
   });
 
-  it('post pins to the map', function(done) {
+  it('should post pins to the map', function(done) {
     map.postPin({
       map_id: 1,
       text: 'the test pin',
@@ -70,6 +70,29 @@ describe('Map model tests', function() {
       expect(data[0].map_id).to.equal(1);
       expect(data[0].text).to.equal('the test pin');
       done();
+    });
+  });
+
+  it('should vote on pins', function(done) {
+    map.postPin({
+      map_id: 1,
+      text: 'the test pin',
+      latitude: 0,
+      longitude: 0,
+      user_id: 1,
+      time: 0
+    },
+    function(err, data) {
+      map.insertPinVote({
+        raterId: 1,
+        pinId: 1,
+        polarity: 1
+      },
+      function(err, data) {
+        expect(err).to.equal(null);
+        expect(data).to.equal(1);
+        done();
+      });
     });
   });
 });
