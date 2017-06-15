@@ -96,7 +96,7 @@ class DayOfFeed extends React.Component {
           <div>
             <div style={{display: 'flex', flexDirection: 'row'}}>
             <form onSubmit={this.handlePost}>
-              <input
+              <TextInput
                 type="textarea"
                 placeholder="What's happening at the protest?"
                 value={this.state.text}
