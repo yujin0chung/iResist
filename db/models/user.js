@@ -22,7 +22,7 @@ module.exports.allUsers = (cb) => {
 };
 
 module.exports.insertUser = (userName, cb) => {
-  knex('users').insert({username: userName, credibility: 0}).then(cb());
+  knex('users').insert({username: userName, credibility: 0}).then(data => { if (cb) { cb(); } });
 };
 
 module.exports.createEvent = (eventId, userId, cb) => {
