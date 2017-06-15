@@ -40,8 +40,8 @@ class Protest extends React.Component {
       data: { units: "imperial", appid: "6bf0bd6fff2f38ae4f3f66c7f55c2b7a" },
       success: (weather) => {
         this.setState({
-          currentTemp: Math.round(weather.main.temp),
-          currentWeatherDescription: weather.weather[0].description
+          currentTemp: Math.floor(weather.main.temp),
+          currentWeatherDescription: weather.weather[0].main
         })
       }
     });
@@ -73,7 +73,7 @@ class Protest extends React.Component {
             <p><b>Address:</b> {this.props.protest.address}</p>
             <p><b>Description:</b> {this.props.protest.description}</p>
             <p><b>Attendee Count:</b> {this.props.protest.attendee_count}</p>
-            <p><b>Current Weather:</b> {this.state.currentTemp + ", " + this.state.currentWeatherDescription}</p>
+            <p><b>Current Weather:</b> {this.state.currentTemp + "ºF , " + this.state.currentWeatherDescription}</p>
           </Info>
           <MapContainer {...this.props} mapType='dashboardMap' />
           <EventButton {...this.props} leader={leader} userId={userId} protestId={this.props.protest.id} />
