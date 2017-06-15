@@ -12,7 +12,7 @@ const DayOfInfo = (props) => (
            <div>{props.event.cause}</div>
         </div>
         <div>
-          <Category>Where</Category>
+          <Category>Location</Category>
            <div>{props.event.address}</div>
         </div>
         <div>
