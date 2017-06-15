@@ -125,4 +125,23 @@ describe('Map model tests', function() {
       });
     });
   });
+
+  it('should fetch day of pin data', function(done) {
+    map.postPin({
+      map_id: 1,
+      text: 'the test pin',
+      latitude: 0,
+      longitude: 0,
+      user_id: 1,
+      time: 0
+    },
+    function(err, data) {
+      map.dayOfMap(1, function(err, data) {
+        expect(err).to.equal(null);
+        expect(data[0]).to.be.an('object');
+        expect(data[0].map_id).to.equal(1);
+        done();
+      });
+    });
+  });
 });
