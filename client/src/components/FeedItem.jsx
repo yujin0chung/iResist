@@ -8,8 +8,7 @@ class FeedItem extends React.Component {
     this.state = {
       userId: this.props.userId,
       itemId: this.props.itemId,
-      element: '',
-      time: moment(Number(this.props.time)).format('h:mm a')
+      element: ''
     };
     this.handleVoteType = this.handleVoteType.bind(this);
   }
@@ -59,12 +58,12 @@ class FeedItem extends React.Component {
   }
 
   render() {
-    // var time = moment(Number(this.props.time)).format('h:mm a');
+    var time = moment(Number(this.props.time)).format('h:mm a');
     console.log('this is the current this.props.time: ', this.props.time);
     console.log('this is the current time: ', this.state.time);
     return (
       <div style={{display: 'flex', flexDirection: 'row'}}>
-        <span> <b>{this.props.username}</b> : {this.state.element} at {this.state.time} </span>
+        <span> <b>{this.props.username}</b> : {this.state.element} at {time} </span>
         <div className="credibility">
           <input placeholder="How credible?" value={this.props.credibility} />
           <button onClick={() => this.handleVoteType(1)}>Upcred</button>
