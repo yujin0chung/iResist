@@ -227,3 +227,7 @@ export const TimeImage = styled.img`
   width: 1em;
   marginRight: 5px;
 `;
+export const FeedWrapper = styled.div`
+  padding-left: 10px;
+  padding-right: 10px;
+`

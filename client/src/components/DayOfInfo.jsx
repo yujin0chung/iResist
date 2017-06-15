@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components'
 import moment from 'moment'
+import { DayOfContentWrapper, DayOfTitle } from './StyledComponents.jsx';
 
 const DayOfInfo = (props) => (
   <div>
+   DayOfContentWrapper
     <PageTitle>{props.event.name}</PageTitle>
       <ProtestInfo>
         <div>

@@ -6,6 +6,7 @@ import TwitterFeed from './TwitterFeed.jsx';
 import axios from 'axios';
 import _ from 'lodash';
 import styled from 'styled-components';
+import { DayOfContentWrapper, DayOfTitle, FeedWrapper } from './StyledComponents.jsx';
 
 class DayOfFeed extends React.Component {
   constructor(props) {
@@ -91,9 +92,12 @@ class DayOfFeed extends React.Component {
     const feedItems = this.props.feeds.feedItems;
     return (
       <div>
-
+      <DayOfContentWrapper>
+        <DayOfTitle/>
+        <FeedWrapper>
         {this.state.currentView === 'FEED' ?
           <div>
+
             <div style={{display: 'flex', flexDirection: 'row'}}>
             <form onSubmit={this.handlePost}>
               <TextInput
@@ -105,6 +109,7 @@ class DayOfFeed extends React.Component {
             </form>
             <UploadMedia {...this.props}/>
             </div>
+
           <button onClick={this.twitterFeed}>Twitter Feed</button>
           {
             this.state.posts.map(item =>
@@ -134,11 +139,13 @@ class DayOfFeed extends React.Component {
         :
         <div></div>
         }
+
         {this.state.currentView === "TWITTER" ?
           <TwitterFeed {...this.props} client={this.client} /> :
           <div></div>
         }
-      
+        </FeedWrapper>
+      </DayOfContentWrapper>
       </div>
     );
   }

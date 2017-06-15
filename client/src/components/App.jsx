@@ -56,7 +56,7 @@ class App extends React.Component {
     else {
       return (
         <div>
-          ERROR
+          Page not found.
         </div>
       );
     }
