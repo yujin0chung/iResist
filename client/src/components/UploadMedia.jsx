@@ -26,14 +26,14 @@ class UploadMedia extends React.Component {
        url: JSON.parse(res.text).location,
        userId: this.props.user.userId,
        username: this.props.user.username,
-       credibility: 0
+       credibility: 0,
+       time: Date.now()
      };
      this.props.client.emit('newFeedItem', newPost);
     });
   }
 
   render() {
-    console.log('props: ', this.props);
     return (
       <div>
         <Dropzone className='dropzone' onDrop={this.onDrop.bind(this)} multiple={false} acceptedFiles={'image/jpeg', 'video/mp4', 'video/quicktime', 'image/png'}>

@@ -13,7 +13,7 @@ class DayOfFeed extends React.Component {
       url: '',
       credibility: '' || 0,
       type: 'MESSAGE',
-      pageNumber: 1, 
+      pageNumber: 1,
       feedItemCount: 0,
       posts: [],
       wantMoreItems: false
@@ -32,13 +32,13 @@ class DayOfFeed extends React.Component {
       newState.unshift(insertedPost)
       self.setState({posts: newState});
     });
-    
+
     this.props.client.on('feedItemVoteNotPermitted', (error) => {
       this.props.receiveFeedItemVoteError(error);
     });
   }
 
-  handleLoadItems(pageNumber) { 
+  handleLoadItems(pageNumber) {
     axios.get('/api/feed/event', {
       params: {
         eventId: this.props.events.activeEvent,
@@ -90,14 +90,16 @@ class DayOfFeed extends React.Component {
             onChange={this.handleChange}
           />
         </form>
+        <UploadMedia {...this.props}/>
+        {console.log('this is this.state.posts: ', this.state.posts)}
         {
           this.state.posts.map(item =>
             <FeedItem
               username={item.username}
               text={item.text}
               key={item.id}
-              username={item.username} 
-              text={item.text} 
+              username={item.username}
+              text={item.text}
               time={item.time}
               userId={this.props.user.userId}
               itemId={item.id}
@@ -106,19 +108,17 @@ class DayOfFeed extends React.Component {
               url={item.url}
               type={item.type}
               errorMsg={item.errorMsg}
-              client={this.props.client}/>) 
+              client={this.props.client}/>
+          )
         }
         {
         feedItems.length < 10 ?
           <div></div> :
           <button onClick={() => this.handleLoadItems(this.state.pageNumber++)}>Load More Posts></button>
         }
-        <UploadMedia {...this.props}/>
       </div>
     );
   }
 }
 
 export default DayOfFeed;
-
-
