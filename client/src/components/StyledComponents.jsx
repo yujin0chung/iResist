@@ -181,3 +181,9 @@ export const DayOfTitle = styled.div`
   height: 7vh;
   top:0px;
 `;
+
+export const DayOfContentWrapper = styled.div`
+  height: 83vh;
+  width: 100vw;
+  margin: auto;
+`;

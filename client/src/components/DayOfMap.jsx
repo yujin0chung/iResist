@@ -1,7 +1,7 @@
 import React from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import Pin from './Pin.jsx';
-import { DayOfTitle } from './StyledComponents.jsx';
+import { DayOfTitle, DayOfContentWrapper } from './StyledComponents.jsx';
 
 class DayOfMap extends React.Component {
   constructor(props) {
@@ -75,7 +75,7 @@ class DayOfMap extends React.Component {
       <div>
 
       <DayOfTitle>{this.props.event.name}</DayOfTitle>
-      <div className='day-of-content-wrapper'>
+      <DayOfContentWrapper>
         <Map
           className='day-of-map'
           center={[currentMap.lat, currentMap.long]}
@@ -112,10 +112,9 @@ class DayOfMap extends React.Component {
               handleCredChange={this.handleCredChange}
               pinError={this.props.maps.pins[pin].errorMsg}
             />;
-            }) : <div></div>
-          }
-        </Map>
-        </div>
+            }) : <div></div>}
+          </Map>
+        </DayOfContentWrapper>
       </div>
     );
   }
