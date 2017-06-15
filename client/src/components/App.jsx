@@ -49,18 +49,14 @@ class App extends React.Component {
     }
     if (currentView === 'ORGANIZE_PROTEST') {
       return (<ProtestForm {...this.props} />);
-    } else {
+    } 
+    if (currentView === 'DASHBOARD') {
+      return (<Dashboard {...this.props} />)
+    }
+    else {
       return (
         <div>
-          <Header>iResist</Header>
-          <Fist />
-          <Dashboard {...this.props} />
-          <Button onClick={() => this.updateView('FIND_PROTEST')}>
-            Find a Protest
-          </Button>
-          <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>
-            Organize a Protest
-          </Button>
+          ERROR
         </div>
       );
     }

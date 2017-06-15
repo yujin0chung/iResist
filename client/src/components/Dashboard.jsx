@@ -2,7 +2,7 @@ import React from 'react';
 import MyProtestList from './MyProtestList.jsx';
 import styled from 'styled-components';
 import _ from 'lodash';
-import { Title, Header } from './StyledComponents.jsx';
+import { Title, Header, Button } from './StyledComponents.jsx';
 
 
 class Dashboard extends React.Component {
@@ -33,6 +33,7 @@ class Dashboard extends React.Component {
 
     return (
       <div>
+        <Header>iResist</Header>
         <Title>Ongoing Protests</Title>
           <MyProtestList eventListType={ongoing} {...this.props} eventType="ongoing"/>
 
@@ -46,6 +47,12 @@ class Dashboard extends React.Component {
 
         { this.state.showPastProtests ? <MyProtestList eventListType={past} {...this.props} eventType="past"/> : <div></div> }
 
+        <Button onClick={() => this.updateView('FIND_PROTEST')}>
+            Find a Protest
+          </Button>
+          <Button onClick={() => this.updateView('ORGANIZE_PROTEST')}>
+            Organize a Protest
+          </Button>
       </div>
     );
   }
