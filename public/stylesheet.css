@@ -14,9 +14,8 @@ html, body {
 }
 
 .day-of-map {
-  height: 80vh;
-  width: 98vw;
-  margin: auto;
+  height: 100%;
+  width: 100%;
 }
 
 .container {
@@ -49,3 +48,8 @@ a {
 
 }
 
+.day-of-content-wrapper {
+  height: 84vh;
+  width: 100vw;
+  margin: auto;
+}
