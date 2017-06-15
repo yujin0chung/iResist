@@ -66,7 +66,7 @@ class DayOfContainer extends React.Component {
           <div></div>
         }
         {this.state.currentDayOf === 'TWITTER' ?
-          <TwitterFeed {...this.props} />:
+          <TwitterFeed {...this.props} /> :
           <div></div>
         }
         <div className="tabs">
