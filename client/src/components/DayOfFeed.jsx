@@ -91,6 +91,7 @@ class DayOfFeed extends React.Component {
     const feedItems = this.props.feeds.feedItems;
     return (
       <div>
+<<<<<<< HEAD
         {this.state.currentView === 'FEED' ?
           <div>
           <div style={{display: 'flex', flexDirection: 'row'}}>
@@ -132,6 +133,41 @@ class DayOfFeed extends React.Component {
         </div>
         :
         <div></div>
+=======
+
+        
+          <Title>{this.props.event.name}</Title>
+          
+          <div style={{display: 'flex', flexDirection: 'row'}}>
+            <form onSubmit={this.handlePost}>
+              <TextInput            
+                type="textarea"
+                placeholder="What's happening at the protest?"
+                value={this.state.text}
+                onChange={this.handleChange}
+              />
+            </form>
+          <UploadMedia {...this.props}/>
+          </div>
+        {
+          this.state.posts.map(item =>
+            <FeedItem
+              username={item.username}
+              text={item.text}
+              key={item.id}
+              username={item.username}
+              text={item.text}
+              time={item.time}
+              userId={this.props.user.userId}
+              itemId={item.id}
+              credibility={item.credibility}
+              handleCredVote={this.handleCredChange}
+              url={item.url}
+              type={item.type}
+              errorMsg={item.errorMsg}
+              client={this.props.client}/>
+          )
+>>>>>>> Changes up/down arrows, turns Upload media into camera icon
         }
         {this.state.currentView === "TWITTER" ?
           <TwitterFeed {...this.props} client={this.client} /> :
