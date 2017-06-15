@@ -4,8 +4,8 @@ import FeedItem from './FeedItem.jsx';
 import UploadMedia from './UploadMedia.jsx';
 import TwitterFeed from './TwitterFeed.jsx';
 import axios from 'axios';
-import _ from 'lodash'
-import styled from 'styled-components'
+import _ from 'lodash';
+import styled from 'styled-components';
 
 class DayOfFeed extends React.Component {
   constructor(props) {
@@ -93,7 +93,7 @@ class DayOfFeed extends React.Component {
       <div>
         {this.state.currentView === 'FEED' ?
           <div>
-          <h3>Post a message</h3>
+          <div style={{display: 'flex', flexDirection: 'row'}}>
           <form onSubmit={this.handlePost}>
             <input
               type="textarea"
@@ -103,6 +103,7 @@ class DayOfFeed extends React.Component {
             />
           </form>
           <UploadMedia {...this.props}/>
+          </div>
           <button onClick={this.twitterFeed}>Twitter Feed</button>
           {
             this.state.posts.map(item =>
@@ -126,7 +127,7 @@ class DayOfFeed extends React.Component {
           {
           feedItems.length < 10 ?
             <div></div> :
-            <button onClick={() => this.handleLoadItems(this.state.pageNumber++)}>Load More Posts></button>
+            <Load onClick={() => this.handleLoadItems(this.state.pageNumber++)}>Load More Posts</Load>
           }
         </div>
         :
@@ -136,24 +137,41 @@ class DayOfFeed extends React.Component {
           <TwitterFeed {...this.props} client={this.client} /> :
           <div></div>
         }
+      
       </div>
     );
   }
 }
+
+const Load = styled.div`
+  width: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  vertical-align: middle;
+  height: 40px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: tomato;
+  border: 1px solid tomato;
+`
 
 const Title = styled.div`
   display:flex;
   justify-content:center;
   margin-bottom:.2em;
   font-size:2em;
-`
+`;
 
 const TextInput = styled.input`
-  width:100%;
+  width:315px;
   height: 40px;
   background-color:#F7F7F7;
   border:none;
   padding: 10px;
+  margin-right: 10px;
 
 `;
 
