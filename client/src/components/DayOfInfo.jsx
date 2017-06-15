@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components'
 import moment from 'moment'
+import { DayOfContentWrapper, DayOfTitle } from './StyledComponents.jsx';
 
 const DayOfInfo = (props) => (
-  <div>
-    <PageTitle>{props.event.name}</PageTitle>
+  <DayOfContentWrapper>
+    <DayOfTitle>{props.event.name}</DayOfTitle>
       <ProtestInfo>
         <div>
           <Category>What</Category>
@@ -27,7 +28,7 @@ const DayOfInfo = (props) => (
            <div>{props.event.attendee_count}</div>
         </div>
       </ProtestInfo>
-  </div>
+  </DayOfContentWrapper>
 );
 
 const Category = styled.div`

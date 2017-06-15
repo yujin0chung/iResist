@@ -4,8 +4,9 @@ import FeedItem from './FeedItem.jsx';
 import UploadMedia from './UploadMedia.jsx';
 import TwitterFeed from './TwitterFeed.jsx';
 import axios from 'axios';
-import _ from 'lodash'
-import styled from 'styled-components'
+import _ from 'lodash';
+import styled from 'styled-components';
+import { DayOfContentWrapper, DayOfTitle, FeedWrapper, Load, TextInput } from './StyledComponents.jsx';
 
 class DayOfFeed extends React.Component {
   constructor(props) {
@@ -91,18 +92,24 @@ class DayOfFeed extends React.Component {
     const feedItems = this.props.feeds.feedItems;
     return (
       <div>
+      <DayOfContentWrapper>
+        <DayOfTitle>{this.props.event.name}</DayOfTitle>
+        <FeedWrapper>
         {this.state.currentView === 'FEED' ?
           <div>
-          <h3>Post a message</h3>
-          <form onSubmit={this.handlePost}>
-            <input
-              type="textarea"
-              placeholder="What's happening at the protest?"
-              value={this.state.text}
-              onChange={this.handleChange}
-            />
-          </form>
-          <UploadMedia {...this.props}/>
+
+            <div style={{display: 'flex', flexDirection: 'row'}}>
+            <form onSubmit={this.handlePost}>
+              <TextInput
+                type="textarea"
+                placeholder="What's happening at the protest?"
+                value={this.state.text}
+                onChange={this.handleChange}
+              />
+            </form>
+            <UploadMedia {...this.props}/>
+            </div>
+
           <button onClick={this.twitterFeed}>Twitter Feed</button>
           {
             this.state.posts.map(item =>
@@ -126,35 +133,22 @@ class DayOfFeed extends React.Component {
           {
           feedItems.length < 10 ?
             <div></div> :
-            <button onClick={() => this.handleLoadItems(this.state.pageNumber++)}>Load More Posts></button>
+            <Load onClick={() => this.handleLoadItems(this.state.pageNumber++)}>Load More Posts</Load>
           }
         </div>
         :
         <div></div>
         }
+
         {this.state.currentView === "TWITTER" ?
           <TwitterFeed {...this.props} client={this.client} /> :
           <div></div>
         }
+        </FeedWrapper>
+      </DayOfContentWrapper>
       </div>
     );
   }
 }
-
-const Title = styled.div`
-  display:flex;
-  justify-content:center;
-  margin-bottom:.2em;
-  font-size:2em;
-`
-
-const TextInput = styled.input`
-  width:100%;
-  height: 40px;
-  background-color:#F7F7F7;
-  border:none;
-  padding: 10px;
-
-`;
 
 export default DayOfFeed;

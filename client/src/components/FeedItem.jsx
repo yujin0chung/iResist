@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import { Rotate } from "./StyledComponents.jsx";
+import { Rotate, Item, VoteUp, VoteDown, VoteHolder } from "./StyledComponents.jsx";
 import styled from "styled-components";
 
 
@@ -20,7 +20,7 @@ class FeedItem extends React.Component {
       this.state.element = (
         <div className="mediaContainer">
           <img
-            style={{ flex: 1,width: '75%',height: '75%'}}
+            style={{ flex: 1,width: '75%',height: '75%', paddingBottom: '15px'}}
             className="media"
             id={this.props.itemId}
             onDoubleClick={this.rotate.bind(this)}
@@ -44,7 +44,6 @@ class FeedItem extends React.Component {
         <div className="mediaContainer">
           <video
             className="media"
-            className="media"
             id={this.props.itemId}
             src={this.props.url}
             autoPlay={false}
@@ -57,7 +56,6 @@ class FeedItem extends React.Component {
       this.state.element = (
         <div className="mediaContainer">
           <video
-            className="media"
             className="media"
             id={this.props.itemId}
             src={this.props.url}
@@ -91,26 +89,21 @@ class FeedItem extends React.Component {
   render() {
     var time = moment(Number(this.props.time)).format("h:mm a");
     return (
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <Item>
         <VoteHolder>
-          <button onClick={() => this.handleVoteType(1)}><img style={{width: '60%'}} src='images/UpArrow.svg'/></button>
-          <div style={{textAlign: 'center',color:'#9B9B9B'}}>{this.props.credibility}</div>
-          <button onClick={() => this.handleVoteType(-1)}><img  style={{width: '60%'}}  src='images/DownArrow.svg'/></button>
+          <VoteUp className="fa fa-caret-up fa-lg" onClick={() => this.handleVoteType(1)} style={{width: '50%'}} src='images/UpArrow.svg'/>
+          <div style={{textAlign: 'inherit',color:'#9B9B9B'}}>{this.props.credibility}</div>
+          <VoteDown className="fa fa-caret-down fa-lg" onClick={() => this.handleVoteType(-1)} style={{width: '50%'}}  src='images/DownArrow.svg'/>
         </VoteHolder>
-        <div style={{ flexDirection: "row", flex: 8, paddingTop: '11px', paddingLeft: '10px' }}>
+        <div style={{ flexDirection: "row", flex: 8, paddingLeft: '10px' }}>
           <div style={{color:'#4A4A4A'}}>{this.props.username}</div>
           <div style={{color:'#C5C5C5', fontSize:'.8em'}}><img style={{width:'1em', marginRight:'5px'}} src='images/Clock.svg'/>{time}</div>
           <div>{this.state.element}</div>
-          {/*<div className="credibility" />*/}
         </div>
-      </div>
+      </Item>
     );
   }
 }
 
-const VoteHolder = styled.div`
-  flex:1;
-  width: 3em;
-`;
 
 export default FeedItem;

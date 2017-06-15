@@ -4,7 +4,7 @@ import DayOfFeed from './DayOfFeed.jsx';
 import DayOfMap from './DayOfMap.jsx';
 import DayOfInfo from './DayOfInfo.jsx';
 import TwitterFeed from './TwitterFeed.jsx';
-import styled from 'styled-components';
+import { Tab, NavBar } from './StyledComponents.jsx';
 
 
 
@@ -19,7 +19,6 @@ class DayOfContainer extends React.Component {
   }
 
   componentDidMount() {
-    console.log('Props; ', this.props);
     this.client.on('connect', () => {
       this.client.emit('event', this.props.events.activeEvent);
     });
@@ -27,10 +26,6 @@ class DayOfContainer extends React.Component {
     this.client.on('joinEventReponse', (response) => {
       console.log(response);
     });
-
-    // this.client.on('newFeedItemFromServer', insertedPost => {
-    //   this.props.receiveFeedItem(insertedPost);
-    // });
 
     this.client.on('newPin', (pin) => {
       this.props.receivedPin(pin);
@@ -50,6 +45,7 @@ class DayOfContainer extends React.Component {
   }
 
   render () {
+    console.log('THIS.PROPS FROM DAY OF CONTAINER', this.props)
     let event = _.find(this.props.events.allEvents, event => (event.id === this.props.events.activeEvent ));
     return (
       <div>
@@ -71,55 +67,21 @@ class DayOfContainer extends React.Component {
           <TwitterFeed {...this.props} /> :
           <div></div>
         }
+        {this.state.currentDayOf === 'HOME' ?
+          this.props.changeView('DASHBOARD') :
+          <div></div>
+        }
 
         <div className="wrapper" style={{display: 'flex', height: '9vh', justifyContent: 'center', marginTop: 'auto', bottom: '0px', position: 'fixed', width: '100%'}}>
           {/*<div style={{marginTop: 'auto'}}>*/}
-          <Tab onClick={() => this.handleCurrentDayOfView('INFO')} role="presentation" className="active"><img src='images/infoIcon.svg'/></Tab>
-          <Tab onClick={() => this.handleCurrentDayOfView('MAP')} role="presentation"><img src='images/mapIcon.svg'/></Tab>
-          <Tab onClick={() => this.handleCurrentDayOfView('FEED')} role="presentation"><img src='images/feedIcon.svg'/></Tab>
-          <Tab style={{borderRight: 'none'}}onClick={() => this.handleCurrentDayOfView('DASHBOARD')} role="presentation"><img src='images/homeIcon2.svg'/></Tab>
+          <Tab onClick={() => this.handleCurrentDayOfView('INFO')}><img src='images/infoIcon.svg'/></Tab>
+          <Tab onClick={() => this.handleCurrentDayOfView('MAP')}><img src='images/mapIcon.svg'/></Tab>
+          <Tab onClick={() => this.handleCurrentDayOfView('FEED')}><img src='images/feedIcon.svg'/></Tab>
+          <Tab onClick={() => this.handleCurrentDayOfView('HOME')} style={{borderRight: 'none'}}><img src='images/homeIcon2.svg'/></Tab>
         </div>
       </div>
     );
   }
 }
-
-export const NavBar = styled.div`
-  display: flex;
-  flex-direction: row;
-  min-height: 100vh;
-  bottom: 0;
-  padding-bottom: 0.5px;
-  width: 100%;
-  height: 30px;
-  position: fixed;
-`;
-
-// export const NavBar = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   min-height: 100vh;
-//   bottom: 0;
-//   padding-bottom: 0.5px;
-//   width: 100%;
-//   height: 30px;
-//   position: fixed;
-// `
-
-
-export const Tab = styled.div`
-  flex: 1 0 auto;
-	padding: 1.25em 2em;
-  background-color:white;
-	border: 0.05px solid black;
-  height: 100%;
-  background-color: none;
-  border-left: none;
-  border-bottom: none;
-  text-align: center;
-  bottom:auto;
-  top:auto;
-
-`;
 
 export default DayOfContainer;
