@@ -187,3 +187,43 @@ export const DayOfContentWrapper = styled.div`
   width: 100vw;
   margin: auto;
 `;
+
+export const VoteHolder = styled.div`
+  flex:1;
+  width: 3em;
+`;
+
+export const VoteImage = styled.img`
+  width: 100%;
+`;
+
+export const CredCount = styled.div`
+  text-align: center;
+  color: #9B9B9B;
+`;
+
+export const PinWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const PinContent = styled.div`
+  flex-direction: row;
+  flex: 8;
+  padding-top: 11px;
+  padding-left: 10px;
+`;
+
+export const ItemUserName = styled.div`
+  color: #4A4A4A
+`;
+
+export const TimeStamp = styled.div`
+  color: #C5C5C5;
+  fontSize: '.8em';
+`;
+
+export const TimeImage = styled.img`
+  width: 1em;
+  marginRight: 5px;
+`;

@@ -2,6 +2,15 @@ import React from 'react';
 import { Marker, Popup } from 'react-leaflet';
 import AutoOpenMarker from './AutoOpenMarker.jsx';
 import prettyMs from 'pretty-ms';
+import {
+  VoteHolder,
+  VoteImage,
+  CredCount,
+  PinWrapper,
+  PinContent,
+  ItemUserName,
+  TimeStamp,
+  TimeImage } from './StyledComponents.jsx';
 
 class Pin extends React.Component {
   constructor (props) {
@@ -38,16 +47,20 @@ class Pin extends React.Component {
       return (
         <Marker position={[this.props.lat, this.props.long]} onClick={e => this.handleClick(e)}>
           <Popup>
-            <span>
-              <p>{this.props.text}</p>
-              <p>Cred: {this.props.pinCred}</p>
-              <p>Age: {this.state.displayAge}</p>
-              <p>User: {this.props.user}</p>
-              <p>User Cred: {this.props.userCred}</p>
-              <button onClick={e => this.handleCred(1)}>Upcred!</button>
-              <button onClick={e => this.handleCred(-1)}>Downcred!</button>
-              {this.props.pinError ? <p>{this.props.pinError}</p> : <div></div>}
-            </span>
+            <PinWrapper>
+              <VoteHolder>
+                <button onClick={e => this.handleCred(1)}><VoteImage src='images/UpArrow.svg'/></button>
+                <CredCount>{this.props.pinCred}</CredCount>
+                {/*<div style={{textAlign: 'center', color: '#9B9B9B'}}>{this.props.pinCred}</div>*/}
+                <button onClick={e => this.handleCred(-1)}><VoteImage src='images/DownArrow.svg'/></button>
+              </VoteHolder>
+              <PinContent>
+                <ItemUserName>{this.props.user}</ItemUserName>
+                <TimeStamp><TimeImage src='images/Clock.svg'/>{this.state.displayAge} ago</TimeStamp>
+                <div>{this.props.text}</div>
+                {this.props.pinError ? <p>{this.props.pinError}</p> : <div></div>}
+              </PinContent>
+            </PinWrapper>
           </Popup>
         </Marker>
       );

@@ -31,7 +31,6 @@ export const maps = (state = {}, action) => {
   }
   case 'RECEIVED_PIN_VOTE_ERROR': {
     let newState = Object.assign({}, state);
-    debugger;
     newState.pins[action.error.pinId].errorMsg = action.error.msg;
     return newState;
   }
