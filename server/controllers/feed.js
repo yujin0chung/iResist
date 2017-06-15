@@ -55,7 +55,7 @@ module.exports.voteFeedItem = (client, io, event, vote) => {
       if (responseVote.length === 0) {
         models.Feed.insertFeedItemVote(vote, (err, insertResponseVote) => {
           if (err) {
-            console.log(err);
+            console.log('ERR FROM INSRT FEED ITEM VOTE', err);
           } else {
             io.to(event).emit('newFeedItemVote', {
               itemId: vote.itemId,
@@ -66,7 +66,7 @@ module.exports.voteFeedItem = (client, io, event, vote) => {
       } else if (responseVote[0].up_down !== vote.polarity) {
         models.Feed.replaceFeedItemVote(vote, (err, replaceResponseVote) => {
           if (err) {
-            console.log(err);
+            console.log('ERR FROM REPLACE FEED ITEM VOTE', err);
           } else {
             io.to(event).emit('newFeedItemVote', {
               itemId: vote.itemId,

@@ -25,6 +25,7 @@ module.exports.onConnect = (client, io) => {
     });
 
     client.on('voteFeedItem', vote => {
+      console.log('HIT THE SERVER WITH THE VOTE FEED ITEM', vote);
       controllers.Feed.voteFeedItem(client, io, event, vote);
     });
   });

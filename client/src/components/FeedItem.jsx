@@ -91,9 +91,9 @@ class FeedItem extends React.Component {
     return (
       <Item>
         <VoteHolder>
-          <VoteUp className="fa fa-caret-up fa-lg" onClick={() => this.handleVoteType(1)} style={{width: '50%'}} src='images/UpArrow.svg'/>
+          <VoteUp className="fa fa-caret-up fa-lg" onClick={() => this.handleVoteType(1)} />
           <div style={{textAlign: 'inherit',color:'#9B9B9B'}}>{this.props.credibility}</div>
-          <VoteDown className="fa fa-caret-down fa-lg" onClick={() => this.handleVoteType(-1)} style={{width: '50%'}}  src='images/DownArrow.svg'/>
+          <VoteDown className="fa fa-caret-down fa-lg" onClick={() => this.handleVoteType(-1)} />
         </VoteHolder>
         <div style={{ flexDirection: "row", flex: 8, paddingLeft: '10px' }}>
           <div style={{color:'#4A4A4A'}}>{this.props.username}</div>

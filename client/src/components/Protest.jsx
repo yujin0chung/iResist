@@ -3,7 +3,7 @@ import dateFormat from 'dateformat';
 import MapContainer from './MapContainer.jsx';
 import EventButton from './EventButton.jsx';
 import styled from 'styled-components';
-import { Status, Title, Name, Info, Icon } from './StyledComponents.jsx';
+import { DayOfContentWrapper, Status, Title, Name, Info, Icon } from './StyledComponents.jsx';
 import $ from "jquery";
 
 
