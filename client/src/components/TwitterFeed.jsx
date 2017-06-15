@@ -24,7 +24,6 @@ class TwitterFeed extends React.Component {
         params: {
           searchTerm: this.props.events.allEvents[this.props.events.activeEvent].name,
         }
-
       })
       .then(response => {
         var tweetsObj = {};
@@ -36,7 +35,6 @@ class TwitterFeed extends React.Component {
           tweetArray.push(tweetsObj);
           tweetsObj = {};
         }
-        console.log('this is tweetArray: ', tweetArray);
         this.setState({
           tweets: tweetArray
         })

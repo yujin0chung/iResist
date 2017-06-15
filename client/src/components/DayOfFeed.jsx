@@ -2,6 +2,7 @@ import React from 'react';
 import { Input } from 'react-bootstrap';
 import FeedItem from './FeedItem.jsx';
 import UploadMedia from './UploadMedia.jsx';
+import TwitterFeed from './TwitterFeed.jsx';
 import axios from 'axios';
 import _ from 'lodash'
 import styled from 'styled-components'
@@ -17,11 +18,13 @@ class DayOfFeed extends React.Component {
       pageNumber: 1,
       feedItemCount: 0,
       posts: [],
-      wantMoreItems: false
+      wantMoreItems: false,
+      currentView: 'FEED'
     };
     this.handlePost = this.handlePost.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCredChange = this.handleCredChange.bind(this);
+    this.twitterFeed = this.twitterFeed.bind(this);
   }
 
   componentDidMount() {
@@ -30,7 +33,7 @@ class DayOfFeed extends React.Component {
     this.props.client.on('newFeedItemFromServer', insertedPost => {
       this.props.receiveFeedItem(insertedPost);
       let newState = this.state.posts;
-      newState.unshift(insertedPost)
+      newState.unshift(insertedPost);
       self.setState({posts: newState});
     });
 
@@ -78,46 +81,60 @@ class DayOfFeed extends React.Component {
     this.props.client.emit('voteFeedItem', feedItemVote);
   }
 
+  twitterFeed () {
+    this.setState({
+      currentView: "TWITTER"
+    })
+  }
+
   render() {
     const feedItems = this.props.feeds.feedItems;
     return (
       <div>
-
-        <div>
-          <Title>{this.props.event.name}</Title>
-            <form onSubmit={this.handlePost}>
-              <TextInput            
-                type="textarea"
-                placeholder="What's happening at the protest?"
-                value={this.state.text}
-                onChange={this.handleChange}
-              />
-            </form>
+        {this.state.currentView === 'FEED' ?
+          <div>
+          <h3>Post a message</h3>
+          <form onSubmit={this.handlePost}>
+            <input
+              type="textarea"
+              placeholder="What's happening at the protest?"
+              value={this.state.text}
+              onChange={this.handleChange}
+            />
+          </form>
           <UploadMedia {...this.props}/>
+          <button onClick={this.twitterFeed}>Twitter Feed</button>
+          {
+            this.state.posts.map(item =>
+              <FeedItem
+                username={item.username}
+                text={item.text}
+                key={item.id}
+                username={item.username}
+                text={item.text}
+                time={item.time}
+                userId={this.props.user.userId}
+                itemId={item.id}
+                credibility={item.credibility}
+                handleCredVote={this.handleCredChange}
+                url={item.url}
+                type={item.type}
+                errorMsg={item.errorMsg}
+                client={this.props.client}/>
+            )
+          }
+          {
+          feedItems.length < 10 ?
+            <div></div> :
+            <button onClick={() => this.handleLoadItems(this.state.pageNumber++)}>Load More Posts></button>
+          }
         </div>
-        {
-          this.state.posts.map(item =>
-            <FeedItem
-              username={item.username}
-              text={item.text}
-              key={item.id}
-              username={item.username}
-              text={item.text}
-              time={item.time}
-              userId={this.props.user.userId}
-              itemId={item.id}
-              credibility={item.credibility}
-              handleCredVote={this.handleCredChange}
-              url={item.url}
-              type={item.type}
-              errorMsg={item.errorMsg}
-              client={this.props.client}/>
-          )
+        :
+        <div></div>
         }
-        {
-        feedItems.length < 10 ?
-          <div></div> :
-          <button onClick={() => this.handleLoadItems(this.state.pageNumber++)}>Load More Posts></button>
+        {this.state.currentView === "TWITTER" ?
+          <TwitterFeed {...this.props} client={this.client} /> :
+          <div></div>
         }
       </div>
     );
