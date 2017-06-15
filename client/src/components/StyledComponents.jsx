@@ -225,7 +225,7 @@ export const FeedWrapper = styled.div`
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 70px;
-`
+`;
 
 export const Item = styled.div`
   display: flex;
@@ -249,6 +249,12 @@ export const VoteHolder = styled.div`
   text-align: center;
 `;
 
+export const PinVoteHolder = styled.div`
+  flex:1;
+  width: 4em;
+  text-align: center;
+`;
+
 export const VoteUp = styled.i`
   color: hsla(120, 90%, 42%, 0.93);
   width: 30%;
@@ -257,6 +263,16 @@ export const VoteUp = styled.i`
 export const VoteDown = styled.i`
   color: rgba(245, 97, 35, 0.94);
   width: 30%;
+`;
+
+export const PinVoteUp = styled.i`
+  color: hsla(120, 90%, 42%, 0.93);
+  size: 100%;
+`;
+
+export const PinVoteDown = styled.i`
+  color: rgba(245, 97, 35, 0.94);
+  size: 100%;
 `;
 
 export const NavBar = styled.div`
@@ -268,6 +284,7 @@ export const NavBar = styled.div`
   width: 100%;
   height: 30px;
   position: fixed;
+  z-index: 1000;
 `;
 
 export const Tab = styled.div`
@@ -287,3 +304,21 @@ export const Tab = styled.div`
   }
 `;
 
+export const ErrorMsg = styled.div`
+  color: red;
+  font-size: 80%
+  }
+`;
+
+export const PinTextInput = styled.textarea`
+  width: 60vw;
+  margin-right: 2vw;
+`;
+
+export const PinSubmit = styled.input`
+  padding:5px 15px;
+  background:#ccc;
+  border:0 none;
+  cursor:pointer;
+  border-radius: 5px;
+`;

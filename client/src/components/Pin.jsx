@@ -3,14 +3,19 @@ import { Marker, Popup } from 'react-leaflet';
 import AutoOpenMarker from './AutoOpenMarker.jsx';
 import prettyMs from 'pretty-ms';
 import {
-  VoteHolder,
+  PinVoteHolder,
   VoteImage,
   CredCount,
   PinWrapper,
   PinContent,
   ItemUserName,
   TimeStamp,
-  TimeImage } from './StyledComponents.jsx';
+  TimeImage,
+  PinVoteDown,
+  PinVoteUp,
+  ErrorMsg,
+  PinTextInput,
+  PinSubmit } from './StyledComponents.jsx';
 
 class Pin extends React.Component {
   constructor (props) {
@@ -48,17 +53,16 @@ class Pin extends React.Component {
         <Marker position={[this.props.lat, this.props.long]} onClick={e => this.handleClick(e)}>
           <Popup>
             <PinWrapper>
-              <VoteHolder>
-                <button onClick={e => this.handleCred(1)}><VoteImage src='images/UpArrow.svg'/></button>
+              <PinVoteHolder>
+                <PinVoteUp className="fa fa-caret-up fa-lg" onClick={e => this.handleCred(1)}></PinVoteUp>
                 <CredCount>{this.props.pinCred}</CredCount>
-                {/*<div style={{textAlign: 'center', color: '#9B9B9B'}}>{this.props.pinCred}</div>*/}
-                <button onClick={e => this.handleCred(-1)}><VoteImage src='images/DownArrow.svg'/></button>
-              </VoteHolder>
+                <PinVoteDown className="fa fa-caret-down fa-lg" onClick={e => this.handleCred(-1)}></PinVoteDown>
+              </PinVoteHolder>
               <PinContent>
                 <ItemUserName>{this.props.user}</ItemUserName>
                 <TimeStamp><TimeImage src='images/Clock.svg'/>{this.state.displayAge} ago</TimeStamp>
                 <div>{this.props.text}</div>
-                {this.props.pinError ? <div>{this.props.pinError}</div> : <div></div>}
+                {this.props.pinError ? <ErrorMsg>{this.props.pinError}</ErrorMsg> : <div></div>}
               </PinContent>
             </PinWrapper>
           </Popup>
@@ -69,14 +73,14 @@ class Pin extends React.Component {
         <AutoOpenMarker position={[this.props.lat, this.props.long]} keyboard={false}>
           <Popup>
             <form onSubmit={ e => this.handleSubmit(e) }>
-              <input
+              <PinTextInput
                 type="text"
                 value={this.state.inputPinText}
                 placeholder="What's going on?"
                 onChange={e => this.setState({ inputPinText: e.target.value })}
                 autoFocus
               />
-              <input
+              <PinSubmit
                 type="submit"
                 value="Submit"
               />
