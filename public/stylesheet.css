@@ -50,3 +50,13 @@ a {
   background-color: none;
 
 }
+
+.dashboardMap {
+  position: relative;
+  /* width: 85vw; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
+  height: 40vh;
+}

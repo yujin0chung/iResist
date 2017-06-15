@@ -73,7 +73,8 @@ export const Name = styled.div`
 
 export const Info = styled.p`
   display: flex;
-  flex-direction: column;ss
+  flex-direction: column;
+  line-height: 90%;
 `;
 
 export const Icon = styled.img`
@@ -88,8 +89,11 @@ export const Rotate = styled.div`
 `;
 
 
-export const ProtestInfo = styled.div`
-
+export const ToggledProtest = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90vw;
 `;
 
 export const Wrapper = styled.div`

@@ -42,11 +42,11 @@ class DayOfFeed extends React.Component {
     this.props.client.on('newFeedItemVote', (vote) => {
       console.log('NEW FEED ITEM VOTE', vote)
       this.props.receiveFeedItemVote(vote);
-      // self.state.posts.forEach(post => {
-      //   if (post.id === vote.itemId) {
-      //     post.credibility === vote.change
-      //   }
-      // });
+      self.state.posts.forEach(post => {
+        if (post.id === vote.itemId) {
+          post.credibility === vote.change
+        }
+      });
     });
 
     this.props.client.on('feedItemVoteNotPermitted', (error) => {
