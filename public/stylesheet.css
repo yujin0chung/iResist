@@ -14,12 +14,16 @@ html, body {
 }
 
 .day-of-map {
-  height: 400px;
+  height: 80vh;
+  width: 98vw;
+  margin: auto;
 }
 
 .container {
   min-height: 100%;
   position: relative;
+  margin: 0;
+  padding: 0;
   font-family: 'Cabin', sans-serif;
 }
 
@@ -33,7 +37,7 @@ img.media {
 }
 
 .dropzone {
-  
+
 }
 
 .mediaContainer {
