@@ -16,6 +16,7 @@ html, body {
 .day-of-map {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .container {
