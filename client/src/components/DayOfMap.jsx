@@ -76,7 +76,7 @@ class DayOfMap extends React.Component {
 
       <DayOfTitle>{this.props.event.name}</DayOfTitle>
       <DayOfContentWrapper>
-        <div>
+        <div style={{height: '100%'}}>
         <Map
           className='day-of-map'
           center={[currentMap.lat, currentMap.long]}
