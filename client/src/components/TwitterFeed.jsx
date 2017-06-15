@@ -27,7 +27,6 @@ class TwitterFeed extends React.Component {
 
       })
       .then(response => {
-        console.log('this is the response: ', response)
         var tweetsObj = {};
         var tweetArray = [];
         for(var i = 0; i < response.data.length; i++){
@@ -50,6 +49,7 @@ class TwitterFeed extends React.Component {
     console.log('this is the search term: ', this.props.events.allEvents[this.props.events.activeEvent].name);
     return(
       <div>
+        <h3> Most Recent Tweets </h3>
         {
           this.state.tweets.map(tweets =>
             <Tweet
