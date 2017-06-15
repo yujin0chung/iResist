@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import moment from 'moment'
 
 const DayOfInfo = (props) => (
   <div>
@@ -15,7 +16,7 @@ const DayOfInfo = (props) => (
         </div>
         <div>
           <Category>When</Category>
-           <div>{props.event.time}</div>
+           <div>{moment(Number(props.event.time)).format("h:mm a")} - {moment(Number(props.event.time) + Number(props.event.duration)).format("h:mm a")}</div>
         </div>
         <div>
           <Category>Why</Category>
@@ -24,7 +25,7 @@ const DayOfInfo = (props) => (
         <div>
           <Category>Participating</Category>
            <div>{props.event.attendee_count}</div>
-        </div>                
+        </div>
       </ProtestInfo>
   </div>
 );
