@@ -41,7 +41,7 @@ class Protest extends React.Component {
       success: (weather) => {
         this.setState({
           currentTemp: Math.floor(weather.main.temp),
-          currentWeatherDescription: weather.weather[0].main,
+          currentWeatherDescription: weather.weather[0].main
         })
       }
     });
