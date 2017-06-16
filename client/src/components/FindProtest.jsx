@@ -6,8 +6,14 @@ import { HomeIcon } from './StyledComponents.jsx';
 
 class FindProtest extends React.Component {
   render() {
+    console.log("FIND PROTEST THIS.PROPS", this.props)
     
     const events = this.props.events.allEvents;
+    const attending = this.props.user.events_attending;
+    const organizing = this.props.user.events_organizing;
+    const notParticipating = _.reject(upcomingEvents, event => {
+      return _.includes(attending, parseInt(event)) || _.includes(organizing, parseInt(event));
+    });
    
     let upcomingEvents = [];
     for (var event in events) {
@@ -16,7 +22,7 @@ class FindProtest extends React.Component {
       }
     }
 
-    if (upcomingEvents.length === 0) {
+    if (notParticipating.length === 0) {
       return (
         <div>
           <HomeIcon
@@ -28,13 +34,6 @@ class FindProtest extends React.Component {
         </div>
       );
     }
-
-    const attending = this.props.user.events_attending;
-    const organizing = this.props.user.events_organizing;
-
-    const notParticipating = _.reject(upcomingEvents, event => {
-      return _.includes(attending, parseInt(event)) || _.includes(organizing, parseInt(event));
-    });
 
     return (
       <div>
