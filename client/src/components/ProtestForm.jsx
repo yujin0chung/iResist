@@ -120,10 +120,6 @@ class ProtestForm extends React.Component {
 
     return (
       <FormWrapper>
-        <HomeIcon
-          className="fa fa-home fa-lg"
-          onClick={() => this.props.changeView('DASHBOARD')}
-        />
         <Form>
           <legend>Revolution Starts Here</legend>
           <label>
@@ -177,7 +173,7 @@ class ProtestForm extends React.Component {
               <br />
               <i className="fa fa-search" onClick={this.handleLocSearch}></i>
             </div>
-            
+
           </label>
           {' '}
           <br />
@@ -220,17 +216,20 @@ class ProtestForm extends React.Component {
           <br />
           {' '}
           <br />
-          <Submit
-            type="submit"
-            value="Submit"
-            disabled={!formValid}
-            onClick={ e => this.handleSubmit(e) }
-          />
-        <Submit
-            type="button"
-            value="Cancel"
-            onClick={() => this.props.changeView('DASHBOARD')}
-          />
+
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
+            <Submit
+              type="submit"
+              value="Submit"
+              disabled={!formValid}
+              onClick={ e => this.handleSubmit(e) }
+            />
+            <Submit
+              type="button"
+              value="Cancel"
+              onClick={() => this.props.changeView("DASHBOARD")}
+            />
+          </div>
           {this.state.isEditing ?
             <input type="button" value="CANCEL EVENT" onClick={() => { this.props.deleteEvent(this.state.eventId); this.props.changeView('DASHBOARD'); }} /> :
             <div></div>

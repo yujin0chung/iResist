@@ -43,9 +43,9 @@ class Dashboard extends React.Component {
           <MyProtestList eventListType={upcoming} {...this.props} eventType="upcoming"/>
 
   
-          <Title>
+          <Title onClick={() => this.togglePastProtests()}>
             Past Protests
-            <i onClick={() => this.togglePastProtests()} className="fa fa-angle-down" style={{paddingLeft: '27px'}}></i>
+            <i className="fa fa-angle-down" style={{paddingLeft: '27px'}}></i>
           </Title>
   
 

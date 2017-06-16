@@ -142,7 +142,8 @@ export const FindProtestWrapper = DashboardWrapper.extend`
 export const FormWrapper = styled.div`
   display: block;
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
+  padding-top: 35px;
 `
 export const Form = styled.form`
   display: block;
@@ -201,9 +202,8 @@ export const Search = styled.input`
   margin-bottom: 15px;
 `;
 export const Submit = Search.extend`
-  width: 150px;
+  width: 115px;
 `;
-
 
 export const Load = styled.div`
   width: 100px;
