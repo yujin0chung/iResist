@@ -20,6 +20,7 @@ class Protest extends React.Component {
 
     this.handleProtestClick = this.handleProtestClick.bind(this);
     this.fetchWeather = this.fetchWeather.bind(this);
+    this.testfunction = this.testfunction.bind(this);
   }
 
   handleProtestClick() {
@@ -34,20 +35,33 @@ class Protest extends React.Component {
   }
 
   fetchWeather(latitude, longitude) {
-    $.ajax({
-      type: "GET",
-      dataType: "json",
-      url: `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}`,
-      data: { appid: "6bf0bd6fff2f38ae4f3f66c7f55c2b7a" },
-      success: (weather) => {
-        this.setState({
-          currentTempF: Math.round(weather.main.temp * (9/5) - 459.67),
-          currentTempC: Math.round(weather.main.temp - 273.15),
-          currentWeatherDescription: weather.weather[0].main
-        })
-      }
-    });
+    setInterval(
+      function () {
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}`,
+        data: { appid: "a9fd24a0eca2feb059652443891fb8b7" },
+        success: (weather) => {
+          this.setState({
+            currentTempF: Math.round(weather.main.temp * (9/5) - 459.67),
+            currentTempC: Math.round(weather.main.temp - 273.15),
+            currentWeatherDescription: weather.weather[0].main
+          })
+        }
+        });
+      }, 180000
+    );
   }
+  
+  testfunction() {		
+    setInterval(		
+      function test() {		
+         console.log('i have been invoked!')		
+         return test;
+      }(), 4000);		
+ }		
+
 
   render() {
     const localOffsetToEvent = parseInt(new Date().toString().split('-')[1]) * 36000 + Number(this.props.protest.tzOffset);
@@ -65,7 +79,6 @@ class Protest extends React.Component {
       return (
         <ToggledProtest>
           <Name onClick={this.handleProtestClick}>{this.props.protest.name}</Name>
-          {this.fetchWeather(latitude, longitude)}
           <Info>
             <p><b>Cause:</b> {this.props.protest.cause}</p>
             <p><b>Start:</b> {dateFormat(startTime, 'mmmm dd, yyyy: h:MM TT')}</p>

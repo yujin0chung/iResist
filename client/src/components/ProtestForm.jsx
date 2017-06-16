@@ -171,7 +171,7 @@ class ProtestForm extends React.Component {
               type="text"
               value={this.state.address}
               placeholder="Include a place or address"
-              onChange={e => this.setState({ address: e.target.value })}
+              onChange={e => { this.setState({ address: e.target.value }); } }
             />
             <br />
             <input
