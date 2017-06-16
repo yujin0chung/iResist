@@ -232,6 +232,11 @@ export const Submit = Search.extend`
   width: 115px;
 `;
 
+export const CancelEvent = Submit.extend`
+  background-color: tomato;
+  color: white;
+`;
+
 export const Load = styled.div`
   width: 100px;
   display: block;

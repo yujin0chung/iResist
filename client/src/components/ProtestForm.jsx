@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 // import { HomeIcon, Form, InputInfo, Input, Text, Label, Search } from "./StyledComponents.jsx";
-import { HomeIcon, Form, FormWrapper, Input, Label, Text, Search, Submit, SearchIcon } from "./StyledComponents.jsx";
+import { HomeIcon, Form, FormWrapper, Input, Label, Text, Search, Submit, SearchIcon, CancelEvent } from "./StyledComponents.jsx";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import axios from "axios";
 import _ from "lodash";
@@ -230,11 +230,12 @@ class ProtestForm extends React.Component {
               value="Cancel"
               onClick={() => this.props.changeView("DASHBOARD")}
             />
-          </div>
+  
           {this.state.isEditing ?
-            <input type="button" value="CANCEL EVENT" onClick={() => { this.props.deleteEvent(this.state.eventId); this.props.changeView('DASHBOARD'); }} /> :
+            <CancelEvent type="button" value="Cancel Event" onClick={() => { this.props.deleteEvent(this.state.eventId); this.props.changeView('DASHBOARD'); }} /> :
             <div></div>
           }
+          </div>
         </Form>
       </FormWrapper>
     );
