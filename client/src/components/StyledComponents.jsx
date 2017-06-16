@@ -31,7 +31,7 @@ export const Button = styled.div`
   width: 80vw;
 	border: 1px solid tomato;
 	border-radius: 3px;
-  line-height: 25px;
+  line-height: 22px;
 `;
 
 export const EditButton = Button.extend`
@@ -417,4 +417,10 @@ export const DayOfInfoCategory = styled.div`
   font-family: 'Amiko', sans-serif;
   font-weight:bold;
   font-size: 16px;
+`;
+
+export const Photo = styled.img`
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
 `;

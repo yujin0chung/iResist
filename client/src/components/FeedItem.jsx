@@ -20,7 +20,6 @@ class FeedItem extends React.Component {
       this.state.element = (
         <div className="mediaContainer">
           <img
-            style={{ flex: 1,width: '75%',height: '75%', paddingBottom: '15px'}}
             className="media"
             id={this.props.itemId}
             onDoubleClick={this.rotate.bind(this)}
@@ -91,7 +90,7 @@ class FeedItem extends React.Component {
     return (
       <Item>
         <VoteHolder>
-          <VoteUp className="fa fa-caret-up fa-lg" onClick={() => this.handleVoteType(1)} />
+          <VoteUp className="fa fa-caret-up fa-lg" style={{}} onClick={() => this.handleVoteType(1)} />
           <div style={{textAlign: 'inherit',color:'#9B9B9B'}}>{this.props.credibility}</div>
           <VoteDown className="fa fa-caret-down fa-lg" onClick={() => this.handleVoteType(-1)} />
         </VoteHolder>
