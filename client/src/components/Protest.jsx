@@ -53,6 +53,15 @@ class Protest extends React.Component {
       }, 180000
     );
   }
+  
+  testfunction() {		
+    setInterval(		
+      function test() {		
+         console.log('i have been invoked!')		
+         return test;
+      }(), 4000);		
+ }		
+
 
   render() {
     const localOffsetToEvent = parseInt(new Date().toString().split('-')[1]) * 36000 + Number(this.props.protest.tzOffset);
