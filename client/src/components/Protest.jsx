@@ -37,7 +37,6 @@ class Protest extends React.Component {
   fetchWeather(latitude, longitude) {
     setInterval(
       function () {
-      console.log('the weather has been fetched')
       $.ajax({
         type: "GET",
         dataType: "json",
@@ -53,15 +52,6 @@ class Protest extends React.Component {
         });
       }, 180000
     );
-  }
-
-
-  testfunction() {
-    setInterval(
-      function test() {
-        console.log('i have been invoked!')
-        return test;
-      }(), 4000);
   }
 
   render() {
