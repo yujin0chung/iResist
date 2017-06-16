@@ -241,12 +241,11 @@ export const TextInput = styled.input`
 export const DayOfTitle = styled.div`
   display:flex;
   justify-content:center;
-  margin-bottom:1vh;
+  margin-bottom:20px;
   margin-top: 20px;
   font-size:6vh;
   height: 7vh;
   top:0px;
-  margin: 1vh;
 `;
 
 export const DayOfContentWrapper = styled.div`
@@ -297,6 +296,12 @@ export const FeedWrapper = styled.div`
   padding-bottom: 70px;
 `;
 
+export const TwitterWrapper = styled.div`
+  display: block;
+  margin-left: 15px;
+  margin-right: 15px;
+`
+
 
 export const Item = styled.div`
   display: flex;
@@ -311,6 +316,10 @@ export const Item = styled.div`
     border-bottom: none;
   }
 `;
+
+export const Twit = Item.extend`
+  margin-bottom: 10px;
+`
 
 export const VoteImage = styled.img`
   width: 100%;

@@ -1,5 +1,6 @@
 import React from 'react';
 import TwitterFeed from './TwitterFeed.jsx';
+import { Twit, ItemUserName, Tweeter } from './StyledComponents.jsx';
 
 class Tweet extends React.Component {
   constructor(props){
@@ -8,14 +9,14 @@ class Tweet extends React.Component {
 
   render() {
     return (
-      <div>
-      <span> <strong>{this.props.username}</strong>
-      <br/>
-      {this.props.tweet}
-      <br/>
-      at {this.props.time} </span>
-      <br/><br/>
-      </div>
+      <Twit>
+        <span> <strong>{this.props.username}</strong>
+        <br/>
+        {this.props.tweet}
+        <br/>
+        at {this.props.time} </span>
+        <br/><br/>
+      </Twit>
     )
   }
 

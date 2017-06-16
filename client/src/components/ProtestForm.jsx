@@ -201,7 +201,7 @@ class ProtestForm extends React.Component {
               onChange={e => this.setState({ date: e.target.value })}
             />
             {' '}
-            <input
+            <Input
               type="time"
               value={this.state.timeStart}
               onChange={e => this.setState({ timeStart: e.target.value })}
