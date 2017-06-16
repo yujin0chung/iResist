@@ -188,7 +188,7 @@ export const SearchIcon = styled.i`
   padding-top: 12px;
   padding-right: 8px;
 
-`
+`;
 
 export const Label = styled.label`
   border: 0.2px solid #eee;
@@ -197,7 +197,7 @@ export const Label = styled.label`
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   font-weight: normal;
-`
+`;
 
 export const Text = styled.textarea`
  font-size: 14px;
@@ -296,7 +296,8 @@ export const PinContent = styled.div`
 `;
 
 export const ItemUserName = styled.div`
-  color: #4A4A4A
+  color: #4A4A4A;
+  font-weight: 600;
 `;
 
 export const TimeStamp = styled.div`
@@ -322,6 +323,8 @@ export const TwitterWrapper = styled.div`
 
 
 export const Item = styled.div`
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12.5px;
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -336,8 +339,17 @@ export const Item = styled.div`
 `;
 
 export const Twit = Item.extend`
-  margin-bottom: 10px;
+  font-size: 12.5px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+`;
+
+export const TwitDate = styled.div`
+  color: #bdb6b6;
 `
+
+
 
 export const VoteImage = styled.img`
   width: 100%;
@@ -408,8 +420,8 @@ export const Tab = styled.div`
 
 export const ErrorMsg = styled.div`
   color: red;
-  font-size: 80%
-  }
+  font-size: 80%;
+  margin-bottom: 5px;
 `;
 
 export const PinTextInput = styled.textarea`
