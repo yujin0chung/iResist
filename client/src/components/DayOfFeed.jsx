@@ -20,13 +20,11 @@ class DayOfFeed extends React.Component {
       pageNumber: 1,
       feedItemCount: 0,
       posts: [],
-      wantMoreItems: false,
-      currentView: 'FEED'
+      wantMoreItems: false
     };
     this.handlePost = this.handlePost.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCredChange = this.handleCredChange.bind(this);
-    this.twitterFeed = this.twitterFeed.bind(this);
   }
 
   componentDidMount() {
@@ -93,12 +91,6 @@ class DayOfFeed extends React.Component {
     this.props.client.emit('voteFeedItem', feedItemVote);
   }
 
-  twitterFeed () {
-    this.setState({
-      currentView: 'TWITTER'
-    });
-  }
-
   render() {
     const feedItems = this.props.feeds.feedItems;
     return (
@@ -106,7 +98,6 @@ class DayOfFeed extends React.Component {
       <DayOfContentWrapper>
         <DayOfTitle><Textfit>{this.props.event.name}</Textfit></DayOfTitle>
         <FeedWrapper>
-        {this.state.currentView === 'FEED' ?
           <div>
 
             <div style={{display: 'flex', flexDirection: 'row'}}>
@@ -121,7 +112,6 @@ class DayOfFeed extends React.Component {
             <UploadMedia {...this.props}/>
             </div>
 
-          <button onClick={this.twitterFeed}>Twitter Feed</button>
           {
             this.state.posts.map(item =>
               <FeedItem
@@ -148,14 +138,6 @@ class DayOfFeed extends React.Component {
             <Load onClick={() => this.handleLoadItems(this.state.pageNumber++)}>Load More Posts</Load>
           }
         </div>
-        :
-        <div></div>
-        }
-
-        {this.state.currentView === 'TWITTER' ?
-          <TwitterFeed {...this.props} client={this.client} /> :
-          <div></div>
-        }
         </FeedWrapper>
       </DayOfContentWrapper>
       </div>
