@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { fetchData } from './fetchDataActions';
+import { changeView } from './navActions';
 
 export const getEventSuccess = event => {
   return {
@@ -62,11 +63,12 @@ export const createEventError = error => {
   };
 };
 
-export const postEvent = event => dispatch => {
+export const postEvent = (event, userId) => dispatch => {
+  dispatch(changeView('SPINNER'));
   axios
     .post('/api/events/create', event)
     .then(response => {
-      dispatch(createEvent(response.data));
+      dispatch(fetchData(userId, 'DASHBOARD'));
     })
     .catch(error => {
       dispatch(createEventError(error));
@@ -145,11 +147,12 @@ export const updateEventError = error => {
   };
 };
 
-export const updateEvent = updatedEvent => dispatch => {
+export const updateEvent = (updatedEvent, userId) => dispatch => {
+  dispatch(changeView('SPINNER'));
   axios
     .post('/api/events/update', updatedEvent)
     .then(response => {
-      dispatch(updateEventSuccess(response.data));
+      dispatch(fetchData(userId, 'DASHBOARD'));
     })
     .catch(error => {
       dispatch(updateEventError(error));
