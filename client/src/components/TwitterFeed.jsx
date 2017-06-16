@@ -51,7 +51,7 @@ class TwitterFeed extends React.Component {
     return (
       <div>
         <h3> Most Recent Tweets </h3>
-        <button onClick={this.getTweets}>Get Updated Tweets!</button>
+        <button onClick={this.getTweets}>Refresh Feed</button>
 
         {
           this.state.tweets.map(tweets =>
