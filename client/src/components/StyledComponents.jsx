@@ -64,14 +64,30 @@ export const Status = styled.span`
 
 export const Title = styled.div`
   font-family: 'Open Sans', sans-serif;
+  size: 21x;
+  padding: 10px;
+  border-bottom: solid #eee 0.4px;
+`;
+
+export const List = styled.div`
+  font-family: 'Open Sans', sans-serif;
   size: 15px;
   padding: 10px;
   border-bottom: solid #eee 0.4px;
 `;
 
 
+export const StatusTitle = styled.div`
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 9px;
+  margin-bottom: 5px;
+  margin-top: 20px;
+`
+
 export const PageTitle = styled.div`
-  font-family: 'Cousine', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 25px;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -79,10 +95,12 @@ export const PageTitle = styled.div`
 
 export const Header = styled.div`
   padding-top: 35px;
-  font-family: 'Cousine', monospace;
+  font-family: 'Permanent Marker', cursive;
   font-size: 40px;
   padding-left: 8px;
   padding-bottom: 15px;
+  margin-bottom: 20px;
+
 `;
 
 export const Name = styled.div`
@@ -134,7 +152,7 @@ export const ToggledProtest = styled.div`
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 90vw;
+  width: 80vw;
 `;
 
 export const Wrapper = styled.div`
@@ -332,7 +350,10 @@ export const TwitterWrapper = styled.div`
   margin-right: 15px;
   padding-bottom: 70px;
 `
-
+export const Bird = styled.i`
+  color: tomato;
+  margin-right: 5px;
+`;
 
 export const Item = styled.div`
   font-family: 'Open Sans', sans-serif;

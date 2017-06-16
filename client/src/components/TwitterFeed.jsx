@@ -51,7 +51,7 @@ class TwitterFeed extends React.Component {
     return (
       <DayOfContentWrapper>
         <TwitterWrapper>
-          <DayOfTitle><Textfit>Tweets About Protest</Textfit> </DayOfTitle>
+          <DayOfTitle><Textfit>Recent Tweets</Textfit> </DayOfTitle>
           <Load onClick={this.getTweets}>Refresh Feed</Load>
 
           {
