@@ -1,10 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 // import { HomeIcon, Form, InputInfo, Input, Text, Label, Search } from "./StyledComponents.jsx";
-import { HomeIcon, Form } from "./StyledComponents.jsx";
-import { Map, Marker, Popup, TileLayer } from "react-leaflet";
-import axios from "axios";
-import _ from "lodash";
+import { HomeIcon, Form } from './StyledComponents.jsx';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import axios from 'axios';
+import _ from 'lodash';
 import moment from 'moment';
 import momentTimezone from 'moment-timezone';
 import tzlookup from 'tz-lookup';
@@ -15,20 +15,20 @@ class ProtestForm extends React.Component {
     super(props);
 
     this.state = {
-      eventId: this.props.views.optionalEventId || "",
-      name: "",
+      eventId: this.props.views.optionalEventId || '',
+      name: '',
       userId: this.props.user.userId,
-      description: "",
-      cause: "",
-      address: "",
-      date: "",
-      timeStart: "",
-      timeEnd: "",
+      description: '',
+      cause: '',
+      address: '',
+      date: '',
+      timeStart: '',
+      timeEnd: '',
       lat: 0,
       long: 0,
       protests: [],
       zoom: 1,
-      timezone: "",
+      timezone: '',
       isEditing: this.props.views.optionalEventId ? true : false
     };
 
@@ -49,7 +49,7 @@ class ProtestForm extends React.Component {
       return event.id === this.props.views.optionalEventId;
     });
     let wholeDate = JSON.stringify(new Date(Number(event.time)));
-    let day = wholeDate.split("").slice(1, 11).join("");
+    let day = wholeDate.split('').slice(1, 11).join('');
     this.setState({
       name: event.name,
       description: event.description,
@@ -62,14 +62,13 @@ class ProtestForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.state.isEditing
-      ? this.props.updateEvent(this.state)
-      : this.props.postEvent(this.state);
-    this.props.changeView("DASHBOARD");
+      ? this.props.updateEvent(this.state, this.props.user.userId)
+      : this.props.postEvent(this.state, this.props.user.userId);
   }
 
   handleLocSearch() {
     axios
-      .get("/api/geocoder", {
+      .get('/api/geocoder', {
         params: {
           address: this.state.address
         }
@@ -83,18 +82,18 @@ class ProtestForm extends React.Component {
         });
       })
       .catch(error => {
-        console.log("ERROR: ", error);
+        console.log('ERROR: ', error);
       });
   }
 
   validTime(startTimeString, endTimeString) {
-    var startTime = Number(startTimeString.split(":").join(""));
-    var endTime = Number(endTimeString.split(":").join(""));
+    var startTime = Number(startTimeString.split(':').join(''));
+    var endTime = Number(endTimeString.split(':').join(''));
     var timezone1 = tzlookup(this.state.lat, this.state.long);
     var timestamp1 = Date.now();
     var validDate1 = moment.tz(timestamp1, timezone1).format().slice(0, 10);
     var today = validDate1 === this.state.date;
-    var currentTime = moment.tz(timestamp1, timezone1).format().slice(11, 16).split(":").slice(0, 2).join("");
+    var currentTime = moment.tz(timestamp1, timezone1).format().slice(11, 16).split(':').slice(0, 2).join('');
     if (today && currentTime > startTime) {
       return false;
     }
@@ -124,7 +123,7 @@ class ProtestForm extends React.Component {
       <div>
         <HomeIcon
           className="fa fa-home fa-lg"
-          onClick={() => this.props.changeView("DASHBOARD")}
+          onClick={() => this.props.changeView('DASHBOARD')}
         />
         <Form>
           <legend>Revolution Starts Here</legend>
@@ -138,7 +137,7 @@ class ProtestForm extends React.Component {
               onChange={e => this.setState({ name: e.target.value })}
             />
           </label>
-          {" "}
+          {' '}
           <br />
           <label>
             Cause
@@ -150,7 +149,7 @@ class ProtestForm extends React.Component {
               onChange={e => this.setState({ cause: e.target.value })}
             />
           </label>
-          {" "}
+          {' '}
           <br />
           <label>
             Description
@@ -163,7 +162,7 @@ class ProtestForm extends React.Component {
               cols="30"
             />
           </label>
-          {" "}
+          {' '}
           <br />
           <label>
             Location
@@ -181,7 +180,7 @@ class ProtestForm extends React.Component {
               onClick={this.handleLocSearch}
             />
           </label>
-          {" "}
+          {' '}
           <br />
           <Map
             className="add-protest-map"
@@ -206,7 +205,7 @@ class ProtestForm extends React.Component {
               min={validDate}
               onChange={e => this.setState({ date: e.target.value })}
             />
-            {" "}
+            {' '}
             <input
               type="time"
               value={this.state.timeStart}
@@ -218,9 +217,9 @@ class ProtestForm extends React.Component {
               onChange={e => this.setState({ timeEnd: e.target.value })}
             />
           </label>
-          {" "}
+          {' '}
           <br />
-          {" "}
+          {' '}
           <br />
           <InputButton
             type="submit"
@@ -231,10 +230,10 @@ class ProtestForm extends React.Component {
         <InputButton
             type="button"
             value="Cancel"
-            onClick={() => this.props.changeView("DASHBOARD")}
+            onClick={() => this.props.changeView('DASHBOARD')}
           />
           {this.state.isEditing ?
-            <input type="button" value="CANCEL EVENT" onClick={() => {this.props.deleteEvent(this.state.eventId); this.props.changeView('DASHBOARD')}} /> :
+            <input type="button" value="CANCEL EVENT" onClick={() => { this.props.deleteEvent(this.state.eventId); this.props.changeView('DASHBOARD'); }} /> :
             <div></div>
           }
         </Form>
@@ -245,11 +244,11 @@ class ProtestForm extends React.Component {
 
 const Input = styled.input`
   width: 150%;
-`
+`;
 
 const InputButton = styled.input`
   margin: 0 auto;
-`
+`;
 
 
 export default ProtestForm;
