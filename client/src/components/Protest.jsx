@@ -84,12 +84,12 @@ class Protest extends React.Component {
             <T><InfoTag>Cause</InfoTag> <p>{this.props.protest.cause}</p></T>
         
             <div style={{display: 'flex'}}>
-              <T><InfoTag>Start</InfoTag> <p>{dateFormat(startTime, 'mmmm dd, yyyy: h:MM TT')}</p></T>
-              <T style={{marginLeft: '30px'}}><InfoTag>End</InfoTag> <p>{dateFormat(endTime, 'mmmm dd, yyyy: h:MM TT')}</p></T>
+              <T><InfoTag>Time</InfoTag> <p>{dateFormat(startTime, 'mmmm dd, yyyy: h:MM TT')} to {dateFormat(endTime, 'h:MM TT')}</p></T>
             </div>
             <T><InfoTag>Address</InfoTag> <p>{this.props.protest.address}</p></T>
             <T><InfoTag>Current Weather</InfoTag> <p>{this.state.currentTempF + "ºF / " + this.state.currentTempC + "ºC " + this.state.currentWeatherDescription}</p></T>
-            <T><InfoTag>Participating</InfoTag> <p>{this.props.protest.attendee_count}</p></T>
+            <T><InfoTag>RSVP'D</InfoTag> <p>{this.props.protest.attendee_count}</p></T>
+            <T><InfoTag>Description</InfoTag> <p>{this.props.protest.description}</p></T>
           </Info>
           <MapContainer {...this.props} mapType='dashboardMap' />
           <EventButton {...this.props} leader={leader} userId={userId} protestId={this.props.protest.id} />

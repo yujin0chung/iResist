@@ -22,7 +22,7 @@ const DayOfInfo = (props) => {
             <div>{moment(Number(props.event.time)).format('MMMM DD, YYYY h:mm a')} - {moment(Number(props.event.time) + Number(props.event.duration)).format('h:mm a')}</div>
         </Group>
         <Group>
-          <DayOfInfoCategory>Participating</DayOfInfoCategory>
+          <DayOfInfoCategory>RSVP'D</DayOfInfoCategory>
             <div>{props.event.attendee_count}</div>
         </Group>
         <Group>
