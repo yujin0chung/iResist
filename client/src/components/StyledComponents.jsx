@@ -242,6 +242,7 @@ export const DayOfTitle = styled.div`
   display:flex;
   justify-content:center;
   margin-bottom:1vh;
+  margin-top: 20px;
   font-size:6vh;
   height: 7vh;
   top:0px;
@@ -252,7 +253,6 @@ export const DayOfContentWrapper = styled.div`
   height: 82vh;
   width: 100vw;
   margin: auto;
-  margin-top: 20px;
 `;
 
 export const Group = styled.div`

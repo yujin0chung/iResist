@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Tweet from './Tweet.jsx';
-import { Textfit } from 'react-textfit';
+import { Textfit, DayOfContentWrapper } from 'react-textfit';
 
 class TwitterFeed extends React.Component {
   constructor(props) {
