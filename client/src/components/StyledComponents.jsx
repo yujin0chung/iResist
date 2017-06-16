@@ -443,6 +443,7 @@ export const DayOfProtestInfo = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 80vw;
+  margin-top: 30px;
 `;
 
 export const DayOfInfoCategory = styled.div`
