@@ -175,11 +175,20 @@ export const Input = styled.input`
   padding-left: 10px;
   margin-bottom: 15px;
   margin-top: 7px;
-  margin-right: 10px;
   border: 0.2px solid #eee;
   padding: 7px;
-  border-radius: 4px;
+  border-radius: 2.5px;
 `;
+
+export const SearchIcon = styled.i`
+  height: 40px;
+  border: 0.2px solid #eee;
+  border-radius: 2.5px;
+  border-left: none;
+  padding-top: 12px;
+  padding-right: 8px;
+
+`
 
 export const Label = styled.label`
   border: 0.2px solid #eee;

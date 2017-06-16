@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { HomeIcon, Form, FormWrapper, Input, Label, Text, Search, Submit } from "./StyledComponents.jsx";
+// import { HomeIcon, Form, InputInfo, Input, Text, Label, Search } from "./StyledComponents.jsx";
+import { HomeIcon, Form, FormWrapper, Input, Label, Text, Search, Submit, SearchIcon } from "./StyledComponents.jsx";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import axios from "axios";
 import _ from "lodash";
@@ -165,13 +166,13 @@ class ProtestForm extends React.Component {
 
             <div style={{display: 'flex', flexDirection: 'row', alignItems: 'baseline'}}>
               <Input
+                style={{borderRight: 'none'}}
                 type="text"
                 value={this.state.address}
                 placeholder="Include a place or address"
                 onChange={e => this.setState({ address: e.target.value })}
               />
-              <br />
-              <i className="fa fa-search" onClick={this.handleLocSearch}></i>
+              <SearchIcon className="fa fa-search" onClick={this.handleLocSearch}></SearchIcon>
             </div>
 
           </label>
