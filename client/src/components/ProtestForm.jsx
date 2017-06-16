@@ -8,6 +8,7 @@ import _ from "lodash";
 import moment from 'moment';
 import momentTimezone from 'moment-timezone';
 import tzlookup from 'tz-lookup';
+import styled from 'styled-components';
 
 class ProtestForm extends React.Component {
   constructor(props) {
@@ -108,7 +109,6 @@ class ProtestForm extends React.Component {
     var timezone = tzlookup(this.state.lat, this.state.long);
     var timestamp = Date.now();
     var validDate = moment.tz(timestamp, timezone).format().slice(0, 10);
-    console.log(moment.tz(timestamp, timezone).format());
 
     const formValid =
       name.length > 0 &&
@@ -129,50 +129,55 @@ class ProtestForm extends React.Component {
         <Form>
           <legend>Create a protest</legend>
           <label>
-            Protest Name:
+            Name
             <br />
-            <input
+            <Input
               type="text"
               value={this.state.name}
-              placeholder="Required"
+              placeholder="ex: Snazzy Protest Name"
               onChange={e => this.setState({ name: e.target.value })}
             />
           </label>
           {" "}
           <br />
           <label>
-            Cause:
+            Cause
             <br />
-            <input
+            <Input
               type="text"
               value={this.state.cause}
+              placeholder="ex: Black Lives Matter, Red Cross"
               onChange={e => this.setState({ cause: e.target.value })}
             />
           </label>
           {" "}
           <br />
           <label>
-            Description:
+            Description
             <br />
-            <textarea
+            <Textarea
               value={this.state.description}
+              placeholder="Tell the masses what's up!"
               onChange={e => this.setState({ description: e.target.value })}
+              rows="4"
+              cols="30"
             />
           </label>
           {" "}
           <br />
           <label>
-            Location:
+            Location
             <br />
-            <input
+            <Input
               type="text"
               value={this.state.address}
-              placeholder="Include an address"
+              placeholder="Include a place or address"
               onChange={e => this.setState({ address: e.target.value })}
             />
+            <br />
             <input
               type="button"
-              value="Find location on map"
+              value="Find location"
               onClick={this.handleLocSearch}
             />
           </label>
@@ -191,8 +196,9 @@ class ProtestForm extends React.Component {
               <Marker key={`marker-${i}`} position={position} />
             )}
           </Map>
+          <br />
           <label>
-            Date:
+            Date / Time
             <br />
             <input
               type="date"
@@ -200,12 +206,7 @@ class ProtestForm extends React.Component {
               min={validDate}
               onChange={e => this.setState({ date: e.target.value })}
             />
-          </label>
-          {" "}
-          <br />
-          <label>
-            Time Range:
-            <br />
+            {" "}
             <input
               type="time"
               value={this.state.timeStart}
@@ -217,6 +218,8 @@ class ProtestForm extends React.Component {
               onChange={e => this.setState({ timeEnd: e.target.value })}
             />
           </label>
+          {" "}
+          <br />
           {" "}
           <br />
           <input
@@ -240,8 +243,9 @@ class ProtestForm extends React.Component {
   }
 }
 
-// const Form = styled.form`
-// `
+const Input = styled.input`
+  width: 150%;
+`
 
 
 export default ProtestForm;
