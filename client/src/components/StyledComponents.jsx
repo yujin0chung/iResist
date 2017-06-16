@@ -22,10 +22,8 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.div`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   color: tomato;
+  font-family: 'Open Sans', sans-serif;
 	font-size: 1em;
   text-align: center;
 	margin-bottom: 17px;
@@ -37,6 +35,7 @@ export const Button = styled.div`
 `;
 
 export const EditButton = Button.extend`
+  display: block;
   color: #ada3a3;
   border-color: #ada3a3;
   margin-top: 20px;
@@ -84,13 +83,23 @@ export const Header = styled.div`
 `;
 
 export const Name = styled.div`
-  font-family: Open Sans;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
   padding-top: 15px;
   padding-bottom: 10px;
   margin-left: 4.5px;
   margin-top: 15px;
+  margin-bottom: 10px;
 `;
 
+export const T = styled.div`
+  line-height: 6px;
+  margin-bottom: 8px;
+`
+export const InfoTag = styled.p`
+ font-family: 'Open Sans', sans-serif;
+ font-weight: 600;
+`
 export const Info = styled.p`
   display: flex;
   flex-direction: column;
@@ -243,7 +252,14 @@ export const DayOfContentWrapper = styled.div`
   height: 82vh;
   width: 100vw;
   margin: auto;
+  margin-top: 20px;
 `;
+
+export const Group = styled.div`
+  font-family: 'Open Sans', sans-serif;
+  line-height: 20px;
+  margin-bottom: 20px;
+`
 
 export const CredCount = styled.div`
   text-align: center;
@@ -382,13 +398,14 @@ export const PinSubmit = styled.input`
 `;
 
 export const DayOfProtestInfo = styled.div`
-  margin: 0 20px;
-  padding: 0 0 70px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
 `;
 
 export const DayOfInfoCategory = styled.div`
   font-family: 'Amiko', sans-serif;
   font-weight:bold;
   font-size: 16px;
-  text-decoration: underline;
 `;
