@@ -3,6 +3,7 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import l from 'leaflet';
 
 const MapContainer = (props) => {
+  console.log('MAP CONTAINER PROP TYPE', props.mapType)
   const mapId = props.protest.mapId;
   const position = [props.maps.allMaps[mapId].lat, props.maps.allMaps[mapId].long];
   const map = (

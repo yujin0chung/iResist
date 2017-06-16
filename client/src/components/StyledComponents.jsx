@@ -14,29 +14,46 @@ export const HomeIcon = styled.i`
   aria-hidden: true;
 `;
 
+export const ButtonContainer = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 35px;
+`;
+
 export const Button = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   color: tomato;
 	font-size: 1em;
   text-align: center;
-	margin: 1em;
-	padding: 0.25em 1em;
-	border: 2px solid tomato;
+	margin-bottom: 17px;
+	padding: 8px 10px;
+  width: 80vw;
+	border: 1px solid tomato;
 	border-radius: 3px;
-`;
-
-export const AttendButton = Button.extend`
-  color: limegreen;
-  border-color: limegreen;
-`;
-
-export const AbandonButton = Button.extend`
-  color: tomato;
-  border-color: tomato;
+  line-height: 25px;
 `;
 
 export const EditButton = Button.extend`
-  color: grey;
-  border-color: grey;
+  color: #ada3a3;
+  border-color: #ada3a3;
+  margin-top: 20px;
+`;
+
+export const AttendButton = Button.extend`
+  margin-top: 20px;
+`;
+
+export const AbandonButton = Button.extend`
+  margin-top: 20px;
+`;
+
+export const DownCaret = styled.img`
+  padding-left: 15px;
+  padding-top: 10px;
+
 `;
 
 export const Status = styled.span`
@@ -47,7 +64,7 @@ export const Status = styled.span`
 
 export const Title = styled.div`
   size: 15px;
-  border-bottom: solid lightgrey 0.2px;
+  border-bottom: solid #eee 0.4px;
   padding: 10px;
 `;
 
@@ -59,6 +76,7 @@ export const PageTitle = styled.div`
 `;
 
 export const Header = styled.div`
+  padding-top: 27px;
   font-family: 'Cousine', monospace;
   font-size: 40px;
   padding-left: 8px;
@@ -69,11 +87,17 @@ export const Name = styled.div`
   font-family: Open Sans;
   padding-top: 15px;
   padding-bottom: 10px;
+  margin-left: 21px;
+  margin-top: 15px;
 `;
 
 export const Info = styled.p`
   display: flex;
-  flex-direction: column;ss
+  flex-direction: column;
+  line-height: 90%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  margin-left: 21px;
 `;
 
 export const Icon = styled.img`
@@ -88,8 +112,11 @@ export const Rotate = styled.div`
 `;
 
 
-export const ProtestInfo = styled.div`
-
+export const ToggledProtest = styled.div`
+  display: block;
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 90vw;
 `;
 
 export const Wrapper = styled.div`
@@ -228,6 +255,13 @@ export const FeedWrapper = styled.div`
   padding-bottom: 70px;
 `;
 
+export const DashboardWrapper = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95vw;
+`;
+
 export const Item = styled.div`
   display: flex;
   flex-direction: row;
@@ -237,6 +271,9 @@ export const Item = styled.div`
   border-right: none;
   border-left: none;
   border-top: none;
+  > :last-child {
+    border-bottom: none;
+  }
 `;
 
 export const VoteImage = styled.img`

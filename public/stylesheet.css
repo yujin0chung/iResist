@@ -4,10 +4,6 @@ html, body {
   height: 100%;
 }
 
-.dashboardMap {
-  height: 500px;
-}
-
 .add-protest-map {
   height: 300px;
   width: 400px;
@@ -49,4 +45,14 @@ img.media {
 a {
   background-color: none;
 
+}
+
+.dashboardMap {
+  position: relative;
+  /* width: 85vw; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
+  height: 40vh;
 }

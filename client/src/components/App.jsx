@@ -30,6 +30,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log('CURRENT VIEW FROM APP', this.props.views.currentView)
     console.log('props', this.props);
     const currentView = this.props.views.currentView;
     if (currentView === 'SPINNER') {
