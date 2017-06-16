@@ -76,7 +76,7 @@ export const PageTitle = styled.div`
 `;
 
 export const Header = styled.div`
-  padding-top: 20px;
+  padding-top: 27px;
   font-family: 'Cousine', monospace;
   font-size: 40px;
   padding-left: 8px;
@@ -87,6 +87,8 @@ export const Name = styled.div`
   font-family: Open Sans;
   padding-top: 15px;
   padding-bottom: 10px;
+  margin-left: 21px;
+  margin-top: 15px;
 `;
 
 export const Info = styled.p`
@@ -95,6 +97,7 @@ export const Info = styled.p`
   line-height: 90%;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
+  margin-left: 21px;
 `;
 
 export const Icon = styled.img`
@@ -111,8 +114,8 @@ export const Rotate = styled.div`
 
 export const ToggledProtest = styled.div`
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 15px;
+  margin-right: 15px;
   width: 90vw;
 `;
 

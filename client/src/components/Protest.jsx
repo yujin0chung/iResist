@@ -68,11 +68,11 @@ class Protest extends React.Component {
           {this.fetchWeather(latitude, longitude)}
           <Info>
             <p><b>Cause</b>{this.props.protest.cause}</p>
+            <p><b>Participating</b> {this.props.protest.attendee_count}</p>
             <p><b>Start</b> {dateFormat(startTime, 'mmmm dd, yyyy: h:MM TT')}</p>
             <p><b>End</b> {dateFormat(endTime, 'mmmm dd, yyyy: h:MM TT')}</p>
             <p><b>Address</b> {this.props.protest.address}</p>
             <p><b>Description</b> {this.props.protest.description}</p>
-            <p><b>Participating</b> {this.props.protest.attendee_count}</p>
             <p><b>Current Weather</b> {this.state.currentTemp + "ºF , " + this.state.currentWeatherDescription}</p>
           </Info>
           <MapContainer {...this.props} mapType='dashboardMap' />
