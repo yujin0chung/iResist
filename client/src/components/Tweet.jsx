@@ -10,7 +10,7 @@ class Tweet extends React.Component {
   render() {
     return (
       <Twit>
-        <span> <strong>{this.props.username}</strong>
+        <span style={{marginBottom: '10px'}}> <strong>{this.props.username}</strong>
         <br/>
         {this.props.tweet}
         <br/>

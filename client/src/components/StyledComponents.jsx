@@ -61,11 +61,14 @@ export const Status = styled.span`
   padding-left: 5px;
 `;
 
+
 export const Title = styled.div`
+  font-family: 'Open Sans', sans-serif;
   size: 15px;
-  border-bottom: solid #eee 0.4px;
   padding: 10px;
+  border-bottom: solid #eee 0.4px;
 `;
+
 
 export const PageTitle = styled.div`
   font-family: 'Cousine', monospace;
@@ -235,10 +238,16 @@ export const TextInput = styled.input`
   background-color:#F7F7F7;
   border:none;
   padding: 10px;
-  margin-right: 10px;
 
 `;
+
+export const cameraIcon = styled.div`
+  height: 40px;
+  background-color:#F7F7F7;
+  border: none;
+`
 export const DayOfTitle = styled.div`
+  font-family: 'Open Sans', sans-serif;
   display:flex;
   justify-content:center;
   margin-bottom:20px;
@@ -348,7 +357,8 @@ export const VoteDown = styled.i`
   width: 30%;
 `;
 
-export const PinVoteUp = styled.i`
+export const 
+PinVoteUp = styled.i`
   color: hsla(120, 90%, 42%, 0.93);
   size: 100%;
 `;
@@ -407,6 +417,7 @@ export const PinSubmit = styled.input`
 `;
 
 export const DayOfProtestInfo = styled.div`
+  font-family: 'Open Sans', sans-serif;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -414,8 +425,8 @@ export const DayOfProtestInfo = styled.div`
 `;
 
 export const DayOfInfoCategory = styled.div`
-  font-family: 'Amiko', sans-serif;
-  font-weight:bold;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
   font-size: 16px;
 `;
 
