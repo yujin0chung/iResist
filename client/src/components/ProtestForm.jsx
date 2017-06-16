@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { HomeIcon, Form, InputInfo, Input, Text, Label, Search } from "./StyledComponents.jsx";
+// import { HomeIcon, Form, InputInfo, Input, Text, Label, Search } from "./StyledComponents.jsx";
+import { HomeIcon, Form } from "./StyledComponents.jsx";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import axios from "axios";
 import _ from "lodash";
 import moment from 'moment';
 import momentTimezone from 'moment-timezone';
 import tzlookup from 'tz-lookup';
-import $ from "jquery";
 
 class ProtestForm extends React.Component {
   constructor(props) {
@@ -94,7 +94,6 @@ class ProtestForm extends React.Component {
     var validDate1 = moment.tz(timestamp1, timezone1).format().slice(0, 10);
     var today = validDate1 === this.state.date;
     var currentTime = moment.tz(timestamp1, timezone1).format().slice(11, 16).split(":").slice(0, 2).join("");
-    // console.log('this is the current time: ', currentTime);
     if (today && currentTime > startTime) {
       return false;
     }
@@ -128,8 +127,10 @@ class ProtestForm extends React.Component {
           onClick={() => this.props.changeView("DASHBOARD")}
         />
         <Form>
+          <legend>Create a protest</legend>
           <label>
             Protest Name:
+            <br />
             <input
               type="text"
               value={this.state.name}
@@ -141,6 +142,7 @@ class ProtestForm extends React.Component {
           <br />
           <label>
             Cause:
+            <br />
             <input
               type="text"
               value={this.state.cause}
@@ -151,6 +153,7 @@ class ProtestForm extends React.Component {
           <br />
           <label>
             Description:
+            <br />
             <textarea
               value={this.state.description}
               onChange={e => this.setState({ description: e.target.value })}
@@ -159,7 +162,8 @@ class ProtestForm extends React.Component {
           {" "}
           <br />
           <label>
-            Address:
+            Location:
+            <br />
             <input
               type="text"
               value={this.state.address}
@@ -188,7 +192,8 @@ class ProtestForm extends React.Component {
             )}
           </Map>
           <label>
-            Choose a date:
+            Date:
+            <br />
             <input
               type="date"
               value={this.state.date}
@@ -199,7 +204,8 @@ class ProtestForm extends React.Component {
           {" "}
           <br />
           <label>
-            Choose the time range:
+            Time Range:
+            <br />
             <input
               type="time"
               value={this.state.timeStart}
@@ -233,5 +239,9 @@ class ProtestForm extends React.Component {
     );
   }
 }
+
+// const Form = styled.form`
+// `
+
 
 export default ProtestForm;
