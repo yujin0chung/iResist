@@ -3,7 +3,7 @@ import dateFormat from 'dateformat';
 import MapContainer from './MapContainer.jsx';
 import EventButton from './EventButton.jsx';
 import styled from 'styled-components';
-import { DayOfContentWrapper, ToggledProtest, Status, Title, Name, Info, Icon, InfoTag, T } from './StyledComponents.jsx';
+import { DayOfContentWrapper, ToggledProtest, Status, Title, Name, Info, Icon, InfoTag, T, Description } from './StyledComponents.jsx';
 import $ from "jquery";
 
 
@@ -88,8 +88,8 @@ class Protest extends React.Component {
             </div>
             <T><InfoTag>Address</InfoTag> <p>{this.props.protest.address}</p></T>
             <T><InfoTag>Current Weather</InfoTag> <p>{this.state.currentTempF + "ºF / " + this.state.currentTempC + "ºC " + this.state.currentWeatherDescription}</p></T>
-            <T><InfoTag>RSVP'D</InfoTag> <p>{this.props.protest.attendee_count}</p></T>
-            <T><InfoTag>Description</InfoTag> <p>{this.props.protest.description}</p></T>
+            <T><InfoTag>RSVP'd</InfoTag> <p>{this.props.protest.attendee_count}</p></T>
+            <T><InfoTag>Description</InfoTag> <Description>{this.props.protest.description}</Description></T>
           </Info>
           <MapContainer {...this.props} mapType='dashboardMap' />
           <EventButton {...this.props} leader={leader} userId={userId} protestId={this.props.protest.id} />

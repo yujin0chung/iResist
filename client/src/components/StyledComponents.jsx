@@ -112,6 +112,12 @@ export const Info = styled.p`
   margin-left: 4.5px;
 `;
 
+export const Description = styled.div`
+  width: 290px;
+  line-height: 16px;
+  word-wrap: break-word;
+`
+
 export const Icon = styled.img`
   width: 15px;
   float: right;
