@@ -114,8 +114,8 @@ export const Rotate = styled.div`
 
 export const ToggledProtest = styled.div`
   display: block;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
   width: 90vw;
 `;
 
@@ -125,11 +125,30 @@ export const Wrapper = styled.div`
   flex: 1;
 `;
 
+export const DashboardWrapper = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 81vw;
+`;
+
+export const FindProtestWrapper = DashboardWrapper.extend`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 81vw;
+`;
+
+export const FormWrapper = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+`
 export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 47px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
 `;
 
 export const InputInfo = styled.div`
@@ -138,30 +157,37 @@ export const InputInfo = styled.div`
 `;
 export const Input = styled.input`
   font-size: 14px;
-  height: 30px;
-  width: 300px;
+  height: 40px;
+  width: 297px;
   padding-left: 10px;
-  border-radius: 3px;
-  border: solid #dddddd 1px;
   margin-bottom: 15px;
-  margin-right: 15px;
-`;
-
-export const Text = styled.textarea`
-  font-size: 14px;
-  height: 30px;
-  width: 300px;
-  padding-left: 10px;
-  border-radius: 3px;
-  border: solid #dddddd 1px;
-  margin-bottom: 15px;
-  margin-right: 15px;
+  margin-top: 7px;
+  margin-right: 10px;
+  border: 0.2px solid #eee;
+  padding: 7px;
+  border-radius: 4px;
 `;
 
 export const Label = styled.label`
+  border: 0.2px solid #eee;
+  padding: 7px;
+  border-radius: 4px;
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   font-weight: normal;
+`
+
+export const Text = styled.textarea`
+ font-size: 14px;
+  height: 80px;
+  width: 297px;
+  padding-left: 10px;
+  margin-bottom: 15px;
+  margin-top: 7px;
+  margin-right: 15px;
+  border: 0.2px solid #eee;
+  padding: 7px;
+  border-radius: 4px;
 `;
 
 export const Search = styled.input`
@@ -255,12 +281,6 @@ export const FeedWrapper = styled.div`
   padding-bottom: 70px;
 `;
 
-export const DashboardWrapper = styled.div`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 81vw;
-`;
 
 export const Item = styled.div`
   display: flex;

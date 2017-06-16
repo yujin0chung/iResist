@@ -51,6 +51,15 @@ a {
   position: relative;
   /* width: 85vw; */
   display: block;
+  margin-left: 6px;
+  margin-right: 6px;
+  width: 80vw;
+  height: 40vh;
+}
+
+.add-protest-map {
+  position: relative;
+  display: block;
   margin-left: auto;
   margin-right: auto;
   width: 80vw;

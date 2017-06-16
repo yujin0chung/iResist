@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { HomeIcon, Form, InputInfo, Input, Text, Label, Search } from "./StyledComponents.jsx";
-import { HomeIcon, Form } from './StyledComponents.jsx';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
-import axios from 'axios';
-import _ from 'lodash';
+import { HomeIcon, Form, FormWrapper, Input, Label, Text, Search, Submit } from "./StyledComponents.jsx";
+import { Map, Marker, Popup, TileLayer } from "react-leaflet";
+import axios from "axios";
+import _ from "lodash";
 import moment from 'moment';
 import momentTimezone from 'moment-timezone';
 import tzlookup from 'tz-lookup';
@@ -120,7 +119,7 @@ class ProtestForm extends React.Component {
       long !== 0;
 
     return (
-      <div>
+      <FormWrapper>
         <HomeIcon
           className="fa fa-home fa-lg"
           onClick={() => this.props.changeView('DASHBOARD')}
@@ -154,7 +153,7 @@ class ProtestForm extends React.Component {
           <label>
             Description
             <br />
-            <textarea
+            <Text
               value={this.state.description}
               placeholder="Tell the masses what's up!"
               onChange={e => this.setState({ description: e.target.value })}
@@ -167,18 +166,18 @@ class ProtestForm extends React.Component {
           <label>
             Location
             <br />
-            <Input
-              type="text"
-              value={this.state.address}
-              placeholder="Include a place or address"
-              onChange={e => { this.setState({ address: e.target.value }); } }
-            />
-            <br />
-            <input
-              type="button"
-              value="Find location"
-              onClick={this.handleLocSearch}
-            />
+
+            <div style={{display: 'flex', flexDirection: 'row', alignItems: 'baseline'}}>
+              <Input
+                type="text"
+                value={this.state.address}
+                placeholder="Include a place or address"
+                onChange={e => this.setState({ address: e.target.value })}
+              />
+              <br />
+              <i className="fa fa-search" onClick={this.handleLocSearch}></i>
+            </div>
+            
           </label>
           {' '}
           <br />
@@ -199,7 +198,7 @@ class ProtestForm extends React.Component {
           <label>
             Date / Time
             <br />
-            <input
+            <Input
               type="date"
               value={this.state.date}
               min={validDate}
@@ -211,7 +210,7 @@ class ProtestForm extends React.Component {
               value={this.state.timeStart}
               onChange={e => this.setState({ timeStart: e.target.value })}
             />
-            <input
+            <Input
               type="time"
               value={this.state.timeEnd}
               onChange={e => this.setState({ timeEnd: e.target.value })}
@@ -221,13 +220,13 @@ class ProtestForm extends React.Component {
           <br />
           {' '}
           <br />
-          <InputButton
+          <Submit
             type="submit"
             value="Submit"
             disabled={!formValid}
             onClick={ e => this.handleSubmit(e) }
           />
-        <InputButton
+        <Submit
             type="button"
             value="Cancel"
             onClick={() => this.props.changeView('DASHBOARD')}
@@ -237,14 +236,10 @@ class ProtestForm extends React.Component {
             <div></div>
           }
         </Form>
-      </div>
+      </FormWrapper>
     );
   }
 }
-
-const Input = styled.input`
-  width: 150%;
-`;
 
 const InputButton = styled.input`
   margin: 0 auto;
