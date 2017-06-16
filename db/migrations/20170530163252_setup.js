@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
     knex.schema.createTableIfNotExists('events', function(table) {
       table.increments('id').unsigned().primary();
       table.string('name', 100).nullable();
-      table.string('description', 500).nullable();
+      table.text('description', 'longtext').nullable();
       table.string('cause', 100).nullable();
       table.dateTime('event_time', 100).nullable();
     }),
