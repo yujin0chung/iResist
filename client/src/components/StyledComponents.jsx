@@ -319,6 +319,7 @@ export const TwitterWrapper = styled.div`
   display: block;
   margin-left: 15px;
   margin-right: 15px;
+  padding-bottom: 70px;
 `
 
 
