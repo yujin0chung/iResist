@@ -2,6 +2,7 @@ import React from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import Pin from './Pin.jsx';
 import { DayOfTitle, DayOfContentWrapper } from './StyledComponents.jsx';
+import { Textfit } from 'react-textfit';
 
 class DayOfMap extends React.Component {
   constructor(props) {
@@ -74,7 +75,7 @@ class DayOfMap extends React.Component {
     return (
       <div>
 
-      <DayOfTitle>{this.props.event.name}</DayOfTitle>
+      <DayOfTitle><Textfit>{this.props.event.name}</Textfit></DayOfTitle>
       <DayOfContentWrapper>
         <div style={{height: '100%'}}>
         <Map

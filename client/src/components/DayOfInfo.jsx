@@ -1,55 +1,37 @@
 import React from 'react';
-import styled from 'styled-components'
-import moment from 'moment'
-import { DayOfContentWrapper, DayOfTitle } from './StyledComponents.jsx';
+import styled from 'styled-components';
+import moment from 'moment';
+import { DayOfContentWrapper, DayOfTitle, DayOfInfoCategory, DayOfProtestInfo } from './StyledComponents.jsx';
+import { Textfit } from 'react-textfit';
 
-const DayOfInfo = (props) => (
-  <DayOfContentWrapper>
-    <DayOfTitle>{props.event.name}</DayOfTitle>
-      <ProtestInfo>
+const DayOfInfo = (props) => {
+  return (
+    <DayOfContentWrapper>
+      <DayOfTitle><Textfit>{props.event.name}</Textfit></DayOfTitle>
+      <DayOfProtestInfo>
         <div>
-          <Category>What</Category>
-           <div>{props.event.cause}</div>
+          <DayOfInfoCategory>Issue:</DayOfInfoCategory>
+            <div>{props.event.cause}</div>
         </div>
         <div>
-          <Category>Location</Category>
-           <div>{props.event.address}</div>
+          <DayOfInfoCategory>Meeting Place:</DayOfInfoCategory>
+            <div>{props.event.address}</div>
         </div>
         <div>
-          <Category>When</Category>
-           <div>{moment(Number(props.event.time)).format("h:mm a")} - {moment(Number(props.event.time) + Number(props.event.duration)).format("h:mm a")}</div>
+          <DayOfInfoCategory>When</DayOfInfoCategory>
+            <div>{moment(Number(props.event.time)).format('MMMM DD, YYYY h:mm a')} - {moment(Number(props.event.time) + Number(props.event.duration)).format('h:mm a')}</div>
         </div>
         <div>
-          <Category>Why</Category>
-           <div>{props.event.description}</div>
+          <DayOfInfoCategory>Attendee Count</DayOfInfoCategory>
+            <div>{props.event.attendee_count}</div>
         </div>
         <div>
-          <Category>Participating</Category>
-           <div>{props.event.attendee_count}</div>
+          <DayOfInfoCategory>Description:</DayOfInfoCategory>
+            <div>{props.event.description}</div>
         </div>
-      </ProtestInfo>
-  </DayOfContentWrapper>
-);
-
-const Category = styled.div`
-  font-family: 'Amiko', sans-serif;
-  font-weight:bold;
-  font-size: 12.5px;
-`
-
-const PageTitle = styled.div`
-  font-family: 'Cousine', monospace;
-  font-size: 25px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-      text-align: center;
-`;
-
-export const ProtestInfo = styled.div`
-
-  margin-left: 60px;
-  margin-top: 45px;
-`
-
+      </DayOfProtestInfo>
+    </DayOfContentWrapper>
+  );
+};
 
 export default DayOfInfo;

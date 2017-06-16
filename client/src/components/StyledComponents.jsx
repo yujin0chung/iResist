@@ -183,10 +183,11 @@ export const DayOfTitle = styled.div`
   font-size:6vh;
   height: 7vh;
   top:0px;
+  margin: 1vh;
 `;
 
 export const DayOfContentWrapper = styled.div`
-  height: 83vh;
+  height: 82vh;
   width: 100vw;
   margin: auto;
 `;
@@ -321,4 +322,16 @@ export const PinSubmit = styled.input`
   border:0 none;
   cursor:pointer;
   border-radius: 5px;
+`;
+
+export const DayOfProtestInfo = styled.div`
+  margin: 0 20px;
+  padding: 0 0 70px 0;
+`;
+
+export const DayOfInfoCategory = styled.div`
+  font-family: 'Amiko', sans-serif;
+  font-weight:bold;
+  font-size: 16px;
+  text-decoration: underline;
 `;

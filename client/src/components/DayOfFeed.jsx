@@ -7,6 +7,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { DayOfContentWrapper, DayOfTitle, FeedWrapper, Load, TextInput } from './StyledComponents.jsx';
+import { Textfit } from 'react-textfit';
 
 class DayOfFeed extends React.Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class DayOfFeed extends React.Component {
   }
 
   componentDidMount() {
-    this.handleLoadItems(this.state.pageNumber++)
+    this.handleLoadItems(this.state.pageNumber++);
     var self = this;
     this.props.client.on('newFeedItemFromServer', insertedPost => {
       this.props.receiveFeedItem(insertedPost);
@@ -50,7 +51,7 @@ class DayOfFeed extends React.Component {
         pageNumber
       }
     }).then(feedItems => {
-      this.setState({posts: this.state.posts.concat(feedItems.data.feedItems)})
+      this.setState({posts: this.state.posts.concat(feedItems.data.feedItems)});
     });
   }
 
@@ -84,8 +85,8 @@ class DayOfFeed extends React.Component {
 
   twitterFeed () {
     this.setState({
-      currentView: "TWITTER"
-    })
+      currentView: 'TWITTER'
+    });
   }
 
   render() {
@@ -93,7 +94,7 @@ class DayOfFeed extends React.Component {
     return (
       <div>
       <DayOfContentWrapper>
-        <DayOfTitle>{this.props.event.name}</DayOfTitle>
+        <DayOfTitle><Textfit>{this.props.event.name}</Textfit></DayOfTitle>
         <FeedWrapper>
         {this.state.currentView === 'FEED' ?
           <div>
@@ -140,7 +141,7 @@ class DayOfFeed extends React.Component {
         <div></div>
         }
 
-        {this.state.currentView === "TWITTER" ?
+        {this.state.currentView === 'TWITTER' ?
           <TwitterFeed {...this.props} client={this.client} /> :
           <div></div>
         }
