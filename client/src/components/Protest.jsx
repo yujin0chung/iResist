@@ -67,7 +67,7 @@ class Protest extends React.Component {
           <Name onClick={this.handleProtestClick}>{this.props.protest.name}</Name>
           {this.fetchWeather(latitude, longitude)}
           <Info>
-            <p><b>Cause</b> {this.props.protest.cause}</p>
+            <p><b>Cause</b>{this.props.protest.cause}</p>
             <p><b>Start</b> {dateFormat(startTime, 'mmmm dd, yyyy: h:MM TT')}</p>
             <p><b>End</b> {dateFormat(endTime, 'mmmm dd, yyyy: h:MM TT')}</p>
             <p><b>Address</b> {this.props.protest.address}</p>
