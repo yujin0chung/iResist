@@ -1,27 +1,14 @@
-<<<<<<< HEAD
-import React from "react";
-import { connect } from "react-redux";
-// import { HomeIcon, Form, InputInfo, Input, Text, Label, Search } from "./StyledComponents.jsx";
-import { HomeIcon, Form } from "./StyledComponents.jsx";
-import { Map, Marker, Popup, TileLayer } from "react-leaflet";
-import axios from "axios";
-import _ from "lodash";
-import moment from 'moment';
-import momentTimezone from 'moment-timezone';
-import tzlookup from 'tz-lookup';
-import styled from 'styled-components';
-=======
 import React from 'react';
 import { connect } from 'react-redux';
-import { HomeIcon, Form, InputInfo, Input, Text, Label, Search } from './StyledComponents.jsx';
+// import { HomeIcon, Form, InputInfo, Input, Text, Label, Search } from "./StyledComponents.jsx";
+import { HomeIcon, Form } from './StyledComponents.jsx';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import axios from 'axios';
 import _ from 'lodash';
 import moment from 'moment';
 import momentTimezone from 'moment-timezone';
 import tzlookup from 'tz-lookup';
-import $ from 'jquery';
->>>>>>> (feat) update dashboard on event creation and update
+import styled from 'styled-components';
 
 class ProtestForm extends React.Component {
   constructor(props) {
@@ -106,12 +93,7 @@ class ProtestForm extends React.Component {
     var timestamp1 = Date.now();
     var validDate1 = moment.tz(timestamp1, timezone1).format().slice(0, 10);
     var today = validDate1 === this.state.date;
-<<<<<<< HEAD
-    var currentTime = moment.tz(timestamp1, timezone1).format().slice(11, 16).split(":").slice(0, 2).join("");
-=======
     var currentTime = moment.tz(timestamp1, timezone1).format().slice(11, 16).split(':').slice(0, 2).join('');
-    // console.log('this is the current time: ', currentTime);
->>>>>>> (feat) update dashboard on event creation and update
     if (today && currentTime > startTime) {
       return false;
     }
@@ -223,15 +205,7 @@ class ProtestForm extends React.Component {
               min={validDate}
               onChange={e => this.setState({ date: e.target.value })}
             />
-<<<<<<< HEAD
-            {" "}
-=======
-          </label>
-          {' '}
-          <br />
-          <label>
-            Choose the time range:
->>>>>>> (feat) update dashboard on event creation and update
+            {' '}
             <input
               type="time"
               value={this.state.timeStart}
@@ -245,7 +219,7 @@ class ProtestForm extends React.Component {
           </label>
           {' '}
           <br />
-          {" "}
+          {' '}
           <br />
           <InputButton
             type="submit"
@@ -270,11 +244,11 @@ class ProtestForm extends React.Component {
 
 const Input = styled.input`
   width: 150%;
-`
+`;
 
 const InputButton = styled.input`
   margin: 0 auto;
-`
+`;
 
 
 export default ProtestForm;
