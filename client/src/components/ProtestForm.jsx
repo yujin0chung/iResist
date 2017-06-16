@@ -1,13 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { HomeIcon, Form, InputInfo, Input, Text, Label, Search } from "./StyledComponents.jsx";
+// import { HomeIcon, Form, InputInfo, Input, Text, Label, Search } from "./StyledComponents.jsx";
+import { HomeIcon, Form } from "./StyledComponents.jsx";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import axios from "axios";
 import _ from "lodash";
 import moment from 'moment';
 import momentTimezone from 'moment-timezone';
 import tzlookup from 'tz-lookup';
-import $ from "jquery";
+import styled from 'styled-components';
 
 class ProtestForm extends React.Component {
   constructor(props) {
@@ -94,7 +95,6 @@ class ProtestForm extends React.Component {
     var validDate1 = moment.tz(timestamp1, timezone1).format().slice(0, 10);
     var today = validDate1 === this.state.date;
     var currentTime = moment.tz(timestamp1, timezone1).format().slice(11, 16).split(":").slice(0, 2).join("");
-    // console.log('this is the current time: ', currentTime);
     if (today && currentTime > startTime) {
       return false;
     }
@@ -109,7 +109,6 @@ class ProtestForm extends React.Component {
     var timezone = tzlookup(this.state.lat, this.state.long);
     var timestamp = Date.now();
     var validDate = moment.tz(timestamp, timezone).format().slice(0, 10);
-    console.log(moment.tz(timestamp, timezone).format());
 
     const formValid =
       name.length > 0 &&
@@ -128,47 +127,57 @@ class ProtestForm extends React.Component {
           onClick={() => this.props.changeView("DASHBOARD")}
         />
         <Form>
+          <legend>Revolution Starts Here</legend>
           <label>
-            Protest Name:
-            <input
+            Name
+            <br />
+            <Input
               type="text"
               value={this.state.name}
-              placeholder="Required"
+              placeholder="ex: Snazzy Protest Name"
               onChange={e => this.setState({ name: e.target.value })}
             />
           </label>
           {" "}
           <br />
           <label>
-            Cause:
-            <input
+            Cause
+            <br />
+            <Input
               type="text"
               value={this.state.cause}
+              placeholder="ex: Black Lives Matter, Red Cross"
               onChange={e => this.setState({ cause: e.target.value })}
             />
           </label>
           {" "}
           <br />
           <label>
-            Description:
+            Description
+            <br />
             <textarea
               value={this.state.description}
+              placeholder="Tell the masses what's up!"
               onChange={e => this.setState({ description: e.target.value })}
+              rows="4"
+              cols="30"
             />
           </label>
           {" "}
           <br />
           <label>
-            Address:
-            <input
+            Location
+            <br />
+            <Input
               type="text"
               value={this.state.address}
-              placeholder="Include an address"
+              placeholder="Include a place or address"
               onChange={e => this.setState({ address: e.target.value })}
             />
+            <br />
             <input
               type="button"
-              value="Find location on map"
+              value="Find location"
               onClick={this.handleLocSearch}
             />
           </label>
@@ -187,19 +196,17 @@ class ProtestForm extends React.Component {
               <Marker key={`marker-${i}`} position={position} />
             )}
           </Map>
+          <br />
           <label>
-            Choose a date:
+            Date / Time
+            <br />
             <input
               type="date"
               value={this.state.date}
               min={validDate}
               onChange={e => this.setState({ date: e.target.value })}
             />
-          </label>
-          {" "}
-          <br />
-          <label>
-            Choose the time range:
+            {" "}
             <input
               type="time"
               value={this.state.timeStart}
@@ -213,13 +220,15 @@ class ProtestForm extends React.Component {
           </label>
           {" "}
           <br />
-          <input
+          {" "}
+          <br />
+          <InputButton
             type="submit"
             value="Submit"
             disabled={!formValid}
             onClick={ e => this.handleSubmit(e) }
           />
-          <input
+        <InputButton
             type="button"
             value="Cancel"
             onClick={() => this.props.changeView("DASHBOARD")}
@@ -233,5 +242,14 @@ class ProtestForm extends React.Component {
     );
   }
 }
+
+const Input = styled.input`
+  width: 150%;
+`
+
+const InputButton = styled.input`
+  margin: 0 auto;
+`
+
 
 export default ProtestForm;
