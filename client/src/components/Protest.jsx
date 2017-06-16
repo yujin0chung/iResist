@@ -13,7 +13,8 @@ class Protest extends React.Component {
     super(props);
     this.state = {
       displayDetails: false,
-      currentTemp: 0,
+      currentTempF: 0,
+      currentTempC: 0,
       currentWeatherDescription: ""
     };
 
@@ -37,10 +38,11 @@ class Protest extends React.Component {
       type: "GET",
       dataType: "json",
       url: `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}`,
-      data: { units: "imperial", appid: "6bf0bd6fff2f38ae4f3f66c7f55c2b7a" },
+      data: { appid: "6bf0bd6fff2f38ae4f3f66c7f55c2b7a" },
       success: (weather) => {
         this.setState({
-          currentTemp: Math.floor(weather.main.temp),
+          currentTempF: Math.round(weather.main.temp * (9/5) - 459.67),
+          currentTempC: Math.round(weather.main.temp - 273.15),
           currentWeatherDescription: weather.weather[0].main
         })
       }
@@ -56,24 +58,22 @@ class Protest extends React.Component {
     const userId = this.props.user.userId;
     const mapId = this.props.protest.mapId;
 
-    // console.log('this is the latitude and longitude', latitude, longitude);
     var latitude = this.props.maps.allMaps[mapId].lat;
     var longitude = this.props.maps.allMaps[mapId].long;
 
     if (this.state.displayDetails) {
-      // {this.fetchWeather(latitude, longitude);}
       return (
         <ToggledProtest>
           <Name onClick={this.handleProtestClick}>{this.props.protest.name}</Name>
           {this.fetchWeather(latitude, longitude)}
           <Info>
-            <p><b>Cause</b>{this.props.protest.cause}</p>
-            <p><b>Participating</b> {this.props.protest.attendee_count}</p>
-            <p><b>Start</b> {dateFormat(startTime, 'mmmm dd, yyyy: h:MM TT')}</p>
-            <p><b>End</b> {dateFormat(endTime, 'mmmm dd, yyyy: h:MM TT')}</p>
-            <p><b>Address</b> {this.props.protest.address}</p>
-            <p><b>Description</b> {this.props.protest.description}</p>
-            <p><b>Current Weather</b> {this.state.currentTemp + "ºF , " + this.state.currentWeatherDescription}</p>
+            <p><b>Cause:</b> {this.props.protest.cause}</p>
+            <p><b>Start:</b> {dateFormat(startTime, 'mmmm dd, yyyy: h:MM TT')}</p>
+            <p><b>End:</b> {dateFormat(endTime, 'mmmm dd, yyyy: h:MM TT')}</p>
+            <p><b>Address:</b> {this.props.protest.address}</p>
+            <p><b>Description:</b> {this.props.protest.description}</p>
+            <p><b>Attendee Count:</b> {this.props.protest.attendee_count}</p>
+            <p><b>Current Weather:</b> {this.state.currentTempF + "ºF / " + this.state.currentTempC + "ºC " + this.state.currentWeatherDescription}</p>
           </Info>
           <MapContainer {...this.props} mapType='dashboardMap' />
           <EventButton {...this.props} leader={leader} userId={userId} protestId={this.props.protest.id} />
