@@ -127,7 +127,7 @@ class ProtestForm extends React.Component {
           onClick={() => this.props.changeView("DASHBOARD")}
         />
         <Form>
-          <legend>Create a protest</legend>
+          <legend>Revolution Starts Here</legend>
           <label>
             Name
             <br />
@@ -155,7 +155,7 @@ class ProtestForm extends React.Component {
           <label>
             Description
             <br />
-            <Textarea
+            <textarea
               value={this.state.description}
               placeholder="Tell the masses what's up!"
               onChange={e => this.setState({ description: e.target.value })}
@@ -222,13 +222,13 @@ class ProtestForm extends React.Component {
           <br />
           {" "}
           <br />
-          <input
+          <InputButton
             type="submit"
             value="Submit"
             disabled={!formValid}
             onClick={ e => this.handleSubmit(e) }
           />
-          <input
+        <InputButton
             type="button"
             value="Cancel"
             onClick={() => this.props.changeView("DASHBOARD")}
@@ -245,6 +245,10 @@ class ProtestForm extends React.Component {
 
 const Input = styled.input`
   width: 150%;
+`
+
+const InputButton = styled.input`
+  margin: 0 auto;
 `
 
 
